@@ -1,0 +1,249 @@
+
+<link rel="stylesheet" href="{$basePath}/css/jquery.countdown.css" media="screen" />
+<script type="text/javascript" src="{$basePath}/js/jquery.countdown.js"></script>
+
+<!-- DataTables Plugin -->
+<script type="text/javascript" src="{$basePath}/plugins/datatables/jquery.dataTables.min.js"></script>
+
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="{$basePath}/js/demo/demo.tables.js"></script>
+
+<!-- jGrowl Plugin -->
+<script type="text/javascript" src="{$basePath}/plugins/jgrowl/jquery.jgrowl.min.js"></script>
+<link rel="stylesheet" href="{$basePath}/plugins/jgrowl/jquery.jgrowl.css" media="screen" />
+
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="{$basePath}/js/demo/demo.ui.js"></script>
+<!-- Validation Plugin -->
+<script type="text/javascript" src="{$basePath}/plugins/validate/jquery.validate.min.js"></script>
+
+<!-- Chosen Plugin -->
+<script type="text/javascript" src="{$basePath}/plugins/chosen/chosen.jquery.min.js"></script>
+<link rel="stylesheet" href="{$basePath}/plugins/chosen/chosen.css" media="screen" />
+
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="{$basePath}/js/demo/demo.validation.js"></script>
+<script type="text/javascript" src="{$basePath}/js/jquery.nette.js"></script>
+
+<!-- elRTE Plugin -->
+<script type="text/javascript" src="{$basePath}/plugins/elrte/js/elrte.min.js"></script>
+<link rel="stylesheet" href="{$basePath}/plugins/elrte/css/elrte.css" media="screen" />
+
+<!-- elFinder Plugin -->
+<script type="text/javascript" src="{$basePath}/plugins/elfinder/js/elfinder.min.js"></script>
+<link rel="stylesheet" href="{$basePath}/plugins/elfinder/css/elfinder.css" media="screen" />
+
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="{$basePath}/plugins/elastic/jquery.elastic.min.js"></script>
+<script type="text/javascript" src="{$basePath}/js/demo/demo.form.js"></script>
+
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="{$basePath}/js/fileDropscript.js"></script>
+<script type="text/javascript" src="{$basePath}/js/jquery.filedrop.js"></script>
+<link rel="stylesheet" href="{$basePath}/css/dropFilesStyles.css" media="screen" />
+
+<!-- prettyPhoto Plugin -->
+<script type="text/javascript" src="{$basePath}/plugins/prettyphoto/js/jquery.prettyPhoto.min.js"></script>
+<link rel="stylesheet" href="{$basePath}/plugins/prettyphoto/css/prettyPhoto.css" media="screen" />
+
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="{$basePath}/js/demo/demo.gallery.js"></script>
+
+<script type="text/javascript" src="{$basePath}/js/jquery.fileinput.js"></script>
+
+
+<!-- Content Area -->
+    <button id="da-ex-growl-0" class="da-button pink" style="display: none;">Default Growl</button>
+
+    {if $success == 1}
+        <script type="text/javascript">
+            $(function(){
+                $('#da-ex-growl-0').click();
+            });
+        </script>
+    {/if}
+
+    <?php unset($success); ?>
+
+    <div class="grid_2">
+        <div class="da-panel collapsible collapsed" >
+            <div class="da-panel-header">
+                <span class="da-panel-title">
+                    <img src="images/icons/black/16/pencil.png" alt="" />
+                    Add Namespace
+                </span>
+            </div>
+            <div class="da-panel-content">
+                <form class="da-form" enctype="multipart/form-data" method="post" action="{$basePath}/admin/?do=addNamespace">
+                    <div class="da-form-row">
+                        <label>Namespace</label>
+                        <div class="da-form-item large">
+                           <div class="da-form-item">
+                                <span class="formNote">Name of the namespace</span>
+                                <input type="text" name="name">
+                           </div>
+                        </div>
+                    </div>
+                    
+                    <div class="da-button-row">
+                        <input type="reset" value="Reset" class="da-button gray left" />
+                        <input type="submit" value="Submit" class="da-button green" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid_2">
+        <div class="da-panel collapsible collapsed" >
+            <div class="da-panel-header">
+                <span class="da-panel-title">
+                    <img src="images/icons/black/16/pencil.png" alt="" />
+                    Add Gallery
+                </span>
+            </div>
+            <div class="da-panel-content">
+                <form class="da-form" enctype="multipart/form-data" method="post" action="{$basePath}/admin/?do=addGallery">
+                    <div class="da-form-row">
+                        <label>Title</label>
+                        <div class="da-form-item large">
+                           <div class="da-form-item">
+                                <span class="formNote">Title</span>
+                                <input type="text" name="title">
+                           </div>
+                        </div>
+                    </div>
+                    <div class="da-form-row">
+                        <label>Description</label>
+                        <div class="da-form-item large">
+                           <div class="da-form-item">
+                                <span class="formNote">Description</span>
+                                <input type="text" name="description">
+                           </div>
+                        </div>
+                    </div>
+                    <div class="da-form-row">
+                        <label>Namespace</label>
+                        <div class="da-form-item large">
+                            <select name="namespace_id">
+                                {foreach $namespaces as $namespace}
+                                    <option value="{$namespace->namespace_id}">{$namespace->name}</option>
+                                {/foreach}
+                            </select>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="da-button-row">
+                        <input type="reset" value="Reset" class="da-button gray left" />
+                        <input type="submit" value="Submit" class="da-button green" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+   <div class="grid_4">
+        <div class="da-panel collapsible">
+            <div class="da-panel-header">
+                <span class="da-panel-title">
+                    <img src="{$basePath}/images/icons/black/16/list.png" alt="" />
+                    Gallery list
+                </span>
+                
+            </div>
+            <div class="da-panel-content">
+                <table id="da-ex-datatable-numberpaging" class="da-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Activation</th>
+                            <th>Namespace</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Edit Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach $gallery as $gall}
+                            <tr>
+                                <td>{$gall->gallery_id}</td>
+                                <td>
+                                    {if $gall->is_active == 1}
+                                        <a href="{$basePath}/admin/?do=activateByTableAndRow&gallery_id={$gall->gallery_id}&activate=1&table=gallery"><img src="{$basePath}/images/icons/color/accept.png" ></a>
+                                    {else}
+                                        <a href="{$basePath}/admin/?do=activateByTableAndRow&gallery_id={$gall->gallery_id}&activate=0&table=gallery"><img src="{$basePath}/images/icons/color/cross.png" ></a>
+                                    {/if}
+
+                                </td>
+                                <td id="gallStatus_{$gall->gallery_id}">
+
+                                    <?php  
+
+                                        foreach ($namespaces as $key => $value) {
+                                            if($value["namespace_id"] == $gall->namespace_id){
+                                                echo $value["name"];
+                                            }
+                                        }
+
+                                    ?>
+
+                                </td>
+                                <td>{$gall->title}</td>
+                                <td>{$gall->description}</td>
+                                
+                                <td class="da-icon-column">
+                                    <a href="#" class="{$user->id}" id="previewLink_{$user->id}" 
+                                        onclick="JavaScript:showUser()">
+                                        <img src="{$basePath}/images/icons/color/magnifier.png" />
+                                    </a>
+                                    <a href="{$basePath}/admin/?do=deleteTask&taskId={$gall->gallery_id}">
+                                        <img src="{$basePath}/images/icons/color/trash.png" />
+                                    </a>
+
+                                    <a href="#" name="printtask">
+                                        <img src="{$basePath}/images/icons/color/pdf.png" />
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!--end of grid-->
+
+    <div class="grid_4">
+        <div class="da-panel collapsible">
+            <div class="da-panel-header">
+                <span class="da-panel-title">
+                    <img src="images/icons/color/layout.png" alt="" />
+                    Namespace 1 - Gallery 1
+                </span>
+            </div>
+            <div class="da-panel-content with-padding">
+                <div class="da-gallery prettyPhoto">
+                    <ul>
+                        {foreach $gallery_photo as $photo}
+
+                            <li>
+                                <a href="{$basePath}/gallery/{$photo->namespace_id}/{$photo->gallery_id}/{$photo->filename}" rel="prettyPhoto[pp1]">
+                                    <img src="{$basePath}/gallery/{$photo->namespace_id}/{$photo->gallery_id}/thumbs/{$photo->filename}"  />
+                                </a>
+                                <span class="da-gallery-hover">
+                                    <ul>
+                                        <li class="da-gallery-update"><a href="#">Update</a></li>
+                                        <li class="da-gallery-delete"><a href="#">Delete</a></li>
+                                    </ul>
+                                </span>
+                            </li>
+
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>

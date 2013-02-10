@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 3.5.2.2
+- http://www.phpmyadmin.net
+-
+- Host: localhost
+- Generation Time: Feb 04, 2013 at 05:17 PM
+- Server version: 5.5.18
+- PHP Version: 5.3.8
+-->
+
+<pma_xml_export version="1.0">
+    <!--
+    - Database: 'bootstrap'
+    -->
+    <database name="bootstrap">
+        <!-- Table gallery_photo -->
+        <table name="gallery_photo">
+            <column name="photo_id">1</column>
+            <column name="gallery_id">1</column>
+            <column name="filename">4.jpg</column>
+            <column name="title">photo 4</column>
+            <column name="ordering">1</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">3</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">2</column>
+            <column name="gallery_id">1</column>
+            <column name="filename">7.jpg</column>
+            <column name="title">photo 7</column>
+            <column name="ordering">2</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">3</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">3</column>
+            <column name="gallery_id">2</column>
+            <column name="filename">8.jpg</column>
+            <column name="title">orange 1</column>
+            <column name="ordering">1</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">3</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">4</column>
+            <column name="gallery_id">2</column>
+            <column name="filename">9.jpg</column>
+            <column name="title">orange 2</column>
+            <column name="ordering">2</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">3</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">36</column>
+            <column name="gallery_id">6</column>
+            <column name="filename">36.jpg</column>
+            <column name="title">none</column>
+            <column name="ordering">0</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">1</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">37</column>
+            <column name="gallery_id">6</column>
+            <column name="filename">37.jpg</column>
+            <column name="title">none</column>
+            <column name="ordering">0</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">1</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">38</column>
+            <column name="gallery_id">6</column>
+            <column name="filename">38.jpg</column>
+            <column name="title">none</column>
+            <column name="ordering">0</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">1</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">53</column>
+            <column name="gallery_id">7</column>
+            <column name="filename">53.jpg</column>
+            <column name="title">none</column>
+            <column name="ordering">0</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">14</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">56</column>
+            <column name="gallery_id">7</column>
+            <column name="filename">56.jpg</column>
+            <column name="title">none</column>
+            <column name="ordering">0</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">14</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">69</column>
+            <column name="gallery_id">8</column>
+            <column name="filename">57.jpg</column>
+            <column name="title">none</column>
+            <column name="ordering">0</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">15</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">70</column>
+            <column name="gallery_id">8</column>
+            <column name="filename">70.jpg</column>
+            <column name="title">none</column>
+            <column name="ordering">0</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">15</column>
+        </table>
+        <table name="gallery_photo">
+            <column name="photo_id">71</column>
+            <column name="gallery_id">8</column>
+            <column name="filename">71.jpg</column>
+            <column name="title">none</column>
+            <column name="ordering">0</column>
+            <column name="is_active">1</column>
+            <column name="namespace_id">15</column>
+        </table>
+    </database>
+</pma_xml_export>

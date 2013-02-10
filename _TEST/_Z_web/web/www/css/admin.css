@@ -1,0 +1,192 @@
+/*---------General-------------*/
+
+#top {
+	width: 775px;
+	height: 100px;
+	float: left;
+	z-index: 10;
+}
+
+#bottom {
+	width: 775px;
+	height: 280px;
+	float: left;
+	z-index: 10;
+}
+
+
+#left {
+	float: left;
+	width: 50%;
+	height: 430px;
+}
+
+#right {
+	float: left;
+	width: 50%;
+	height: 430px;
+}
+
+#left2 {
+	float: left;
+	width: 50%;
+}
+
+#right2 {
+	float: left;
+	width: 50%;
+}
+
+.box {
+	margin-top: 50px;
+}
+
+/*----------Feedbacks----------*/
+
+
+#iPad {
+	width: 1000px;
+	height: 793px;
+	background: url("../img/iPad.png") no-repeat;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: -1;
+}
+
+#feedbackWindow  {
+	float: left;
+	width: 775px;
+	height: 575px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 110px;
+	margin-left: 100px;
+	background-color: white;
+}
+
+#feedbackWindow img {
+	width: 91%;
+	margin-left: 18px;
+	overflow: auto;
+	z-index: -1;
+	float: left;
+	overflow: auto;
+}
+
+#feedbackWindow .feedbackTopic {
+	font-size: 18px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#feedbackWindow textarea {
+	margin-top: 15px;
+}
+
+#da-ex-slider-range-fixed {
+	width: 90%;
+	margin-left: 30px;
+}
+
+#da-ex-slider-range-fixed-info {
+	margin-bottom: 10px;
+	margin-left: 20px;
+	font-size: 15px;
+}
+
+#da-ex-slider-range-fixed2 {
+	width: 90%;
+	margin-left: 30px;
+}
+
+#da-ex-slider-range-fixed-info2 {
+	margin-bottom: 10px;
+	margin-left: 20px;
+	font-size: 15px;
+}
+
+.feedbackSubmit{
+	margin-left: 300px;
+	height: 40px;
+	width: 200px;
+}
+
+#feedbackWindow h1 {
+	font-size: 24px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+a.feedbackImage2  {
+	position: absolute;
+	margin-left: 55px;
+
+}
+
+a.feedbackImage2 img:hover {
+	margin-top: -4px;
+}
+
+a.feedbackImage2b  {
+	position: absolute;
+	margin-left: 105px;
+}
+
+a.feedbackImage2b img:hover {
+	margin-top: -4px;
+}
+
+.vocabulary {
+	margin-top: -37px;
+	margin-left: -15px;
+}
+
+
+#feedbackWindow .feedbackTopic2 {
+	font-size: 15px;
+	text-align: center;
+	margin-bottom: -10px;
+	line-height: 25px;
+	font-weight: bolder;
+}
+
+
+/*--- CART ----*/
+
+#catalog { 
+	float:left;  
+	width: 360px; 
+	margin-right: 2em; 
+	margin-bottom: 20px;
+	border: none;
+}
+
+#catalog ul{ 
+	float:left;  
+	width: 340px; 
+	margin-right: 2em; 
+	border: none;
+	padding: 15px;
+
+}
+    
+#catalog ul li{ 
+	padding: 5px;
+	float: left;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#cart { 
+	width: 360px; 
+	float: left; 
+	margin-top: 1em; 
+}
+
+#cart ol li{ 
+	//display: inline;
+	font-weight: bold;
+}
+
+/* style the list to maximize the droppable hitarea */
+#cart ol { margin: 0; padding: 1em 0 1em 3em; }

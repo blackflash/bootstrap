@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 3.5.2.2
+- http://www.phpmyadmin.net
+-
+- Host: localhost
+- Generation Time: Feb 04, 2013 at 11:08 AM
+- Server version: 5.5.18
+- PHP Version: 5.3.8
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="bootstrap" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="gallery">
+                CREATE TABLE `gallery` (
+                  `gallery_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `title` varchar(50) NOT NULL DEFAULT '',
+                  `description` text,
+                  `namespace_id` int(10) unsigned NOT NULL DEFAULT '1',
+                  `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+                  PRIMARY KEY (`gallery_id`),
+                  KEY `namespace` (`namespace_id`),
+                  CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`namespace_id`) REFERENCES `gallery_namespace` (`namespace_id`) ON UPDATE CASCADE
+                ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'bootstrap'
+    -->
+    <database name="bootstrap">
+        <!-- Table gallery -->
+        <table name="gallery">
+            <column name="gallery_id">1</column>
+            <column name="title">apples</column>
+            <column name="description">description for apples
+</column>
+            <column name="namespace_id">3</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="gallery">
+            <column name="gallery_id">2</column>
+            <column name="title">oranges</column>
+            <column name="description">description for oranges</column>
+            <column name="namespace_id">3</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="gallery">
+            <column name="gallery_id">3</column>
+            <column name="title">plastics</column>
+            <column name="description">description for plastics products</column>
+            <column name="namespace_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="gallery">
+            <column name="gallery_id">4</column>
+            <column name="title">default gallery demo</column>
+            <column name="description">description for default gallery</column>
+            <column name="namespace_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="gallery">
+            <column name="gallery_id">5</column>
+            <column name="title">Andrej</column>
+            <column name="description">description to andrej</column>
+            <column name="namespace_id">12</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="gallery">
+            <column name="gallery_id">6</column>
+            <column name="title">Skuska title</column>
+            <column name="description">opis skusky len  v kratkosti</column>
+            <column name="namespace_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="gallery">
+            <column name="gallery_id">7</column>
+            <column name="title">teraz</column>
+            <column name="description">tearrrrr</column>
+            <column name="namespace_id">14</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="gallery">
+            <column name="gallery_id">8</column>
+            <column name="title">Pomaranče</column>
+            <column name="description">skúška novej galerky</column>
+            <column name="namespace_id">15</column>
+            <column name="is_active">1</column>
+        </table>
+    </database>
+</pma_xml_export>

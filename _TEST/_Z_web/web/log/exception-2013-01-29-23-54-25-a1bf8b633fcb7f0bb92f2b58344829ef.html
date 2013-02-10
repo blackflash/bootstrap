@@ -1,0 +1,1585 @@
+<!DOCTYPE html><!-- "' --></script></style></pre></xmp></table>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="robots" content="noindex,noarchive">
+	<meta name="generator" content="Nette Framework">
+
+	<title>Nette\Application\BadRequestException</title><!-- Cannot load presenter 'Sk', class 'SkPresenter' was not found in '/data/c/l/cleverfrogs.com/web/app/presenters/SkPresenter.php'. #404; caused by Nette\Application\InvalidPresenterException Cannot load presenter 'Sk', class 'SkPresenter' was not found in '/data/c/l/cleverfrogs.com/web/app/presenters/SkPresenter.php'. -->
+
+	<style type="text/css" class="nette">html{overflow-y:scroll}body{margin:0 0 2em;padding:0}#netteBluescreen{font:9pt/1.5 Verdana,sans-serif;background:white;color:#333;position:absolute;left:0;top:0;width:100%;z-index:23178;text-align:left}#netteBluescreen *{font:inherit;color:inherit;background:transparent;border:none;margin:0;padding:0;text-align:inherit;text-indent:0}#netteBluescreen b{font-weight:bold}#netteBluescreen i{font-style:italic}#netteBluescreen a{text-decoration:none;color:#328ADC;padding:2px 4px;margin:-2px -4px}#netteBluescreen a:hover,#netteBluescreen a:active,#netteBluescreen a:focus{color:#085AA3}#netteBluescreen a abbr{font-family:sans-serif;color:#BBB}#netteBluescreenIcon{position:absolute;right:.5em;top:.5em;z-index:23179;text-decoration:none;background:#CD1818;padding:3px}#netteBluescreenError{background:#CD1818;color:white;font:13pt/1.5 Verdana,sans-serif!important;display:block}#netteBluescreenError #netteBsSearch{color:#CD1818;font-size:.7em}#netteBluescreenError:hover #netteBsSearch{color:#ED8383}#netteBluescreen h1{font-size:18pt;font-weight:normal;text-shadow:1px 1px 0 rgba(0,0,0,.4);margin:.7em 0}#netteBluescreen h2{font:14pt/1.5 sans-serif!important;color:#888;margin:.6em 0}#netteBluescreen h3{font:bold 10pt/1.5 Verdana,sans-serif!important;margin:1em 0;padding:0}#netteBluescreen p,#netteBluescreen pre{margin:.8em 0}#netteBluescreen pre,#netteBluescreen code,#netteBluescreen table{font:9pt/1.5 Consolas,monospace!important}#netteBluescreen pre,#netteBluescreen table{background:#FDF5CE;padding:.4em .7em;border:1px dotted silver;overflow:auto}#netteBluescreen pre div{min-width:100%;float:left;_float:none;white-space:pre}#netteBluescreen table pre{padding:0;margin:0;border:none}#netteBluescreen pre .php-array,#netteBluescreen pre .php-object{color:#C22}#netteBluescreen pre .php-string{color:#080}#netteBluescreen pre .php-int,#netteBluescreen pre .php-float,#netteBluescreen pre .php-null,#netteBluescreen pre .php-bool{color:#328ADC}#netteBluescreen pre .php-visibility{font-size:85%;color:#998}#netteBluescreen pre.nette-dump a{color:#333}#netteBluescreen div.panel{padding:1px 25px}#netteBluescreen div.inner{background:#F4F3F1;padding:.1em 1em 1em;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px}#netteBluescreen table{border-collapse:collapse;width:100%}#netteBluescreen .outer{overflow:auto}#netteBluescreen td,#netteBluescreen th{vertical-align:top;text-align:left;padding:2px 6px;border:1px solid #e6dfbf}#netteBluescreen th{font-weight:bold}#netteBluescreen tr>:first-child{width:20%}#netteBluescreen tr:nth-child(2n),#netteBluescreen tr:nth-child(2n) pre{background-color:#F7F0CB}#netteBluescreen ol{margin:1em 0;padding-left:2.5em}#netteBluescreen ul{font:7pt/1.5 Verdana,sans-serif!important;padding:2em 4em;margin:1em 0 0;color:#777;background:#F6F5F3 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAAAjCAMAAADbuxbOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF/fz24d7Y7Onj5uLd9vPu3drUzMvG09LN39zW8e7o2NbQ3NnT29jS0M7J1tXQAAAApvmsFgAAABB0Uk5T////////////////////AOAjXRkAAAKlSURBVHja7FbbsqQgDAwENEgc//9vN+SCWDtbtXPmZR/Wc6o02mlC58LA9ckFAOszvMV8xNgyUjyXhojfMVKvRL0ZHavxXYy5JrmchMdzou8YlTClxajtK8ZGGpWRoBr1+gFjKfHkJPbizabLgzE3pH7Iu4K980xgFvlrVzMZoVBWhtvouCDdcTDmTgMCJdVxJ9MKO6XxnliM7hxi5lbj2ZVM4l8DqYyKoNLYcfqBB1/LpHYxEcfVG6ZpMDgyFUVWY/Q1sSYPpIdSAKWqLWL0XqWiMWc4hpH0OQOMOAgdycY4N9Sb7wWANQs3rsDSdLAYiuxi5siVfOhBWIrtH0G3kNaF/8Q4kCPE1kMucG/ZMUBUCOgiKJkPuWWTLGVgLGpwns1DraUayCtoBqERyaYtVsm85NActRooezvSLO/sKZP/nq8n4+xcyjNsRu8zW6KWpdb7wjiQd4WrtFZYFiKHENSmWp6xshh96c2RQ+c7Lt+qbijyEjHWUJ/pZsy8MGIUuzNiPySK2Gqoh6ZTRF6ko6q3nVTkaA//itIrDpW6l3SLo8juOmqMXkYknu5FdQxWbhCfKHEGDhxxyTVaXJF3ZjSl3jMksjSOOKmne9pI+mcG5QvaUJhI9HpkmRo2NpCrDJvsktRhRE2MM6F2n7dt4OaMUq8bCctk0+PoMRzL+1l5PZ2eyM/Owr86gf8z/tOM53lom5+nVcFuB+eJVzlXwAYy9TZ9s537tfqcsJWbEU4nBngZo6FfO9T9CdhfBtmk2dLiAy8uS4zwOpMx2HqYbTC+amNeAYTpsP4SIgvWfUBWXxn3CMHW3ffd7k3+YIkx7w0t/CVGvcPejoeOlzOWzeGbawOHqXQGUTMZRcfj4XPCgW9y/fuvVn8zD9P1QHzv80uAAQA0i3Jer7Jr7gAAAABJRU5ErkJggg==') 99% 10px no-repeat;border-top:1px solid #DDD}#netteBluescreen .highlight{background:#CD1818;color:white;font-weight:bold;font-style:normal;display:block;padding:0 .4em;margin:0 -.4em}#netteBluescreen .line{color:#9F9C7F;font-weight:normal;font-style:normal}#netteBluescreen a[href^=editor\:]{color:inherit;border-bottom:1px dotted #C1D2E1}</style>
+</head>
+
+
+
+<body>
+<div id="netteBluescreen">
+	<a id="netteBluescreenIcon" href="#" rel="next"><abbr>&#x25bc;</abbr></a
+
+	><div>
+		<div id="netteBluescreenError" class="panel">
+			<h1>Nette\Application\BadRequestException #404</h1>
+
+			<p>Cannot load presenter 'Sk', class 'SkPresenter' was not found in '/data/c/l/cleverfrogs.com/web/app/presenters/SkPresenter.php'. <a href="http://www.google.cz/search?sourceid=nette&amp;q=Nette%5CApplication%5CBadRequestException+Cannot+load+presenter+%2C+class++was+not+found+in+." id="netteBsSearch">search&#x25ba;</a></p>
+		</div>
+
+
+
+				
+			
+
+
+									
+
+
+						
+			<div class="panel">
+			<h2><a href="#" rel="netteBsPnl1">Source file <abbr>&#x25ba;</abbr></a></h2>
+
+			<div id="netteBsPnl1" class="nette-collapsed inner">
+				<p><b>File:</b> <a href="editor://open/?file=%2Fdata%2Fc%2Fl%2Fcleverfrogs.com%2Fweb%2Flibs%2FNette%2FApplication%2FApplication.php&amp;line=123" title="/data/c/l/cleverfrogs.com/web/libs/Nette/Application/Application.php:123">/data/c/l/cleverfrogs.com/web/libs/Nette/Application/<b>Application.php</b></a> &nbsp; <b>Line:</b> 123</p>
+				<pre><div><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>113:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>114:</span>    
+<span class='line'>115:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">requests</span><span style="color: #D24; font-weight: bold">[]&nbsp;=&nbsp;</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>116:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onRequest</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>117:</span>    
+<span class='line'>118:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #998; font-style: italic">//&nbsp;Instantiate&nbsp;presenter
+<span class='line'>119:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$presenterName&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>120:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+<span class='line'>121:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenter&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenterFactory</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">createPresenter</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenterName</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>122:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(</span><span style="color: #000">InvalidPresenterException&nbsp;$e</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='highlight'>123:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;BadRequestException($e-&gt;getMessage(),&nbsp;404,&nbsp;$e);
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>124:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>125:</span>    
+<span class='line'>126:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenterFactory</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterClass</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenterName</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>127:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setPresenterName</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenterName</span><span style="color: #D24; font-weight: bold">);
+</span></span></code></div></pre>			</div></div>
+
+
+
+									<div class="panel">
+				<h2><a href="#" rel="netteBsPnl2">Call stack <abbr>&#x25bc;</abbr></a></h2>
+
+				<div id="netteBsPnl2" class="inner">
+				<ol>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fdata%2Fc%2Fl%2Fcleverfrogs.com%2Fweb%2Fapp%2Fbootstrap.php&amp;line=37" title="/data/c/l/cleverfrogs.com/web/app/bootstrap.php:37">/data/c/l/cleverfrogs.com/web/app/<b>bootstrap.php</b></a>:37					
+					<a href="#" rel="netteBsSrc1-0">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Nette\Application\Application-&gt;					run
+					()
+					</p>
+
+					
+
+											<div  id="netteBsSrc1-0"><pre><div><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>27:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;Create&nbsp;Dependency&nbsp;Injection&nbsp;container&nbsp;from&nbsp;config.neon&nbsp;file
+<span class='line'>28:</span>    </span><span style="color: #000">$configurator</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">addConfig</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">__DIR__&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/config/config.neon'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>29:</span>    </span><span style="color: #000">$container&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$configurator</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">createContainer</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>30:</span>    
+<span class='line'>31:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;Setup&nbsp;router
+<span class='line'>32:</span>    </span><span style="color: #000">$container</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">router</span><span style="color: #D24; font-weight: bold">[]&nbsp;=&nbsp;new&nbsp;</span><span style="color: #000">Route</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'index.php'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'Homepage:default'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">Route</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">ONE_WAY</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>33:</span>    </span><span style="color: #000">$container</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">router</span><span style="color: #D24; font-weight: bold">[]&nbsp;=&nbsp;new&nbsp;</span><span style="color: #000">Route</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'&lt;presenter&gt;/&lt;action&gt;[/&lt;id&gt;]'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'Homepage:default'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>34:</span>    
+<span class='line'>35:</span>    
+<span class='line'>36:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;Configure&nbsp;and&nbsp;run&nbsp;the&nbsp;application!
+<span class='highlight'>37:    $container-&gt;application-&gt;run();
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>38:</span>    </span>
+</span></code></div></pre></div>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fdata%2Fc%2Fl%2Fcleverfrogs.com%2Fweb%2Fwww%2Findex.php&amp;line=15" title="/data/c/l/cleverfrogs.com/web/www/index.php:15">/data/c/l/cleverfrogs.com/web/www/<b>index.php</b></a>:15					
+					<a href="#" rel="netteBsSrc1-1">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+										require
+					(<a href="#" rel="netteBsArgs1-1">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-1">
+						<table>
+						<tr><th>#0</th><td><pre class="nette-dump"><span class="php-string">"/data/c/l/cleverfrogs.com/web/app/bootstrap.php"</span> (47)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<div class="nette-collapsed" id="netteBsSrc1-1"><pre><div><code><span style="color: #06B"><span style="color: #998; font-style: italic"><span class='line'> 5:</span>    
+<span class='line'> 6:</span>    //&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;this&nbsp;web&nbsp;root
+<span class='line'> 7:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'WWW_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">__DIR__</span><span style="color: #D24; font-weight: bold">);
+<span class='line'> 8:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;application&nbsp;root
+<span class='line'> 9:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'APP_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/../app'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>10:</span>    
+<span class='line'>11:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;libraries
+<span class='line'>12:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'LIBS_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/../libs'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>13:</span>    
+<span class='line'>14:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;load&nbsp;bootstrap&nbsp;file
+<span class='highlight'>15:    require&nbsp;WWW_DIR&nbsp;.&nbsp;'/../app/bootstrap.php';
+</span></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>16:</span>    </span>
+</span></code></div></pre></div>
+					
+					</li>
+									</ol>
+			</div></div>
+			
+
+
+			
+		
+						<div class="panel">
+			<h2><a href="#" rel="netteBsPnl3">Caused by <abbr>&#x25bc;</abbr></a></h2>
+
+			<div id="netteBsPnl3" class="inner">
+				<div class="panel">
+					<h1>Nette\Application\InvalidPresenterException</h1>
+
+					<p><b>Cannot load presenter 'Sk', class 'SkPresenter' was not found in '/data/c/l/cleverfrogs.com/web/app/presenters/SkPresenter.php'.</b></p>
+				</div>
+			
+
+
+									
+
+
+						
+			<div class="panel">
+			<h2><a href="#" rel="netteBsPnl4">Source file <abbr>&#x25ba;</abbr></a></h2>
+
+			<div id="netteBsPnl4" class="nette-collapsed inner">
+				<p><b>File:</b> <a href="editor://open/?file=%2Fdata%2Fc%2Fl%2Fcleverfrogs.com%2Fweb%2Flibs%2FNette%2FApplication%2FPresenterFactory.php&amp;line=101" title="/data/c/l/cleverfrogs.com/web/libs/Nette/Application/PresenterFactory.php:101">/data/c/l/cleverfrogs.com/web/libs/Nette/Application/<b>PresenterFactory.php</b></a> &nbsp; <b>Line:</b> 101</p>
+				<pre><div><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'> 91:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$class&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">formatPresenterClass</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$name</span><span style="color: #D24; font-weight: bold">);
+<span class='line'> 92:</span>    
+<span class='line'> 93:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">class_exists</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+<span class='line'> 94:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #998; font-style: italic">//&nbsp;internal&nbsp;autoloading
+<span class='line'> 95:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$file&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">formatPresenterFile</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$name</span><span style="color: #D24; font-weight: bold">);
+<span class='line'> 96:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #000">is_file</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$file</span><span style="color: #D24; font-weight: bold">)&nbsp;&amp;&amp;&nbsp;</span><span style="color: #000">is_readable</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$file</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+<span class='line'> 97:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">Nette</span><span style="color: #D24; font-weight: bold">\</span><span style="color: #000">Utils</span><span style="color: #D24; font-weight: bold">\</span><span style="color: #000">LimitedScope</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">load</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$file</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">);
+<span class='line'> 98:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'> 99:</span>    
+<span class='line'>100:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">class_exists</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+<span class='highlight'>101:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;InvalidPresenterException("Cannot&nbsp;load&nbsp;presenter&nbsp;'$name',&nbsp;class&nbsp;'$class'&nbsp;was&nbsp;not&nbsp;found&nbsp;in&nbsp;'$file'.");
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>102:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>103:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>104:</span>    
+<span class='line'>105:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$reflection&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;new&nbsp;</span><span style="color: #000">Nette</span><span style="color: #D24; font-weight: bold">\</span><span style="color: #000">Reflection</span><span style="color: #D24; font-weight: bold">\</span><span style="color: #000">ClassType</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">);
+</span></span></code></div></pre>			</div></div>
+
+
+
+									<div class="panel">
+				<h2><a href="#" rel="netteBsPnl5">Call stack <abbr>&#x25bc;</abbr></a></h2>
+
+				<div id="netteBsPnl5" class="inner">
+				<ol>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fdata%2Fc%2Fl%2Fcleverfrogs.com%2Fweb%2Flibs%2FNette%2FApplication%2FPresenterFactory.php&amp;line=57" title="/data/c/l/cleverfrogs.com/web/libs/Nette/Application/PresenterFactory.php:57">/data/c/l/cleverfrogs.com/web/libs/Nette/Application/<b>PresenterFactory.php</b></a>:57					
+					<a href="#" rel="netteBsSrc2-0">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Nette\Application\PresenterFactory-&gt;					getPresenterClass
+					(<a href="#" rel="netteBsArgs2-0">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs2-0">
+						<table>
+						<tr><th>$name</th><td><pre class="nette-dump"><span class="php-string">"Sk"</span> (2)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<div class="nette-collapsed" id="netteBsSrc2-0"><pre><div><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>47:</span>    
+<span class='line'>48:</span>    
+<span class='line'>49:</span>    
+<span class='line'>50:</span>    &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #998; font-style: italic">/**
+<span class='line'>51:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Create&nbsp;new&nbsp;presenter&nbsp;instance.
+<span class='line'>52:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;&nbsp;string&nbsp;&nbsp;presenter&nbsp;name
+<span class='line'>53:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;IPresenter
+<span class='line'>54:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+<span class='line'>55:</span>    &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #D24; font-weight: bold">public&nbsp;function&nbsp;</span><span style="color: #000">createPresenter</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$name</span><span style="color: #D24; font-weight: bold">)
+<span class='line'>56:</span>    &nbsp;&nbsp;&nbsp;&nbsp;{
+<span class='highlight'>57:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$presenter&nbsp;=&nbsp;$this-&gt;container-&gt;createInstance($this-&gt;getPresenterClass($name));
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>58:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #000">method_exists</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'setContext'</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+<span class='line'>59:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">container</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">callMethod</span><span style="color: #D24; font-weight: bold">(array(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'setContext'</span><span style="color: #D24; font-weight: bold">));
+<span class='line'>60:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>61:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #000">array_reverse</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">get_class_methods</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">))&nbsp;as&nbsp;</span><span style="color: #000">$method</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+</span></span></code></div></pre></div>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fdata%2Fc%2Fl%2Fcleverfrogs.com%2Fweb%2Flibs%2FNette%2FApplication%2FApplication.php&amp;line=121" title="/data/c/l/cleverfrogs.com/web/libs/Nette/Application/Application.php:121">/data/c/l/cleverfrogs.com/web/libs/Nette/Application/<b>Application.php</b></a>:121					
+					<a href="#" rel="netteBsSrc2-1">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Nette\Application\PresenterFactory-&gt;					createPresenter
+					(<a href="#" rel="netteBsArgs2-1">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs2-1">
+						<table>
+						<tr><th>$name</th><td><pre class="nette-dump"><span class="php-string">"Sk"</span> (2)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<div class="nette-collapsed" id="netteBsSrc2-1"><pre><div><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>111:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'Invalid&nbsp;request.&nbsp;Presenter&nbsp;is&nbsp;not&nbsp;achievable.'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>112:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>113:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>114:</span>    
+<span class='line'>115:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">requests</span><span style="color: #D24; font-weight: bold">[]&nbsp;=&nbsp;</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>116:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onRequest</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>117:</span>    
+<span class='line'>118:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #998; font-style: italic">//&nbsp;Instantiate&nbsp;presenter
+<span class='line'>119:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$presenterName&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>120:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+<span class='highlight'>121:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;presenter&nbsp;=&nbsp;$this-&gt;presenterFactory-&gt;createPresenter($presenterName);
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>122:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(</span><span style="color: #000">InvalidPresenterException&nbsp;$e</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>123:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getMessage</span><span style="color: #D24; font-weight: bold">(),&nbsp;</span><span style="color: #000">404</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>124:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>125:</span>    
+</span></span></code></div></pre></div>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fdata%2Fc%2Fl%2Fcleverfrogs.com%2Fweb%2Fapp%2Fbootstrap.php&amp;line=37" title="/data/c/l/cleverfrogs.com/web/app/bootstrap.php:37">/data/c/l/cleverfrogs.com/web/app/<b>bootstrap.php</b></a>:37					
+					<a href="#" rel="netteBsSrc2-2">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Nette\Application\Application-&gt;					run
+					()
+					</p>
+
+					
+
+											<div  id="netteBsSrc2-2"><pre><div><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>27:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;Create&nbsp;Dependency&nbsp;Injection&nbsp;container&nbsp;from&nbsp;config.neon&nbsp;file
+<span class='line'>28:</span>    </span><span style="color: #000">$configurator</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">addConfig</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">__DIR__&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/config/config.neon'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>29:</span>    </span><span style="color: #000">$container&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$configurator</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">createContainer</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>30:</span>    
+<span class='line'>31:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;Setup&nbsp;router
+<span class='line'>32:</span>    </span><span style="color: #000">$container</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">router</span><span style="color: #D24; font-weight: bold">[]&nbsp;=&nbsp;new&nbsp;</span><span style="color: #000">Route</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'index.php'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'Homepage:default'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">Route</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">ONE_WAY</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>33:</span>    </span><span style="color: #000">$container</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">router</span><span style="color: #D24; font-weight: bold">[]&nbsp;=&nbsp;new&nbsp;</span><span style="color: #000">Route</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'&lt;presenter&gt;/&lt;action&gt;[/&lt;id&gt;]'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'Homepage:default'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>34:</span>    
+<span class='line'>35:</span>    
+<span class='line'>36:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;Configure&nbsp;and&nbsp;run&nbsp;the&nbsp;application!
+<span class='highlight'>37:    $container-&gt;application-&gt;run();
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>38:</span>    </span>
+</span></code></div></pre></div>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fdata%2Fc%2Fl%2Fcleverfrogs.com%2Fweb%2Fwww%2Findex.php&amp;line=15" title="/data/c/l/cleverfrogs.com/web/www/index.php:15">/data/c/l/cleverfrogs.com/web/www/<b>index.php</b></a>:15					
+					<a href="#" rel="netteBsSrc2-3">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+										require
+					(<a href="#" rel="netteBsArgs2-3">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs2-3">
+						<table>
+						<tr><th>#0</th><td><pre class="nette-dump"><span class="php-string">"/data/c/l/cleverfrogs.com/web/app/bootstrap.php"</span> (47)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<div class="nette-collapsed" id="netteBsSrc2-3"><pre><div><code><span style="color: #06B"><span style="color: #998; font-style: italic"><span class='line'> 5:</span>    
+<span class='line'> 6:</span>    //&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;this&nbsp;web&nbsp;root
+<span class='line'> 7:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'WWW_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">__DIR__</span><span style="color: #D24; font-weight: bold">);
+<span class='line'> 8:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;application&nbsp;root
+<span class='line'> 9:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'APP_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/../app'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>10:</span>    
+<span class='line'>11:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;libraries
+<span class='line'>12:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'LIBS_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/../libs'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>13:</span>    
+<span class='line'>14:</span>    </span><span style="color: #998; font-style: italic">//&nbsp;load&nbsp;bootstrap&nbsp;file
+<span class='highlight'>15:    require&nbsp;WWW_DIR&nbsp;.&nbsp;'/../app/bootstrap.php';
+</span></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>16:</span>    </span>
+</span></code></div></pre></div>
+					
+					</li>
+									</ol>
+			</div></div>
+			
+
+
+			
+				</div></div>
+
+
+												<div class="panel">
+			<h2><a href="#" rel="netteBsPnl6">Nette Application <abbr>&#x25ba;</abbr></a></h2>
+
+			<div id="netteBsPnl6" class="nette-collapsed inner">
+			<h3>Requests</h3><pre class="nette-dump"><a href='#' rel='next'><span class="php-array">array</span>(1) <abbr>&#x25bc;</abbr> </a><code>[
+   <a href='#' rel='next'><span class="php-key">0</span> => <span class="php-object">Nette\Application\Request</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      <span class="php-key">method</span> <span class="php-visibility">private</span> => <span class="php-string">"GET"</span> (3)
+      <a href='#' rel='next'><span class="php-key">flags</span> <span class="php-visibility">private</span> => <span class="php-array">array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+         <span class="php-key">secured</span> => <span class="php-bool">FALSE</span>
+      }</code>
+      <span class="php-key">name</span> <span class="php-visibility">private</span> => <span class="php-string">"Sk"</span> (2)
+      <a href='#' rel='next'><span class="php-key">params</span> <span class="php-visibility">private</span> => <span class="php-array">array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+         <span class="php-key">action</span> => <span class="php-string">"loadpage"</span> (8)
+         <span class="php-key">id</span> => <span class="php-string">"spatna_vazba"</span> (12)
+      }</code>
+      <span class="php-key">post</span> <span class="php-visibility">private</span> => <span class="php-array">array</span>(0) 
+      <span class="php-key">files</span> <span class="php-visibility">private</span> => <span class="php-array">array</span>(0) 
+      <span class="php-key">frozen</span> <span class="php-visibility">private</span> => <span class="php-bool">FALSE</span>
+   }</code>
+]</code>
+</pre><h3>Presenter</h3><pre class="nette-dump"><span class="php-null">NULL</span>
+</pre>		</div></div>
+		
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl7">Environment <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl7" class="nette-collapsed inner">
+			<h3><a href="#" rel="netteBsPnl8">$_SERVER <abbr>&#x25bc;</abbr></a></h3>
+			<div id="netteBsPnl8" class="outer">
+			<table>
+			<tr><th>REDIRECT_REDIRECT_DOCROOT</th><td><pre class="nette-dump"><span class="php-string">"/data/web/cleverfrogs.com/web"</span> (29)
+</pre></td></tr>
+<tr><th>REDIRECT_REDIRECT_STATUS</th><td><pre class="nette-dump"><span class="php-string">"200"</span> (3)
+</pre></td></tr>
+<tr><th>REDIRECT_DOCROOT</th><td><pre class="nette-dump"><span class="php-string">"/data/web/cleverfrogs.com/web"</span> (29)
+</pre></td></tr>
+<tr><th>REDIRECT_STATUS</th><td><pre class="nette-dump"><span class="php-string">"200"</span> (3)
+</pre></td></tr>
+<tr><th>DOCROOT</th><td><pre class="nette-dump"><span class="php-string">"/data/web/cleverfrogs.com/web"</span> (29)
+</pre></td></tr>
+<tr><th>HTTP_HOST</th><td><pre class="nette-dump"><span class="php-string">"cleverfrogs.com"</span> (15)
+</pre></td></tr>
+<tr><th>HTTP_X_REAL_IP</th><td><pre class="nette-dump"><span class="php-string">"66.249.78.153"</span> (13)
+</pre></td></tr>
+<tr><th>HTTP_X_FORWARDED_FOR</th><td><pre class="nette-dump"><span class="php-string">"66.249.78.153, 66.249.78.153"</span> (28)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT</th><td><pre class="nette-dump"><span class="php-string">"*/*"</span> (3)
+</pre></td></tr>
+<tr><th>HTTP_FROM</th><td><pre class="nette-dump"><span class="php-string">"googlebot(at)googlebot.com"</span> (26)
+</pre></td></tr>
+<tr><th>HTTP_USER_AGENT</th><td><pre class="nette-dump"><span class="php-string">"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"</span> (72)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_ENCODING</th><td><pre class="nette-dump"><span class="php-string">"gzip,deflate"</span> (12)
+</pre></td></tr>
+<tr><th>HTTP_IF_MODIFIED_SINCE</th><td><pre class="nette-dump"><span class="php-string">"Fri, 11 Jan 2013 15:43:48 GMT"</span> (29)
+</pre></td></tr>
+<tr><th>HTTP_X_FORWARDED_HOST</th><td><pre class="nette-dump"><span class="php-string">"cleverfrogs.com"</span> (15)
+</pre></td></tr>
+<tr><th>HTTP_X_FORWARDED_SERVER</th><td><pre class="nette-dump"><span class="php-string">"cleverfrogs.com"</span> (15)
+</pre></td></tr>
+<tr><th>HTTP_CONNECTION</th><td><pre class="nette-dump"><span class="php-string">"Keep-Alive"</span> (10)
+</pre></td></tr>
+<tr><th>PATH</th><td><pre class="nette-dump"><span class="php-string">"/sbin:/usr/sbin:/bin:/usr/bin"</span> (29)
+</pre></td></tr>
+<tr><th>SERVER_SIGNATURE</th><td><pre class="nette-dump"><span class="php-string">""</span>
+</pre></td></tr>
+<tr><th>SERVER_SOFTWARE</th><td><pre class="nette-dump"><span class="php-string">"Apache"</span> (6)
+</pre></td></tr>
+<tr><th>SERVER_NAME</th><td><pre class="nette-dump"><span class="php-string">"cleverfrogs.com"</span> (15)
+</pre></td></tr>
+<tr><th>SERVER_ADDR</th><td><pre class="nette-dump"><span class="php-string">"127.0.0.1"</span> (9)
+</pre></td></tr>
+<tr><th>SERVER_PORT</th><td><pre class="nette-dump"><span class="php-string">"80"</span> (2)
+</pre></td></tr>
+<tr><th>REMOTE_ADDR</th><td><pre class="nette-dump"><span class="php-string">"66.249.78.153"</span> (13)
+</pre></td></tr>
+<tr><th>DOCUMENT_ROOT</th><td><pre class="nette-dump"><span class="php-string">"/data/web/cleverfrogs.com/web"</span> (29)
+</pre></td></tr>
+<tr><th>SERVER_ADMIN</th><td><pre class="nette-dump"><span class="php-string">"admin@websupport.sk"</span> (19)
+</pre></td></tr>
+<tr><th>SCRIPT_FILENAME</th><td><pre class="nette-dump"><span class="php-string">"/data/web/cleverfrogs.com/web/www/index.php"</span> (43)
+</pre></td></tr>
+<tr><th>REMOTE_PORT</th><td><pre class="nette-dump"><span class="php-string">"27034"</span> (5)
+</pre></td></tr>
+<tr><th>REDIRECT_URL</th><td><pre class="nette-dump"><span class="php-string">"/www/sk/loadPage/spatna_vazba"</span> (29)
+</pre></td></tr>
+<tr><th>GATEWAY_INTERFACE</th><td><pre class="nette-dump"><span class="php-string">"CGI/1.1"</span> (7)
+</pre></td></tr>
+<tr><th>SERVER_PROTOCOL</th><td><pre class="nette-dump"><span class="php-string">"HTTP/1.1"</span> (8)
+</pre></td></tr>
+<tr><th>REQUEST_METHOD</th><td><pre class="nette-dump"><span class="php-string">"GET"</span> (3)
+</pre></td></tr>
+<tr><th>QUERY_STRING</th><td><pre class="nette-dump"><span class="php-string">""</span>
+</pre></td></tr>
+<tr><th>REQUEST_URI</th><td><pre class="nette-dump"><span class="php-string">"/sk/loadPage/spatna_vazba"</span> (25)
+</pre></td></tr>
+<tr><th>SCRIPT_NAME</th><td><pre class="nette-dump"><span class="php-string">"/www/index.php"</span> (14)
+</pre></td></tr>
+<tr><th>PHP_SELF</th><td><pre class="nette-dump"><span class="php-string">"/www/index.php"</span> (14)
+</pre></td></tr>
+<tr><th>REQUEST_TIME</th><td><pre class="nette-dump"><span class="php-int">1359500065</span>
+</pre></td></tr>
+<tr><th>argv</th><td><pre class="nette-dump"><span class="php-array">array</span>(0) 
+</pre></td></tr>
+<tr><th>argc</th><td><pre class="nette-dump"><span class="php-int">0</span>
+</pre></td></tr>
+			</table>
+			</div>
+
+
+			<h3><a href="#" rel="netteBsPnl9">$_SESSION <abbr>&#x25bc;</abbr></a></h3>
+			<div id="netteBsPnl9" class="outer">
+						<p><i>empty</i></p>
+						</div>
+
+
+			
+
+						<h3><a href="#" rel="netteBsPnl10">Constants <abbr>&#x25ba;</abbr></a></h3>
+			<div id="netteBsPnl10" class="outer nette-collapsed">
+			<table>
+			<tr><th>WWW_DIR</th><td><pre class="nette-dump"><span class="php-string">"/data/c/l/cleverfrogs.com/web/www"</span> (33)
+</pre></td></tr>
+<tr><th>APP_DIR</th><td><pre class="nette-dump"><span class="php-string">"/data/c/l/cleverfrogs.com/web/www/../app"</span> (40)
+</pre></td></tr>
+<tr><th>LIBS_DIR</th><td><pre class="nette-dump"><span class="php-string">"/data/c/l/cleverfrogs.com/web/www/../libs"</span> (41)
+</pre></td></tr>
+<tr><th>NETTE</th><td><pre class="nette-dump"><span class="php-bool">TRUE</span>
+</pre></td></tr>
+<tr><th>NETTE_DIR</th><td><pre class="nette-dump"><span class="php-string">"/data/c/l/cleverfrogs.com/web/libs/Nette"</span> (40)
+</pre></td></tr>
+<tr><th>NETTE_VERSION_ID</th><td><pre class="nette-dump"><span class="php-int">20006</span>
+</pre></td></tr>
+<tr><th>NETTE_PACKAGE</th><td><pre class="nette-dump"><span class="php-string">"5.3"</span> (3)
+</pre></td></tr>
+			</table>
+			</div>
+			
+
+			<h3><a href="#" rel="netteBsPnl11">Included files <abbr>&#x25ba;</abbr></a> (58)</h3>
+			<div id="netteBsPnl11" class="outer nette-collapsed">
+			<table>
+			<tr><td>/data/c/l/cleverfrogs.com/web/www/index.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/app/bootstrap.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/autoload.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/loader.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/exceptions.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/Object.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Utils/LimitedScope.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Loaders/AutoLoader.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Loaders/NetteLoader.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/Helpers.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/shortcuts.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Utils/Html.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/Debugger.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/Logger.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/FireLogger.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/BlueScreen.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/Bar.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/DefaultBarPanel.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/IBarPanel.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Utils/SafeStream.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Config/Configurator.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Loaders/RobotLoader.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Caching/Storages/FileStorage.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Caching/IStorage.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Caching/Cache.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/Callback.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/Framework.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Caching/Storages/PhpFileStorage.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/temp/cache/_Nette.Configurator/_-ee5b566df11f061af673ca25cde0b108.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/DI/Container.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/FreezableObject.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/IFreezable.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/DI/IContainer.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Reflection/ClassType.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Reflection/Method.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Http/Session.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Http/RequestFactory.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Http/UrlScript.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Http/Url.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/ObjectMixin.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Utils/Strings.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Http/Request.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Http/IRequest.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Http/Response.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Http/IResponse.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/DateTime.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/Environment.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/Routers/Route.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/IRouter.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/Routers/RouteList.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/common/ArrayList.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/Application.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/PresenterFactory.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/IPresenterFactory.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/Diagnostics/RoutingPanel.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/Request.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Application/exceptions.php</td></tr>
+<tr><td>/data/c/l/cleverfrogs.com/web/libs/Nette/Diagnostics/templates/bluescreen.phtml</td></tr>
+			</table>
+			</div>
+
+
+			<h3><a href="#" rel="netteBsPnl12">Configuration options <abbr>&#x25ba;</abbr></a></h3>
+			<div id="netteBsPnl12" class="outer nette-collapsed">
+			<div class="center">
+<hr />
+<h1>Configuration</h1>
+<h2><a name="module_apache2handler">apache2handler</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Apache Version </td><td class="v">Apache </td></tr>
+<tr><td class="e">Apache API Version </td><td class="v">20051115 </td></tr>
+<tr><td class="e">Server Administrator </td><td class="v">admin@websupport.sk </td></tr>
+<tr><td class="e">Hostname:Port </td><td class="v">cleverfrogs.com:0 </td></tr>
+<tr><td class="e">User/Group </td><td class="v">apache(115)/115 </td></tr>
+<tr><td class="e">Max Requests </td><td class="v">Per Child: 500 - Keep Alive: off - Max Per Connection: 500 </td></tr>
+<tr><td class="e">Timeouts </td><td class="v">Connection: 300 - Keep-Alive: 6 </td></tr>
+<tr><td class="e">Virtual Server </td><td class="v">Yes </td></tr>
+<tr><td class="e">Server Root </td><td class="v">/usr/apache2-php53 </td></tr>
+<tr><td class="e">Loaded Modules </td><td class="v">core prefork http_core mod_so mod_auth_basic mod_auth_digest mod_authn_file mod_authz_default mod_authz_groupfile mod_authz_host mod_authz_user mod_deflate mod_cgi mod_alias mod_vhost_alias mod_rewrite mod_headers mod_status mod_autoindex mod_mime mod_dir mod_negotiation mod_userdir mod_expires mod_log_config mod_env mod_setenvif mod_actions mod_speling mod_vhost_limit mod_limitipconn mod_ruid mod_php5 mod_vhost_cdb mod_rpaf-2 mod_fakessl mod_cloexec mod_ignorepython </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">engine</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">last_modified</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">xbithack</td><td class="v">0</td><td class="v">0</td></tr>
+</table><br />
+<h2>Apache Environment</h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Variable</th><th>Value</th></tr>
+<tr><td class="e">REDIRECT_REDIRECT_DOCROOT </td><td class="v">/data/web/cleverfrogs.com/web </td></tr>
+<tr><td class="e">REDIRECT_REDIRECT_STATUS </td><td class="v">200 </td></tr>
+<tr><td class="e">REDIRECT_DOCROOT </td><td class="v">/data/web/cleverfrogs.com/web </td></tr>
+<tr><td class="e">REDIRECT_STATUS </td><td class="v">200 </td></tr>
+<tr><td class="e">DOCROOT </td><td class="v">/data/web/cleverfrogs.com/web </td></tr>
+<tr><td class="e">HTTP_HOST </td><td class="v">cleverfrogs.com </td></tr>
+<tr><td class="e">HTTP_X_REAL_IP </td><td class="v">66.249.78.153 </td></tr>
+<tr><td class="e">HTTP_X_FORWARDED_FOR </td><td class="v">66.249.78.153, 66.249.78.153 </td></tr>
+<tr><td class="e">HTTP_ACCEPT </td><td class="v">*/* </td></tr>
+<tr><td class="e">HTTP_FROM </td><td class="v">googlebot(at)googlebot.com </td></tr>
+<tr><td class="e">HTTP_USER_AGENT </td><td class="v">Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html) </td></tr>
+<tr><td class="e">HTTP_ACCEPT_ENCODING </td><td class="v">gzip,deflate </td></tr>
+<tr><td class="e">HTTP_IF_MODIFIED_SINCE </td><td class="v">Fri, 11 Jan 2013 15:43:48 GMT </td></tr>
+<tr><td class="e">HTTP_X_FORWARDED_HOST </td><td class="v">cleverfrogs.com </td></tr>
+<tr><td class="e">HTTP_X_FORWARDED_SERVER </td><td class="v">cleverfrogs.com </td></tr>
+<tr><td class="e">HTTP_CONNECTION </td><td class="v">Keep-Alive </td></tr>
+<tr><td class="e">PATH </td><td class="v">/sbin:/usr/sbin:/bin:/usr/bin </td></tr>
+<tr><td class="e">SERVER_SIGNATURE </td><td class="v"><i>no value</i> </td></tr>
+<tr><td class="e">SERVER_SOFTWARE </td><td class="v">Apache </td></tr>
+<tr><td class="e">SERVER_NAME </td><td class="v">cleverfrogs.com </td></tr>
+<tr><td class="e">SERVER_ADDR </td><td class="v">127.0.0.1 </td></tr>
+<tr><td class="e">SERVER_PORT </td><td class="v">80 </td></tr>
+<tr><td class="e">REMOTE_ADDR </td><td class="v">66.249.78.153 </td></tr>
+<tr><td class="e">DOCUMENT_ROOT </td><td class="v">/data/web/cleverfrogs.com/web </td></tr>
+<tr><td class="e">SERVER_ADMIN </td><td class="v">admin@websupport.sk </td></tr>
+<tr><td class="e">SCRIPT_FILENAME </td><td class="v">/data/web/cleverfrogs.com/web/www/index.php </td></tr>
+<tr><td class="e">REMOTE_PORT </td><td class="v">27034 </td></tr>
+<tr><td class="e">REDIRECT_URL </td><td class="v">/www/sk/loadPage/spatna_vazba </td></tr>
+<tr><td class="e">GATEWAY_INTERFACE </td><td class="v">CGI/1.1 </td></tr>
+<tr><td class="e">SERVER_PROTOCOL </td><td class="v">HTTP/1.1 </td></tr>
+<tr><td class="e">REQUEST_METHOD </td><td class="v">GET </td></tr>
+<tr><td class="e">QUERY_STRING </td><td class="v"><i>no value</i> </td></tr>
+<tr><td class="e">REQUEST_URI </td><td class="v">/sk/loadPage/spatna_vazba </td></tr>
+<tr><td class="e">SCRIPT_NAME </td><td class="v">/www/index.php </td></tr>
+</table><br />
+<h2>HTTP Headers Information</h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th colspan="2">HTTP Request Headers</th></tr>
+<tr><td class="e">HTTP Request </td><td class="v">GET /sk/loadPage/spatna_vazba HTTP/1.1 </td></tr>
+<tr><td class="e">Host </td><td class="v">cleverfrogs.com </td></tr>
+<tr><td class="e">X-Real-IP </td><td class="v">66.249.78.153 </td></tr>
+<tr><td class="e">X-Forwarded-For </td><td class="v">66.249.78.153, 66.249.78.153 </td></tr>
+<tr><td class="e">Accept </td><td class="v">*/* </td></tr>
+<tr><td class="e">From </td><td class="v">googlebot(at)googlebot.com </td></tr>
+<tr><td class="e">User-Agent </td><td class="v">Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html) </td></tr>
+<tr><td class="e">Accept-Encoding </td><td class="v">gzip,deflate </td></tr>
+<tr><td class="e">If-Modified-Since </td><td class="v">Fri, 11 Jan 2013 15:43:48 GMT </td></tr>
+<tr><td class="e">X-Forwarded-Host </td><td class="v">cleverfrogs.com </td></tr>
+<tr><td class="e">X-Forwarded-Server </td><td class="v">cleverfrogs.com </td></tr>
+<tr><td class="e">Connection </td><td class="v">Keep-Alive </td></tr>
+<tr class="h"><th colspan="2">HTTP Response Headers</th></tr>
+<tr><td class="e">X-Powered-By </td><td class="v">Nette Framework </td></tr>
+<tr><td class="e">X-Frame-Options </td><td class="v">SAMEORIGIN </td></tr>
+</table><br />
+<h2><a name="module_bcmath">bcmath</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">BCMath support </td><td class="v">enabled </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">bcmath.scale</td><td class="v">0</td><td class="v">0</td></tr>
+</table><br />
+<h2><a name="module_bcompiler">bcompiler</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>bcompiler support</th><th>enabled</th></tr>
+<tr><td class="e">bcompiler version </td><td class="v">1.0.2s </td></tr>
+<tr><td class="e">current bytecode version </td><td class="v">0.27 </td></tr>
+<tr><td class="e">can parse bytecode version </td><td class="v">0.20, 0.22, 0.27 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">bcompiler.debug</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">bcompiler.debugfile</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">bcompiler.detect_filedir</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">bcompiler.enabled</td><td class="v">On</td><td class="v">On</td></tr>
+</table><br />
+<h2><a name="module_bz2">bz2</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">BZip2 Support </td><td class="v">Enabled </td></tr>
+<tr><td class="e">Stream Wrapper support </td><td class="v">compress.bzip2:// </td></tr>
+<tr><td class="e">Stream Filter support </td><td class="v">bzip2.decompress, bzip2.compress </td></tr>
+<tr><td class="e">BZip2 Version </td><td class="v">1.0.5, 10-Dec-2007 </td></tr>
+</table><br />
+<h2><a name="module_calendar">calendar</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Calendar support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_Core">Core</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">PHP Version </td><td class="v">5.3.13 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">allow_call_time_pass_reference</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">allow_url_fopen</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">allow_url_include</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">always_populate_raw_post_data</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">arg_separator.input</td><td class="v">&amp;</td><td class="v">&amp;</td></tr>
+<tr><td class="e">arg_separator.output</td><td class="v">&amp;</td><td class="v">&amp;</td></tr>
+<tr><td class="e">asp_tags</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">auto_append_file</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">auto_globals_jit</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">auto_prepend_file</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">browscap</td><td class="v">/usr/php53/lib/php_browscap.ini</td><td class="v">/usr/php53/lib/php_browscap.ini</td></tr>
+<tr><td class="e">default_charset</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">default_mimetype</td><td class="v">text/html</td><td class="v">text/html</td></tr>
+<tr><td class="e">define_syslog_variables</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">disable_classes</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">disable_functions</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">display_errors</td><td class="v">Off</td><td class="v">On</td></tr>
+<tr><td class="e">display_startup_errors</td><td class="v">On</td><td class="v">Off</td></tr>
+<tr><td class="e">doc_root</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">docref_ext</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">docref_root</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">enable_dl</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">error_append_string</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">error_log</td><td class="v">/data/c/l/cleverfrogs.com/web/log/php_error.log</td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">error_prepend_string</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">error_reporting</td><td class="v">0</td><td class="v">69</td></tr>
+<tr><td class="e">exit_on_timeout</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">expose_php</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">extension_dir</td><td class="v">/usr/php53/lib/php/extensions/no-debug-non-zts-20090626/</td><td class="v">/usr/php53/lib/php/extensions/no-debug-non-zts-20090626/</td></tr>
+<tr><td class="e">file_uploads</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">highlight.bg</td><td class="v"><font style="color: #FFFFFF">#FFFFFF</font></td><td class="v"><font style="color: #FFFFFF">#FFFFFF</font></td></tr>
+<tr><td class="e">highlight.comment</td><td class="v"><font style="color: #998; font-style: italic">#998; font-style: italic</font></td><td class="v"><font style="color: #FF8000">#FF8000</font></td></tr>
+<tr><td class="e">highlight.default</td><td class="v"><font style="color: #000">#000</font></td><td class="v"><font style="color: #0000BB">#0000BB</font></td></tr>
+<tr><td class="e">highlight.html</td><td class="v"><font style="color: #06B">#06B</font></td><td class="v"><font style="color: #000000">#000000</font></td></tr>
+<tr><td class="e">highlight.keyword</td><td class="v"><font style="color: #D24; font-weight: bold">#D24; font-weight: bold</font></td><td class="v"><font style="color: #007700">#007700</font></td></tr>
+<tr><td class="e">highlight.string</td><td class="v"><font style="color: #080">#080</font></td><td class="v"><font style="color: #DD0000">#DD0000</font></td></tr>
+<tr><td class="e">html_errors</td><td class="v">Off</td><td class="v">On</td></tr>
+<tr><td class="e">ignore_repeated_errors</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">ignore_repeated_source</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">ignore_user_abort</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">implicit_flush</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">include_path</td><td class="v">.:/usr/php53/lib/php</td><td class="v">.:/usr/php53/lib/php</td></tr>
+<tr><td class="e">log_errors</td><td class="v">Off</td><td class="v">On</td></tr>
+<tr><td class="e">log_errors_max_len</td><td class="v">1024</td><td class="v">1024</td></tr>
+<tr><td class="e">magic_quotes_gpc</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">magic_quotes_runtime</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">magic_quotes_sybase</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">mail.add_x_header</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">mail.force_extra_parameters</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mail.log</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">max_execution_time</td><td class="v">30</td><td class="v">30</td></tr>
+<tr><td class="e">max_file_uploads</td><td class="v">20</td><td class="v">20</td></tr>
+<tr><td class="e">max_input_nesting_level</td><td class="v">64</td><td class="v">64</td></tr>
+<tr><td class="e">max_input_time</td><td class="v">60</td><td class="v">60</td></tr>
+<tr><td class="e">max_input_vars</td><td class="v">1000</td><td class="v">1000</td></tr>
+<tr><td class="e">memory_limit</td><td class="v">250M</td><td class="v">48M</td></tr>
+<tr><td class="e">open_basedir</td><td class="v">/data/web/cleverfrogs.com/:/data/c/l/cleverfrogs.com/:/usr/php53/lib/php/:/apachetmp/</td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">output_buffering</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">output_handler</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">post_max_size</td><td class="v">90M</td><td class="v">48M</td></tr>
+<tr><td class="e">precision</td><td class="v">12</td><td class="v">12</td></tr>
+<tr><td class="e">realpath_cache_size</td><td class="v">128K</td><td class="v">128K</td></tr>
+<tr><td class="e">realpath_cache_ttl</td><td class="v">600</td><td class="v">600</td></tr>
+<tr><td class="e">register_argc_argv</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">register_globals</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">register_long_arrays</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">report_memleaks</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">report_zend_debug</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">request_order</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">safe_mode</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">safe_mode_exec_dir</td><td class="v">/usr/apachebin/</td><td class="v">/usr/apachebin/</td></tr>
+<tr><td class="e">safe_mode_gid</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">safe_mode_include_dir</td><td class="v">/usr/php53/lib/php</td><td class="v">/usr/php53/lib/php</td></tr>
+<tr><td class="e">sendmail_from</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">sendmail_path</td><td class="v">/usr/apachebin/sendmail&nbsp;-t&nbsp;-i</td><td class="v">/usr/apachebin/sendmail&nbsp;-t&nbsp;-i</td></tr>
+<tr><td class="e">serialize_precision</td><td class="v">100</td><td class="v">100</td></tr>
+<tr><td class="e">short_open_tag</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">SMTP</td><td class="v">localhost</td><td class="v">localhost</td></tr>
+<tr><td class="e">smtp_port</td><td class="v">25</td><td class="v">25</td></tr>
+<tr><td class="e">sql.safe_mode</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">track_errors</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">unserialize_callback_func</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">upload_max_filesize</td><td class="v">90M</td><td class="v">48M</td></tr>
+<tr><td class="e">upload_tmp_dir</td><td class="v">/apachetmp/upload5</td><td class="v">/apachetmp/upload5</td></tr>
+<tr><td class="e">user_dir</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">user_ini.cache_ttl</td><td class="v">300</td><td class="v">300</td></tr>
+<tr><td class="e">user_ini.filename</td><td class="v">.user.ini</td><td class="v">.user.ini</td></tr>
+<tr><td class="e">variables_order</td><td class="v">GPCS</td><td class="v">GPCS</td></tr>
+<tr><td class="e">xmlrpc_error_number</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">xmlrpc_errors</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">y2k_compliance</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">zend.enable_gc</td><td class="v">On</td><td class="v">On</td></tr>
+</table><br />
+<h2><a name="module_ctype">ctype</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">ctype functions </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_curl">curl</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">cURL support </td><td class="v">enabled </td></tr>
+<tr><td class="e">cURL Information </td><td class="v">7.21.0 </td></tr>
+<tr><td class="e">Age </td><td class="v">3 </td></tr>
+<tr><td class="e">Features </td></tr>
+<tr><td class="e">AsynchDNS </td><td class="v">No </td></tr>
+<tr><td class="e">Debug </td><td class="v">No </td></tr>
+<tr><td class="e">GSS-Negotiate </td><td class="v">Yes </td></tr>
+<tr><td class="e">IDN </td><td class="v">Yes </td></tr>
+<tr><td class="e">IPv6 </td><td class="v">Yes </td></tr>
+<tr><td class="e">Largefile </td><td class="v">Yes </td></tr>
+<tr><td class="e">NTLM </td><td class="v">Yes </td></tr>
+<tr><td class="e">SPNEGO </td><td class="v">No </td></tr>
+<tr><td class="e">SSL </td><td class="v">Yes </td></tr>
+<tr><td class="e">SSPI </td><td class="v">No </td></tr>
+<tr><td class="e">krb4 </td><td class="v">No </td></tr>
+<tr><td class="e">libz </td><td class="v">Yes </td></tr>
+<tr><td class="e">CharConv </td><td class="v">No </td></tr>
+<tr><td class="e">Protocols </td><td class="v">dict, file, ftp, ftps, http, https, imap, imaps, ldap, ldaps, pop3, pop3s, rtsp, scp, sftp, smtp, smtps, telnet, tftp </td></tr>
+<tr><td class="e">Host </td><td class="v">x86_64-pc-linux-gnu </td></tr>
+<tr><td class="e">SSL Version </td><td class="v">OpenSSL/0.9.8o </td></tr>
+<tr><td class="e">ZLib Version </td><td class="v">1.2.3.4 </td></tr>
+<tr><td class="e">libSSH Version </td><td class="v">libssh2/1.2.6 </td></tr>
+</table><br />
+<h2><a name="module_date">date</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">date/time support </td><td class="v">enabled </td></tr>
+<tr><td class="e">&quot;Olson&quot; Timezone Database Version </td><td class="v">2012.3 </td></tr>
+<tr><td class="e">Timezone Database </td><td class="v">internal </td></tr>
+<tr><td class="e">Default timezone </td><td class="v">Europe/Prague </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">date.default_latitude</td><td class="v">31.7667</td><td class="v">31.7667</td></tr>
+<tr><td class="e">date.default_longitude</td><td class="v">35.2333</td><td class="v">35.2333</td></tr>
+<tr><td class="e">date.sunrise_zenith</td><td class="v">90.583333</td><td class="v">90.583333</td></tr>
+<tr><td class="e">date.sunset_zenith</td><td class="v">90.583333</td><td class="v">90.583333</td></tr>
+<tr><td class="e">date.timezone</td><td class="v">Europe/Bratislava</td><td class="v">Europe/Bratislava</td></tr>
+</table><br />
+<h2><a name="module_dom">dom</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">DOM/XML </td><td class="v">enabled </td></tr>
+<tr><td class="e">DOM/XML API Version </td><td class="v">20031129 </td></tr>
+<tr><td class="e">libxml Version </td><td class="v">2.7.8 </td></tr>
+<tr><td class="e">HTML Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">XPath Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">XPointer Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Schema Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">RelaxNG Support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_eAccelerator">eAccelerator</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>eAccelerator support</th><th>enabled</th></tr>
+<tr><td class="e">Version </td><td class="v">0.9.6.1 </td></tr>
+<tr><td class="e">Caching Enabled </td><td class="v">false </td></tr>
+<tr><td class="e">Optimizer Enabled </td><td class="v">true </td></tr>
+<tr><td class="e">Check mtime Enabled </td><td class="v">true </td></tr>
+<tr><td class="e">Memory Size </td><td class="v">33,554,360 Bytes </td></tr>
+<tr><td class="e">Memory Available </td><td class="v">1,104 Bytes </td></tr>
+<tr><td class="e">Memory Allocated </td><td class="v">33,553,256 Bytes </td></tr>
+<tr><td class="e">Cached Scripts </td><td class="v">404 </td></tr>
+<tr><td class="e">Removed Scripts </td><td class="v">0 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">eaccelerator.allowed_admin_path</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">eaccelerator.cache_dir</td><td class="v">/apachetmp/eaccelerator5</td><td class="v">/apachetmp/eaccelerator5</td></tr>
+<tr><td class="e">eaccelerator.check_mtime</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">eaccelerator.debug</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">eaccelerator.enable</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">eaccelerator.filter</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">eaccelerator.log_file</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">eaccelerator.optimizer</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">eaccelerator.shm_max</td><td class="v">2M</td><td class="v">2M</td></tr>
+<tr><td class="e">eaccelerator.shm_only</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">eaccelerator.shm_prune_period</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">eaccelerator.shm_size</td><td class="v">32</td><td class="v">32</td></tr>
+<tr><td class="e">eaccelerator.shm_ttl</td><td class="v">600</td><td class="v">600</td></tr>
+</table><br />
+<h2><a name="module_ereg">ereg</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Regex Library </td><td class="v">Bundled library enabled </td></tr>
+</table><br />
+<h2><a name="module_exif">exif</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">EXIF Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">EXIF Version </td><td class="v">1.4 $Id$ </td></tr>
+<tr><td class="e">Supported EXIF Version </td><td class="v">0220 </td></tr>
+<tr><td class="e">Supported filetypes </td><td class="v">JPEG,TIFF </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">exif.decode_jis_intel</td><td class="v">JIS</td><td class="v">JIS</td></tr>
+<tr><td class="e">exif.decode_jis_motorola</td><td class="v">JIS</td><td class="v">JIS</td></tr>
+<tr><td class="e">exif.decode_unicode_intel</td><td class="v">UCS-2LE</td><td class="v">UCS-2LE</td></tr>
+<tr><td class="e">exif.decode_unicode_motorola</td><td class="v">UCS-2BE</td><td class="v">UCS-2BE</td></tr>
+<tr><td class="e">exif.encode_jis</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">exif.encode_unicode</td><td class="v">ISO-8859-15</td><td class="v">ISO-8859-15</td></tr>
+</table><br />
+<h2><a name="module_fileinfo">fileinfo</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>fileinfo support</th><th>enabled</th></tr>
+<tr><td class="e">version </td><td class="v">1.0.5-dev </td></tr>
+</table><br />
+<h2><a name="module_filter">filter</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Input Validation and Filtering </td><td class="v">enabled </td></tr>
+<tr><td class="e">Revision </td><td class="v">$Id: 2b8c730d7dfaa8485d07cd792f0c82852ffe4113 $ </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">filter.default</td><td class="v">unsafe_raw</td><td class="v">unsafe_raw</td></tr>
+<tr><td class="e">filter.default_flags</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2><a name="module_ftp">ftp</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">FTP support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_gd">gd</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">GD Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">GD Version </td><td class="v">bundled (2.0.34 compatible) </td></tr>
+<tr><td class="e">FreeType Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">FreeType Linkage </td><td class="v">with freetype </td></tr>
+<tr><td class="e">FreeType Version </td><td class="v">2.4.2 </td></tr>
+<tr><td class="e">GIF Read Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">GIF Create Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">JPEG Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">libJPEG Version </td><td class="v">6b </td></tr>
+<tr><td class="e">PNG Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">libPNG Version </td><td class="v">1.2.44 </td></tr>
+<tr><td class="e">WBMP Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">XBM Support </td><td class="v">enabled </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">gd.jpeg_ignore_warning</td><td class="v">0</td><td class="v">0</td></tr>
+</table><br />
+<h2><a name="module_gettext">gettext</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">GetText Support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_hash">hash</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">hash support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Hashing Engines </td><td class="v">md2 md4 md5 sha1 sha224 sha256 sha384 sha512 ripemd128 ripemd160 ripemd256 ripemd320 whirlpool tiger128,3 tiger160,3 tiger192,3 tiger128,4 tiger160,4 tiger192,4 snefru snefru256 gost adler32 crc32 crc32b salsa10 salsa20 haval128,3 haval160,3 haval192,3 haval224,3 haval256,3 haval128,4 haval160,4 haval192,4 haval224,4 haval256,4 haval128,5 haval160,5 haval192,5 haval224,5 haval256,5  </td></tr>
+</table><br />
+<h2><a name="module_iconv">iconv</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">iconv support </td><td class="v">enabled </td></tr>
+<tr><td class="e">iconv implementation </td><td class="v">glibc </td></tr>
+<tr><td class="e">iconv library version </td><td class="v">2.11.3 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">iconv.input_encoding</td><td class="v">ISO-8859-1</td><td class="v">ISO-8859-1</td></tr>
+<tr><td class="e">iconv.internal_encoding</td><td class="v">UTF-8</td><td class="v">ISO-8859-1</td></tr>
+<tr><td class="e">iconv.output_encoding</td><td class="v">ISO-8859-1</td><td class="v">ISO-8859-1</td></tr>
+</table><br />
+<h2><a name="module_imagick">imagick</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>imagick module</th><th>enabled</th></tr>
+<tr><td class="e">imagick module version </td><td class="v">3.0.1 </td></tr>
+<tr><td class="e">imagick classes </td><td class="v">Imagick, ImagickDraw, ImagickPixel, ImagickPixelIterator </td></tr>
+<tr><td class="e">ImageMagick version </td><td class="v">ImageMagick 6.6.0-4 2012-03-05 Q16 http://www.imagemagick.org </td></tr>
+<tr><td class="e">ImageMagick copyright </td><td class="v">Copyright (C) 1999-2010 ImageMagick Studio LLC </td></tr>
+<tr><td class="e">ImageMagick release date </td><td class="v">2012-03-05 </td></tr>
+<tr><td class="e">ImageMagick number of supported formats:  </td><td class="v">206 </td></tr>
+<tr><td class="e">ImageMagick supported formats </td><td class="v">3FR, A, AI, ART, ARW, AVI, AVS, B, BGR, BGRA, BMP, BMP2, BMP3, BRF, BRG, C, CAL, CALS, CAPTION, CIN, CIP, CLIP, CMYK, CMYKA, CR2, CRW, CUR, CUT, DCM, DCR, DCX, DDS, DFONT, DJVU, DNG, DOT, DPX, EPDF, EPI, EPS, EPS2, EPS3, EPSF, EPSI, EPT, EPT2, EPT3, ERF, EXR, FAX, FITS, FRACTAL, FTS, G, G3, GBR, GIF, GIF87, GRADIENT, GRAY, GRB, GROUP4, HALD, HISTOGRAM, HRZ, HTM, HTML, ICB, ICO, ICON, INFO, INLINE, IPL, ISOBRL, J2C, JNG, JP2, JPC, JPEG, JPG, JPX, K, K25, KDC, LABEL, M, M2V, M4V, MAP, MAT, MATTE, MIFF, MNG, MONO, MOV, MP4, MPC, MPEG, MPG, MRW, MSL, MSVG, MTV, MVG, NEF, NULL, O, ORF, OTB, OTF, PAL, PALM, PAM, PATTERN, PBM, PCD, PCDS, PCL, PCT, PCX, PDB, PDF, PDFA, PEF, PES, PFA, PFB, PFM, PGM, PGX, PICON, PICT, PIX, PJPEG, PLASMA, PNG, PNG24, PNG32, PNG8, PNM, PPM, PREVIEW, PS, PS2, PS3, PSB, PSD, PTIF, PWP, R, RADIAL-GRADIENT, RAF, RAS, RBG, RGB, RGBA, RGBO, RLA, RLE, SCR, SCT, SFW, SGI, SHTML, SR2, SRF, STEGANO, SUN, SVG, SVGZ, TEXT, TGA, THUMBNAIL, TIFF, TIFF64, TILE, TIM, TTC, TTF, TXT, UBRL, UIL, UYVY, VDA, VICAR, VID, VIFF, VST, WBMP, WMF, WMV, WMZ, WPG, X, X3F, XBM, XC, XCF, XPM, XPS, XV, XWD, Y, YCbCr, YCbCrA, YUV </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">imagick.locale_fix</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">imagick.progress_monitor</td><td class="v">0</td><td class="v">0</td></tr>
+</table><br />
+<h2><a name="module_imap">imap</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">IMAP c-Client Version </td><td class="v">2007e </td></tr>
+<tr><td class="e">SSL Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Kerberos Support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_interbase">interbase</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Firebird/InterBase Support </td><td class="v">static </td></tr>
+<tr><td class="e">Compile-time Client Library Version </td><td class="v">Firebird API version 25 </td></tr>
+<tr><td class="e">Run-time Client Library Version </td><td class="v">LI-V6.3.0.26054 Firebird 2.5 Release Candidate 3 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">ibase.allow_persistent</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">ibase.dateformat</td><td class="v">%Y-%m-%d</td><td class="v">%Y-%m-%d</td></tr>
+<tr><td class="e">ibase.default_charset</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">ibase.default_db</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">ibase.default_password</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">ibase.default_user</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">ibase.max_links</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+<tr><td class="e">ibase.max_persistent</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+<tr><td class="e">ibase.timeformat</td><td class="v">%H:%M:%S</td><td class="v">%H:%M:%S</td></tr>
+<tr><td class="e">ibase.timestampformat</td><td class="v">%Y-%m-%d&nbsp;%H:%M:%S</td><td class="v">%Y-%m-%d&nbsp;%H:%M:%S</td></tr>
+</table><br />
+<h2><a name="module_json">json</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">json support </td><td class="v">enabled </td></tr>
+<tr><td class="e">json version </td><td class="v">1.2.1 </td></tr>
+</table><br />
+<h2><a name="module_ldap">ldap</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">LDAP Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">RCS Version </td><td class="v">$Id$ </td></tr>
+<tr><td class="e">Total Links </td><td class="v">0/unlimited </td></tr>
+<tr><td class="e">API Version </td><td class="v">3001 </td></tr>
+<tr><td class="e">Vendor Name </td><td class="v">OpenLDAP </td></tr>
+<tr><td class="e">Vendor Version </td><td class="v">20423 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">ldap.max_links</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+</table><br />
+<h2><a name="module_libxml">libxml</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">libXML support </td><td class="v">active </td></tr>
+<tr><td class="e">libXML Compiled Version </td><td class="v">2.7.8 </td></tr>
+<tr><td class="e">libXML Loaded Version </td><td class="v">20708 </td></tr>
+<tr><td class="e">libXML streams </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_mbstring">mbstring</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Multibyte Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Multibyte string engine </td><td class="v">libmbfl </td></tr>
+<tr><td class="e">HTTP input encoding translation </td><td class="v">disabled </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>mbstring extension makes use of "streamable kanji code filter and converter", which is distributed under the GNU Lesser General Public License version 2.1.</th></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Multibyte (japanese) regex support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Multibyte regex (oniguruma) backtrack check </td><td class="v">On </td></tr>
+<tr><td class="e">Multibyte regex (oniguruma) version </td><td class="v">4.7.1 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">mbstring.detect_order</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mbstring.encoding_translation</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">mbstring.func_overload</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">mbstring.http_input</td><td class="v">pass</td><td class="v">pass</td></tr>
+<tr><td class="e">mbstring.http_output</td><td class="v">pass</td><td class="v">pass</td></tr>
+<tr><td class="e">mbstring.http_output_conv_mimetypes</td><td class="v">^(text/|application/xhtml\+xml)</td><td class="v">^(text/|application/xhtml\+xml)</td></tr>
+<tr><td class="e">mbstring.internal_encoding</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mbstring.language</td><td class="v">neutral</td><td class="v">neutral</td></tr>
+<tr><td class="e">mbstring.strict_detection</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">mbstring.substitute_character</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2><a name="module_mcrypt">mcrypt</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>mcrypt support</th><th>enabled</th></tr>
+<tr class="h"><th>mcrypt_filter support</th><th>enabled</th></tr>
+<tr><td class="e">Version </td><td class="v">2.5.8 </td></tr>
+<tr><td class="e">Api No </td><td class="v">20021217 </td></tr>
+<tr><td class="e">Supported ciphers </td><td class="v">cast-128 gost rijndael-128 twofish arcfour cast-256 loki97 rijndael-192 saferplus wake blowfish-compat des rijndael-256 serpent xtea blowfish enigma rc2 tripledes  </td></tr>
+<tr><td class="e">Supported modes </td><td class="v">cbc cfb ctr ecb ncfb nofb ofb stream  </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">mcrypt.algorithms_dir</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mcrypt.modes_dir</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2><a name="module_memcache">memcache</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>memcache support</th><th>enabled</th></tr>
+<tr><td class="e">Version </td><td class="v">3.0.6 </td></tr>
+<tr><td class="e">Revision </td><td class="v">$Revision: 310129 $ </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">memcache.allow_failover</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">memcache.chunk_size</td><td class="v">32768</td><td class="v">32768</td></tr>
+<tr><td class="e">memcache.compress_threshold</td><td class="v">20000</td><td class="v">20000</td></tr>
+<tr><td class="e">memcache.default_port</td><td class="v">11211</td><td class="v">11211</td></tr>
+<tr><td class="e">memcache.hash_function</td><td class="v">crc32</td><td class="v">crc32</td></tr>
+<tr><td class="e">memcache.hash_strategy</td><td class="v">consistent</td><td class="v">consistent</td></tr>
+<tr><td class="e">memcache.lock_timeout</td><td class="v">15</td><td class="v">15</td></tr>
+<tr><td class="e">memcache.max_failover_attempts</td><td class="v">20</td><td class="v">20</td></tr>
+<tr><td class="e">memcache.prefix_host_key</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">memcache.prefix_host_key_remove_subdomain</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">memcache.prefix_host_key_remove_www</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">memcache.prefix_static_key</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">memcache.protocol</td><td class="v">ascii</td><td class="v">ascii</td></tr>
+<tr><td class="e">memcache.redundancy</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">memcache.session_prefix_host_key</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">memcache.session_prefix_host_key_remove_subdomain</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">memcache.session_prefix_host_key_remove_www</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">memcache.session_prefix_static_key</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">memcache.session_redundancy</td><td class="v">2</td><td class="v">2</td></tr>
+<tr><td class="e">memcache.session_save_path</td><td class="v">tcp://10.10.28.62:11211?persistent=0&amp;weight=1&amp;timeout=0.1&amp;retry_interval=-1,tcp://10.10.28.15:11211?persistent=0&amp;weight=1&amp;timeout=0.1&amp;retry_interval=-1</td><td class="v">tcp://10.10.28.62:11211?persistent=0&amp;weight=1&amp;timeout=0.1&amp;retry_interval=-1,tcp://10.10.28.15:11211?persistent=0&amp;weight=1&amp;timeout=0.1&amp;retry_interval=-1</td></tr>
+</table><br />
+<h2><a name="module_mhash">mhash</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">MHASH support </td><td class="v">Enabled </td></tr>
+<tr><td class="e">MHASH API Version </td><td class="v">Emulated Support </td></tr>
+</table><br />
+<h2><a name="module_mongo">mongo</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>MongoDB Support</th><th>enabled</th></tr>
+<tr><td class="e">Version </td><td class="v">1.2.0 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">mongo.allow_empty_keys</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">mongo.allow_persistent</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">mongo.auto_reconnect</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">mongo.chunk_size</td><td class="v">262144</td><td class="v">262144</td></tr>
+<tr><td class="e">mongo.cmd</td><td class="v">$</td><td class="v">$</td></tr>
+<tr><td class="e">mongo.default_host</td><td class="v">localhost</td><td class="v">localhost</td></tr>
+<tr><td class="e">mongo.default_port</td><td class="v">27017</td><td class="v">27017</td></tr>
+<tr><td class="e">mongo.long_as_object</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">mongo.native_long</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">mongo.no_id</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">mongo.utf8</td><td class="v">1</td><td class="v">1</td></tr>
+</table><br />
+<h2><a name="module_mssql">mssql</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>MSSQL Support</th><th>enabled</th></tr>
+<tr><td class="e">Active Persistent Links </td><td class="v">0 </td></tr>
+<tr><td class="e">Active Links </td><td class="v">0 </td></tr>
+<tr><td class="e">Library version </td><td class="v">FreeTDS </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">mssql.allow_persistent</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">mssql.batchsize</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">mssql.charset</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mssql.compatability_mode</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">mssql.connect_timeout</td><td class="v">5</td><td class="v">5</td></tr>
+<tr><td class="e">mssql.datetimeconvert</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">mssql.max_links</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+<tr><td class="e">mssql.max_persistent</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+<tr><td class="e">mssql.max_procs</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+<tr><td class="e">mssql.min_error_severity</td><td class="v">10</td><td class="v">10</td></tr>
+<tr><td class="e">mssql.min_message_severity</td><td class="v">10</td><td class="v">10</td></tr>
+<tr><td class="e">mssql.secure_connection</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">mssql.textlimit</td><td class="v">Server default</td><td class="v">Server default</td></tr>
+<tr><td class="e">mssql.textsize</td><td class="v">Server default</td><td class="v">Server default</td></tr>
+<tr><td class="e">mssql.timeout</td><td class="v">60</td><td class="v">60</td></tr>
+</table><br />
+<h2><a name="module_mysql">mysql</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>MySQL Support</th><th>enabled</th></tr>
+<tr><td class="e">Active Persistent Links </td><td class="v">0 </td></tr>
+<tr><td class="e">Active Links </td><td class="v">0 </td></tr>
+<tr><td class="e">Client API version </td><td class="v">5.1.66 </td></tr>
+<tr><td class="e">MYSQL_MODULE_TYPE </td><td class="v">external </td></tr>
+<tr><td class="e">MYSQL_SOCKET </td><td class="v">/tmp/mysql.sock </td></tr>
+<tr><td class="e">MYSQL_INCLUDE </td><td class="v">-I/usr/mysql51/include/mysql </td></tr>
+<tr><td class="e">MYSQL_LIBS </td><td class="v">-L/usr/mysql51/lib/mysql -lmysqlclient  </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">mysql.allow_local_infile</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">mysql.allow_persistent</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">mysql.connect_timeout</td><td class="v">10</td><td class="v">10</td></tr>
+<tr><td class="e">mysql.default_host</td><td class="v">localhost</td><td class="v">localhost</td></tr>
+<tr><td class="e">mysql.default_password</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mysql.default_port</td><td class="v">3306</td><td class="v">3306</td></tr>
+<tr><td class="e">mysql.default_socket</td><td class="v">/tmp/mysql51.sock</td><td class="v">/tmp/mysql.sock</td></tr>
+<tr><td class="e">mysql.default_user</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mysql.force_compression</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">mysql.max_links</td><td class="v">30</td><td class="v">30</td></tr>
+<tr><td class="e">mysql.max_persistent</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+<tr><td class="e">mysql.trace_mode</td><td class="v">Off</td><td class="v">Off</td></tr>
+</table><br />
+<h2><a name="module_mysqli">mysqli</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>MysqlI Support</th><th>enabled</th></tr>
+<tr><td class="e">Client API library version </td><td class="v">5.1.66 </td></tr>
+<tr><td class="e">Active Persistent Links </td><td class="v">0 </td></tr>
+<tr><td class="e">Inactive Persistent Links </td><td class="v">0 </td></tr>
+<tr><td class="e">Active Links </td><td class="v">0 </td></tr>
+<tr><td class="e">Client API header version </td><td class="v">5.1.66 </td></tr>
+<tr><td class="e">MYSQLI_SOCKET </td><td class="v">/tmp/mysql.sock </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">mysqli.allow_local_infile</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">mysqli.allow_persistent</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">mysqli.default_host</td><td class="v">localhost</td><td class="v">localhost</td></tr>
+<tr><td class="e">mysqli.default_port</td><td class="v">3307</td><td class="v">3307</td></tr>
+<tr><td class="e">mysqli.default_pw</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mysqli.default_socket</td><td class="v">/tmp/mysql51.sock</td><td class="v">/tmp/mysql41.sock</td></tr>
+<tr><td class="e">mysqli.default_user</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">mysqli.force_compression</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">mysqli.max_links</td><td class="v">30</td><td class="v">30</td></tr>
+<tr><td class="e">mysqli.max_persistent</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+<tr><td class="e">mysqli.reconnect</td><td class="v">Off</td><td class="v">Off</td></tr>
+</table><br />
+<h2><a name="module_openssl">openssl</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">OpenSSL support </td><td class="v">enabled </td></tr>
+<tr><td class="e">OpenSSL Library Version </td><td class="v">OpenSSL 0.9.8o 01 Jun 2010 </td></tr>
+<tr><td class="e">OpenSSL Header Version </td><td class="v">OpenSSL 0.9.8o 01 Jun 2010 </td></tr>
+</table><br />
+<h2><a name="module_pcre">pcre</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">PCRE (Perl Compatible Regular Expressions) Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">PCRE Library Version </td><td class="v">8.12 2011-01-15 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">pcre.backtrack_limit</td><td class="v">1000000</td><td class="v">1000000</td></tr>
+<tr><td class="e">pcre.recursion_limit</td><td class="v">100000</td><td class="v">100000</td></tr>
+</table><br />
+<h2><a name="module_PDO">PDO</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>PDO support</th><th>enabled</th></tr>
+<tr><td class="e">PDO drivers </td><td class="v">firebird, mysql, pgsql, sqlite, sqlite2 </td></tr>
+</table><br />
+<h2><a name="module_PDO_Firebird">PDO_Firebird</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>PDO Driver for Firebird/InterBase</th><th>enabled</th></tr>
+</table><br />
+<h2><a name="module_pdo_mysql">pdo_mysql</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>PDO Driver for MySQL</th><th>enabled</th></tr>
+<tr><td class="e">Client API version </td><td class="v">5.1.66 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">pdo_mysql.default_socket</td><td class="v">/tmp/mysql50.sock</td><td class="v">/tmp/mysql50.sock</td></tr>
+<tr><td class="e">pdo_mysql.force_compression</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2><a name="module_pdo_pgsql">pdo_pgsql</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>PDO Driver for PostgreSQL</th><th>enabled</th></tr>
+<tr><td class="e">PostgreSQL(libpq) Version </td><td class="v">8.4.13 </td></tr>
+<tr><td class="e">Module version </td><td class="v">1.0.2 </td></tr>
+<tr><td class="e">Revision </td><td class="v"> $Id$  </td></tr>
+</table><br />
+<h2><a name="module_pdo_sqlite">pdo_sqlite</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>PDO Driver for SQLite 3.x</th><th>enabled</th></tr>
+<tr><td class="e">SQLite Library </td><td class="v">3.7.7.1 </td></tr>
+</table><br />
+<h2><a name="module_pgsql">pgsql</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>PostgreSQL Support</th><th>enabled</th></tr>
+<tr><td class="e">PostgreSQL(libpq) Version </td><td class="v">8.4.13 </td></tr>
+<tr><td class="e">Multibyte character support </td><td class="v">enabled </td></tr>
+<tr><td class="e">SSL support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Active Persistent Links </td><td class="v">0 </td></tr>
+<tr><td class="e">Active Links </td><td class="v">0 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">pgsql.allow_persistent</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">pgsql.auto_reset_persistent</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">pgsql.ignore_notice</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">pgsql.log_notice</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">pgsql.max_links</td><td class="v">30</td><td class="v">30</td></tr>
+<tr><td class="e">pgsql.max_persistent</td><td class="v">Unlimited</td><td class="v">Unlimited</td></tr>
+</table><br />
+<h2><a name="module_Phar">Phar</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Phar: PHP Archive support</th><th>enabled</th></tr>
+<tr><td class="e">Phar EXT version </td><td class="v">2.0.1 </td></tr>
+<tr><td class="e">Phar API version </td><td class="v">1.1.1 </td></tr>
+<tr><td class="e">SVN revision </td><td class="v">$Id: d8eaad1a2452af8d7f8ea9e3944e43add43e1890 $ </td></tr>
+<tr><td class="e">Phar-based phar archives </td><td class="v">enabled </td></tr>
+<tr><td class="e">Tar-based phar archives </td><td class="v">enabled </td></tr>
+<tr><td class="e">ZIP-based phar archives </td><td class="v">enabled </td></tr>
+<tr><td class="e">gzip compression </td><td class="v">enabled </td></tr>
+<tr><td class="e">bzip2 compression </td><td class="v">enabled </td></tr>
+<tr><td class="e">Native OpenSSL support </td><td class="v">enabled </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="v"><td>
+Phar based on pear/PHP_Archive, original concept by Davey Shafik.<br />Phar fully realized by Gregory Beaver and Marcus Boerger.<br />Portions of tar implementation Copyright (c) 2003-2009 Tim Kientzle.</td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">phar.cache_list</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">phar.readonly</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">phar.require_hash</td><td class="v">On</td><td class="v">On</td></tr>
+</table><br />
+<h2><a name="module_posix">posix</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Revision </td><td class="v">$Id: c00b7465003bf16b27764ccaea3c159ca2e4419d $ </td></tr>
+</table><br />
+<h2><a name="module_pspell">pspell</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">PSpell Support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_Reflection">Reflection</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Reflection</th><th>enabled</th></tr>
+<tr><td class="e">Version </td><td class="v">$Id: 522fef1e5100f848a5e2059d98b3a880a3143e9a $ </td></tr>
+</table><br />
+<h2><a name="module_session">session</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Session Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Registered save handlers </td><td class="v">files user sqlite memcache  </td></tr>
+<tr><td class="e">Registered serializer handlers </td><td class="v">php php_binary  </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">session.auto_start</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">session.bug_compat_42</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">session.bug_compat_warn</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">session.cache_expire</td><td class="v">180</td><td class="v">180</td></tr>
+<tr><td class="e">session.cache_limiter</td><td class="v">nocache</td><td class="v">nocache</td></tr>
+<tr><td class="e">session.cookie_domain</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">session.cookie_httponly</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">session.cookie_lifetime</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">session.cookie_path</td><td class="v">/</td><td class="v">/</td></tr>
+<tr><td class="e">session.cookie_secure</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">session.entropy_file</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">session.entropy_length</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">session.gc_divisor</td><td class="v">10000</td><td class="v">10000</td></tr>
+<tr><td class="e">session.gc_maxlifetime</td><td class="v">21600</td><td class="v">21600</td></tr>
+<tr><td class="e">session.gc_probability</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">session.hash_bits_per_character</td><td class="v">4</td><td class="v">4</td></tr>
+<tr><td class="e">session.hash_function</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">session.name</td><td class="v">PHPSESSID</td><td class="v">PHPSESSID</td></tr>
+<tr><td class="e">session.referer_check</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">session.save_handler</td><td class="v">memcache</td><td class="v">memcache</td></tr>
+<tr><td class="e">session.save_path</td><td class="v">/apachetmp/sessions53</td><td class="v">/apachetmp/sessions53</td></tr>
+<tr><td class="e">session.serialize_handler</td><td class="v">php</td><td class="v">php</td></tr>
+<tr><td class="e">session.use_cookies</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">session.use_only_cookies</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">session.use_trans_sid</td><td class="v">0</td><td class="v">0</td></tr>
+</table><br />
+<h2><a name="module_SimpleXML">SimpleXML</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Simplexml support</th><th>enabled</th></tr>
+<tr><td class="e">Revision </td><td class="v">$Id: a379111021e24ef020a2eefd8ca830cb1ab5b280 $ </td></tr>
+<tr><td class="e">Schema support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_snmp">snmp</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">NET-SNMP Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">NET-SNMP Version </td><td class="v">5.4.3 </td></tr>
+</table><br />
+<h2><a name="module_soap">soap</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Soap Client </td><td class="v">enabled </td></tr>
+<tr><td class="e">Soap Server </td><td class="v">enabled </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">soap.wsdl_cache</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">soap.wsdl_cache_dir</td><td class="v">/tmp</td><td class="v">/tmp</td></tr>
+<tr><td class="e">soap.wsdl_cache_enabled</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">soap.wsdl_cache_limit</td><td class="v">5</td><td class="v">5</td></tr>
+<tr><td class="e">soap.wsdl_cache_ttl</td><td class="v">86400</td><td class="v">86400</td></tr>
+</table><br />
+<h2><a name="module_sockets">sockets</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Sockets Support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_SPL">SPL</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>SPL support</th><th>enabled</th></tr>
+<tr><td class="e">Interfaces </td><td class="v">Countable, OuterIterator, RecursiveIterator, SeekableIterator, SplObserver, SplSubject </td></tr>
+<tr><td class="e">Classes </td><td class="v">AppendIterator, ArrayIterator, ArrayObject, BadFunctionCallException, BadMethodCallException, CachingIterator, DirectoryIterator, DomainException, EmptyIterator, FilesystemIterator, FilterIterator, GlobIterator, InfiniteIterator, InvalidArgumentException, IteratorIterator, LengthException, LimitIterator, LogicException, MultipleIterator, NoRewindIterator, OutOfBoundsException, OutOfRangeException, OverflowException, ParentIterator, RangeException, RecursiveArrayIterator, RecursiveCachingIterator, RecursiveDirectoryIterator, RecursiveFilterIterator, RecursiveIteratorIterator, RecursiveRegexIterator, RecursiveTreeIterator, RegexIterator, RuntimeException, SplDoublyLinkedList, SplFileInfo, SplFileObject, SplFixedArray, SplHeap, SplMinHeap, SplMaxHeap, SplObjectStorage, SplPriorityQueue, SplQueue, SplStack, SplTempFileObject, UnderflowException, UnexpectedValueException </td></tr>
+</table><br />
+<h2><a name="module_SQLite">SQLite</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>SQLite support</th><th>enabled</th></tr>
+<tr><td class="e">PECL Module version </td><td class="v">2.0-dev $Id$ </td></tr>
+<tr><td class="e">SQLite Library </td><td class="v">2.8.17 </td></tr>
+<tr><td class="e">SQLite Encoding </td><td class="v">iso8859 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">sqlite.assoc_case</td><td class="v">0</td><td class="v">0</td></tr>
+</table><br />
+<h2><a name="module_sqlite3">sqlite3</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>SQLite3 support</th><th>enabled</th></tr>
+<tr><td class="e">SQLite3 module version </td><td class="v">0.7-dev </td></tr>
+<tr><td class="e">SQLite Library </td><td class="v">3.7.7.1 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">sqlite3.extension_dir</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2><a name="module_standard">standard</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Dynamic Library Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Path to sendmail </td><td class="v">/usr/apachebin/sendmail -t -i </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">assert.active</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">assert.bail</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">assert.callback</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">assert.quiet_eval</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">assert.warning</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">auto_detect_line_endings</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">default_socket_timeout</td><td class="v">5</td><td class="v">5</td></tr>
+<tr><td class="e">from</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">safe_mode_allowed_env_vars</td><td class="v">PHP_,LC_,LANG</td><td class="v">PHP_,LC_,LANG</td></tr>
+<tr><td class="e">safe_mode_protected_env_vars</td><td class="v">LD_LIBRARY_PATH</td><td class="v">LD_LIBRARY_PATH</td></tr>
+<tr><td class="e">url_rewriter.tags</td><td class="v">a=href,area=href,frame=src,input=src,form=,fieldset=</td><td class="v">a=href,area=href,frame=src,input=src,form=,fieldset=</td></tr>
+<tr><td class="e">user_agent</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2><a name="module_suhosin">suhosin</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="v"><td>
+This server is protected with the Suhosin Extension 0.9.32.1<br /><br />Copyright (c) 2006-2007 <a href="http://www.hardened-php.net/">Hardened-PHP Project</a><br />
+Copyright (c) 2007-2010 <a href="http://www.sektioneins.de/">SektionEins GmbH</a>
+</td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">suhosin.apc_bug_workaround</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.cookie.checkraddr</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.cookie.cryptdocroot</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.cookie.cryptkey</td><td class="v">[ protected ]</td><td class="v">[ protected ]</td></tr>
+<tr><td class="e">suhosin.cookie.cryptlist</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.cookie.cryptraddr</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.cookie.cryptua</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.cookie.disallow_nul</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">suhosin.cookie.disallow_ws</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">suhosin.cookie.encrypt</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.cookie.max_array_depth</td><td class="v">100</td><td class="v">100</td></tr>
+<tr><td class="e">suhosin.cookie.max_array_index_length</td><td class="v">128</td><td class="v">128</td></tr>
+<tr><td class="e">suhosin.cookie.max_name_length</td><td class="v">256</td><td class="v">256</td></tr>
+<tr><td class="e">suhosin.cookie.max_totalname_length</td><td class="v">256</td><td class="v">256</td></tr>
+<tr><td class="e">suhosin.cookie.max_value_length</td><td class="v">131072</td><td class="v">131072</td></tr>
+<tr><td class="e">suhosin.cookie.max_vars</td><td class="v">256</td><td class="v">256</td></tr>
+<tr><td class="e">suhosin.cookie.plainlist</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.coredump</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.disable.display_errors</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.executor.allow_symlink</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.executor.disable_emodifier</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.executor.disable_eval</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.executor.eval.blacklist</td><td class="v">system,shell_exec,popen,proc_open,exec,passthru</td><td class="v">system,shell_exec,popen,proc_open,exec,passthru</td></tr>
+<tr><td class="e">suhosin.executor.eval.whitelist</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.executor.func.blacklist</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.executor.func.whitelist</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.executor.include.allow_writable_files</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.executor.include.blacklist</td><td class="v">http,&nbsp;https,&nbsp;ftp,&nbsp;ftps,&nbsp;php://input,&nbsp;file</td><td class="v">http,&nbsp;https,&nbsp;ftp,&nbsp;ftps,&nbsp;php://input,&nbsp;file</td></tr>
+<tr><td class="e">suhosin.executor.include.max_traversal</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.executor.include.whitelist</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.executor.max_depth</td><td class="v">8000</td><td class="v">8000</td></tr>
+<tr><td class="e">suhosin.filter.action</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.get.disallow_nul</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">suhosin.get.disallow_ws</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.get.max_array_depth</td><td class="v">50</td><td class="v">50</td></tr>
+<tr><td class="e">suhosin.get.max_array_index_length</td><td class="v">2048</td><td class="v">2048</td></tr>
+<tr><td class="e">suhosin.get.max_name_length</td><td class="v">524288</td><td class="v">524288</td></tr>
+<tr><td class="e">suhosin.get.max_totalname_length</td><td class="v">524288</td><td class="v">524288</td></tr>
+<tr><td class="e">suhosin.get.max_value_length</td><td class="v">131072</td><td class="v">131072</td></tr>
+<tr><td class="e">suhosin.get.max_vars</td><td class="v">1024</td><td class="v">1024</td></tr>
+<tr><td class="e">suhosin.log.file</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.log.file.name</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.log.phpscript</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.log.phpscript.is_safe</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.log.phpscript.name</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.log.sapi</td><td class="v">479</td><td class="v">479</td></tr>
+<tr><td class="e">suhosin.log.script</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.log.script.name</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.log.syslog</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.log.syslog.facility</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.log.syslog.priority</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.log.use-x-forwarded-for</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.mail.protect</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">suhosin.memory_limit</td><td class="v">256M</td><td class="v">256M</td></tr>
+<tr><td class="e">suhosin.mt_srand.ignore</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.multiheader</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.perdir</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.post.disallow_nul</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">suhosin.post.disallow_ws</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.post.max_array_depth</td><td class="v">100</td><td class="v">100</td></tr>
+<tr><td class="e">suhosin.post.max_array_index_length</td><td class="v">128</td><td class="v">128</td></tr>
+<tr><td class="e">suhosin.post.max_name_length</td><td class="v">524288</td><td class="v">524288</td></tr>
+<tr><td class="e">suhosin.post.max_totalname_length</td><td class="v">524288</td><td class="v">524288</td></tr>
+<tr><td class="e">suhosin.post.max_value_length</td><td class="v">2097152</td><td class="v">2097152</td></tr>
+<tr><td class="e">suhosin.post.max_vars</td><td class="v">524288</td><td class="v">524288</td></tr>
+<tr><td class="e">suhosin.protectkey</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.request.disallow_nul</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">suhosin.request.disallow_ws</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.request.max_array_depth</td><td class="v">100</td><td class="v">100</td></tr>
+<tr><td class="e">suhosin.request.max_array_index_length</td><td class="v">128</td><td class="v">128</td></tr>
+<tr><td class="e">suhosin.request.max_totalname_length</td><td class="v">524288</td><td class="v">524288</td></tr>
+<tr><td class="e">suhosin.request.max_value_length</td><td class="v">2097152</td><td class="v">2097152</td></tr>
+<tr><td class="e">suhosin.request.max_varname_length</td><td class="v">524288</td><td class="v">524288</td></tr>
+<tr><td class="e">suhosin.request.max_vars</td><td class="v">524288</td><td class="v">524288</td></tr>
+<tr><td class="e">suhosin.server.encode</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.server.strip</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.session.checkraddr</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.session.cryptdocroot</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.session.cryptkey</td><td class="v">[ protected ]</td><td class="v">[ protected ]</td></tr>
+<tr><td class="e">suhosin.session.cryptraddr</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.session.cryptua</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.session.encrypt</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.session.max_id_length</td><td class="v">128</td><td class="v">128</td></tr>
+<tr><td class="e">suhosin.simulation</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.sql.bailout_on_error</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">suhosin.sql.comment</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.sql.multiselect</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.sql.opencomment</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.sql.union</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.sql.user_postfix</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.sql.user_prefix</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+<tr><td class="e">suhosin.srand.ignore</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.stealth</td><td class="v">On</td><td class="v">On</td></tr>
+<tr><td class="e">suhosin.upload.disallow_binary</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.upload.disallow_elf</td><td class="v">1</td><td class="v">1</td></tr>
+<tr><td class="e">suhosin.upload.max_uploads</td><td class="v">25</td><td class="v">25</td></tr>
+<tr><td class="e">suhosin.upload.remove_binary</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">suhosin.upload.verification_script</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2><a name="module_tidy">tidy</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Tidy support</th><th>enabled</th></tr>
+<tr><td class="e">libTidy Release </td><td class="v">25 March 2009 </td></tr>
+<tr><td class="e">Extension Version </td><td class="v">2.0 ($Id$) </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">tidy.clean_output</td><td class="v">0</td><td class="v">0</td></tr>
+<tr><td class="e">tidy.default_config</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2><a name="module_tokenizer">tokenizer</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Tokenizer Support </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_uploadprogress">uploadprogress</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>uploadprogress support</th><th>enabled</th></tr>
+<tr><td class="e">Version </td><td class="v">1.0.1 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">uploadprogress.nginx_path</td><td class="v">http://localhost:80/nginx_upload_status/?UPLOAD_IDENTIFIER=</td><td class="v">http://localhost:80/nginx_upload_status/?UPLOAD_IDENTIFIER=</td></tr>
+</table><br />
+<h2><a name="module_xml">xml</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">XML Support </td><td class="v">active </td></tr>
+<tr><td class="e">XML Namespace Support </td><td class="v">active </td></tr>
+<tr><td class="e">libxml2 Version </td><td class="v">2.7.8 </td></tr>
+</table><br />
+<h2><a name="module_xmlreader">xmlreader</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">XMLReader </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_xmlrpc">xmlrpc</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">core library version </td><td class="v">xmlrpc-epi v. 0.51 </td></tr>
+<tr><td class="e">php extension version </td><td class="v">0.51 </td></tr>
+<tr><td class="e">author </td><td class="v">Dan Libby </td></tr>
+<tr><td class="e">homepage </td><td class="v">http://xmlrpc-epi.sourceforge.net </td></tr>
+<tr><td class="e">open sourced by </td><td class="v">Epinions.com </td></tr>
+</table><br />
+<h2><a name="module_xmlwriter">xmlwriter</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">XMLWriter </td><td class="v">enabled </td></tr>
+</table><br />
+<h2><a name="module_xsl">xsl</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">XSL </td><td class="v">enabled </td></tr>
+<tr><td class="e">libxslt Version </td><td class="v">1.1.26 </td></tr>
+<tr><td class="e">libxslt compiled against libxml Version </td><td class="v">2.7.8 </td></tr>
+<tr><td class="e">EXSLT </td><td class="v">enabled </td></tr>
+<tr><td class="e">libexslt Version </td><td class="v">1.1.26 </td></tr>
+</table><br />
+<h2><a name="module_zip">zip</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">Zip </td><td class="v">enabled </td></tr>
+<tr><td class="e">Extension Version </td><td class="v">$Id$ </td></tr>
+<tr><td class="e">Zip version </td><td class="v">1.9.1 </td></tr>
+<tr><td class="e">Libzip version </td><td class="v">0.9.0 </td></tr>
+</table><br />
+<h2><a name="module_zlib">zlib</a></h2>
+<table border="0" cellpadding="3" width="600">
+<tr><td class="e">ZLib Support </td><td class="v">enabled </td></tr>
+<tr><td class="e">Stream Wrapper support </td><td class="v">compress.zlib:// </td></tr>
+<tr><td class="e">Stream Filter support </td><td class="v">zlib.inflate, zlib.deflate </td></tr>
+<tr><td class="e">Compiled Version </td><td class="v">1.2.3.4 </td></tr>
+<tr><td class="e">Linked Version </td><td class="v">1.2.3.4 </td></tr>
+</table><br />
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Directive</th><th>Local Value</th><th>Master Value</th></tr>
+<tr><td class="e">zlib.output_compression</td><td class="v">Off</td><td class="v">Off</td></tr>
+<tr><td class="e">zlib.output_compression_level</td><td class="v">-1</td><td class="v">-1</td></tr>
+<tr><td class="e">zlib.output_handler</td><td class="v"><i>no value</i></td><td class="v"><i>no value</i></td></tr>
+</table><br />
+<h2>Additional Modules</h2>
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><th>Module Name</th></tr>
+<tr><td>dbase</td></tr>
+</table><br />
+</div>			</div>
+		</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl13">HTTP request <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl13" class="nette-collapsed inner">
+						<h3>Headers</h3>
+			<div class="outer">
+			<table>
+			<tr><th>Host</th><td>cleverfrogs.com</td></tr>
+<tr><th>X-Real-IP</th><td>66.249.78.153</td></tr>
+<tr><th>X-Forwarded-For</th><td>66.249.78.153, 66.249.78.153</td></tr>
+<tr><th>Accept</th><td>*/*</td></tr>
+<tr><th>From</th><td>googlebot(at)googlebot.com</td></tr>
+<tr><th>User-Agent</th><td>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</td></tr>
+<tr><th>Accept-Encoding</th><td>gzip,deflate</td></tr>
+<tr><th>If-Modified-Since</th><td>Fri, 11 Jan 2013 15:43:48 GMT</td></tr>
+<tr><th>X-Forwarded-Host</th><td>cleverfrogs.com</td></tr>
+<tr><th>X-Forwarded-Server</th><td>cleverfrogs.com</td></tr>
+<tr><th>Connection</th><td>Keep-Alive</td></tr>
+			</table>
+			</div>
+			
+
+						<h3>$_GET</h3>
+						<p><i>empty</i></p>
+									<h3>$_POST</h3>
+						<p><i>empty</i></p>
+									<h3>$_COOKIE</h3>
+						<p><i>empty</i></p>
+								</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl14">HTTP response <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl14" class="nette-collapsed inner">
+			<h3>Headers</h3>
+						<pre>X-Powered-By: Nette Framework<br>Content-Type: text/html; charset=utf-8<br>X-Frame-Options: SAMEORIGIN<br></pre>
+					</div></div>
+
+
+
+		
+
+
+		<ul>
+			<li>Report generated at 2013/01/29 23:54:25</li>
+							<li><a href="http://cleverfrogs.com/sk/loadPage/spatna_vazba">http://cleverfrogs.com/sk/loadPage/spatna_vazba</a></li>
+						<li>PHP 5.3.13</li>
+			<li>Apache</li>			<li>Nette Framework 2.0.6 <i>(revision 6a33aa6 released on 2012-10-01)</i></li>		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">/*<![CDATA[*/var bs=document.getElementById("netteBluescreen");document.body.appendChild(bs);document.onkeyup=function(b){b=b||window.event;if(27==b.keyCode&&!b.shiftKey&&!b.altKey&&!b.ctrlKey&&!b.metaKey)bs.onclick({target:document.getElementById("netteBluescreenIcon")})};
+for(var i=0,styles=document.styleSheets;i<styles.length;i++)"nette"!==(styles[i].owningElement||styles[i].ownerNode).className?(styles[i].oldDisabled=styles[i].disabled,styles[i].disabled=!0):styles[i].addRule?styles[i].addRule(".nette-collapsed","display: none"):styles[i].insertRule(".nette-collapsed { display: none }",0);
+bs.onclick=function(b){for(var b=b||window.event,a=b.target||b.srcElement;a&&a.tagName&&"a"!==a.tagName.toLowerCase();)a=a.parentNode;if(!a||!a.rel)return!0;for(var d=a.getElementsByTagName("abbr")[0],c="next"===a.rel?a.nextSibling:document.getElementById(a.rel);1!==c.nodeType;)c=c.nextSibling;b=c.currentStyle?"none"==c.currentStyle.display:"none"==getComputedStyle(c,null).display;try{d.innerHTML=String.fromCharCode(b?9660:9658)}catch(e){}c.style.display=b?"code"===c.tagName.toLowerCase()?"inline":
+"block":"none";if("netteBluescreenIcon"===a.id){a=0;for(d=document.styleSheets;a<d.length;a++)if("nette"!==(d[a].owningElement||d[a].ownerNode).className)d[a].disabled=b?!0:d[a].oldDisabled}return!1};/*]]>*/</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{block content}
+
+<div id="breadCrumbsContainer">
+    <div class="centerContainer">
+        <p>Nachádzate sa tu:
+            <a href="{link HomePage:}">Domov</a>
+            &nbsp; / &nbsp;
+            <strong>{$title}</strong>
+        </p>
+    </div><!--end of centerContainer-->
+</div><!--end of sliderContainer-->
+
+
+<div class="blankSeparator"></div>
+
+<div class="centerContainer">
+    <h1>{$title}</h1>
+    
+    {form signInForm}
+	<div class="sign-in-form">
+	     <div class="alert alert-error loginError" n:foreach="$form->errors as $error">
+            {if $error}
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Warning!</strong> 
+            <ul class="errors" n:if="$form->hasErrors()">
+                    <li>{$error}</li>
+            </ul>
+            {/if}
+        </div>
+
+	    <div class="pair">
+	        {label username /}
+	        <div class="input">{input username}</div>
+	    </div>
+	    <div class="pair">
+	        {label password /}
+	        <div class="input">{input password}</div>
+	    </div>
+	    <div class="pair">
+	        <div class="input">{input persistent} {label persistent /}</div>
+	    </div>
+
+	    <div class="pair">
+	        <div class="input">{input login}</div>
+	    </div>
+	</div>
+	{/form}
+
+</div><!--end of centerContainer-->
+
+<div class="fillContainerM"></div>
+
+{/block}

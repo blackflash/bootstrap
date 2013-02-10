@@ -1,0 +1,173 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext);
+
+.category_label {
+	display: block;
+	font-size: 17px;
+	font-family: 'Open Sans Condensed';
+}
+#api-select {
+	width: 100%;
+	text-align: center;
+}
+#category {
+width: 100%;
+}
+
+#category ul {
+margin-left: 130px;
+}
+
+#category li{
+padding: 15px;
+display: inline;
+float: left;
+}
+
+#category li img{
+cursor: pointer;
+display: block;
+text-align: center;
+margin: 0 auto;
+margin-top: 10px;
+}
+
+#category li img:hover{
+margin-top: 9px;
+}
+
+#stars {
+width: 100%;
+}
+
+#stars ul {
+margin-left: 100px;
+}
+
+#stars li{
+padding: 10px;
+display: inline;
+float: left;
+}
+
+#stars li img{
+cursor: pointer;
+display: block;
+
+}
+
+#stars li img:hover{
+margin-top: -1px;
+}
+
+#tidiness {
+width: 100%;
+}
+
+#tidiness ul {
+margin-left: 100px;
+}
+
+#tidiness li{
+padding: 10px;
+display: inline;
+float: left;
+}
+
+#tidiness li img{
+cursor: pointer;
+display: block;
+
+}
+
+#tidiness li img:hover{
+margin-top: -1px;
+}
+
+.reFontIt {
+	font-family: 'Open Sans Condensed';
+}
+
+#starRating {
+	width: 100%;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.starTable {
+	width: 100%;
+	line-height: 10px;
+}
+
+.starTable td {
+	padding-top: 10px;
+}
+
+#api-select textarea {
+	width: 200px;
+	font-size: 13px;
+	padding: 15px;
+	margin: 5px;
+	
+	-moz-border-radius-topleft: 14px;
+	-webkit-border-top-left-radius: 14px;
+	 border-top-left-radius: 14px;
+	-moz-border-radius-topright: 34px;
+	-webkit-border-top-right-radius: 34px;
+	border-top-right-radius: 34px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 19px;
+	-webkit-border-bottom-left-radius: 19px;
+	border-bottom-left-radius: 19px;
+	
+
+	border: 0px none;
+
+	-moz-box-shadow: inset 0 0 2px 2px #b9b9b9;
+	-webkit-box-shadow: inset 0 0 2px 2px#b9b9b9;
+	box-shadow: inset 0 0 2px 2px #b9b9b9;
+}
+
+#api-select input{
+	color: #5b5b5b;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    background: url('../img/lightInputBG.png') 0 0 repeat-x;
+    font-size: 12px;
+    padding: 10px 20px;
+    width: 200px;
+    margin-top: 20px;
+    font-weight: bold;
+    border: none;
+    border: 1px solid #e1e5e9;
+}
+
+#api-select input[type="submit"]{
+	color: #5b5b5b;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    background: url('../img/redButtonOut.png') 0 0 repeat-x;
+    font-size: 12px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 20px;
+    font-weight: bold;
+    border: none;
+    border: 1px solid #e1e5e9;
+}
+
+#api-select input[type="submit"]:hover{
+    background: url('../img/redButtonOver.png') 0 0 repeat-x;
+}
+
+#api-select textarea {
+	width: 300px;
+	max-height: 200px;
+}
