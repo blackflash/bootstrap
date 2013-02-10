@@ -192,16 +192,15 @@ a.feedbackImage2b img:hover {
 #cart ol { margin: 0; padding: 1em 0 1em 3em; }
 
 #ajax_loader {
-	margin-left: 50px;
+	margin-left: 54px;
 	position: absolute;
-	margin-top: 2px;
+	margin-top: 3px;
 }
 
 .barlittle {
 	background-color:#2187e7;  
-	background-image: -moz-linear-gradient(45deg, #2187e7 25%, #a0eaff); 
-	background-image: -webkit-linear-gradient(45deg, #2187e7 25%, #a0eaff);
-	border-left:1px solid #c0e0ff; border-top:1px solid #c0e0ff; border-right:1px solid #c0e0ff; border-bottom:1px solid #c0e0ff; 
+	background-image: -moz-linear-gradient(45deg, #b2ea1f 25%, #a6d037); 
+	background-image: -webkit-linear-gradient(45deg, #b2ea1f 25%, #a6d037);
 	width: 8px;
 	height: 8px;
 	float:left;

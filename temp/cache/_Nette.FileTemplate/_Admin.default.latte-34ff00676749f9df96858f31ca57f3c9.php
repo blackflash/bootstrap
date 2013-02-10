@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.61684800 1360371281";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\default.latte";i:2;i:1360371280;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.85409500 1360522407";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\default.latte";i:2;i:1360522374;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'wni00joe59')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'p99rp88u8m')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -102,6 +102,7 @@ if (!empty($_control->snippetMode)) {
 <script type="text/javascript">
 	// Load the Visualization API and the piechart package.
 	google.load('visualization', '1.0', {'packages':['corechart']});
+
 </script>
 <!-- Debounced resize script for preventing to many window.resize events
       Recommended for Google Charts to perform optimally when resizing -->
@@ -122,12 +123,12 @@ if (!empty($_control->snippetMode)) {
 
 <body>
 
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate("options.latte", $template->getParameters(), $_l->templates['wni00joe59'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate("options.latte", $template->getParameters(), $_l->templates['p99rp88u8m'])->render() ?>
 
 	<!-- Main Wrapper. Set this to 'fixed' for fixed layout and 'fluid' for fluid layout' -->
 	<div id="da-wrapper" class="fluid">
     
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate("header.latte", $template->getParameters(), $_l->templates['wni00joe59'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate("header.latte", $template->getParameters(), $_l->templates['p99rp88u8m'])->render() ?>
     
         <!-- Content -->
         <div id="da-content">
@@ -138,12 +139,12 @@ if (!empty($_control->snippetMode)) {
 	            <!-- Sidebar Separator do not remove -->
                 <div id="da-sidebar-separator"></div>
                 
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate("sidebar.latte", $template->getParameters(), $_l->templates['wni00joe59'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate("sidebar.latte", $template->getParameters(), $_l->templates['p99rp88u8m'])->render() ?>
                 
                 <!-- Main Content Wrapper -->
                 <div id="da-content-wrap" class="clearfix">
                 
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate($includeBoard, $template->getParameters(), $_l->templates['wni00joe59'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate($includeBoard, $template->getParameters(), $_l->templates['p99rp88u8m'])->render() ?>
             
         </div>
         
