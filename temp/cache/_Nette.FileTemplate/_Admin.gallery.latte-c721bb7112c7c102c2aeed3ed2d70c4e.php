@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.95325200 1360462436";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1360462430;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.32227300 1360521876";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1360521875;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'syj58ramt4')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'cco44hpagl')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -70,10 +70,12 @@ if (!empty($_control->snippetMode)) {
 
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/grid/jquery.gridster.js"></script>
 <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/jquery.gridster.css" media="screen" />
-<!--end of<script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"> -->
+<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"> -->
 
 <!-- Content Area -->
     <script type="text/javascript">
+
+        $("#ajax_loader").hide();
 
         function deleteConfirm(id) {
             $( "#DeleteDialog" ).dialog({
@@ -105,6 +107,8 @@ if (!empty($_control->snippetMode)) {
         // update photo information
         function updatePhoto(photoId, photoTitle, photoDescription){
             
+            $("#ajax_loader").show();
+
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
               url: "?do=jsonUpdatePhoto",
@@ -116,7 +120,7 @@ if (!empty($_control->snippetMode)) {
                   {
                     var myObject = JSON.parse(msg);
                     //console.log(myObject["success"]);
-
+                    $("#ajax_loader").hide();
                     
                     $('.photoTitleSmall_'+myObject["photo_id"]).html(myObject["title"]);
 
@@ -185,8 +189,6 @@ if (!empty($_control->snippetMode)) {
             $('.id_gallery').html(gallery_id);
             $('.gallery_title').html("Gallery - "+title);
 
-            $("#ajax-spinner").show();
-
             $( "#galleryAddPhotos" ).dialog({
                 resizable: false,
                 modal: true,
@@ -215,9 +217,6 @@ if (!empty($_control->snippetMode)) {
             $('.editPhotoImage').attr("src",srcThumb);
             $('.editPhotoImageLink').attr("href",src);
             $('.editPhotoDescription').html(description);
-            
-
-            $("#ajax-spinner").show();
 
              $("#da-ex-dialog-form-div").dialog("option",{
                 resizable: false,
@@ -229,8 +228,11 @@ if (!empty($_control->snippetMode)) {
         
         }
 
+
+
     </script>
-       
+
+    
     <button id="da-ex-growl-0" class="da-button pink" style="display: none;">Default Growl</button>
 
 <?php if ($success == 1): ?>
@@ -539,8 +541,10 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
         
         $('div#galleryAddPhotos').bind('dialogclose', function(event) {
               window.location = window.location.pathname + "?title=CleverFrogs+-+Gallery&page=gallery&gallery_id=" + $(".id_gallery").html() ;
+              $("#ajax_loader").hide();
          });
         
+
         $(".lockIcon").change(function(){
             var state = this.checked;
             //change checkbox icon
@@ -551,6 +555,7 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
 
             if(state){
                 $(".gridster ul").gridster().data('gridster').enable();
+                $("#ajax_loader").show();
             }else {
                 $(".gridster ul").gridster().data('gridster').disable();
 
@@ -574,6 +579,7 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
         });
 
         function ajaxStartUpdateOrder(data){
+           $("#ajax_loader").show();
            updatePhotoOrder(data);
            return false;
         }
@@ -592,10 +598,12 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
                   {
                     //var myObject = JSON.parse(msg);
                     //console.log(myObject["success"]);
+                    $("#ajax_loader").hide();
                   }
 
                   if(parseInt(msg) == 0){
                     console.log("problem");
+                    $("#ajax_loader").hide();
                     return false;
                   }
 

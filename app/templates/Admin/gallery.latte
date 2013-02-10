@@ -51,10 +51,12 @@
 
 <script type="text/javascript" src="{$basePath}/js/grid/jquery.gridster.js"></script>
 <link rel="stylesheet" href="{$basePath}/css/jquery.gridster.css" media="screen" />
-<!--end of<script type="text/javascript" src="{$basePath}/js/cssrefresh.js"> -->
+<script type="text/javascript" src="{$basePath}/js/cssrefresh.js"> -->
 
 <!-- Content Area -->
     <script type="text/javascript">
+
+        $("#ajax_loader").hide();
 
         function deleteConfirm(id) {
             $( "#DeleteDialog" ).dialog({
@@ -86,6 +88,8 @@
         // update photo information
         function updatePhoto(photoId, photoTitle, photoDescription){
             
+            $("#ajax_loader").show();
+
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
               url: "?do=jsonUpdatePhoto",
@@ -97,7 +101,7 @@
                   {
                     var myObject = JSON.parse(msg);
                     //console.log(myObject["success"]);
-
+                    $("#ajax_loader").hide();
                     
                     $('.photoTitleSmall_'+myObject["photo_id"]).html(myObject["title"]);
 
@@ -166,8 +170,6 @@
             $('.id_gallery').html(gallery_id);
             $('.gallery_title').html("Gallery - "+title);
 
-            $("#ajax-spinner").show();
-
             $( "#galleryAddPhotos" ).dialog({
                 resizable: false,
                 modal: true,
@@ -196,9 +198,6 @@
             $('.editPhotoImage').attr("src",srcThumb);
             $('.editPhotoImageLink').attr("href",src);
             $('.editPhotoDescription').html(description);
-            
-
-            $("#ajax-spinner").show();
 
              $("#da-ex-dialog-form-div").dialog("option",{
                 resizable: false,
@@ -210,8 +209,11 @@
         
         }
 
+
+
     </script>
-       
+
+    
     <button id="da-ex-growl-0" class="da-button pink" style="display: none;">Default Growl</button>
 
     {if $success == 1}
@@ -497,8 +499,10 @@
         
         $('div#galleryAddPhotos').bind('dialogclose', function(event) {
               window.location = window.location.pathname + "?title=CleverFrogs+-+Gallery&page=gallery&gallery_id=" + $(".id_gallery").html() ;
+              $("#ajax_loader").hide();
          });
         
+
         $(".lockIcon").change(function(){
             var state = this.checked;
             //change checkbox icon
@@ -509,6 +513,7 @@
 
             if(state){
                 $(".gridster ul").gridster().data('gridster').enable();
+                $("#ajax_loader").show();
             }else {
                 $(".gridster ul").gridster().data('gridster').disable();
 
@@ -532,6 +537,7 @@
         });
 
         function ajaxStartUpdateOrder(data){
+           $("#ajax_loader").show();
            updatePhotoOrder(data);
            return false;
         }
@@ -550,10 +556,12 @@
                   {
                     //var myObject = JSON.parse(msg);
                     //console.log(myObject["success"]);
+                    $("#ajax_loader").hide();
                   }
 
                   if(parseInt(msg) == 0){
                     console.log("problem");
+                    $("#ajax_loader").hide();
                     return false;
                   }
 

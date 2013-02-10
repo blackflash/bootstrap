@@ -1,10 +1,10 @@
-<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.04923200 1359488180";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\header.latte";i:2;i:1359482600;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.04025900 1360521582";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\header.latte";i:2;i:1360521548;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\header.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'bzzfzqg0uv')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'tv2lzl59qv')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -191,6 +191,14 @@ if (!empty($_control->snippetMode)) {
                         </ul>
                     </div>
                     
+                    <div id="ajax_loader">
+                        <div id="block_1" class="barlittle"></div>
+                        <div id="block_2" class="barlittle"></div>
+                        <div id="block_3" class="barlittle"></div>
+                        <div id="block_4" class="barlittle"></div>
+                        <div id="block_5" class="barlittle"></div>
+                    </div>
+
                 </div>
             </div>
         </div>
