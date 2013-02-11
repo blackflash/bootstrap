@@ -38,6 +38,10 @@ class AdminPresenter extends BasePresenter
 	    		$this->template->dishFeedbacks = $this->context->galleryRepository->getCountOfRowsByTable("questionnaire");
     		break;
 
+    		case 'CleverFrogs - graphs':
+	    		
+    		break;
+
 	    	case 'CleverFrogs - users':
 	    		$this->template->users   = $this->context->userRepository->getAllUsers();
 				$this->template->projects= $this->context->projectRepository->getTable();

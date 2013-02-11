@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.50177300 1359506311";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte";i:2;i:1359506310;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.81214200 1360530558";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte";i:2;i:1360530557;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'y9jbsexinx')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '3ob2qpbwd4')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -34,6 +34,20 @@ if (!empty($_control->snippetMode)) {
                                 	Dashboard
                                 </a>
                             </li>
+
+<?php if ($user->identity->username == "admin"): ?>
+                            <li  <?php if ($title == "CleverFrogs - graphs"): ?>
+ class="active" <?php endif ?>>
+                                <a href="<?php echo htmlSpecialChars($_control->link("Admin:default", array('title'=>"CleverFrogs - graphs",'page'=>"graphs" ))) ?>
+">  
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/black/32/graph.png" alt="Graphs" />
+                                    </span>
+                                    Graphs
+                                </a>
+                            </li>
+<?php endif ?>
 
 <?php if ($user->identity->username == "admin"): ?>
                             <li  <?php if ($title == "CleverFrogs - tasks"): ?> class="active" <?php endif ?>>

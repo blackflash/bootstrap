@@ -16,6 +16,18 @@
                             </li>
 
                             {if $user->identity->username == "admin" }
+                            <li  {if $title == "CleverFrogs - graphs" } class="active" {/if}>
+                                <a n:href='Admin:default title=>"CleverFrogs - graphs",page=>"graphs" '>  
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <img src="{$basePath}/images/icons/black/32/graph.png" alt="Graphs" />
+                                    </span>
+                                    Graphs
+                                </a>
+                            </li>
+                            {/if}
+
+                            {if $user->identity->username == "admin" }
                             <li  {if $title == "CleverFrogs - tasks" } class="active" {/if}>
                                 <a n:href='Admin:default title=>"CleverFrogs - tasks",page=>"tasks" '>  
                                     <!-- Icon Container -->
