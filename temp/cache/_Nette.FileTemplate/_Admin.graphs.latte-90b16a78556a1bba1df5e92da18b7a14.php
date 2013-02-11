@@ -1,10 +1,10 @@
-<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.36547100 1360544273";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte";i:2;i:1360544272;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.63751100 1360585289";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte";i:2;i:1360585288;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'av6gejyq8o')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'hhjn8anb8q')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -21,164 +21,142 @@ if (!empty($_control->snippetMode)) {
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/demo/demo.charts.js"></script>
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/d3/d3.v3.js"></script>
 
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="js/demo/demo.validation.js"></script>
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/grid/jquery.gridster.js"></script>
-<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/jquery.gridster.css" media="screen" />
 
-<!-- Content Area -->
-<div id="da-content-area">
+<!-- Validation Plugin -->
+<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/plugins/validate/jquery.validate.min.js"></script>
+
+<!-- Chosen Plugin -->
+<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/plugins/chosen/chosen.jquery.min.js"></script>
+<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/plugins/chosen/chosen.css" media="screen" />
+
+<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/demo/demo.form.js"></script>
+
+
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/demo/demo.validation.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="<?php echo htmlSpecialChars($basePath) ?>/css/dandelion.css" media="screen" />
+
+<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/jquery.gridster.css" media="screen" />
+<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/graphs.css" media="screen" />
+<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>
 
     <style>
+        text {
+          font: 10px sans-serif;
+        }
 
+        .axis path {
+          display: none;
+        }
 
-text {
-  font: 10px sans-serif;
-}
+        .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
+        }
 
-.axis path {
-  display: none;
-}
+        .group-label {
+          font-weight: bold;
+          text-anchor: end;
+        }
 
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
+        form {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+        }
+    </style>
 
-.group-label {
-  font-weight: bold;
-  text-anchor: end;
-}
+    <div id="graphsContent" class="clearfix">
+<div id="da-content-area">
 
-form {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
+    <div class="grid_1 logoPlace">
+        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/logo.png" alt="Cleverfrogs" />
+    </div>
 
-</style>
-        <div class="da-gallery  gridster">
-            <ul>
-                
-            <li class="bar">
-                   
-        <form>
-          <label><input type="radio" name="mode" value="multiples" checked /> Multiples</label>
-          <label><input type="radio" name="mode" value="stacked" /> Stacked</label>
-        </form>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-        <script>
-
-        var parseDate = d3.time.format("%Y-%m").parse,
-            formatYear = d3.format("02d"),
-            formatDate = function(d) { return "Q" + ((d.getMonth() / 3 | 0) + 1) + formatYear(d.getFullYear() % 100); };
-
-        var margin = { top: 10, right: 20, bottom: 20, left: 60},
-            width = 300 - margin.left - margin.right,
-            height = 200 - margin.top - margin.bottom;
-
-        var y0 = d3.scale.ordinal()
-            .rangeRoundBands([height, 0], .2);
-
-        var y1 = d3.scale.linear();
-
-        var x = d3.scale.ordinal()
-            .rangeRoundBands([0, width], .1, 0);
-
-        var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient("bottom")
-            .tickFormat(formatDate);
-
-        var nest = d3.nest()
-            .key(function(d) { return d.group; });
-
-        var stack = d3.layout.stack()
-            .values(function(d) { return d.values; })
-            .x(function(d) { return d.date; })
-            .y(function(d) { return d.value; })
-            .out(function(d, y0) { d.valueOffset = y0; });
-
-        var color = d3.scale.category10();
-
-        var svg = d3.select(".bar").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        d3.tsv("http://localhost/bootstrap/www/uploads/data/data.tsv", function(error, data) {
-
-          data.forEach(function(d) {
-            d.date = parseDate(d.date);
-            d.value = +d.value;
-          });
-
-          var dataByGroup = nest.entries(data);
-
-          stack(dataByGroup);
-          x.domain(dataByGroup[0].values.map(function(d) { return d.date; }));
-          y0.domain(dataByGroup.map(function(d) { return d.key; }));
-          y1.domain([0, d3.max(data, function(d) { return d.value; })]).range([y0.rangeBand(), 0]);
-
-          var group = svg.selectAll(".group")
-              .data(dataByGroup)
-            .enter().append("g")
-              .attr("class", "group")
-              .attr("transform", function(d) { return "translate(0," + y0(d.key) + ")"; });
-
-          group.append("text")
-              .attr("class", "group-label")
-              .attr("x", -6)
-              .attr("y", function(d) { return y1(d.values[0].value / 2); })
-              .attr("dy", ".35em")
-              .text(function(d) { return "Group " + d.key; });
-
-          group.selectAll("rect")
-              .data(function(d) { return d.values; })
-            .enter().append("rect")
-              .style("fill", function(d) { return color(d.group); })
-              .attr("x", function(d) { return x(d.date); })
-              .attr("y", function(d) { return y1(d.value); })
-              .attr("width", x.rangeBand())
-              .attr("height", function(d) { return y0.rangeBand() - y1(d.value); });
-
-          group.filter(function(d, i) { return !i; }).append("g")
-              .attr("class", "x axis")
-              .attr("transform", "translate(0," + y0.rangeBand() + ")")
-              .call(xAxis);
-
-          d3.selectAll("input").on("change", change);
-
-          var timeout = setTimeout(function() {
-            d3.select("input[value=\"stacked\"]").property("checked", true).each(change);
-          }, 2000);
-
-          function change() {
-            clearTimeout(timeout);
-            if (this.value === "multiples") transitionMultiples();
-            else transitionStacked();
-          }
-
-          function transitionMultiples() {
-            var t = svg.transition().duration(750),
-                g = t.selectAll(".group").attr("transform", function(d) { return "translate(0," + y0(d.key) + ")"; });
-            g.selectAll("rect").attr("y", function(d) { return y1(d.value); });
-            g.select(".group-label").attr("y", function(d) { return y1(d.values[0].value / 2); })
-          }
-
-          function transitionStacked() {
-            var t = svg.transition().duration(750),
-                g = t.selectAll(".group").attr("transform", "translate(0," + y0(y0.domain()[0]) + ")");
-            g.selectAll("rect").attr("y", function(d) { return y1(d.value + d.valueOffset); });
-            g.select(".group-label").attr("y", function(d) { return y1(d.values[0].value / 2 + d.values[0].valueOffset); })
-          }
-        });
-
-        </script>
-        </li>
-        </ul>
+    <div class="grid_1 areaSelector1">
+        <div class="da-panel-content">
+            <div class="da-form-item locationSelector">
+                <select id="da-ex-val-chzn" name="chosen1">
+                    <option>Select location/s</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+                <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
+            </div>
         </div>
-</div>
+
+    </div>
+
+    <div class="grid_1 areaSelector2">
+        <div class="da-form-item locationSelector">
+            <select class="chzn-select">
+                <option>Select time period</option>
+                <option>2012</option>
+                <option>2013</option>
+            </select>
+        </div>            
+
+    </div>
+   
+    <div class="grid_4 summaryIcons">
+
+        <ul class="da-summary-stat" >
+            <li>
+                <a href="#">
+                    <span class="da-summary-icon" style="background-color:#a6d037;">
+                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/white/32/sport_shirt.png" alt="" />
+                    </span>
+                    <span class="da-summary-text">
+                        <span class="value">512</span>
+                        <span class="label">Number of feedbacks today campaign "XZ"</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="da-summary-icon" style="background-color:#ea799b;">
+                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/white/32/abacus.png" alt="" />
+                    </span>
+                    <span class="da-summary-text">
+                        <span class="value up">286</span>                                        
+                        <span class="label">Number of feedbacks total</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="da-summary-icon" style="background-color:#fab241;">
+                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/white/32/airplane.png" alt="" />
+                    </span>
+                    <span class="da-summary-text">
+                        <span class="value down">61</span>
+                        <span class="label">Number of feedbacks total campaign "XZ"</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="da-summary-icon" style="background-color:#61a5e4;">
+                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/white/32/truck.png" alt="" />
+                    </span>
+                    <span class="da-summary-text">
+                        <span class="value">42</span>
+                        <span class="label">Shops Visited</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div><!--end of contentarea-->
+</div><!--end of contentarea-->
 
 </div>
 </div>
