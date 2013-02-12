@@ -67,7 +67,7 @@
             window.globalVar = id; 
         }
 
-        function deleteUser()
+        function deleteGallery()
         {   
             window.location = $("#deleteLink_"+window.globalVar).attr('href');
         }
@@ -213,7 +213,16 @@
 
     </script>
 
-    
+    <div id="DeleteDialog" title="Delete user" style="display: none">
+        <div id="grid_2">
+            <center><h3>Are you sure ?</h3>
+                <div class="clearfix"></div>
+                <input type="button" class="da-button red large"  id="deleteButton" value="Delete" onclick="JavaScript:deleteGallery()"/>
+                <input type="button" class="da-button gray large" id="cancelButton" value="Cancel" onclick='JavaScript:$( "#DeleteDialog" ).dialog( "close" );'/> 
+            </center>
+        </div>
+    </div>
+
     <button id="da-ex-growl-0" class="da-button pink" style="display: none;">Default Growl</button>
 
     {if $success == 1}
@@ -359,11 +368,13 @@
 
                                     <a href="#"><img src="{$basePath}/images/icons/color/plus.png" onclick="JavaScript:addGallery({$gall->namespace_id},{$gall->gallery_id},{$gall->title})"/></a>
 
-                                    <a href="{$basePath}/admin/?do=deleteTask&taskId={$gall->gallery_id}">
-                                        <img src="{$basePath}/images/icons/color/trash.png" />
-                                    </a>
-
-                                    
+                                    <a href="#" onclick="JavaScript:deleteConfirm({$gall->gallery_id})" name="">
+                                            <img src="{$basePath}/images/icons/color/cross.png" 
+                                            onclick="JavaScript:ajaxPreview({$gall->gallery_id})"
+                                            />
+                                        </a>
+                                        
+                                    <a href="{$basePath}/admin/?do=deleteGallery&gallery_id={$gall->gallery_id}" id="deleteLink_{$gall->gallery_id}" style="display: none"></a>
                                 </td>
                             </tr>
 

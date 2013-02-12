@@ -1,4 +1,13 @@
-(function(a){a(document).ready(function(d){if(a.fn.autocomplete){var b=["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];a("#da-ex-autocomplete").autocomplete({source:b})}if(a.fn.chosen){a(".chzn-select").chosen()}if(a.fn.ColorPicker){a("#da-ex-colorpicker").ColorPicker({onSubmit:function(e,i,g,h){a(h).val(i);a(h).ColorPickerHide()},onBeforeShow:function(){a(this).ColorPickerSetColor(this.value)}})}if(a.fn.daPickList){a("#da-ex-picklist").daPickList()}if(a.fn.spinner){var c={s1:{},s2:{places:2,step:0.25},s3:{prefix:"$",places:2,step:0.1}};for(var f in c){a("#da-ex-"+f).spinner(c[f])}}if(a.fn.elastic){a("#da-ex-elastic").elastic()}if(a.fn.elrte){
+(function(a){a(document).ready(function(d){if(a.fn.autocomplete){
+	var b=["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];a("#da-ex-autocomplete").autocomplete({source:b})}
+	if(a.fn.chosen){a(".chzn-select").chosen()}
+		if(a.fn.ColorPicker){a("#da-ex-colorpicker").ColorPicker({
+			onSubmit:function(e,i,g,h){a(h).val(i);a(h).ColorPickerHide()},
+			onBeforeShow:function(){a(this).ColorPickerSetColor(this.value)}})}
+
+		if(a.fn.daPickList){a("#da-ex-picklist").daPickList()}
+		if(a.fn.spinner){var c={s1:{},s2:{places:2,step:0.25},s3:{prefix:"$",places:2,step:0.1}};
+	for(var f in c){a("#da-ex-"+f).spinner(c[f])}}if(a.fn.elastic){a("#da-ex-elastic").elastic()}if(a.fn.elrte){
 
 
 

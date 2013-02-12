@@ -178,6 +178,30 @@ class GalleryRepository extends Repository {
 		return $this->connection->table($tableName)->where(array($column => $gallery_id))->delete();
 	}
 
+	public function deleteGallery($tableName,$column,$gallery_id){
+
+		$data = $this->getByTableAndId("gallery","gallery_id",$gallery_id)->fetch();
+		$thumbs = "uploads/gallery/".$data->namespace_id."/".$data->gallery_id."/thumbs/";
+		$dir = "uploads/gallery/".$data->namespace_id."/".$data->gallery_id;
+
+		$this->deleteDirectory($thumbs);
+		$this->deleteDirectory($dir);
+			
+		return $this->connection->table($tableName)->where(array($column => $gallery_id))->delete();
+		
+		
+	}
+
+	function deleteDirectory($dir) {
+	    if (!file_exists($dir)) return true;
+	    if (!is_dir($dir)) return unlink($dir);
+	    foreach (scandir($dir) as $item) {
+	        if ($item == '.' || $item == '..') continue;
+	        if (!$this->deleteDirectory($dir.DIRECTORY_SEPARATOR.$item)) return false;
+	    }
+	    return rmdir($dir);
+	}
+
 	public function getAllGalleries(){
 		return $this->getTable();
 	}

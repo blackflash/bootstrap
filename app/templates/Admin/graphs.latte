@@ -53,90 +53,100 @@
         }
     </style>
 
-    <div id="graphsContent" class="clearfix">
-<div id="da-content-area">
+<div id="graphsContent" class="clearfix">
+    <div id="da-content-area">
 
-    <div class="grid_1 logoPlace">
-        <img src="{$basePath}/images/logo.png" alt="Cleverfrogs" />
-    </div>
+        <div class="grid_1 logoPlace">
+            <img src="{$basePath}/images/logo.png" alt="Cleverfrogs" />
+        </div>
 
-    <div class="grid_1 areaSelector1">
-        <div class="da-panel-content">
+        <div class="grid_1 areaSelector1">
+            <div class="da-panel-content">
+                <div class="da-form-item locationSelector">
+                    <select id="da-ex-val-chzn" name="chosen1">
+                        <option>Select location/s</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                    <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="grid_1 areaSelector2">
             <div class="da-form-item locationSelector">
-                <select id="da-ex-val-chzn" name="chosen1">
-                    <option>Select location/s</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                <select class="chzn-select">
+                    <option>Select time period</option>
+                    <option>2012</option>
+                    <option>2013</option>
                 </select>
-                <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
+            </div>            
+        </div>
+       
+        <div class="grid_4 summaryIcons">
+
+            <ul class="da-summary-stat" >
+                <li>
+                    <a href="#">
+                        <span class="da-summary-icon" style="background-color:#a6d037;">
+                            <img src="{$basePath}/images/icons/white/32/sport_shirt.png" alt="" />
+                        </span>
+                        <span class="da-summary-text">
+                            <span class="value">512</span>
+                            <span class="label">Number of feedbacks today campaign "XZ"</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="da-summary-icon" style="background-color:#ea799b;">
+                            <img src="{$basePath}/images/icons/white/32/abacus.png" alt="" />
+                        </span>
+                        <span class="da-summary-text">
+                            <span class="value up">286</span>                                        
+                            <span class="label">Number of feedbacks total</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="da-summary-icon" style="background-color:#fab241;">
+                            <img src="{$basePath}/images/icons/white/32/airplane.png" alt="" />
+                        </span>
+                        <span class="da-summary-text">
+                            <span class="value down">61</span>
+                            <span class="label">Number of feedbacks total campaign "XZ"</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="da-summary-icon" style="background-color:#61a5e4;">
+                            <img src="{$basePath}/images/icons/white/32/truck.png" alt="" />
+                        </span>
+                        <span class="da-summary-text">
+                            <span class="value">42</span>
+                            <span class="label">Shops Visited</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="grid_4">
+            <div class="grid_1 logoPlace">
+            </div>
+
+            <div class="grid_1 areaSelector1">
+            </div>
+
+            <div class="grid_1 areaSelector2">
             </div>
         </div>
 
-    </div>
-
-    <div class="grid_1 areaSelector2">
-        <div class="da-form-item locationSelector">
-            <select class="chzn-select">
-                <option>Select time period</option>
-                <option>2012</option>
-                <option>2013</option>
-            </select>
-        </div>            
-
-    </div>
-   
-    <div class="grid_4 summaryIcons">
-
-        <ul class="da-summary-stat" >
-            <li>
-                <a href="#">
-                    <span class="da-summary-icon" style="background-color:#a6d037;">
-                        <img src="{$basePath}/images/icons/white/32/sport_shirt.png" alt="" />
-                    </span>
-                    <span class="da-summary-text">
-                        <span class="value">512</span>
-                        <span class="label">Number of feedbacks today campaign "XZ"</span>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="da-summary-icon" style="background-color:#ea799b;">
-                        <img src="{$basePath}/images/icons/white/32/abacus.png" alt="" />
-                    </span>
-                    <span class="da-summary-text">
-                        <span class="value up">286</span>                                        
-                        <span class="label">Number of feedbacks total</span>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="da-summary-icon" style="background-color:#fab241;">
-                        <img src="{$basePath}/images/icons/white/32/airplane.png" alt="" />
-                    </span>
-                    <span class="da-summary-text">
-                        <span class="value down">61</span>
-                        <span class="label">Number of feedbacks total campaign "XZ"</span>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="da-summary-icon" style="background-color:#61a5e4;">
-                        <img src="{$basePath}/images/icons/white/32/truck.png" alt="" />
-                    </span>
-                    <span class="da-summary-text">
-                        <span class="value">42</span>
-                        <span class="label">Shops Visited</span>
-                    </span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-</div><!--end of contentarea-->
+    </div><!--end of contentarea-->
 </div><!--end of contentarea-->
 
 </div>

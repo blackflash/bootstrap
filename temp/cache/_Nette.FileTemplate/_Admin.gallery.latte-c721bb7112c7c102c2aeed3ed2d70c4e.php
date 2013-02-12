@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.43405900 1360539491";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1360539487;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.43140700 1360630884";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1360630882;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ncijdnt28y')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ei2bj46y9l')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -86,7 +86,7 @@ if (!empty($_control->snippetMode)) {
             window.globalVar = id; 
         }
 
-        function deleteUser()
+        function deleteGallery()
         {   
             window.location = $("#deleteLink_"+window.globalVar).attr('href');
         }
@@ -232,7 +232,16 @@ if (!empty($_control->snippetMode)) {
 
     </script>
 
-    
+    <div id="DeleteDialog" title="Delete user" style="display: none">
+        <div id="grid_2">
+            <center><h3>Are you sure ?</h3>
+                <div class="clearfix"></div>
+                <input type="button" class="da-button red large"  id="deleteButton" value="Delete" onclick="JavaScript:deleteGallery()" />
+                <input type="button" class="da-button gray large" id="cancelButton" value="Cancel" onclick='JavaScript:$( "#DeleteDialog" ).dialog( "close" );' /> 
+            </center>
+        </div>
+    </div>
+
     <button id="da-ex-growl-0" class="da-button pink" style="display: none;">Default Growl</button>
 
 <?php if ($success == 1): ?>
@@ -388,12 +397,15 @@ if (!empty($_control->snippetMode)) {
 ,<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($gall->gallery_id)) ?>
 ,<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($gall->title)) ?>)" /></a>
 
+                                    <a href="#" onclick="JavaScript:deleteConfirm(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($gall->gallery_id)) ?>)" name="">
+                                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/cross.png" 
+                                            onclick="JavaScript:ajaxPreview(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($gall->gallery_id)) ?>)"
+                                            />
+                                        </a>
+                                        
                                     <a href="<?php echo htmlSpecialChars($basePath) ?>
-/admin/?do=deleteTask&taskId=<?php echo htmlSpecialChars($gall->gallery_id) ?>">
-                                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/trash.png" />
-                                    </a>
-
-                                    
+/admin/?do=deleteGallery&gallery_id=<?php echo htmlSpecialChars($gall->gallery_id) ?>
+" id="deleteLink_<?php echo htmlSpecialChars($gall->gallery_id) ?>" style="display: none"></a>
                                 </td>
                             </tr>
 

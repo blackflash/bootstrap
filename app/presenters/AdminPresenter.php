@@ -82,9 +82,7 @@ class AdminPresenter extends BasePresenter
 	    		$this->template->includeBoard = $page.".latte";
 	    	break;
 	    }
-
 	   
-
         $this->template->includeBoard = $page.".latte";
 	}
 
@@ -368,16 +366,6 @@ class AdminPresenter extends BasePresenter
 		return strtolower($ext);
 	}
 
-
-	// delete photo by ID
-	public function handledeletePhoto($photo_id,$gallery_id,$success){	
-
-		$this->context->galleryRepository->delete($photo_id);
-		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => $success, "gallery_id" => $gallery_id));	
-
-	}
-
-
 	public function handlejsonGalleryPhotoEdit($userId){
 		if ($this->isAjax()) {
 			$jsondata['success'] = $userId;
@@ -422,6 +410,19 @@ class AdminPresenter extends BasePresenter
 			echo json_encode($success);
         	die();
 	    }
+	}
+
+	// delete photo by ID
+	public function handledeletePhoto($photo_id,$gallery_id,$success){	
+
+		$this->context->galleryRepository->delete($photo_id);
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => $success, "gallery_id" => $gallery_id));	
+
+	}
+
+	public function handledeleteGallery($gallery_id){
+		$success = $this->context->galleryRepository->deleteGallery("gallery","gallery_id",$gallery_id);
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => $success, "gallery_id" => $gallery_id));	
 	}
 
 	/*------------ end of Gallery ------------*/
