@@ -41,6 +41,30 @@
 	margin-top: 50px;
 }
 
+.fillContainerXXS {
+  height: 25px;
+}
+
+.fillContainerXS {
+  height: 55px;
+}
+
+.fillContainerS {
+  height: 110px;
+}
+
+.fillContainerM {
+  height: 280px;
+}
+
+.fillContainerL {
+  height: 290px;
+}
+
+.fillContainerXL {
+  height: 377px;
+}
+
 /*----------Feedbacks----------*/
 
 
@@ -238,4 +262,17 @@ a.feedbackImage2b img:hover {
 @-webkit-keyframes move{
 	0%{-webkit-transform: scale(1.2);opacity:1;}
 	100%{-webkit-transform: scale(0.7);opacity:0.1;}
+}
+
+
+.locationSelectorGallery .chzn-container  {
+	width: 100% !important;	
+}
+
+.locationSelectorGallery .chzn-drop {
+	width: 99.7% !important;	
+}
+
+.locationSelectorGallery .chzn-search input{
+	width: 100% !important;	
 }

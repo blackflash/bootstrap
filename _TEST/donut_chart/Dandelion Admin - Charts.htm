@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap Stylesheet -->
+<link rel="stylesheet" href="Dandelion%20Admin%20-%20Charts_files/bootstrap.css" media="screen">
+
+<!-- Theme Stylesheet -->
+<link rel="stylesheet" href="Dandelion%20Admin%20-%20Charts_files/dandelion_002.css" media="screen">
+<!-- Icon Stylesheet -->
+<link rel="stylesheet" href="Dandelion%20Admin%20-%20Charts_files/style.css" media="screen">
+<!--  Main Stylesheet -->
+<link rel="stylesheet" href="Dandelion%20Admin%20-%20Charts_files/dandelion.css" media="screen">
+<link rel="stylesheet" href="Dandelion%20Admin%20-%20Charts_files/customizer.css" media="screen">
+<!-- Demo Stylesheet -->
+<link rel="stylesheet" href="Dandelion%20Admin%20-%20Charts_files/demo.css" media="screen">
+
+<title>Dandelion Admin - Charts</title>
+
+</head>
+
+<body>
+
+    <!-- Dandelion Customizer (remove if not needed) -->
+    <div style="top: -217px;" class="active" id="da-customizer">
+        <div id="da-customizer-content">
+            <ul>
+                <li>
+                    <span class="da-customizer-title">Background Pattern</span>
+                    <span id="da-customizer-body-bg"><select id="da-body-pat"><option selected="selected" value="blueprint">Blueprint</option><option value="bricks">Bricks</option><option value="carbon">Carbon</option><option value="circuit">Circuit</option><option value="holes">Holes</option><option value="mozaic">Mozaic</option><option value="roof">Roof</option><option value="stripes">Stripes</option></select></span>
+                </li>
+                <li>
+                    <span>Header Pattern</span>
+                    <span id="da-customizer-header-bg"><select id="da-header-pat"><option selected="selected" value="carbon">Carbon</option><option value="linen">Linen</option><option value="leather">Leather</option><option value="wood">Wood</option></select></span>
+                </li>
+                <li>
+                    <span>Layout</span>
+                    <ul id="da-customizer-layouts" class="clearfix">
+                        <li>
+                            <input id="da-customizer-fluid" name="da-layout" checked="checked" type="radio">
+                            <label for="da-customizer-fluid">Fluid</label>
+                        </li>
+                        <li>
+                            <input id="da-customizer-fixed" name="da-layout" type="radio">
+                            <label for="da-customizer-fixed">Fixed</label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div id="da-customizer-button">
+                <button class="btn btn-danger">Get CSS</button>
+            </div>
+        </div>
+        <span id="da-customizer-pulldown"><i class="icon-cogwheels"></i></span>
+    </div>
+    
+	<!-- Main Wrapper. Set this to 'fixed' for fixed layout and 'fluid' for fluid layout' -->
+	<div id="da-wrapper">
+    
+        <!-- Header -->
+        <div id="da-header">
+        
+            <div id="da-header-top">
+                
+                <!-- Container -->
+                <div class="da-container clearfix">
+                    
+                    <!-- Logo Container. All images put here will be vertically centere -->
+                    <div id="da-logo-wrap">
+                        <div id="da-logo">
+                            <div id="da-logo-img">
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/dashboard.html">
+                                    <img src="Dandelion%20Admin%20-%20Charts_files/logo.png" alt="Dandelion Admin">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Header Toolbar Menu -->
+                    <div id="da-header-toolbar" class="clearfix">
+                        <div id="da-user-profile-wrap">
+                            <div id="da-user-profile" data-toggle="dropdown" class="clearfix">
+                                <div id="da-user-avatar">
+                                    <img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt="">
+                                </div>
+                                <div id="da-user-info">
+                                    John Doe
+                                    <span class="da-user-title">Creative Director</span>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/dashboard.html">Dashboard</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Change Password</a></li>
+                            </ul>
+                        </div>
+                        <div id="da-header-button-container">
+                            <ul>
+                                <li class="da-header-button-wrap">
+                                    <div class="da-header-button" data-toggle="dropdown">
+                                        <span class="btn-count">32</span>
+                                        <a href="#"><i class="icon-circle-exclamation-mark"></i></a>
+                                    </div>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <span class="da-dropdown-sub-title">Notifications</span>
+                                            <ul class="da-dropdown-sub">
+                                                <li class="unread">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="unread">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="read">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="read">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <a class="da-dropdown-sub-footer" href="#">
+                                                View all notifications
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="da-header-button-wrap">
+                                    <div class="da-header-button" data-toggle="dropdown">
+                                        <span class="btn-count">5</span>
+                                        <a href="#"><i class="icon-envelope"></i></a>
+                                    </div>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <span class="da-dropdown-sub-title">Messages</span>
+                                            <ul class="da-dropdown-sub">
+                                                <li class="unread">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="unread">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="read">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="read">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="Dandelion%20Admin%20-%20Charts_files/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <a class="da-dropdown-sub-footer" href="#">
+                                                View all messages
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="da-header-button-wrap">
+                                    <div class="da-header-button">
+                                        <a href="http://www.malijuthemeshop.com/live_previews/dandelion/index.html"><i class="icon-power"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                                    
+                </div>
+            </div>
+            
+            <div id="da-header-bottom">
+                <!-- Container -->
+                <div class="da-container clearfix">
+                
+                	<div id="da-search">
+                    	<form>
+                        	<input class="search-query" placeholder="Search..." type="text">
+                        </form>
+                    </div>
+                	
+                    <!-- Breadcrumbs -->
+                    <div id="da-breadcrumb">
+                        <ul>
+                            <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/dashboard.html"><i class="icon-home"></i> Dashboard</a></li>
+                            <li class="active"><span>Statistics</span></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <!-- Content -->
+        <div id="da-content">
+            
+            <!-- Container -->
+            <div class="da-container clearfix">
+            
+                <!-- Sidebar Separator do not remove -->
+                <div id="da-sidebar-separator"></div>
+                
+                <!-- Sidebar -->
+                <div id="da-sidebar">
+
+                    <!-- Navigation Toggle for < 480px -->
+                    <div id="da-sidebar-toggle"></div>
+                
+                    <!-- Main Navigation -->
+                    <div id="da-main-nav" class="btn-container">
+                        <ul>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/dashboard.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-home"></i>
+                                    </span>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/statistics.html">
+                                    <!-- Nav Notification -->
+                                    <span class="da-nav-count">32</span>
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-stats"></i>
+                                    </span>
+                                    Statistics
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/calendar.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-calendar"></i>
+                                    </span>
+                                    Calendar
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/file.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-folder-open"></i>
+                                    </span>
+                                    File Handling
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/table.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-table"></i>
+                                    </span>
+                                    Table
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-edit"></i>
+                                    </span>
+                                    Form
+                                </a>
+                                <ul>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/form-layouts.html">Layouts</a></li>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/form-elements.html">Elements</a></li>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/form-validation.html">Validation</a></li>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/form-wizard.html">Wizard</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/ui.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-settings"></i>
+                                    </span>
+                                    UI Elements
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-font"></i>
+                                    </span>
+                                    Layout and Typography
+                                </a>
+                                <ul class="closed">
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/grids.html">Grids and Panels</a></li>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/typography.html">Typography</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/gallery.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-picture"></i>
+                                    </span>
+                                    Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/error.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-warning-sign"></i>
+                                    </span>
+                                    Error Page (404)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/icons.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-crown"></i>
+                                    </span>
+                                    Icons
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                
+                <!-- Main Content Wrapper -->
+                <div id="da-content-wrap" class="clearfix">
+                
+                	<!-- Content Area -->
+                	<div id="da-content-area">
+                        <div class="row-fluid">
+                            <div class="span12 da-panel">
+                                <div class="da-panel-header">
+                                    <span class="da-panel-title">Circular Stat API Demo</span>
+                                </div>
+                                <div class="da-panel-content">
+                                    <ul class="da-stats-container">
+                                        <li class="circular-stat" id="dc-1" data-provide="circular" data-fill-color="#a6d037" data-initial-value="55" data-max-value="98" data-label="No. 1" style="width: 136px; height: 136px;"><canvas class="back" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="fill" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="front" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><span class="digit-label">55/98</span><span class="text-label">No. 1</span></li>
+                                        <li class="circular-stat" id="dc-2" data-provide="circular" data-fill-color="#ea799b" daa-percent="true" data-initial-value="200" data-max-value="241" data-label="No. 2" style="width: 136px; height: 136px;"><canvas class="back" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="fill" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="front" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><span class="digit-label">200/241</span><span class="text-label">No. 2</span></li>
+                                        <li class="circular-stat" id="dc-3" data-provide="circular" data-fill-color="#fab241" data-initial-value="124" data-max-value="523" data-label="No. 3" style="width: 136px; height: 136px;"><canvas class="back" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="fill" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="front" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><span class="digit-label">124/523</span><span class="text-label">No. 3</span></li>
+                                        <li class="circular-stat" id="dc-4" data-provide="circular" data-fill-color="#61a5e4" data-percent="true" data-initial-value="42" data-max-value="100" data-label="No. 4" style="width: 136px; height: 136px;"><canvas class="back" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="fill" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="front" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><span class="digit-label">42%</span><span class="text-label">No. 4</span></li>
+                                    </ul>
+                                </div>
+                                <div class="da-panel-content da-form-container">
+                                    <form class="da-form da-form-inline">
+                                        <div class="da-form-row">
+                                            <label class="da-form-label">Target</label>
+                                            <div class="da-form-item">
+                                                <select id="dc-target" class="span6">
+                                                    <option selected="selected" value="#dc-1">No. 1</option>
+                                                    <option value="#dc-2">No. 2</option>
+                                                    <option value="#dc-3">No. 3</option>
+                                                    <option value="#dc-4">No. 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="da-form-row da-column-row">
+                                            <label class="da-form-label">animate(value, enqueue)</label>
+                                            <div class="da-form-item da-form-cols">
+                                                <div class="col-3-8">
+                                                    <label class="da-form-label">Value</label>
+                                                    <input id="dc-value" type="text">
+                                                </div>
+                                                <div class="col-1-8">
+                                                    <label class="da-form-label">Push to Queue</label>
+                                                    <ul class="da-form-list inline">
+                                                        <li><input checked="checked" id="dce-yes" name="dc-enqueue" type="radio"> <label for="dce-yes">Yes</label></li>
+                                                        <li><input id="dce-no" name="dc-enqueue" type="radio"> <label for="dce-no">No</label></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-2-8">
+                                                    <button id="dc-animate" type="button" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="da-form-row da-column-row">
+                                            <label class="da-form-label">Options</label>
+                                            <div class="da-form-item da-form-cols">
+                                                <div class="col-2-8">
+                                                    <label class="da-form-label">Max Value</label>
+                                                    <input id="dc-max-value" type="text">
+                                                    <span class="form-help">Notice! Max Value can't be set in percent mode (No. 4)</span>
+                                                </div>
+                                                <div class="col-2-8">
+                                                    <label class="da-form-label">Fill Color</label>
+                                                    <input id="dc-fill" type="text">
+                                                </div>
+                                                <div class="col-2-8">
+                                                    <label class="da-form-label">Label</label>
+                                                    <input id="dc-label" type="text">
+                                                </div>
+                                                <div class="col-2-8">
+                                                    <button id="dc-options" type="button" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid">
+                        	<div class="span6">
+                                <div class="da-panel">
+                                    <div class="da-panel-header">
+                                        <span class="da-panel-title"><i class="icol-chart-curve"></i> Line Chart</span>
+                                    </div>
+                                	<div class="da-panel-content">
+                                        <div id="da-ex-flot-line" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="734" class="base"></canvas><canvas style="position: absolute; left: 0px; top: 0px;" height="300" width="734" class="overlay"></canvas><div class="tickLabels" style="font-size:smaller"><div class="xAxis x1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:center;left:-2px;top:282px;width:61px">Jun 1</div><div class="tickLabel" style="position:absolute;text-align:center;left:69px;top:282px;width:61px">Jun 2</div><div class="tickLabel" style="position:absolute;text-align:center;left:140px;top:282px;width:61px">Jun 3</div><div class="tickLabel" style="position:absolute;text-align:center;left:210px;top:282px;width:61px">Jun 4</div><div class="tickLabel" style="position:absolute;text-align:center;left:281px;top:282px;width:61px">Jun 5</div><div class="tickLabel" style="position:absolute;text-align:center;left:352px;top:282px;width:61px">Jun 6</div><div class="tickLabel" style="position:absolute;text-align:center;left:423px;top:282px;width:61px">Jun 7</div><div class="tickLabel" style="position:absolute;text-align:center;left:493px;top:282px;width:61px">Jun 8</div><div class="tickLabel" style="position:absolute;text-align:center;left:564px;top:282px;width:61px">Jun 9</div><div class="tickLabel" style="position:absolute;text-align:center;left:635px;top:282px;width:61px">Jun 10</div></div><div class="yAxis y1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:right;top:268px;right:716px;width:18px">0</div><div class="tickLabel" style="position:absolute;text-align:right;top:223px;right:716px;width:18px">20</div><div class="tickLabel" style="position:absolute;text-align:right;top:177px;right:716px;width:18px">40</div><div class="tickLabel" style="position:absolute;text-align:right;top:132px;right:716px;width:18px">60</div><div class="tickLabel" style="position:absolute;text-align:right;top:86px;right:716px;width:18px">80</div><div class="tickLabel" style="position:absolute;text-align:right;top:41px;right:716px;width:18px">100</div><div class="tickLabel" style="position:absolute;text-align:right;top:-5px;right:716px;width:18px">120</div></div></div><div class="legend"><div style="position: absolute; width: 104px; height: 60px; top: 9px; right: 9px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:9px;right:9px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #E15656;overflow:hidden"></div></div></td><td class="legendLabel">Sales</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #A6D037;overflow:hidden"></div></div></td><td class="legendLabel">Support Requests</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #61A5E4;overflow:hidden"></div></div></td><td class="legendLabel">Page Views</td></tr></tbody></table></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <div class="da-panel">
+                                    <div class="da-panel-header">
+                                        <span class="da-panel-title"><i class="icol-chart-bar"></i> Bar Chart</span>
+                                    </div>
+                                	<div class="da-panel-content">
+                                        <div id="da-ex-flot-stacked" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="734" class="base"></canvas><canvas style="position: absolute; left: 0px; top: 0px;" height="300" width="734" class="overlay"></canvas><div class="tickLabels" style="font-size:smaller"><div class="xAxis x1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:center;left:-13px;top:282px;width:61px">0</div><div class="tickLabel" style="position:absolute;text-align:center;left:55px;top:282px;width:61px">1</div><div class="tickLabel" style="position:absolute;text-align:center;left:124px;top:282px;width:61px">2</div><div class="tickLabel" style="position:absolute;text-align:center;left:192px;top:282px;width:61px">3</div><div class="tickLabel" style="position:absolute;text-align:center;left:261px;top:282px;width:61px">4</div><div class="tickLabel" style="position:absolute;text-align:center;left:329px;top:282px;width:61px">5</div><div class="tickLabel" style="position:absolute;text-align:center;left:398px;top:282px;width:61px">6</div><div class="tickLabel" style="position:absolute;text-align:center;left:466px;top:282px;width:61px">7</div><div class="tickLabel" style="position:absolute;text-align:center;left:535px;top:282px;width:61px">8</div><div class="tickLabel" style="position:absolute;text-align:center;left:604px;top:282px;width:61px">9</div><div class="tickLabel" style="position:absolute;text-align:center;left:672px;top:282px;width:61px">10</div></div><div class="yAxis y1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:right;top:268px;right:722px;width:12px">0</div><div class="tickLabel" style="position:absolute;text-align:right;top:229px;right:722px;width:12px">10</div><div class="tickLabel" style="position:absolute;text-align:right;top:190px;right:722px;width:12px">20</div><div class="tickLabel" style="position:absolute;text-align:right;top:151px;right:722px;width:12px">30</div><div class="tickLabel" style="position:absolute;text-align:right;top:112px;right:722px;width:12px">40</div><div class="tickLabel" style="position:absolute;text-align:right;top:73px;right:722px;width:12px">50</div><div class="tickLabel" style="position:absolute;text-align:right;top:34px;right:722px;width:12px">60</div><div class="tickLabel" style="position:absolute;text-align:right;top:-5px;right:722px;width:12px">70</div></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid">
+                        	<div class="span6">
+                                <div class="da-panel">
+                                    <div class="da-panel-header">
+                                        <span class="da-panel-title"><i class="icol-chart-pie"></i> Pie Chart</span>
+                                    </div>
+                                	<div class="da-panel-content">
+                                        <div id="da-ex-flot-pie" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="734" class="base"></canvas><canvas style="position: absolute; left: 0px; top: 0px;" height="300" width="734" class="overlay"></canvas><div class="legend"><div style="position: absolute; width: 75px; height: 120px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #E15656;overflow:hidden"></div></div></td><td class="legendLabel">Dandelions</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #EA799B;overflow:hidden"></div></div></td><td class="legendLabel">Roses</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #FAB241;overflow:hidden"></div></div></td><td class="legendLabel">Orchids</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #61A5E4;overflow:hidden"></div></div></td><td class="legendLabel">Dahlia</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #656565;overflow:hidden"></div></div></td><td class="legendLabel">Tulp</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #A6D037;overflow:hidden"></div></div></td><td class="legendLabel">Sakura</td></tr></tbody></table></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        	<div class="span6">
+                                <div class="da-panel">
+                                    <div class="da-panel-header">
+                                        <span class="da-panel-title"><i class="icol-chart-pie"></i> Donut Chart</span>
+                                    </div>
+                                	<div class="da-panel-content">
+                                        <div id="da-ex-flot-donut" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="734" class="base"></canvas><canvas style="position: absolute; left: 0px; top: 0px;" height="300" width="734" class="overlay"></canvas><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 28px; left: 420.5px;"><div style="font-size:x-small;text-align:center;padding:2px;color:#E15656;">American<br>21%</div></span><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 205px; left: 455.5px;"><div style="font-size:x-small;text-align:center;padding:2px;color:#EA799B;">Dutch<br>28%</div></span><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 257px; left: 326.5px;"><div style="font-size:x-small;text-align:center;padding:2px;color:#FAB241;">Japanese<br>6%</div></span><span class="pieLabel" id="pieLabel3" style="position: absolute; top: 243px; left: 287px;"><div style="font-size:x-small;text-align:center;padding:2px;color:#61A5E4;">Korean<br>6%</div></span><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 110px; left: 222px;"><div style="font-size:x-small;text-align:center;padding:2px;color:#656565;">French<br>34%</div></span><span class="pieLabel" id="pieLabel5" style="position: absolute; top: 4px; left: 324px;"><div style="font-size:x-small;text-align:center;padding:2px;color:#A6D037;">Chinese<br>6%</div></span></div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div id="da-footer">
+        	<div class="da-container clearfix">
+            	<p>Copyright 2012. Dandelion Admin. All Rights Reserved.
+            </p></div>
+        </div>
+        
+    </div>
+
+    <!-- JS Libs -->
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery-1.js"></script>
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery_003.js"></script>
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery_008.js"></script>
+
+    <!-- JS Bootstrap -->
+    <script src="Dandelion%20Admin%20-%20Charts_files/bootstrap.js"></script>
+    
+    <!-- jQuery-UI JavaScript Files -->
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery-ui-1.js"></script>
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery_006.js"></script>
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="Dandelion%20Admin%20-%20Charts_files/jquery.css" media="screen">
+
+    <!-- Plugin Files -->
+
+    <!-- Flot Plugin -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/libs/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery_009.js"></script>
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery_002.js"></script>
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery_007.js"></script>
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery_004.js"></script>
+    <script src="Dandelion%20Admin%20-%20Charts_files/jquery_005.js"></script>
+
+    <!-- Circular Stat Plugin -->
+    <script src="Dandelion%20Admin%20-%20Charts_files/dandelion_003.js"></script>
+
+    <!-- Colorpicker Plugin -->
+    <script src="Dandelion%20Admin%20-%20Charts_files/colorpicker.js"></script>
+    <link rel="stylesheet" href="Dandelion%20Admin%20-%20Charts_files/colorpicker.css" media="screen">
+
+    <!-- JS Demo -->
+    <script src="Dandelion%20Admin%20-%20Charts_files/demo.js"></script>
+
+    <!-- JS Template -->
+    <script src="Dandelion%20Admin%20-%20Charts_files/dandelion_002.js"></script>
+
+    <!-- JS Customizer -->
+    <script src="Dandelion%20Admin%20-%20Charts_files/dandelion.js"></script>
+    
+
+
+<div id="collorpicker_340" class="colorpicker"><div style="background-color: rgb(255, 0, 0);" class="colorpicker_color"><div><div style="left: 150px; top: 0px;"></div></div></div><div class="colorpicker_hue"><div style="top: 150px;"></div></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_new_color"></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_current_color"></div><div class="colorpicker_hex"><input value="ff0000" maxlength="6" size="6" type="text"></div><div class="colorpicker_rgb_r colorpicker_field"><input value="255" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_submit"></div></div><div style="display: none; position: absolute;" id="flotTip"></div><div aria-labelledby="ui-id-1" role="dialog" tabindex="-1" style="display: none; outline: 0px none; z-index: 1000;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-id-1">Get CSS Style</span><a role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#"><span class="ui-icon ui-icon-closethick">close</span></a></div><div class="ui-dialog-content ui-widget-content" style="display: block;" id="da-customizer-dialog"><textarea readonly="readonly" id="da-customizer-css"></textarea></div></div></body></html>

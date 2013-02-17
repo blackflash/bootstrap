@@ -223,6 +223,10 @@ class GalleryRepository extends Repository {
 		return $this->connection->table($tableName)->where(array($column => $gallery_id));
 	}
 
+	public function getByTableAndIdWithOrder($tableName,$column, $gallery_id,$orderColumnName,$ordering){
+		return $this->connection->table($tableName)->where(array($column => $gallery_id))->order($orderColumnName,$ordering);
+	}
+
 	public function insertRowByTable($tableName,$data){
 		return $this->connection->table($tableName)->insert($data);
 	}

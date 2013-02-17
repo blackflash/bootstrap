@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.43140700 1360630884";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1360630882;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.23841500 1361047535";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1361047530;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ei2bj46y9l')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ghxve9szcn')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -267,10 +267,7 @@ if (!empty($_control->snippetMode)) {
                     <div class="da-form-row">
                         <label>Namespace</label>
                         <div class="da-form-item large">
-                           <div class="da-form-item">
-                                <span class="formNote">Name of the namespace</span>
-                                <input type="text" name="name" />
-                           </div>
+                                <input type="text" name="name" autocomplete="OFF" />
                         </div>
                     </div>
                     
@@ -296,25 +293,19 @@ if (!empty($_control->snippetMode)) {
                     <div class="da-form-row">
                         <label>Title</label>
                         <div class="da-form-item large">
-                           <div class="da-form-item">
-                                <span class="formNote">Title</span>
-                                <input type="text" name="title" />
-                           </div>
+                            <input type="text" name="title" autocomplete="off" />
                         </div>
                     </div>
                     <div class="da-form-row">
                         <label>Description</label>
                         <div class="da-form-item large">
-                           <div class="da-form-item">
-                                <span class="formNote">Description</span>
-                                <input type="text" name="description" />
-                           </div>
+                            <input type="text" name="description" autocomplete="off" />
                         </div>
                     </div>
                     <div class="da-form-row">
                         <label>Namespace</label>
-                        <div class="da-form-item large">
-                            <select name="namespace_id">
+                        <div class="da-form-item large locationSelectorGallery">
+                            <select name="namespace_id" class="chzn-select">
 <?php $iterations = 0; foreach ($namespaces as $namespace): ?>
                                     <option value="<?php echo htmlSpecialChars($namespace->namespace_id) ?>
 "><?php echo Nette\Templating\Helpers::escapeHtml($namespace->name, ENT_NOQUOTES) ?></option>
@@ -432,8 +423,8 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
                     </div>
                 </span>
             </div>
-            <div class="da-panel-content with-padding ">
-                <div class="da-gallery prettyPhoto gridster">
+            <div class="da-panel-content with-div">
+                <padding2 class="da-gallery prettyPhoto gridster">
                     <ul>
 <?php $iterations = 0; foreach ($gallery_photo as $photo): if ($gallery_id == $photo->gallery_id): ?>
                             <li data-row="<?php echo htmlSpecialChars($photo->data_row) ?>
@@ -545,7 +536,7 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
     </div>
 
     <script type="text/javascript">
-
+        
         var orderButton = $("#hideOrder").attr("name");
         if(orderButton == "hideButton"){
             $(".orderPhotosEditButton").css("display","none");
@@ -625,7 +616,7 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
 
         $(".gridster ul").gridster({
             widget_margins: [20, 20],
-            widget_base_dimensions: [140, 200],
+            widget_base_dimensions: [140, 140],
             max_size_x: 10,
             max_size_y: 1,
             draggable: {
@@ -643,6 +634,8 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
                 }
             }
         });
+
+        $(".gridster ul").gridster().data('gridster').disable();
 
     </script>
 

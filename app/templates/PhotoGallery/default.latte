@@ -1,0 +1,73 @@
+{block content}
+
+
+
+ <div id="breadCrumbsContainer">
+            <div class="centerContainer">
+                <p>You are here:
+                    <a href="{link HomePage:}">Home</a>
+                    &nbsp; / &nbsp;
+                    <strong>{$title}</strong>
+                </p>
+            </div><!--end of centerContainer-->
+        </div><!--end of sliderContainer-->
+
+        <div class="blankSeparator"></div>
+
+        <div class="row-fluid">
+            <div class="container">
+
+                <h1>{$title}</h1>
+                <div class="sepContainer"></div>
+
+                <div class="da-gallery prettyPhoto gridster">
+                    <ul>
+                        {foreach $gallery_photo as $photo}
+                            <li data-row="{$photo->data_row}" data-col="{$photo->data_col}" data-sizex="1" data-sizey="1" class="photo_id" data-photoId="{$photo->photo_id}">
+                                <div class="imagePhoto">
+                                    <div class="orderPhotoIcon" id=""></div>
+                                    <a href="{$basePath}/uploads/gallery/{$photo->namespace_id}/{$photo->gallery_id}/{$photo->filename}" rel="prettyPhoto[pp1]" class="photoLink" title="{$photo->description}">
+                                        <img src="{$basePath}/uploads/gallery/{$photo->namespace_id}/{$photo->gallery_id}/thumbs/{$photo->filename}" class="photoImage" alt="{$photo->title}" />
+                                    </a>
+                                </div>
+                            </li>
+                        {/foreach}
+                    </ul>
+                </div>   
+
+            </div>        
+        </div><!--end of row-fluid-->
+
+        <div class="fillContainerXS"></div>
+
+         <!-- prettyPhoto Plugin -->
+        <link rel="stylesheet" type="text/css" href="{$basePath}/css/core/gallery.css" media="screen" />
+
+        <script type="text/javascript" src="{$basePath}/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="{$basePath}/plugins/prettyphoto/js/jquery.prettyPhoto.min.js"></script>
+        <link rel="stylesheet" href="{$basePath}/plugins/prettyphoto/css/prettyPhoto.css" media="screen" />
+        <script type="text/javascript" charset="utf-8">
+          $(document).ready(function(){
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+          });
+        </script>
+        
+        <script type="text/javascript" src="{$basePath}/js/grid/jquery.gridster.js"></script>
+        <link rel="stylesheet" href="{$basePath}/css/jquery.gridster.css" media="screen" />
+        <script type="text/javascript">
+            $(".gridster ul").gridster({
+                widget_margins: [20, 20],
+                widget_base_dimensions: [140, 140],
+                max_size_x: 5,
+                autogenerate_stylesheet: true,
+                min_rows: 1,
+                max_size_y: 1
+            });
+
+            $(".gridster ul").gridster().data('gridster').disable();
+
+        </script>
+
+
+
+{/block}

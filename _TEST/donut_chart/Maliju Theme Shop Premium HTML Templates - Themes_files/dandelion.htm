@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap Stylesheet -->
+<link rel="stylesheet" href="dandelion_data/bootstrap.css" media="screen">
+
+<!-- Theme Stylesheet -->
+<link rel="stylesheet" href="dandelion_data/dandelion_002.css" media="screen">
+<!-- Icon Stylesheet -->
+<link rel="stylesheet" href="dandelion_data/style.css" media="screen">
+<!--  Main Stylesheet -->
+<link rel="stylesheet" href="dandelion_data/dandelion.css" media="screen">
+<link rel="stylesheet" href="dandelion_data/customizer.css" media="screen">
+<!-- Demo Stylesheet -->
+<link rel="stylesheet" href="dandelion_data/demo.css" media="screen">
+
+<title>Dandelion Admin - Charts</title>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", { packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Fruits (months)',  'Apples', 'Oranges', 'Bananas'],
+      ['January', 8, 7, 5],
+      ['February', 6, 6, 8],
+      ['March', 5, 5, 10],
+      ['April', 4 ,4, 12]
+    ]);
+
+    var options = {
+      title: 'The Title',
+      vAxis: { title: 'Accumulated Rating'},
+      backgroundColor: "none",
+      isStacked: true
+    };
+
+    var chart = new google.visualization.SteppedAreaChart(document.getElementById('stepped_chart'));
+    chart.draw(data, options);
+  }
+</script>
+<style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
+
+/** reset styling **/
+
+.firebugResetStyles {
+
+    z-index: 2147483646 !important;
+
+    top: 0 !important;
+
+    left: 0 !important;
+
+    display: block !important;
+
+    border: 0 none !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    outline: 0 !important;
+
+    min-width: 0 !important;
+
+    max-width: none !important;
+
+    min-height: 0 !important;
+
+    max-height: none !important;
+
+    position: fixed !important;
+
+    transform: rotate(0deg) !important;
+
+    transform-origin: 50% 50% !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    background: transparent none !important;
+
+    pointer-events: none !important;
+
+    white-space: normal !important;
+
+}
+
+
+
+.firebugBlockBackgroundColor {
+
+    background-color: transparent !important;
+
+}
+
+
+
+.firebugResetStyles:before, .firebugResetStyles:after {
+
+    content: "" !important;
+
+}
+
+/**actual styling to be modified by firebug theme**/
+
+.firebugCanvas {
+
+    display: none !important;
+
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.firebugLayoutBox {
+
+    width: auto !important;
+
+    position: static !important;
+
+}
+
+
+
+.firebugLayoutBoxOffset {
+
+    opacity: 0.8 !important;
+
+    position: fixed !important;
+
+}
+
+
+
+.firebugLayoutLine {
+
+    opacity: 0.4 !important;
+
+    background-color: #000000 !important;
+
+}
+
+
+
+.firebugLayoutLineLeft, .firebugLayoutLineRight {
+
+    width: 1px !important;
+
+    height: 100% !important;
+
+}
+
+
+
+.firebugLayoutLineTop, .firebugLayoutLineBottom {
+
+    width: 100% !important;
+
+    height: 1px !important;
+
+}
+
+
+
+.firebugLayoutLineTop {
+
+    margin-top: -1px !important;
+
+    border-top: 1px solid #999999 !important;
+
+}
+
+
+
+.firebugLayoutLineRight {
+
+    border-right: 1px solid #999999 !important;
+
+}
+
+
+
+.firebugLayoutLineBottom {
+
+    border-bottom: 1px solid #999999 !important;
+
+}
+
+
+
+.firebugLayoutLineLeft {
+
+    margin-left: -1px !important;
+
+    border-left: 1px solid #999999 !important;
+
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.firebugLayoutBoxParent {
+
+    border-top: 0 none !important;
+
+    border-right: 1px dashed #E00 !important;
+
+    border-bottom: 1px dashed #E00 !important;
+
+    border-left: 0 none !important;
+
+    position: fixed !important;
+
+    width: auto !important;
+
+}
+
+
+
+.firebugRuler{
+
+    position: absolute !important;
+
+}
+
+
+
+.firebugRulerH {
+
+    top: -15px !important;
+
+    left: 0 !important;
+
+    width: 100% !important;
+
+    height: 14px !important;
+
+    background: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%13%88%00%00%00%0E%08%02%00%00%00L%25a%0A%00%00%00%04gAMA%00%00%D6%D8%D4OX2%00%00%00%19tEXtSoftware%00Adobe%20ImageReadyq%C9e%3C%00%00%04%F8IDATx%DA%EC%DD%D1n%E2%3A%00E%D1%80%F8%FF%EF%E2%AF2%95%D0D4%0E%C1%14%B0%8Fa-%E9%3E%CC%9C%87n%B9%81%A6W0%1C%A6i%9A%E7y%0As8%1CT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AATE9%FE%FCw%3E%9F%AF%2B%2F%BA%97%FDT%1D~K(%5C%9D%D5%EA%1B%5C%86%B5%A9%BDU%B5y%80%ED%AB*%03%FAV9%AB%E1%CEj%E7%82%EF%FB%18%BC%AEJ8%AB%FA'%D2%BEU9%D7U%ECc0%E1%A2r%5DynwVi%CFW%7F%BB%17%7Dy%EACU%CD%0E%F0%FA%3BX%FEbV%FEM%9B%2B%AD%BE%AA%E5%95v%AB%AA%E3E5%DCu%15rV9%07%B5%7F%B5w%FCm%BA%BE%AA%FBY%3D%14%F0%EE%C7%60%0EU%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5JU%88%D3%F5%1F%AE%DF%3B%1B%F2%3E%DAUCNa%F92%D02%AC%7Dm%F9%3A%D4%F2%8B6%AE*%BF%5C%C2Ym~9g5%D0Y%95%17%7C%C8c%B0%7C%18%26%9CU%CD%13i%F7%AA%90%B3Z%7D%95%B4%C7%60%E6E%B5%BC%05%B4%FBY%95U%9E%DB%FD%1C%FC%E0%9F%83%7F%BE%17%7DkjMU%E3%03%AC%7CWj%DF%83%9An%BCG%AE%F1%95%96yQ%0Dq%5Dy%00%3Et%B5'%FC6%5DS%95pV%95%01%81%FF'%07%00%00%00%00%00%00%00%00%00%F8x%C7%F0%BE%9COp%5D%C9%7C%AD%E7%E6%EBV%FB%1E%E0(%07%E5%AC%C6%3A%ABi%9C%8F%C6%0E9%AB%C0'%D2%8E%9F%F99%D0E%B5%99%14%F5%0D%CD%7F%24%C6%DEH%B8%E9rV%DFs%DB%D0%F7%00k%FE%1D%84%84%83J%B8%E3%BA%FB%EF%20%84%1C%D7%AD%B0%8E%D7U%C8Y%05%1E%D4t%EF%AD%95Q%BF8w%BF%E9%0A%BF%EB%03%00%00%00%00%00%00%00%00%00%B8vJ%8E%BB%F5%B1u%8Cx%80%E1o%5E%CA9%AB%CB%CB%8E%03%DF%1D%B7T%25%9C%D5(%EFJM8%AB%CC'%D2%B2*%A4s%E7c6%FB%3E%FA%A2%1E%80~%0E%3E%DA%10x%5D%95Uig%15u%15%ED%7C%14%B6%87%A1%3B%FCo8%A8%D8o%D3%ADO%01%EDx%83%1A~%1B%9FpP%A3%DC%C6'%9C%95gK%00%00%00%00%00%00%00%00%00%20%D9%C9%11%D0%C0%40%AF%3F%EE%EE%92%94%D6%16X%B5%BCMH%15%2F%BF%D4%A7%C87%F1%8E%F2%81%AE%AAvzr%DA2%ABV%17%7C%E63%83%E7I%DC%C6%0Bs%1B%EF6%1E%00%00%00%00%00%00%00%00%00%80cr%9CW%FF%7F%C6%01%0E%F1%CE%A5%84%B3%CA%BC%E0%CB%AA%84%CE%F9%BF)%EC%13%08WU%AE%AB%B1%AE%2BO%EC%8E%CBYe%FE%8CN%ABr%5Dy%60~%CFA%0D%F4%AE%D4%BE%C75%CA%EDVB%EA(%B7%F1%09g%E5%D9%12%00%00%00%00%00%00%00%00%00H%F6%EB%13S%E7y%5E%5E%FB%98%F0%22%D1%B2'%A7%F0%92%B1%BC%24z3%AC%7Dm%60%D5%92%B4%7CEUO%5E%F0%AA*%3BU%B9%AE%3E%A0j%94%07%A0%C7%A0%AB%FD%B5%3F%A0%F7%03T%3Dy%D7%F7%D6%D4%C0%AAU%D2%E6%DFt%3F%A8%CC%AA%F2%86%B9%D7%F5%1F%18%E6%01%F8%CC%D5%9E%F0%F3z%88%AA%90%EF%20%00%00%00%00%00%00%00%00%00%C0%A6%D3%EA%CFi%AFb%2C%7BB%0A%2B%C3%1A%D7%06V%D5%07%A8r%5D%3D%D9%A6%CAu%F5%25%CF%A2%99%97zNX%60%95%AB%5DUZ%D5%FBR%03%AB%1C%D4k%9F%3F%BB%5C%FF%81a%AE%AB'%7F%F3%EA%FE%F3z%94%AA%D8%DF%5B%01%00%00%00%00%00%00%00%00%00%8E%FB%F3%F2%B1%1B%8DWU%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*UiU%C7%BBe%E7%F3%B9%CB%AAJ%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5*%AAj%FD%C6%D4%5Eo%90%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5%86%AF%1B%9F%98%DA%EBm%BBV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%AD%D6%E4%F58%01%00%00%00%00%00%00%00%00%00%00%00%00%00%40%85%7F%02%0C%008%C2%D0H%16j%8FX%00%00%00%00IEND%AEB%60%82") repeat-x !important;
+
+    border-top: 1px solid #BBBBBB !important;
+
+    border-right: 1px dashed #BBBBBB !important;
+
+    border-bottom: 1px solid #000000 !important;
+
+}
+
+
+
+.firebugRulerV {
+
+    top: 0 !important;
+
+    left: -15px !important;
+
+    width: 14px !important;
+
+    height: 100% !important;
+
+    background: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%0E%00%00%13%88%08%02%00%00%00%0E%F5%CB%10%00%00%00%04gAMA%00%00%D6%D8%D4OX2%00%00%00%19tEXtSoftware%00Adobe%20ImageReadyq%C9e%3C%00%00%06~IDATx%DA%EC%DD%D1v%A20%14%40Qt%F1%FF%FF%E4%97%D9%07%3BT%19%92%DC%40(%90%EEy%9A5%CB%B6%E8%F6%9Ac%A4%CC0%84%FF%DC%9E%CF%E7%E3%F1%88%DE4%F8%5D%C7%9F%2F%BA%DD%5E%7FI%7D%F18%DDn%BA%C5%FB%DF%97%BFk%F2%10%FF%FD%B4%F2M%A7%FB%FD%FD%B3%22%07p%8F%3F%AE%E3%F4S%8A%8F%40%EEq%9D%BE8D%F0%0EY%A1Uq%B7%EA%1F%81%88V%E8X%3F%B4%CEy%B7h%D1%A2E%EBohU%FC%D9%AF2fO%8BBeD%BE%F7X%0C%97%A4%D6b7%2Ck%A5%12%E3%9B%60v%B7r%C7%1AI%8C%BD%2B%23r%00c0%B2v%9B%AD%CA%26%0C%1Ek%05A%FD%93%D0%2B%A1u%8B%16-%95q%5Ce%DCSO%8E%E4M%23%8B%F7%C2%FE%40%BB%BD%8C%FC%8A%B5V%EBu%40%F9%3B%A72%FA%AE%8C%D4%01%CC%B5%DA%13%9CB%AB%E2I%18%24%B0n%A9%0CZ*Ce%9C%A22%8E%D8NJ%1E%EB%FF%8F%AE%CAP%19*%C3%BAEKe%AC%D1%AAX%8C*%DEH%8F%C5W%A1e%AD%D4%B7%5C%5B%19%C5%DB%0D%EF%9F%19%1D%7B%5E%86%BD%0C%95%A12%AC%5B*%83%96%CAP%19%F62T%86%CAP%19*%83%96%CA%B8Xe%BC%FE)T%19%A1%17xg%7F%DA%CBP%19*%C3%BA%A52T%86%CAP%19%F62T%86%CA%B0n%A9%0CZ%1DV%C6%3D%F3%FCH%DE%B4%B8~%7F%5CZc%F1%D6%1F%AF%84%F9%0F6%E6%EBVt9%0E~%BEr%AF%23%B0%97%A12T%86%CAP%19%B4T%86%CA%B8Re%D8%CBP%19*%C3%BA%A52huX%19%AE%CA%E5%BC%0C%7B%19*CeX%B7h%A9%0C%95%E1%BC%0C%7B%19*CeX%B7T%06%AD%CB%5E%95%2B%BF.%8F%C5%97%D5%E4%7B%EE%82%D6%FB%CF-%9C%FD%B9%CF%3By%7B%19%F62T%86%CA%B0n%D1R%19*%A3%D3%CA%B0%97%A12T%86uKe%D0%EA%B02*%3F1%99%5DB%2B%A4%B5%F8%3A%7C%BA%2B%8Co%7D%5C%EDe%A8%0C%95a%DDR%19%B4T%C66%82fA%B2%ED%DA%9FC%FC%17GZ%06%C9%E1%B3%E5%2C%1A%9FoiB%EB%96%CA%A0%D5qe4%7B%7D%FD%85%F7%5B%ED_%E0s%07%F0k%951%ECr%0D%B5C%D7-g%D1%A8%0C%EB%96%CA%A0%A52T%C6)*%C3%5E%86%CAP%19%D6-%95A%EB*%95q%F8%BB%E3%F9%AB%F6%E21%ACZ%B7%22%B7%9B%3F%02%85%CB%A2%5B%B7%BA%5E%B7%9C%97%E1%BC%0C%EB%16-%95%A12z%AC%0C%BFc%A22T%86uKe%D0%EA%B02V%DD%AD%8A%2B%8CWhe%5E%AF%CF%F5%3B%26%CE%CBh%5C%19%CE%CB%B0%F3%A4%095%A1%CAP%19*Ce%A8%0C%3BO*Ce%A8%0C%95%A12%3A%AD%8C%0A%82%7B%F0v%1F%2FD%A9%5B%9F%EE%EA%26%AF%03%CA%DF9%7B%19*Ce%A8%0C%95%A12T%86%CA%B8Ze%D8%CBP%19*Ce%A8%0C%95%D1ae%EC%F7%89I%E1%B4%D7M%D7P%8BjU%5C%BB%3E%F2%20%D8%CBP%19*Ce%A8%0C%95%A12T%C6%D5*%C3%5E%86%CAP%19*Ce%B4O%07%7B%F0W%7Bw%1C%7C%1A%8C%B3%3B%D1%EE%AA%5C%D6-%EBV%83%80%5E%D0%CA%10%5CU%2BD%E07YU%86%CAP%19*%E3%9A%95%91%D9%A0%C8%AD%5B%EDv%9E%82%FFKOee%E4%8FUe%A8%0C%95%A12T%C6%1F%A9%8C%C8%3D%5B%A5%15%FD%14%22r%E7B%9F%17l%F8%BF%ED%EAf%2B%7F%CF%ECe%D8%CBP%19*Ce%A8%0C%95%E1%93~%7B%19%F62T%86%CAP%19*Ce%A8%0C%E7%13%DA%CBP%19*Ce%A8%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4h%A9%0C%B3E%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4h%A9%0C%B3E%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4%AE%A4%F5%25%C0%00%DE%BF%5C'%0F%DA%B8q%00%00%00%00IEND%AEB%60%82") repeat-y !important;
+
+    border-left: 1px solid #BBBBBB !important;
+
+    border-right: 1px solid #000000 !important;
+
+    border-bottom: 1px dashed #BBBBBB !important;
+
+}
+
+
+
+.overflowRulerX > .firebugRulerV {
+
+    left: 0 !important;
+
+}
+
+
+
+.overflowRulerY > .firebugRulerH {
+
+    top: 0 !important;
+
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.fbProxyElement {
+
+    position: fixed !important;
+
+    pointer-events: auto !important;
+
+}
+
+</style></head>
+
+<body>
+
+    <!-- Dandelion Customizer (remove if not needed) -->
+    <div style="top: -217px;" class="active" id="da-customizer">
+        <div id="da-customizer-content">
+            <ul>
+                <li>
+                    <span class="da-customizer-title">Background Pattern</span>
+                    <span id="da-customizer-body-bg"><select id="da-body-pat"><option selected="selected" value="blueprint">Blueprint</option><option value="bricks">Bricks</option><option value="carbon">Carbon</option><option value="circuit">Circuit</option><option value="holes">Holes</option><option value="mozaic">Mozaic</option><option value="roof">Roof</option><option value="stripes">Stripes</option></select></span>
+                </li>
+                <li>
+                    <span>Header Pattern</span>
+                    <span id="da-customizer-header-bg"><select id="da-header-pat"><option selected="selected" value="carbon">Carbon</option><option value="linen">Linen</option><option value="leather">Leather</option><option value="wood">Wood</option></select></span>
+                </li>
+                <li>
+                    <span>Layout</span>
+                    <ul id="da-customizer-layouts" class="clearfix">
+                        <li>
+                            <input id="da-customizer-fluid" name="da-layout" checked="checked" type="radio">
+                            <label for="da-customizer-fluid">Fluid</label>
+                        </li>
+                        <li>
+                            <input id="da-customizer-fixed" name="da-layout" type="radio">
+                            <label for="da-customizer-fixed">Fixed</label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div id="da-customizer-button">
+                <button class="btn btn-danger">Get CSS</button>
+            </div>
+        </div>
+        <span id="da-customizer-pulldown"><i class="icon-cogwheels"></i></span>
+    </div>
+    
+	<!-- Main Wrapper. Set this to 'fixed' for fixed layout and 'fluid' for fluid layout' -->
+	<div id="da-wrapper">
+    
+        <!-- Header -->
+        <div id="da-header">
+        
+            <div id="da-header-top">
+                
+                <!-- Container -->
+                <div class="da-container clearfix">
+                    
+                    <!-- Logo Container. All images put here will be vertically centere -->
+                    <div id="da-logo-wrap">
+                        <div id="da-logo">
+                            <div id="da-logo-img">
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/dashboard.html">
+                                    <img src="dandelion_data/logo.png" alt="Dandelion Admin">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Header Toolbar Menu -->
+                    <div id="da-header-toolbar" class="clearfix">
+                        <div id="da-user-profile-wrap">
+                            <div id="da-user-profile" data-toggle="dropdown" class="clearfix">
+                                <div id="da-user-avatar">
+                                    <img src="dandelion_data/pp.jpg" alt="">
+                                </div>
+                                <div id="da-user-info">
+                                    John Doe
+                                    <span class="da-user-title">Creative Director</span>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/dashboard.html">Dashboard</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Change Password</a></li>
+                            </ul>
+                        </div>
+                        <div id="da-header-button-container">
+                            <ul>
+                                <li class="da-header-button-wrap">
+                                    <div class="da-header-button" data-toggle="dropdown">
+                                        <span class="btn-count">32</span>
+                                        <a href="#"><i class="icon-circle-exclamation-mark"></i></a>
+                                    </div>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <span class="da-dropdown-sub-title">Notifications</span>
+                                            <ul class="da-dropdown-sub">
+                                                <li class="unread">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="dandelion_data/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="unread">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="dandelion_data/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="read">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="dandelion_data/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="read">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="dandelion_data/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <a class="da-dropdown-sub-footer" href="#">
+                                                View all notifications
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="da-header-button-wrap">
+                                    <div class="da-header-button" data-toggle="dropdown">
+                                        <span class="btn-count">5</span>
+                                        <a href="#"><i class="icon-envelope"></i></a>
+                                    </div>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <span class="da-dropdown-sub-title">Messages</span>
+                                            <ul class="da-dropdown-sub">
+                                                <li class="unread">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="dandelion_data/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="unread">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="dandelion_data/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="read">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="dandelion_data/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="read">
+                                                    <a href="#">
+                                                        <span class="thumbnail"><img src="dandelion_data/pp.jpg" alt=""></span>
+                                                        <span class="info">
+                                                            <span class="name">John Doe</span>
+                                                            <span class="message">
+                                                                Lorem 
+ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                                            </span>
+                                                            <span class="time">
+                                                                January 21, 2012
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <a class="da-dropdown-sub-footer" href="#">
+                                                View all messages
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="da-header-button-wrap">
+                                    <div class="da-header-button">
+                                        <a href="http://www.malijuthemeshop.com/live_previews/dandelion/index.html"><i class="icon-power"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                                    
+                </div>
+            </div>
+            
+            <div id="da-header-bottom">
+                <!-- Container -->
+                <div class="da-container clearfix">
+                
+                	<div id="da-search">
+                    	<form>
+                        	<input class="search-query" placeholder="Search..." type="text">
+                        </form>
+                    </div>
+                	
+                    <!-- Breadcrumbs -->
+                    <div id="da-breadcrumb">
+                        <ul>
+                            <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/dashboard.html"><i class="icon-home"></i> Dashboard</a></li>
+                            <li class="active"><span>Statistics</span></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <!-- Content -->
+        <div id="da-content">
+            
+            <!-- Container -->
+            <div class="da-container clearfix">
+            
+                <!-- Sidebar Separator do not remove -->
+                <div id="da-sidebar-separator"></div>
+                
+                <!-- Sidebar -->
+                <div id="da-sidebar">
+
+                    <!-- Navigation Toggle for < 480px -->
+                    <div id="da-sidebar-toggle"></div>
+                
+                    <!-- Main Navigation -->
+                    <div id="da-main-nav" class="btn-container">
+                        <ul>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/dashboard.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-home"></i>
+                                    </span>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/statistics.html">
+                                    <!-- Nav Notification -->
+                                    <span class="da-nav-count">32</span>
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-stats"></i>
+                                    </span>
+                                    Statistics
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/calendar.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-calendar"></i>
+                                    </span>
+                                    Calendar
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/file.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-folder-open"></i>
+                                    </span>
+                                    File Handling
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/table.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-table"></i>
+                                    </span>
+                                    Table
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-edit"></i>
+                                    </span>
+                                    Form
+                                </a>
+                                <ul>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/form-layouts.html">Layouts</a></li>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/form-elements.html">Elements</a></li>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/form-validation.html">Validation</a></li>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/form-wizard.html">Wizard</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/ui.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-settings"></i>
+                                    </span>
+                                    UI Elements
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-font"></i>
+                                    </span>
+                                    Layout and Typography
+                                </a>
+                                <ul class="closed">
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/grids.html">Grids and Panels</a></li>
+                                    <li><a href="http://www.malijuthemeshop.com/live_previews/dandelion/typography.html">Typography</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/gallery.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-picture"></i>
+                                    </span>
+                                    Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/error.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-warning-sign"></i>
+                                    </span>
+                                    Error Page (404)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.malijuthemeshop.com/live_previews/dandelion/icons.html">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-crown"></i>
+                                    </span>
+                                    Icons
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                
+                <!-- Main Content Wrapper -->
+                <div id="da-content-wrap" class="clearfix">
+                
+                	<!-- Content Area -->
+                	<div id="da-content-area">
+                        <div class="row-fluid">
+                            <div class="span12 da-panel">
+                                <div class="da-panel-header">
+                                    <span class="da-panel-title">Circular Stat API Demo</span>
+                                </div>
+                                <div class="da-panel-content">
+                                    <ul class="da-stats-container">
+                                        <li class="circular-stat" id="dc-1" data-provide="circular" data-fill-color="#a6d037" data-initial-value="55" data-max-value="98" data-label="No. 1" style="width: 136px; height: 136px;"><canvas class="back" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="fill" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="front" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><span class="digit-label">55/98</span><span class="text-label">No. 1</span></li>
+                                        <li class="circular-stat" id="dc-2" data-provide="circular" data-fill-color="#ea799b" daa-percent="true" data-initial-value="200" data-max-value="241" data-label="No. 2" style="width: 136px; height: 136px;"><canvas class="back" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="fill" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="front" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><span class="digit-label">200/241</span><span class="text-label">No. 2</span></li>
+                                        <li class="circular-stat" id="dc-3" data-provide="circular" data-fill-color="#fab241" data-initial-value="124" data-max-value="523" data-label="No. 3" style="width: 136px; height: 136px;"><canvas class="back" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="fill" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="front" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><span class="digit-label">124/523</span><span class="text-label">No. 3</span></li>
+                                        <li class="circular-stat" id="dc-4" data-provide="circular" data-fill-color="#61a5e4" data-percent="true" data-initial-value="42" data-max-value="100" data-label="No. 4" style="width: 136px; height: 136px;"><canvas class="back" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="fill" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><canvas class="front" style="position: absolute; top: 0px; left: 0px;" height="136" width="136"></canvas><span class="digit-label">42%</span><span class="text-label">No. 4</span></li>
+                                    </ul>
+                                </div>
+                                <div class="da-panel-content da-form-container">
+                                    <form class="da-form da-form-inline">
+                                        <div class="da-form-row">
+                                            <label class="da-form-label">Target</label>
+                                            <div class="da-form-item">
+                                                <select id="dc-target" class="span6">
+                                                    <option selected="selected" value="#dc-1">No. 1</option>
+                                                    <option value="#dc-2">No. 2</option>
+                                                    <option value="#dc-3">No. 3</option>
+                                                    <option value="#dc-4">No. 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="da-form-row da-column-row">
+                                            <label class="da-form-label">animate(value, enqueue)</label>
+                                            <div class="da-form-item da-form-cols">
+                                                <div class="col-3-8">
+                                                    <label class="da-form-label">Value</label>
+                                                    <input id="dc-value" type="text">
+                                                </div>
+                                                <div class="col-1-8">
+                                                    <label class="da-form-label">Push to Queue</label>
+                                                    <ul class="da-form-list inline">
+                                                        <li><input checked="checked" id="dce-yes" name="dc-enqueue" type="radio"> <label for="dce-yes">Yes</label></li>
+                                                        <li><input id="dce-no" name="dc-enqueue" type="radio"> <label for="dce-no">No</label></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-2-8">
+                                                    <button id="dc-animate" type="button" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="da-form-row da-column-row">
+                                            <label class="da-form-label">Options</label>
+                                            <div class="da-form-item da-form-cols">
+                                                <div class="col-2-8">
+                                                    <label class="da-form-label">Max Value</label>
+                                                    <input id="dc-max-value" type="text">
+                                                    <span class="form-help">Notice! Max Value can't be set in percent mode (No. 4)</span>
+                                                </div>
+                                                <div class="col-2-8">
+                                                    <label class="da-form-label">Fill Color</label>
+                                                    <input id="dc-fill" type="text">
+                                                </div>
+                                                <div class="col-2-8">
+                                                    <label class="da-form-label">Label</label>
+                                                    <input id="dc-label" type="text">
+                                                </div>
+                                                <div class="col-2-8">
+                                                    <button id="dc-options" type="button" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid">
+                        	<div class="span6">
+                                <div class="da-panel">
+                                    <div class="da-panel-header">
+                                        <span class="da-panel-title"><i class="icol-chart-curve"></i> Line Chart</span>
+                                    </div>
+                                	<div class="da-panel-content">
+                                        <div id="da-ex-flot-line" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="734" class="base"></canvas><canvas style="position: absolute; left: 0px; top: 0px;" height="300" width="734" class="overlay"></canvas><div class="tickLabels" style="font-size:smaller"><div class="xAxis x1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:center;left:-2px;top:282px;width:61px">Jun 1</div><div class="tickLabel" style="position:absolute;text-align:center;left:69px;top:282px;width:61px">Jun 2</div><div class="tickLabel" style="position:absolute;text-align:center;left:140px;top:282px;width:61px">Jun 3</div><div class="tickLabel" style="position:absolute;text-align:center;left:210px;top:282px;width:61px">Jun 4</div><div class="tickLabel" style="position:absolute;text-align:center;left:281px;top:282px;width:61px">Jun 5</div><div class="tickLabel" style="position:absolute;text-align:center;left:352px;top:282px;width:61px">Jun 6</div><div class="tickLabel" style="position:absolute;text-align:center;left:423px;top:282px;width:61px">Jun 7</div><div class="tickLabel" style="position:absolute;text-align:center;left:493px;top:282px;width:61px">Jun 8</div><div class="tickLabel" style="position:absolute;text-align:center;left:564px;top:282px;width:61px">Jun 9</div><div class="tickLabel" style="position:absolute;text-align:center;left:635px;top:282px;width:61px">Jun 10</div></div><div class="yAxis y1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:right;top:268px;right:716px;width:18px">0</div><div class="tickLabel" style="position:absolute;text-align:right;top:223px;right:716px;width:18px">20</div><div class="tickLabel" style="position:absolute;text-align:right;top:177px;right:716px;width:18px">40</div><div class="tickLabel" style="position:absolute;text-align:right;top:132px;right:716px;width:18px">60</div><div class="tickLabel" style="position:absolute;text-align:right;top:86px;right:716px;width:18px">80</div><div class="tickLabel" style="position:absolute;text-align:right;top:41px;right:716px;width:18px">100</div><div class="tickLabel" style="position:absolute;text-align:right;top:-5px;right:716px;width:18px">120</div></div></div><div class="legend"><div style="position: absolute; width: 104px; height: 60px; top: 9px; right: 9px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:9px;right:9px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #E15656;overflow:hidden"></div></div></td><td class="legendLabel">Sales</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #A6D037;overflow:hidden"></div></div></td><td class="legendLabel">Support Requests</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #61A5E4;overflow:hidden"></div></div></td><td class="legendLabel">Page Views</td></tr></tbody></table></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <div class="da-panel">
+                                    <div class="da-panel-header">
+                                        <span class="da-panel-title"><i class="icol-chart-bar"></i> Bar Chart</span>
+                                    </div>
+                                	<div class="da-panel-content">
+                                        <div id="da-ex-flot-stacked" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="734" class="base"></canvas><canvas style="position: absolute; left: 0px; top: 0px;" height="300" width="734" class="overlay"></canvas><div class="tickLabels" style="font-size:smaller"><div class="xAxis x1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:center;left:-13px;top:282px;width:61px">0</div><div class="tickLabel" style="position:absolute;text-align:center;left:55px;top:282px;width:61px">1</div><div class="tickLabel" style="position:absolute;text-align:center;left:124px;top:282px;width:61px">2</div><div class="tickLabel" style="position:absolute;text-align:center;left:192px;top:282px;width:61px">3</div><div class="tickLabel" style="position:absolute;text-align:center;left:261px;top:282px;width:61px">4</div><div class="tickLabel" style="position:absolute;text-align:center;left:329px;top:282px;width:61px">5</div><div class="tickLabel" style="position:absolute;text-align:center;left:398px;top:282px;width:61px">6</div><div class="tickLabel" style="position:absolute;text-align:center;left:466px;top:282px;width:61px">7</div><div class="tickLabel" style="position:absolute;text-align:center;left:535px;top:282px;width:61px">8</div><div class="tickLabel" style="position:absolute;text-align:center;left:604px;top:282px;width:61px">9</div><div class="tickLabel" style="position:absolute;text-align:center;left:672px;top:282px;width:61px">10</div></div><div class="yAxis y1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:right;top:268px;right:722px;width:12px">0</div><div class="tickLabel" style="position:absolute;text-align:right;top:229px;right:722px;width:12px">10</div><div class="tickLabel" style="position:absolute;text-align:right;top:190px;right:722px;width:12px">20</div><div class="tickLabel" style="position:absolute;text-align:right;top:151px;right:722px;width:12px">30</div><div class="tickLabel" style="position:absolute;text-align:right;top:112px;right:722px;width:12px">40</div><div class="tickLabel" style="position:absolute;text-align:right;top:73px;right:722px;width:12px">50</div><div class="tickLabel" style="position:absolute;text-align:right;top:34px;right:722px;width:12px">60</div><div class="tickLabel" style="position:absolute;text-align:right;top:-5px;right:722px;width:12px">70</div></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid">
+                        	<div class="span6">
+                                <div class="da-panel">
+                                    <div class="da-panel-header">
+                                        <span class="da-panel-title"><i class="icol-chart-pie"></i> Pie Chart</span>
+                                    </div>
+                                	<div class="da-panel-content">
+                                        <div id="da-ex-flot-pie" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="734" class="base"></canvas><canvas style="position: absolute; left: 0px; top: 0px;" height="300" width="734" class="overlay"></canvas><div class="legend"><div style="position: absolute; width: 75px; height: 120px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #E15656;overflow:hidden"></div></div></td><td class="legendLabel">Dandelions</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #EA799B;overflow:hidden"></div></div></td><td class="legendLabel">Roses</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #FAB241;overflow:hidden"></div></div></td><td class="legendLabel">Orchids</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #61A5E4;overflow:hidden"></div></div></td><td class="legendLabel">Dahlia</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #656565;overflow:hidden"></div></div></td><td class="legendLabel">Tulp</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #A6D037;overflow:hidden"></div></div></td><td class="legendLabel">Sakura</td></tr></tbody></table></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        	<div class="span6">
+                                <div class="da-panel">
+                                    <div class="da-panel-header">
+                                        <span class="da-panel-title"><i class="icol-chart-pie"></i> Donut Chart</span>
+                                    </div>
+                                	<div class="da-panel-content">
+                                        <div id="da-ex-flot-donut" style="height: 300px; padding: 0px; position: relative;">
+                                            <canvas height="300" width="734" class="base"></canvas>
+                                            <canvas style="position: absolute; left: 0px; top: 0px;" height="300" width="734" class="overlay"></canvas>
+                                            <span class="pieLabel" id="pieLabel0" style="position: absolute; top: 28px; left: 420.5px;">
+                                                <div style="font-size:x-small;text-align:center;padding:2px;color:#E15656;">American<br>21%</div></span>
+                                                <span class="pieLabel" id="pieLabel1" style="position: absolute; top: 205px; left: 455.5px;">
+                                                    <div style="font-size:x-small;text-align:center;padding:2px;color:#EA799B;">Dutch<br>28%</div></span>
+                                                <span class="pieLabel" id="pieLabel2" style="position: absolute; top: 257px; left: 326.5px;">
+                                                <div style="font-size:x-small;text-align:center;padding:2px;color:#FAB241;">Japanese<br>6%</div></span>
+                                                <span class="pieLabel" id="pieLabel3" style="position: absolute; top: 243px; left: 287px;">
+                                                <div style="font-size:x-small;text-align:center;padding:2px;color:#61A5E4;">Korean<br>6%</div></span>
+                                                <span class="pieLabel" id="pieLabel4" style="position: absolute; top: 110px; left: 222px;">
+                                                <div style="font-size:x-small;text-align:center;padding:2px;color:#656565;">French<br>34%</div></span>
+                                                <span class="pieLabel" id="pieLabel5" style="position: absolute; top: 4px; left: 324px;">
+                                                <div style="font-size:x-small;text-align:center;padding:2px;color:#A6D037;">Chinese<br>6%</div></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div id="da-footer">
+        	<div class="da-container clearfix">
+            	<p>Copyright 2012. Dandelion Admin. All Rights Reserved.
+            </p></div>
+        </div>
+        
+    </div>
+
+    <!-- JS Libs -->
+    <script src="dandelion_data/jquery-1.js"></script>
+    <script src="dandelion_data/jquery_003.js"></script>
+    <script src="dandelion_data/jquery_008.js"></script>
+
+    <!-- JS Bootstrap -->
+    <script src="dandelion_data/bootstrap.js"></script>
+    
+    <!-- jQuery-UI JavaScript Files -->
+    <script src="dandelion_data/jquery-ui-1.js"></script>
+    <script src="dandelion_data/jquery_005.js"></script>
+    <script src="dandelion_data/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="dandelion_data/jquery.css" media="screen">
+
+    <!-- Plugin Files -->
+
+    <!-- Flot Plugin -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/libs/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="dandelion_data/jquery_009.js"></script>
+    <script src="dandelion_data/jquery_002.js"></script>
+    <script src="dandelion_data/jquery_007.js"></script>
+    <script src="dandelion_data/jquery_004.js"></script>
+    <script src="dandelion_data/jquery_006.js"></script>
+
+    <!-- Circular Stat Plugin -->
+    <script src="dandelion_data/dandelion.js"></script>
+
+    <!-- Colorpicker Plugin -->
+    <script src="dandelion_data/colorpicker.js"></script>
+    <link rel="stylesheet" href="dandelion_data/colorpicker.css" media="screen">
+
+    <!-- JS Demo -->
+    <script src="dandelion_data/demo.js"></script>
+
+    <!-- JS Template -->
+    <script src="dandelion_data/dandelion_003.js"></script>
+
+    <!-- JS Customizer -->
+    <script src="dandelion_data/dandelion_002.js"></script>
+    
+
+
+<div id="collorpicker_280" class="colorpicker"><div style="background-color: rgb(255, 0, 0);" class="colorpicker_color"><div><div style="left: 150px; top: 0px;"></div></div></div><div class="colorpicker_hue"><div style="top: 150px;"></div></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_new_color"></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_current_color"></div><div class="colorpicker_hex"><input value="ff0000" maxlength="6" size="6" type="text"></div><div class="colorpicker_rgb_r colorpicker_field"><input value="255" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_submit"></div></div><div style="display: none; position: absolute; left: 403px; top: 1053px;" id="flotTip"></div><div aria-labelledby="ui-id-1" role="dialog" tabindex="-1" style="display: none; outline: 0px none; z-index: 1000;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-id-1">Get CSS Style</span><a role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#"><span class="ui-icon ui-icon-closethick">close</span></a></div><div class="ui-dialog-content ui-widget-content" style="display: block;" id="da-customizer-dialog"><textarea readonly="readonly" id="da-customizer-css"></textarea></div></div></body></html>

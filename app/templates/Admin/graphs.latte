@@ -24,39 +24,45 @@
 
 <link rel="stylesheet" href="{$basePath}/css/jquery.gridster.css" media="screen" />
 <link rel="stylesheet" href="{$basePath}/css/graphs.css" media="screen" />
-<script type="text/javascript" src="{$basePath}/js/cssrefresh.js"></script>
+<script type="text/javascript" src="{$basePath}/js/cssrefresh.js"></script>-->
 
-    <style>
-        text {
-          font: 10px sans-serif;
-        }
 
-        .axis path {
-          display: none;
-        }
+<link rel="stylesheet" type="text/css" href="{$basePath}/jui/css/jquery.ui.all.css" media="screen" />
+<script type="text/javascript" src="{$basePath}/jui/js/jquery-ui-1.8.20.min.js"></script>
+<script type="text/javascript" src="{$basePath}/jui/js/jquery.ui.timepicker.min.js"></script>
+<script type="text/javascript" src="{$basePath}/js/demo/demo.ui.js"></script>
 
-        .axis line {
-          fill: none;
-          stroke: #000;
-          shape-rendering: crispEdges;
-        }
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", { packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Fruits (months)',  'Apples', 'Oranges', 'Bananas'],
+      ['January', 8, 7, 5],
+      ['February', 6, 6, 8],
+      ['March', 5, 5, 10],
+      ['April', 4 ,4, 12]
+    ]);
 
-        .group-label {
-          font-weight: bold;
-          text-anchor: end;
-        }
+    var options = {
+      title: 'The Title',
+      vAxis: { title: 'Accumulated Rating'},
+      backgroundColor: "none",
+      isStacked: true
+    };
 
-        form {
-          position: absolute;
-          right: 10px;
-          top: 10px;
-        }
-    </style>
+    var chart = new google.visualization.SteppedAreaChart(document.getElementById('stepped_chart'));
+    chart.draw(data, options);
+  }
+</script>
 
 <div id="graphsContent" class="clearfix">
+
+
     <div id="da-content-area">
 
-        <div class="grid_1 logoPlace">
+        <div class="grid_1 logoPlace right">
             <img src="{$basePath}/images/logo.png" alt="Cleverfrogs" />
         </div>
 
@@ -65,26 +71,47 @@
                 <div class="da-form-item locationSelector">
                     <select id="da-ex-val-chzn" name="chosen1">
                         <option>Select location/s</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option value="1">Kosice</option>
+                        <option value="2">Bratislava</option>
+                        <option value="3">Prague</option>
+                        <option value="3">Brno</option>
                     </select>
                     <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
                 </div>
             </div>
-
         </div>
 
         <div class="grid_1 areaSelector2">
             <div class="da-form-item locationSelector">
                 <select class="chzn-select">
                     <option>Select time period</option>
-                    <option>2012</option>
-                    <option>2013</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
                 </select>
             </div>            
         </div>
-       
+        
+        <div class="clearfix"></div>
+
+        <span id="da-ex-slider-range-fixed-info3" class="formNote left">Selected year: <span class="da-highlight">2013</span></span>
+        <div class="timelineBG">
+            <div class="rangeSlider">
+                <div class="da-form-item">
+                    <div id="da-ex-slider-range-fixed3" class="rangeSliderTimeline da-ex-color-slider none"></div>
+                </div>
+            </div>
+        </div>
+            
         <div class="grid_4 summaryIcons">
 
             <ul class="da-summary-stat" >
@@ -135,121 +162,151 @@
             </ul>
         </div>
 
-        <div class="grid_4">
-            <div class="grid_1 logoPlace">
+        <div class="grid_4 graphsArea">
+            <div class="grid_1b">
+                <div class="graphHeading">feedback and sentiment</div>
+                <div class="underline"></div>
+                
+                <div class="gridster">
+                  <ul>
+                    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+                        <div class="FAS_graph">
+                            
+                            <div class="heading">today</div>
+                                <div style="width: 60%;" class="progressBar">
+                                    <div class="greenHeading">60%</div>
+                                    <small>Promoters</small>
+                                    <div id="da-ex-pa" class="animated green leftCorner"></div>
+                                </div>
+                                <div style="width: 30%;" class="progressBar">
+                                    <div class="orangeHeading">30%</div>
+                                    <small>Passives</small>
+                                    <div id="da-ex-pb" class="animated orange noCorner"></div>
+                                </div>
+                                <div style="width: 10%;" class="progressBar">
+                                    <div class="redHeading">10%</div>
+                                    <small>Detractors</small>
+                                    <div id="da-ex-pc" class="animated red rightCorner"></div>
+                                </div>
+
+                            <div class="smallText">
+                                <small>  
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris.Et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris.
+                                </small> 
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+                        <div class="heading">Stepped Area chart</div>
+                        <div id="stepped_chart" style="width: 100%; height: 100%;"></div>
+                    </li>
+
+                    <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
+                        <div class="heading">Benchmarks (averages)</div>
+
+                        <div class="benchmarkTable">
+                            <div class="BTbigLeft">
+                                <div class="titlesBT">
+                                    <small>Best location</small>                <br>
+                                    <small>Kosice</small>                       <br>
+                                    <small class="blue">This location</small>   <br>
+                                    <small>Prague location</small>              <br>
+                                    <small>Worst location</small>       
+                                </div>
+                            </div>
+
+                            <div class="BTbigRight">
+                                <div class="leftBT">
+                                    <div id="da-ex-benchmark-d" class="animated red negative"></div>
+                                    <div id="da-ex-benchmark-e" class="animated red negative"></div>
+                                </div>
+                                <div class="middleBT">
+                                    <div class="bechmark-percentage"><small>90%</small></div>
+                                    <div class="bechmark-percentage"><small>71%</small></div>
+                                    <div class="bechmark-percentage"><small>30%</small></div>
+                                    <div class="bechmark-percentage-red"><small>68%</small></div>
+                                    <div class="bechmark-percentage-red"><small>82%</small></div>
+                                </div>
+                                
+                                <div class="rightBT">
+                                    <div id="da-ex-benchmark-a" class="animated green"></div>
+                                    <div id="da-ex-benchmark-b" class="animated green"></div>
+                                    <div id="da-ex-benchmark-c" class="animated green"></div>
+                                </div>
+                            </div>
+                        </div><!--end of benchmarkTable-->
+                    </li>
+
+                  </ul>
+                </div>
+
             </div>
 
-            <div class="grid_1 areaSelector1">
+            <div class="grid_1b">
+                <div class="graphHeading">tag cloud (campaign)</div>
+                <div class="underline"></div>
+                <div class="gridster">
+                    <ul>
+                        <li>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="grid_1 areaSelector2">
+            <div class="grid_1b">
+                <div class="graphHeading">campaign / product testing</div>
+                <div class="underline"></div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
         </div>
 
     </div><!--end of contentarea-->
 </div><!--end of contentarea-->
 
+<div class="fillContainerXS"></div>
+
 </div>
 </div>
 
 <script type="text/javascript">
 
-        var orderButton = $("#hideOrder").attr("name");
-        if(orderButton == "hideButton"){
-            $(".orderPhotosEditButton").css("display","none");
-        }
-        
-        $('div#galleryAddPhotos').bind('dialogclose', function(event) {
-              window.location = window.location.pathname + "?title=CleverFrogs+-+Gallery&page=gallery&gallery_id=" + $(".id_gallery").html() ;
-              $("#ajax_loader").hide();
-         });
-        
-
-        $(".lockIcon").change(function(){
-            var state = this.checked;
-            //change checkbox icon
-            state ? $(".lockImage").attr("id","imageUnlocked") : $(".lockImage").attr("id","imageLocked");
-            
-            //add remove orderMoveIcon
-            state ? $(".orderPhotoIcon").attr("id","recordIcon") : $(".orderPhotoIcon").attr("id","");
-
-            if(state){
-                $(".gridster ul").gridster().data('gridster').enable();
-                $("#ajax_loader").show();
-            }else {
-                $(".gridster ul").gridster().data('gridster').disable();
-
-                var completeArr = [];
-
-                $(".photo_id").each(function(){
-                    var temp    = this;
-                    var photoId =  $(this).attr("data-photoId");
-                    var col     =  $(this).attr("data-col");
-                    var row     =  $(this).attr("data-row");
-
-                    var arr = new Array(photoId, col, row);
-                    
-                    completeArr.push(arr);
-                    
-                });
-
-                ajaxStartUpdateOrder(completeArr);
-            }
-
-        });
-
-        function ajaxStartUpdateOrder(data){
-           $("#ajax_loader").show();
-           updatePhotoOrder(data);
-           return false;
-        }
-
-        // update photo information
-        function updatePhotoOrder(completeArr){
-            
-            $.ajax({    //create an ajax request to load_page.php
-              type: "POST",
-              url: "?do=jsonUpdatePhotoOrder",
-              data: { data: JSON.stringify(completeArr) },
-              dataType: "html",   //expect html to be returned
-              success: function(msg){ 
-
-                  if(parseInt(msg)!=0)    //if no errors
-                  {
-                    //var myObject = JSON.parse(msg);
-                    //console.log(myObject["success"]);
-                    $("#ajax_loader").hide();
-                  }
-
-                  if(parseInt(msg) == 0){
-                    console.log("problem");
-                    $("#ajax_loader").hide();
-                    return false;
-                  }
-
-              }
-          });
-        }
-
         $(".gridster ul").gridster({
             widget_margins: [20, 20],
-            widget_base_dimensions: [140, 200],
+            widget_base_dimensions: [160, 220],
             max_size_x: 10,
             max_size_y: 1,
-            draggable: {
-                stop: function(event, ui){ 
-
-                    /*$(".photo_id").each(function(){
-                        var temp = this;
-                        var photoId =  $(this).attr("data-photoId");
-                        var col =  $(this).attr("data-col");
-                        var row =  $(this).attr("data-row");
-                        console.log(photoId + "-" + col + "-" + row);
-                    });
-                    */
-                    
-                }
-            }
         });
 
-    </script>
+        $("#da-ex-pa, #da-ex-pb, #da-ex-pc").progressbar({ value: 100 });
+        $("#da-ex-benchmark-a").progressbar({ value: 1 });
+        $("#da-ex-benchmark-a").progressbar({ value: 90});
+
+        $("#da-ex-benchmark-b").progressbar({ value: 1 });
+        $("#da-ex-benchmark-b").progressbar({ value: 71});
+
+        $("#da-ex-benchmark-c").progressbar({ value: 1 });
+        $("#da-ex-benchmark-c").progressbar({ value: 30});
+
+        $("#da-ex-benchmark-d").progressbar({ value: 1 });
+        $("#da-ex-benchmark-d").progressbar({ value: 68});
+
+        $("#da-ex-benchmark-e").progressbar({ value: 1 });
+        $("#da-ex-benchmark-e").progressbar({ value: 82});
+
+</script>

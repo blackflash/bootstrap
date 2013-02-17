@@ -285,8 +285,8 @@
                     </div>
                     <div class="da-form-row">
                         <label>Namespace</label>
-                        <div class="da-form-item large">
-                            <select name="namespace_id">
+                        <div class="da-form-item large locationSelectorGallery">
+                            <select name="namespace_id" class="chzn-select">
                                 {foreach $namespaces as $namespace}
                                     <option value="{$namespace->namespace_id}">{$namespace->name}</option>
                                 {/foreach}
@@ -391,8 +391,8 @@
                     </div>
                 </span>
             </div>
-            <div class="da-panel-content with-padding ">
-                <div class="da-gallery prettyPhoto gridster">
+            <div class="da-panel-content with-div">
+                <padding2 class="da-gallery prettyPhoto gridster">
                     <ul>
                         {foreach $gallery_photo as $photo}
                             {if $gallery_id == $photo->gallery_id}
@@ -493,7 +493,7 @@
     </div>
 
     <script type="text/javascript">
-
+        
         var orderButton = $("#hideOrder").attr("name");
         if(orderButton == "hideButton"){
             $(".orderPhotosEditButton").css("display","none");
@@ -573,7 +573,7 @@
 
         $(".gridster ul").gridster({
             widget_margins: [20, 20],
-            widget_base_dimensions: [140, 200],
+            widget_base_dimensions: [140, 140],
             max_size_x: 10,
             max_size_y: 1,
             draggable: {
@@ -591,6 +591,8 @@
                 }
             }
         });
+
+        $(".gridster ul").gridster().data('gridster').disable();
 
     </script>
 

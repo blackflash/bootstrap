@@ -54,6 +54,8 @@ class HomepagePresenter extends BasePresenter
 		
 	}
 
+	/*------------------------- XML PARSER ------------------------------*/
+
 	function startXMLParse(){
 		$xml = simplexml_load_file("http://localhost/bootstrap/www/uploads/test01.xml");
 

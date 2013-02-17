@@ -2,9 +2,37 @@
 
 
 /* GRAPHS CSS for Dandelion Admin */
-#graphsContent {
 
+.noCorner {
+	-moz-border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -khtml-border-radius: 0px !important;
+    border-radius: 0px !important;
 }
+
+.leftCorner {
+	-webkit-border-top-right-radius: 0px !important;
+	-webkit-border-bottom-right-radius: 0px !important;
+	-moz-border-radius-topright: 0px !important;
+	-moz-border-radius-bottomright: 0px !important;
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+}
+
+.rightCorner {
+	-webkit-border-top-left-radius: 0px !important;
+	-webkit-border-bottom-left-radius: 0px !important;
+	-moz-border-radius-topleft: 0px !important;
+	-moz-border-radius-bottomleft: 0px !important;
+	border-top-left-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+}
+
+.negative {
+	transform:scaleX(-1);
+}
+
+/*------ end of global variables -----*/
 
 .logoPlace {
 	width: 22%;
@@ -13,19 +41,6 @@
 .logoPlace img{
 	width: 90%;
 }
-
-.areaSelector1 {
-	padding-top: 20px;
-	width: 21.5%;
-	height: 70px;
-}
-
-.areaSelector2 {
-	padding-top: 20px;
-	width: 21.5%;
-	height: 70px;
-}
-
 
 .summaryIcons li {
 	width: 24%;
@@ -53,3 +68,227 @@
 	width: 97% !important;
 }
 
+.timelineBG {
+	background: url('../images/timeline.png') no-repeat;
+	margin-left: 20px;
+}
+
+.rangeSlider {
+	width: 980px;
+}
+
+.rangeSlider .rangeSliderTimeline {
+	background: none;
+	height: 35px;
+	margin-bottom: 20px;
+}
+
+.ui-slider.none .ui-slider-range
+{
+	background-color: none;
+	opacity: 0;
+}
+
+.rangeSlider .ui-slider-handle
+{
+	position:absolute;
+	z-index:2;
+	width: 162px !important;
+	height: 38px !important;
+	cursor:default;
+	cursor:pointer;
+	background:url(../images/slider.png) no-repeat left  !important;
+	border:0 !important;
+	outline:none;
+	margin-top: 7px;
+}
+
+.da-highlight {
+	color: #a6d037;
+}
+
+.formNote{
+	margin-left: 20px;
+	line-height: 30px;
+}
+
+.graphsArea {
+	clear: both;
+	margin-top: 20px;
+	width: 82%;
+}
+
+.grid_1b {
+	padding: 7.5px;
+	float: left;
+	width: 32%;
+	vertical-align: middle;
+}
+
+.graphHeading {
+	font-size: 15px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.underline {
+	border:0;
+  	border-top: 1px solid black;
+  	height: 0;
+  	background: black;
+  	opacity: 0.2;
+  	margin-bottom: 15px;
+  	margin-top: 15px;
+}
+
+.gridster  {
+	margin-left: -45px !important;
+}
+
+.gridster li{
+}
+
+.FAS_graph  {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.FAS_graph .progressBar {
+	float: left;
+}
+
+.FAS_graph .gs_w {
+	margin: 0 !important;
+}
+
+.FAS_graph h3 {
+	text-transform: uppercase;
+}
+
+#da-ex-pa {
+	margin-top: 10px;
+}
+
+#da-ex-pb {
+	margin-top: 10px;
+}
+
+#da-ex-pc {
+	margin-top: 10px;
+}
+
+.heading {
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+.greenHeading {
+	font-size: 20px;
+	color: #a6d037;
+}
+
+.orangeHeading {
+	font-size: 20px;
+	color: #fab241;
+}
+
+.redHeading {
+	font-size: 20px;
+	color: #ea799b;
+}
+
+div.smallText {
+	text-align: justify;
+	position: absolute;
+	bottom: 0;
+}
+
+#stepped_chart {
+	background-color: none;
+}
+
+/*---- benchmarks ----*/
+
+.bechmark-percentage {
+	padding-right: 5px;
+	color: #a6d037;
+	font-weight: bold;
+	text-align: center;
+}
+
+.bechmark-percentage-red {
+	padding-right: 5px;
+	color: #ea799b;
+	font-weight: bold;
+	text-align: center;
+}
+
+.benchmarkTable {
+	width: 100%;
+	line-height: 40px;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+#da-ex-benchmark-a {
+	width: 100%;
+	margin-top: 10px;
+}
+
+#da-ex-benchmark-b {
+	width: 100%;
+	margin-top: 25px;
+}
+
+#da-ex-benchmark-c {
+	width: 100%;
+	margin-top: 25px;
+}
+
+#da-ex-benchmark-d {
+	width: 100%;
+	margin-top: 130px;
+}
+
+
+#da-ex-benchmark-e {
+	width: 100%;
+	margin-top: 25px;
+}
+
+
+.leftBT {
+	float: left;
+	width: 43%;
+}
+
+.middleBT {
+	float: left;
+	width: 12%;
+	text-align: center;
+}
+
+.rightBT {
+	float: left;
+	width: 43%;
+
+}
+
+.BTbigLeft {
+	width: 30%;
+	background-color: yelllow;
+	float: left;
+}
+
+.BTbigRight {
+	width: 70%;
+	background-color: yelllow;
+	float: left;
+}
+
+.titlesBT {
+	line-height: 40px;
+}

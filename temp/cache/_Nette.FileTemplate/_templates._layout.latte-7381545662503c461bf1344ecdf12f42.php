@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.71025900 1360629482";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1360371194;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.26019200 1360983370";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1360983369;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'a908h09po6')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '757zktk10w')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lbd3998003db_title')) { function _lbd3998003db_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lb20baa3d9db_title')) { function _lb20baa3d9db_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lb7bb08d83bb_head')) { function _lb7bb08d83bb_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lb5ef1e73215_head')) { function _lb5ef1e73215_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -153,6 +153,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 
                     <li><a href="<?php echo htmlSpecialChars($_control->link("HomePage:")) ?>">Home<span>CleverFrogs</span></a></li>
                     <li><a href="<?php echo htmlSpecialChars($_control->link("Team:")) ?>">Team<span>Team members</span></a></li>
+                    <li><a href="<?php echo htmlSpecialChars($_control->link("PhotoGallery:")) ?>">Gallery<span>photo & video</span></a></li>
                     <li><a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact<span>Contact us</span></a></li>
                 </ul>
             </div><!--end of centerContainer-->
@@ -211,6 +212,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
             </div><!--end of centerContainer-->
         </div><!--end of copyrigtContainer-->
 
+
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/plugins.js"></script>
 
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -220,9 +222,13 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        
+        <!--end of oddelenie js kvoli prettyPhoto.js-->
+        <?php if($title != "Gallery"){  
+            echo '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>';
+        }
+?>
+
+
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/vendor/bootstrap.js"></script>
 
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/jCarouselLite.js" type="text/javascript"></script>
@@ -254,6 +260,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
           });
 
         </script>
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
        <script>
