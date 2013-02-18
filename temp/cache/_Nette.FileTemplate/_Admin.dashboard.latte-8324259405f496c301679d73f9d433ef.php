@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.45638000 1360041467";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1360041466;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.19494200 1361200325";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1361200322;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'z206593a89')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'lo9buavc3d')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -146,7 +146,7 @@ if (!empty($_control->snippetMode)) {
                                 <div class="da-panel-header">
                                     <span class="da-panel-title">
                                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/black/16/graph.png" alt="" />
-                                        Tah cloud
+                                        Tag cloud
                                     </span>
                                     
                                 </div>

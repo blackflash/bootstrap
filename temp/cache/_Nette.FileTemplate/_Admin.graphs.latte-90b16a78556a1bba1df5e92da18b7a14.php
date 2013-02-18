@@ -1,10 +1,10 @@
-<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.02565000 1361094329";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte";i:2;i:1361094327;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.70554300 1361202033";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte";i:2;i:1361202031;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'wkcn4193rc')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'z39xl2ofkj')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -263,7 +263,6 @@ if (!empty($_control->snippetMode)) {
 
                   </ul>
                 </div>
-
             </div>
 
             <div class="grid_1b">
@@ -271,14 +270,36 @@ if (!empty($_control->snippetMode)) {
                 <div class="underline"></div>
                 <div class="gridster">
                     <ul>
-                        <li>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+                               <div class="tagCloud">
+                                   <div class="tagCloudCenter">
+                                       <a href="" class="green big">cheap</a>  
+                                       <a href="" class="red big">dirty</a>  
+                                       <a href="" class="green middle">good service</a>  
+                                       <a href="" class="orange big">bad quality</a>  
+                                       <a href="" class="red small">waiting</a>  
+                                       <a href="" class="orange small">choice</a>  
+                                       <a href="" class="green middle">friendly</a>  
+                                       <a href="" class="orange small">advise</a>  
+                                       <a href="" class="orange middle">parking</a>  
+                                       <a href="" class="orange big">fresh</a>  
+                                       <a href="" class="orange small">good</a>  
+                                       <a href="" class="red small">sales</a>  
+                                       <a href="" class="green big">good food</a>  
+                                    </div>
+                                </div>
+                                <div class="smallText">
+                                    <small>  
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                        quis nostrud exercitation ullamco laboris.
+                                    </small> 
+                                </div>
                         </li>
+                        <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+                            <div class="heading">Online responses</div>
+                        </li>            
+            
                     </ul>
                 </div>
             </div>
@@ -286,14 +307,36 @@ if (!empty($_control->snippetMode)) {
             <div class="grid_1b">
                 <div class="graphHeading">campaign / product testing</div>
                 <div class="underline"></div>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <div class="gridster">
+                    <ul>
+                        <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </li>  
+                        <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </li>        
+                        <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </li>  
+            
+                    </ul>
+                </div>
             </div>
-        </div>
 
     </div><!--end of contentarea-->
 </div><!--end of contentarea-->

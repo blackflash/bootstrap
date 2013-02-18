@@ -185,6 +185,30 @@
 	font-size: 20px;
 }
 
+.green {
+	color: #a6d037;
+}
+
+.orange {
+	color: orange;
+}
+
+.red {
+	color: #ea799b;
+}
+
+.big {
+	font-size: 22px;
+}
+
+.middle {
+	font-size: 15px;
+}
+
+.small {
+	font-size: 11px;
+}
+
 .greenHeading {
 	font-size: 20px;
 	color: #a6d037;
@@ -291,4 +315,36 @@ div.smallText {
 
 .titlesBT {
 	line-height: 40px;
+}
+
+/*--- tag cloud ---*/
+
+.tagCloud {
+	padding: 15px;
+	width: 90%;
+	font-family:Arial; 
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 40px;
+	text-align: center;
+
+	background: white;
+
+	-moz-border-radius: 5px !important;
+    -webkit-border-radius: 5px !important;
+    -khtml-border-radius: 5px !important;
+    border-radius: 5px !important;
+
+    -moz-box-shadow: inset 0 0 10px #888;
+	-webkit-box-shadow: inset 0 0 10px#888;
+	box-shadow: inner 0 0 10px #888;
+}
+
+.tagCloud a {
+	padding: 3px;
+}
+
+.tagCloudCenter {
+	margin-left: auto;
+	margin-right: auto;
 }
