@@ -1,16 +1,16 @@
-<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.16151900 1361011604";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte";i:2;i:1361011598;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.44011100 1361212900";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte";i:2;i:1361011615;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '4cti6r00oo')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ka530lfsxg')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lbceffd02933_content')) { function _lbceffd02933_content($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['content'][] = '_lb49c64be786_content')) { function _lb49c64be786_content($_l, $_args) { extract($_args)
 ?> <div id="breadCrumbsContainer">
             <div class="centerContainer">
                 <p>You are here:
@@ -29,7 +29,7 @@ if (!function_exists($_l->blocks['content'][] = '_lbceffd02933_content')) { func
                 <h1><?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ?></h1>
                 <div class="sepContainer"></div>
 
-                <div class="da-gallery prettyPhoto gridster" style="width: 400px;">
+                <div class="da-gallery prettyPhoto gridster">
                     <ul>
 <?php $iterations = 0; foreach ($gallery_photo as $photo): ?>
                             <li data-row="<?php echo htmlSpecialChars($photo->data_row) ?>
