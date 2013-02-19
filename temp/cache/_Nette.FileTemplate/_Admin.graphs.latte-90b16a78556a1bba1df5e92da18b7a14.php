@@ -1,10 +1,10 @@
-<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.70554300 1361202033";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte";i:2;i:1361202031;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.45896700 1361233194";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte";i:2;i:1361233193;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'z39xl2ofkj')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'rkkstoo4lz')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -45,6 +45,21 @@ if (!empty($_control->snippetMode)) {
 <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/graphs.css" media="screen" />
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>-->
 
+
+
+<!--end of ScrollPanel-->
+<link rel="stylesheet" type="text/css" href="<?php echo htmlSpecialChars($basePath) ?>/css/scrollbarVisibility/style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo htmlSpecialChars($basePath) ?>/css/scrollbarVisibility/jquery.jscrollpane.codrops2.css" />
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/scrollbarVisibility/jquery.jscrollpane.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow&v1' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption:400,400italic' rel='stylesheet' type='text/css' />
+
+<!--end of news ticker-->
+<link href="<?php echo htmlSpecialChars($basePath) ?>/css/newsTicker/jquery.tumblrNewsTicker.css" rel="stylesheet" />
+<script src="<?php echo htmlSpecialChars($basePath) ?>/js/newsTicker/jquery.timeago.js"></script>
+<script src="<?php echo htmlSpecialChars($basePath) ?>/js/newsTicker/jquery.tumblrNewsTicker.js"></script>
+<script src="<?php echo htmlSpecialChars($basePath) ?>/js/newsTicker/script.js"></script>
 
 <link rel="stylesheet" type="text/css" href="<?php echo htmlSpecialChars($basePath) ?>/jui/css/jquery.ui.all.css" media="screen" />
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/jui/js/jquery-ui-1.8.20.min.js"></script>
@@ -296,10 +311,42 @@ if (!empty($_control->snippetMode)) {
                                     </small> 
                                 </div>
                         </li>
-                        <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+                        <li data-row="2" data-col="1" data-sizex="2" data-sizey="2">
                             <div class="heading">Online responses</div>
-                        </li>            
-            
+                            <div id="jp-container" class="jp-container">
+                                <a target="_blank" href="#">
+                                    <img src="http://tympanus.net/Tutorials/ScrollbarVisibility/images/thumbs/16.jpg" />
+                                    <div>
+                                        <h3>Positive feedback</h3>
+                                        Your performance has been steady, in fact you have grown in the last few months. The growth path is definitely positive.
+                                    </div>
+                                </a>
+                                <a target="_blank" href="#">
+                                    <img src="http://tympanus.net/Tutorials/ScrollbarVisibility/images/thumbs/15.jpg" />
+                                    <div>
+                                        <h3>Feedback from: Prague</h3>
+                                        Is a divergent thinker and has the ability to come up with creative and innovative solutions.
+                                    </div>
+                                </a>
+                                <a target="_blank" href="#">
+                                    <img src="http://tympanus.net/Tutorials/ScrollbarVisibility/images/thumbs/15.jpg" />
+                                    <div>
+                                        <h3>Negative feedback</h3>
+                                        Manager sets unrealistic goals and is overly ambitious.
+                                    </div>
+                                </a>
+                                <a target="_blank" href="#">
+                                    <img src="http://tympanus.net/Tutorials/ScrollbarVisibility/images/thumbs/15.jpg" />
+                                    <div>
+                                        <h3>Nice reply</h3>
+                                        That new procedure you developed for routing services has really improved our customer satisfaction. 
+                                    </div>
+                                </a>
+                            </div>
+                        </li>   
+                        <li data-row="2" data-col="1" data-sizex="2" data-sizey="2">
+                            <div id="main"></div>
+                        </li>         
                     </ul>
                 </div>
             </div>
@@ -371,4 +418,153 @@ if (!empty($_control->snippetMode)) {
         $("#da-ex-benchmark-e").progressbar({ value: 1 });
         $("#da-ex-benchmark-e").progressbar({ value: 82});
 
+</script>
+
+<script type="text/javascript">
+    $(function() {
+    
+        // the element we want to apply the jScrollPane
+        var $el                 = $('#jp-container').jScrollPane({
+            verticalGutter  : -16
+        }),
+                
+        // the extension functions and options  
+            extensionPlugin     = {
+                
+                extPluginOpts   : {
+                    // speed for the fadeOut animation
+                    mouseLeaveFadeSpeed : 500,
+                    // scrollbar fades out after hovertimeout_t milliseconds
+                    hovertimeout_t      : 1000,
+                    // if set to false, the scrollbar will be shown on mouseenter and hidden on mouseleave
+                    // if set to true, the same will happen, but the scrollbar will be also hidden on mouseenter after "hovertimeout_t" ms
+                    // also, it will be shown when we start to scroll and hidden when stopping
+                    useTimeout          : false,
+                    // the extension only applies for devices with width > deviceWidth
+                    deviceWidth         : 980
+                },
+                hovertimeout    : null, // timeout to hide the scrollbar
+                isScrollbarHover: false,// true if the mouse is over the scrollbar
+                elementtimeout  : null, // avoids showing the scrollbar when moving from inside the element to outside, passing over the scrollbar
+                isScrolling     : false,// true if scrolling
+                addHoverFunc    : function() {
+                    
+                    // run only if the window has a width bigger than deviceWidth
+                    if( $(window).width() <= this.extPluginOpts.deviceWidth ) return false;
+                    
+                    var instance        = this;
+                    
+                    // functions to show / hide the scrollbar
+                    $.fn.jspmouseenter  = $.fn.show;
+                    $.fn.jspmouseleave  = $.fn.fadeOut;
+                    
+                    // hide the jScrollPane vertical bar
+                    var $vBar           = this.getContentPane().siblings('.jspVerticalBar').hide();
+                    
+                    /*
+                     * mouseenter / mouseleave events on the main element
+                     * also scrollstart / scrollstop - @James Padolsey : http://james.padolsey.com/javascript/special-scroll-events-for-jquery/
+                     */
+                    $el.bind('mouseenter.jsp',function() {
+                        
+                        // show the scrollbar
+                        $vBar.stop( true, true ).jspmouseenter();
+                        
+                        if( !instance.extPluginOpts.useTimeout ) return false;
+                        
+                        // hide the scrollbar after hovertimeout_t ms
+                        clearTimeout( instance.hovertimeout );
+                        instance.hovertimeout   = setTimeout(function() {
+                            // if scrolling at the moment don't hide it
+                            if( !instance.isScrolling )
+                                $vBar.stop( true, true ).jspmouseleave( instance.extPluginOpts.mouseLeaveFadeSpeed || 0 );
+                        }, instance.extPluginOpts.hovertimeout_t );
+                        
+                        
+                    }).bind('mouseleave.jsp',function() {
+                        
+                        // hide the scrollbar
+                        if( !instance.extPluginOpts.useTimeout )
+                            $vBar.stop( true, true ).jspmouseleave( instance.extPluginOpts.mouseLeaveFadeSpeed || 0 );
+                        else {
+                        clearTimeout( instance.elementtimeout );
+                        if( !instance.isScrolling )
+                                $vBar.stop( true, true ).jspmouseleave( instance.extPluginOpts.mouseLeaveFadeSpeed || 0 );
+                        }
+                        
+                    });
+                    
+                    if( this.extPluginOpts.useTimeout ) {
+                        
+                        $el.bind('scrollstart.jsp', function() {
+                        
+                            // when scrolling show the scrollbar
+                            clearTimeout( instance.hovertimeout );
+                            instance.isScrolling    = true;
+                            $vBar.stop( true, true ).jspmouseenter();
+                            
+                        }).bind('scrollstop.jsp', function() {
+                            
+                            // when stop scrolling hide the scrollbar (if not hovering it at the moment)
+                            clearTimeout( instance.hovertimeout );
+                            instance.isScrolling    = false;
+                            instance.hovertimeout   = setTimeout(function() {
+                                if( !instance.isScrollbarHover )
+                                    $vBar.stop( true, true ).jspmouseleave( instance.extPluginOpts.mouseLeaveFadeSpeed || 0 );
+                            }, instance.extPluginOpts.hovertimeout_t );
+                            
+                        });
+                        
+                        // wrap the scrollbar
+                        // we need this to be able to add the mouseenter / mouseleave events to the scrollbar
+                        var $vBarWrapper    = $('<div/>').css({
+                            position    : 'absolute',
+                            left        : $vBar.css('left'),
+                            top         : $vBar.css('top'),
+                            right       : $vBar.css('right'),
+                            bottom      : $vBar.css('bottom'),
+                            width       : $vBar.width(),
+                            height      : $vBar.height()
+                        }).bind('mouseenter.jsp',function() {
+                            
+                            clearTimeout( instance.hovertimeout );
+                            clearTimeout( instance.elementtimeout );
+                            
+                            instance.isScrollbarHover   = true;
+                            
+                            // show the scrollbar after 100 ms.
+                            // avoids showing the scrollbar when moving from inside the element to outside, passing over the scrollbar                              
+                            instance.elementtimeout = setTimeout(function() {
+                                $vBar.stop( true, true ).jspmouseenter();
+                            }, 100 );   
+                            
+                        }).bind('mouseleave.jsp',function() {
+                            
+                            // hide the scrollbar after hovertimeout_t
+                            clearTimeout( instance.hovertimeout );
+                            instance.isScrollbarHover   = false;
+                            instance.hovertimeout = setTimeout(function() {
+                                // if scrolling at the moment don't hide it
+                                if( !instance.isScrolling )
+                                    $vBar.stop( true, true ).jspmouseleave( instance.extPluginOpts.mouseLeaveFadeSpeed || 0 );
+                            }, instance.extPluginOpts.hovertimeout_t );
+                            
+                        });
+                        
+                        $vBar.wrap( $vBarWrapper );
+                    
+                    }
+                
+                }
+                
+            },
+            
+            // the jScrollPane instance
+            jspapi          = $el.data('jsp');
+            
+        // extend the jScollPane by merging 
+        $.extend( true, jspapi, extensionPlugin );
+        jspapi.addHoverFunc();
+    
+    });
 </script>

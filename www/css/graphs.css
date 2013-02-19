@@ -348,3 +348,15 @@ div.smallText {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+
+.jp-container{
+	width: 100% !important;
+	font-family: 'PT Sans Narrow', Arial, sans-serif;
+	font-size:13px;
+}
+
+.jp-container h3 {
+	color:#000;
+	margin: 0;
+}
