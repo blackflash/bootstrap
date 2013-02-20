@@ -39,7 +39,10 @@
 }
 
 .logoPlace img{
-	width: 90%;
+	height: 150px;
+	position: absolute;
+	left: 430px;
+	top: -30px;
 }
 
 .summaryIcons li {
@@ -349,7 +352,6 @@ div.smallText {
 	margin-right: auto;
 }
 
-
 .jp-container{
 	width: 100% !important;
 	font-family: 'PT Sans Narrow', Arial, sans-serif;
@@ -359,4 +361,20 @@ div.smallText {
 .jp-container h3 {
 	color:#000;
 	margin: 0;
+}
+
+#da-footer {
+	bot: 0 !important;
+}
+
+#chart_div {
+}
+
+.da-summary-icon img  {
+	margin-top: -15px !important;
+	padding-right: 5px !important;
+}
+
+.da-summary-stat li {
+	width: 22.5% !important;
 }

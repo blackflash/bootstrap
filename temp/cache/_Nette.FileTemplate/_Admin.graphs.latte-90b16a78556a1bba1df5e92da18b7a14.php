@@ -1,10 +1,10 @@
-<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.45896700 1361233194";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte";i:2;i:1361233193;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.03749800 1361265336";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte";i:2;i:1361265334;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\graphs.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'rkkstoo4lz')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'r3576p0rc8')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -21,8 +21,39 @@ if (!empty($_control->snippetMode)) {
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/demo/demo.charts.js"></script>
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/d3/d3.v3.js"></script>
 
+<!--Pie chart-->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", "1", { packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+       var data = new google.visualization.DataTable();
+       data.addColumn('string', 'Task');
+       data.addColumn('number', 'Hours per Day');
+       data.addRows([
+       ['Product A', 24],
+       ['Product B', 36],
+       ['Product C', 40],
+       ]);
+var options = {
+width: 450, height: 300,
+fill: "none",
+colors:['#ECD078','#D95B43','#C02942'],
+legend: { position: 'none'},
+   animation:{
+       duration: 800,
+       easing: 'in'
+     }
+};
+var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+chart.draw(data, options);
+}
+
+</script>
+
+
 <!-- Demo JavaScript Files -->
-<script type="text/javascript" src="js/demo/demo.validation.js"></script>
+<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/demo/demo.validation.js"></script>
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/grid/jquery.gridster.js"></script>
 
 <!-- Validation Plugin -->
@@ -43,8 +74,7 @@ if (!empty($_control->snippetMode)) {
 
 <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/jquery.gridster.css" media="screen" />
 <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/graphs.css" media="screen" />
-<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>-->
-
+<!--end of <script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
 
 
 <!--end of ScrollPanel-->
@@ -72,7 +102,7 @@ if (!empty($_control->snippetMode)) {
   google.setOnLoadCallback(drawChart);
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ['Fruits (months)',  'Apples', 'Oranges', 'Bananas'],
+      ['Campaign (months)',  'Service 1', 'Service 2', 'Service 3'],
       ['January', 8, 7, 5],
       ['February', 6, 6, 8],
       ['March', 5, 5, 10],
@@ -96,10 +126,6 @@ if (!empty($_control->snippetMode)) {
 
     <div id="da-content-area">
 
-        <div class="grid_1 logoPlace right">
-            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/logo.png" alt="Cleverfrogs" />
-        </div>
-
         <div class="grid_1 areaSelector1">
             <div class="da-panel-content">
                 <div class="da-form-item locationSelector">
@@ -108,7 +134,13 @@ if (!empty($_control->snippetMode)) {
                         <option value="1">Kosice</option>
                         <option value="2">Bratislava</option>
                         <option value="3">Prague</option>
-                        <option value="3">Brno</option>
+                        <option value="4">Brno</option>
+                        <option value="5">Presov</option>
+                        <option value="6">Brusel</option>
+                        <option value="7">Amsterdam</option>
+                        <option value="8">Paris</option>
+                        <option value="8">Poprad</option>
+                        <option value="8">Poprad - sever</option>
                     </select>
                     <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
                 </div>
@@ -135,6 +167,10 @@ if (!empty($_control->snippetMode)) {
             </div>            
         </div>
         
+        <div class="grid_1 logoPlace right">
+            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/clients/hotelChopok.png" alt="Hotel Chopok" />
+        </div>
+
         <div class="clearfix"></div>
 
         <span id="da-ex-slider-range-fixed-info3" class="formNote left">Selected year: <span class="da-highlight">2013</span></span>
@@ -151,8 +187,8 @@ if (!empty($_control->snippetMode)) {
             <ul class="da-summary-stat" >
                 <li>
                     <a href="#">
-                        <span class="da-summary-icon" style="background-color:#a6d037;">
-                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/white/32/sport_shirt.png" alt="" />
+                        <span class="da-summary-icon" style="background-color: none;">
+                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/64x64/comments.png" />
                         </span>
                         <span class="da-summary-text">
                             <span class="value">512</span>
@@ -162,34 +198,34 @@ if (!empty($_control->snippetMode)) {
                 </li>
                 <li>
                     <a href="#">
-                        <span class="da-summary-icon" style="background-color:#ea799b;">
-                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/white/32/abacus.png" alt="" />
+                        <span class="da-summary-icon">
+                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/64x64/info.png" />
                         </span>
                         <span class="da-summary-text">
                             <span class="value up">286</span>                                        
-                            <span class="label">Number of feedbacks total</span>
+                            <span class="label">Number of total feedbacks</span>
                         </span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <span class="da-summary-icon" style="background-color:#fab241;">
-                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/white/32/airplane.png" alt="" />
+                        <span class="da-summary-icon">
+                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/64x64/chart.png" />
                         </span>
                         <span class="da-summary-text">
                             <span class="value down">61</span>
-                            <span class="label">Number of feedbacks total campaign "XZ"</span>
+                            <span class="label">Number of total feedbacks - campaign "XZ"</span>
                         </span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <span class="da-summary-icon" style="background-color:#61a5e4;">
-                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/white/32/truck.png" alt="" />
+                        <span class="da-summary-icon">
+                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/64x64/page.png" />
                         </span>
                         <span class="da-summary-text">
                             <span class="value">42</span>
-                            <span class="label">Shops Visited</span>
+                            <span class="label">Questionnaire A</span>
                         </span>
                     </a>
                 </li>
@@ -200,7 +236,20 @@ if (!empty($_control->snippetMode)) {
             <div class="grid_1b">
                 <div class="graphHeading">feedback and sentiment</div>
                 <div class="underline"></div>
-                
+            </div>
+
+            <div class="grid_1b">
+                <div class="graphHeading">tag cloud (campaign)</div>
+                <div class="underline"></div>
+            </div>
+
+            <div class="grid_1b">
+                <div class="graphHeading">campaign / product testing</div>
+                <div class="underline"></div>
+            </div>
+
+            <div class="clearfix"></div>
+
                 <div class="gridster">
                   <ul>
                     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
@@ -275,17 +324,8 @@ if (!empty($_control->snippetMode)) {
                             </div>
                         </div><!--end of benchmarkTable-->
                     </li>
-
-                  </ul>
-                </div>
-            </div>
-
-            <div class="grid_1b">
-                <div class="graphHeading">tag cloud (campaign)</div>
-                <div class="underline"></div>
-                <div class="gridster">
-                    <ul>
-                        <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+                
+                        <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
                                <div class="tagCloud">
                                    <div class="tagCloudCenter">
                                        <a href="" class="green big">cheap</a>  
@@ -311,74 +351,63 @@ if (!empty($_control->snippetMode)) {
                                     </small> 
                                 </div>
                         </li>
-                        <li data-row="2" data-col="1" data-sizex="2" data-sizey="2">
-                            <div class="heading">Online responses</div>
+                        <li data-row="1" data-col="2" data-sizex="2" data-sizey="2">
+                            <div class="heading">List of campaigns</div>
+                            <br />
                             <div id="jp-container" class="jp-container">
-                                <a target="_blank" href="#">
-                                    <img src="http://tympanus.net/Tutorials/ScrollbarVisibility/images/thumbs/16.jpg" />
+                                <a href="#" onclick="JavaScript:drawChart()">
                                     <div>
-                                        <h3>Positive feedback</h3>
-                                        Your performance has been steady, in fact you have grown in the last few months. The growth path is definitely positive.
+                                        <h3>Campaign / Product 1</h3>
+                                        <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_1.jpg" />
+                                        <p>
+                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
+                                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                            Ut enim ad minim veniam quis nostrud exercitation ullamco.
+                                        </p>
                                     </div>
                                 </a>
-                                <a target="_blank" href="#">
-                                    <img src="http://tympanus.net/Tutorials/ScrollbarVisibility/images/thumbs/15.jpg" />
+                                <a href="#" onclick="JavaScript:drawChart()">
+                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_2.jpg" />
                                     <div>
-                                        <h3>Feedback from: Prague</h3>
-                                        Is a divergent thinker and has the ability to come up with creative and innovative solutions.
+                                        <h3>Campaign / Product 2</h3>
+                                        <p>
+                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
+                                            adipisicing elit.
+                                        </p>
                                     </div>
                                 </a>
-                                <a target="_blank" href="#">
-                                    <img src="http://tympanus.net/Tutorials/ScrollbarVisibility/images/thumbs/15.jpg" />
+                                <a href="#" onclick="JavaScript:drawChart()">
+                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_3.jpg" />
                                     <div>
-                                        <h3>Negative feedback</h3>
-                                        Manager sets unrealistic goals and is overly ambitious.
+                                        <h3>Campaign / Product 3</h3>
+                                        <p>
+                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
+                                            adipisicing elit, sed do eiusmod tempor incididunt.
+                                        </p>
                                     </div>
                                 </a>
-                                <a target="_blank" href="#">
-                                    <img src="http://tympanus.net/Tutorials/ScrollbarVisibility/images/thumbs/15.jpg" />
+                                <a href="#" onclick="JavaScript:drawChart()">
+                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_4.jpg" />
                                     <div>
-                                        <h3>Nice reply</h3>
-                                        That new procedure you developed for routing services has really improved our customer satisfaction. 
+                                        <h3>Campaign / Product 4</h3>
+                                        <p>
+                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
+                                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                            Ut enim ad minim veniam quis nostrud exercitation ullamco.
+                                        </p>
                                     </div>
                                 </a>
                             </div>
                         </li>   
-                        <li data-row="2" data-col="1" data-sizex="2" data-sizey="2">
+                        <li data-row="2" data-col="2" data-sizex="2" data-sizey="2">
+                            <div class="heading">Online responses</div><br />
                             <div id="main"></div>
                         </li>         
-                    </ul>
-                </div>
-            </div>
-
-            <div class="grid_1b">
-                <div class="graphHeading">campaign / product testing</div>
-                <div class="underline"></div>
-                <div class="gridster">
-                    <ul>
-                        <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </li>  
-                        <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </li>        
-                        <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                        <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
+                            <div class="heading">Actual results</div>
+                            <br />
+                            <div id="chart_div" style="z-index: 1; position: absolute; left: 0px; top: 20px;">
                         </li>  
             
                     </ul>
@@ -389,7 +418,7 @@ if (!empty($_control->snippetMode)) {
 </div><!--end of contentarea-->
 
 <div class="fillContainerXS"></div>
-
+<div class="clearfix"></div>
 </div>
 </div>
 
@@ -567,4 +596,43 @@ if (!empty($_control->snippetMode)) {
         jspapi.addHoverFunc();
     
     });
+</script>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", { packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+       var data = new google.visualization.DataTable();
+       data.addColumn('string', 'Task');
+       data.addColumn('number', 'Hours per Day');
+       data.addRows([
+           ['Product A',     roundNumber(11*Math.random(),2)],
+           ['Product B',     roundNumber(11*Math.random(),2)],
+           ['Product C',     roundNumber(11*Math.random(),2)],
+           ['Product D',     roundNumber(11*Math.random(),2)]
+       ]);
+
+        var options = {
+        width: 480, height: 250,
+        backgroundColor: { stroke:'none', fill:'none', strokeSize: 1},
+        chartArea:{ width:"100%",height:"75%"},
+        colors:['#ECD078','#D95B43','#C02942','#a6d037'],
+        legend: { position: "right"},
+        pieHole: 0.5,
+           animation:{
+               duration: 800,
+               easing: 'in'
+             }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+    function roundNumber(num, dec) {
+     var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+     return result;
+    }
 </script>

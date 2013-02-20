@@ -145,13 +145,12 @@ ul.da-summary-stat > li:hover > span
 
 ul.da-summary-stat li .da-summary-icon
 {
-	width:48px;
-	height:48px;
+	width:64px;
+	height:64px;
 	display:block;
 	float:left;
 	position:relative;
 	text-align:center;
-	background-color:#656565;
 	
 	-webkit-border-radius:6px;
 	-moz-border-radius:6px;
@@ -161,19 +160,20 @@ ul.da-summary-stat li .da-summary-icon
 
 ul.da-summary-stat li .da-summary-icon img
 {
-	max-height:32px;
-	max-width:32px;
+	max-height:40px;
+	max-width:40px;
+	z-index: 1000;
 	position:absolute;
-	left:50%; top:50%;
-	margin-left:-16px;
+	left:20%; top:30%;
 	margin-top:-16px;
 }
 
 ul.da-summary-stat li .da-summary-text
 {
-	margin-left:56px;
+	margin-left:60px;
 	display:block;
 	color:#656565;
+
 }
 
 ul.da-summary-stat li .da-summary-text span.value

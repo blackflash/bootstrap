@@ -16,6 +16,15 @@
 	position: absolute;
 }
 
+.jspPane img {
+	width: 40%;
+}
+
+.jspPane p {
+	text-align: justify;
+}
+
+
 .jspVerticalBar
 {
 	position: absolute;
