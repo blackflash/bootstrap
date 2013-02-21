@@ -8,7 +8,8 @@
 
 .gridster > * {
     width: 960px !important;
-    margin: 0 auto;
+    margin: 0 auto !important;
+    padding-bottom: 70px;
     -webkit-transition: height .4s;
     -moz-transition: height .4s;
     -o-transition: height .4s;

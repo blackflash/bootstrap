@@ -39,10 +39,7 @@
 }
 
 .logoPlace img{
-	height: 150px;
-	position: absolute;
-	left: 430px;
-	top: -30px;
+padding-bottom: 20px;	
 }
 
 .summaryIcons li {
