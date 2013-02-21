@@ -1,16 +1,16 @@
-<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.53294700 1361409435";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte";i:2;i:1361409430;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.59253000 1361411477";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte";i:2;i:1361411476;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'skhoq5lr23')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'mrbg2adihl')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lb2fae6c48d0_content')) { function _lb2fae6c48d0_content($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['content'][] = '_lbe49b77a687_content')) { function _lbe49b77a687_content($_l, $_args) { extract($_args)
 ?> <div id="breadCrumbsContainer">
             <div class="centerContainer">
                 <p>You are here:
@@ -69,16 +69,14 @@ if (!function_exists($_l->blocks['content'][] = '_lb2fae6c48d0_content')) { func
         <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/grid/jquery.gridster.js"></script>
         <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/jquery.gridster.css" media="screen" />
         <script type="text/javascript">
-            $(".gridster ul").gridster({
+            (".gridster ul").gridster({
                 widget_margins: [20, 20],
                 widget_base_dimensions: [140, 140],
-                max_size_x: 5,
-                autogenerate_stylesheet: true,
-                min_rows: 1,
-                max_size_y: 1
+                avoid_overlapped_widgets: true,
+                max_size_x: 10,
+                max_size_y: 1,
             });
 
-            $(".gridster ul").gridster().data('gridster').disable();
 
         </script>
 
@@ -107,8 +105,6 @@ if ($_l->extends) {
 // main template
 //
 ?>
-
-
 
 <?php if ($_l->extends) { ob_end_clean(); return Nette\Latte\Macros\CoreMacros::includeTemplate($_l->extends, get_defined_vars(), $template)->render(); }
 call_user_func(reset($_l->blocks['content']), $_l, get_defined_vars()) ; 

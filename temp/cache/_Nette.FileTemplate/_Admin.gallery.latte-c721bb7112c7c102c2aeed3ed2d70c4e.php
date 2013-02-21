@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.60393000 1361409404";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1361409403;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.21031300 1361411391";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1361411388;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'bp7w8r91sd')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'nc7aype2tc')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -617,22 +617,9 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
         $(".gridster ul").gridster({
             widget_margins: [20, 20],
             widget_base_dimensions: [140, 140],
+            avoid_overlapped_widgets: true,
             max_size_x: 10,
             max_size_y: 1,
-            draggable: {
-                stop: function(event, ui){ 
-
-                    /*$(".photo_id").each(function(){
-                        var temp = this;
-                        var photoId =  $(this).attr("data-photoId");
-                        var col =  $(this).attr("data-col");
-                        var row =  $(this).attr("data-row");
-                        console.log(photoId + "-" + col + "-" + row);
-                    });
-                    */
-                    
-                }
-            }
         });
 
         $(".gridster ul").gridster().data('gridster').disable();

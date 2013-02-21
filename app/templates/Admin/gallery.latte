@@ -574,22 +574,9 @@
         $(".gridster ul").gridster({
             widget_margins: [20, 20],
             widget_base_dimensions: [140, 140],
+            avoid_overlapped_widgets: true,
             max_size_x: 10,
             max_size_y: 1,
-            draggable: {
-                stop: function(event, ui){ 
-
-                    /*$(".photo_id").each(function(){
-                        var temp = this;
-                        var photoId =  $(this).attr("data-photoId");
-                        var col =  $(this).attr("data-col");
-                        var row =  $(this).attr("data-row");
-                        console.log(photoId + "-" + col + "-" + row);
-                    });
-                    */
-                    
-                }
-            }
         });
 
         $(".gridster ul").gridster().data('gridster').disable();

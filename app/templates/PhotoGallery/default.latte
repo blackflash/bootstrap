@@ -1,7 +1,5 @@
 {block content}
 
-
-
  <div id="breadCrumbsContainer">
             <div class="centerContainer">
                 <p>You are here:
@@ -55,16 +53,14 @@
         <script type="text/javascript" src="{$basePath}/js/grid/jquery.gridster.js"></script>
         <link rel="stylesheet" href="{$basePath}/css/jquery.gridster.css" media="screen" />
         <script type="text/javascript">
-            $(".gridster ul").gridster({
+            (".gridster ul").gridster({
                 widget_margins: [20, 20],
                 widget_base_dimensions: [140, 140],
-                max_size_x: 5,
-                autogenerate_stylesheet: true,
-                min_rows: 1,
-                max_size_y: 1
+                avoid_overlapped_widgets: true,
+                max_size_x: 10,
+                max_size_y: 1,
             });
 
-            $(".gridster ul").gridster().data('gridster').disable();
 
         </script>
 
