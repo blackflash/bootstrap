@@ -212,7 +212,7 @@
 	/* ----------------------------------
 		Facebook style Theme
 	----------------------------------- */
-	
+	div.pluginCountButton { background-color: red !important; width: 500px; }
 	div.facebook .pp_top .pp_left { background: url(../images/prettyPhoto/facebook/sprite.png) -88px -53px no-repeat; } /* Top left corner */
 	div.facebook .pp_top .pp_middle { background: url(../images/prettyPhoto/facebook/contentPatternTop.png) top left repeat-x; } /* Top pattern/color */
 	div.facebook .pp_top .pp_right { background: url(../images/prettyPhoto/facebook/sprite.png) -110px -53px no-repeat; } /* Top right corner */
