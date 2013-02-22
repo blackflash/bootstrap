@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 21, 2013 at 03:32 PM
+-- Generation Time: Feb 22, 2013 at 11:52 AM
 -- Server version: 5.5.18
 -- PHP Version: 5.3.8
 
@@ -23,37 +23,71 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questionnaire`
+-- Table structure for table `gallery_photo`
 --
 
-CREATE TABLE IF NOT EXISTS `questionnaire` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+CREATE TABLE IF NOT EXISTS `gallery_photo` (
+  `photo_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `gallery_id` int(10) unsigned NOT NULL,
+  `filename` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `description` varchar(500) DEFAULT 'none',
+  `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `namespace_id` int(10) unsigned NOT NULL,
+  `data_row` varchar(11) DEFAULT '1',
+  `data_col` varchar(11) DEFAULT '1',
+  PRIMARY KEY (`photo_id`),
+  KEY `gallery_id` (`gallery_id`),
+  KEY `namespace_id` (`namespace_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=200 ;
 
 --
--- Dumping data for table `questionnaire`
+-- Dumping data for table `gallery_photo`
 --
 
-INSERT INTO `questionnaire` (`id`, `product_id`, `time`) VALUES
-(1, 1, '2013-02-05 05:14:33'),
-(2, 1, '2013-02-05 05:14:49'),
-(3, 2, '2013-02-05 05:14:50'),
-(4, 4, '2013-02-05 05:14:51'),
-(5, 3, '2013-02-05 05:14:51'),
-(6, 1, '2013-02-05 05:14:52'),
-(7, 1, '2013-02-05 05:15:03'),
-(8, 3, '2013-02-05 05:22:36'),
-(9, 2, '2013-02-05 05:22:38'),
-(10, 2, '2013-02-05 05:22:44'),
-(11, 4, '2013-02-05 05:22:45'),
-(12, 2, '2013-02-05 05:22:57'),
-(13, 1, '2013-02-05 05:25:36'),
-(14, 2, '2013-02-05 05:25:37'),
-(15, 3, '2013-02-05 05:25:38'),
-(16, 4, '2013-02-05 05:25:39');
+INSERT INTO `gallery_photo` (`photo_id`, `gallery_id`, `filename`, `title`, `description`, `is_active`, `namespace_id`, `data_row`, `data_col`) VALUES
+(36, 6, '36.jpg', 'none', 'none', 1, 1, '1', '3'),
+(37, 6, '37.jpg', 'Sasuke', 'Itachi & Sasuke 2', 1, 1, '1', '2'),
+(38, 6, '38.jpg', 'none', 'none', 1, 1, '1', '1'),
+(53, 7, '53.jpg', 'Itachi', 'Itachi and Sasuke', 1, 14, '1', '1'),
+(71, 8, '71.jpg', 'vcielka', 'I believe I can fly', 1, 15, '2', '4'),
+(90, 8, '72.jpg', 'none', '', 1, 15, '1', '1'),
+(100, 6, '100.jpg', 'none', '', 1, 1, '1', '1'),
+(101, 8, '101.jpg', 'katuska', 'som uzasnak', 1, 15, '2', '1'),
+(106, 8, '106.jpg', 'none', '', 1, 15, '1', '4'),
+(107, 8, '107.jpg', 'none', '', 1, 15, '1', '5'),
+(108, 8, '108.jpg', 'none', '', 1, 15, '1', '2'),
+(110, 8, '110.jpg', 'none', '', 1, 15, '1', '3'),
+(112, 8, '112.jpg', 'none', '', 1, 15, '3', '4'),
+(113, 8, '113.jpg', 'none', '', 1, 15, '2', '5'),
+(132, 8, '132.jpg', 'none', '', 1, 15, '2', '2'),
+(133, 8, '133.jpg', 'none', '', 1, 15, '2', '3'),
+(159, 5, '134.jpg', 'none', '', 1, 12, '1', '1'),
+(175, 5, '160.jpg', 'none', '', 1, 12, '1', '2'),
+(176, 5, '176.jpg', 'none', '', 1, 12, '1', '3'),
+(178, 5, '178.jpg', 'none', '', 1, 12, '1', '5'),
+(180, 6, '180.jpg', 'none', '', 1, 1, '1', '1'),
+(181, 6, '181.jpg', 'none', '', 1, 1, '1', '1'),
+(182, 6, '182.jpg', 'none', '', 1, 1, '1', '1'),
+(183, 6, '183.jpg', 'none', '', 1, 1, '1', '1'),
+(184, 6, '184.jpg', 'none', '', 1, 1, '1', '1'),
+(193, 7, '193.jpg', 'none', '', 1, 14, '1', '1'),
+(194, 7, '194.jpg', 'none', '', 1, 14, '1', '1'),
+(195, 7, '195.jpg', 'none', '', 1, 14, '1', '1'),
+(196, 10, '196.jpg', 'none', '', 1, 12, '1', '1'),
+(197, 10, '197.jpg', 'none', '', 1, 12, '1', '1'),
+(198, 10, '198.jpg', 'none', '', 1, 12, '1', '1'),
+(199, 10, '199.jpg', 'none', '', 1, 12, '1', '1');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `gallery_photo`
+--
+ALTER TABLE `gallery_photo`
+  ADD CONSTRAINT `gallery_photo_ibfk_2` FOREIGN KEY (`gallery_id`) REFERENCES `gallery` (`gallery_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

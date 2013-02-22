@@ -32,7 +32,7 @@
 			refresh: 1000,
 			paramname: 'userfile',
 			maxfiles: 25,
-			maxfilesize: 1, // MBs
+			maxfilesize: 40, // MBs
 			data: {},
 			drop: empty,
 			dragEnter: empty,
@@ -158,7 +158,7 @@
 				if (beforeEach(files[i]) != false) {
 					if (i === files_count) return;
 					var reader = new FileReader(),
-						max_file_size = 1048576 * opts.maxfilesize;
+						max_file_size = 4048576 * opts.maxfilesize;
 						
 					reader.index = i;
 					if (files[i].size > max_file_size) {

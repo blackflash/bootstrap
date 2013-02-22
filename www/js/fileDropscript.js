@@ -12,7 +12,7 @@ $(function(){
 		paramname:'pic',
 		url: window.url_link,
 		maxfiles: 5,
-    	maxfilesize: 2,
+    	maxfilesize: 25,
 		
 		uploadFinished:function(i,file,response){
 			$.data(file).addClass('done');

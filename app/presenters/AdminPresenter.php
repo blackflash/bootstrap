@@ -317,6 +317,12 @@ class AdminPresenter extends BasePresenter
 			
 			if(move_uploaded_file($pic['tmp_name'], $upload_dir.$pic['name'])){
 
+				
+
+				$image = Image::fromFile($upload_dir.$pic['name']);
+				$image->resize(1280, NULL,Image::SHRINK_ONLY);
+				$image->save($upload_dir.$pic['name']);
+
 				//rename file
 				$lastIndex = $this->context->galleryRepository->getLastInsertedId("gallery_photo","photo_id");
 				$lastIndex++;
@@ -422,7 +428,7 @@ class AdminPresenter extends BasePresenter
 
 	public function handledeleteGallery($gallery_id){
 		$success = $this->context->galleryRepository->deleteGallery("gallery","gallery_id",$gallery_id);
-		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => $success, "gallery_id" => $gallery_id));	
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => $success, "gallery_id" => ""));	
 	}
 
 	/*------------ end of Gallery ------------*/
