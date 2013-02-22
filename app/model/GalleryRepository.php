@@ -251,5 +251,41 @@ class GalleryRepository extends Repository {
 		//return $this->connection->table($tableName)->findBy(array('gallery_id' => $gallery_id))->update($data);
 	}
 
+	public function getArrayOfActiveGalleries(){
+		return $this->connection->table("gallery")->where(array("is_active" => "1"))->order("namespace_id", "ASC");
+	}
+
+	//return array of random selected images
+	public function getRandomImages($arrayOfNamespaces,$columnName){
+		$namespaces = array();
+
+		foreach ($arrayOfNamespaces as $key => $value) {
+			array_push($namespaces, $this->getRandomImage("gallery_photo",$columnName,$value));
+		}
+
+		$filenames = array();
+		$counter = 0;
+
+		foreach ($arrayOfNamespaces as $key => $value) {
+			$filenames += array( $value => $namespaces[$counter]);
+			$counter++;
+		}
+		return $filenames;
+	}
+
+
+	//get random photos from array of photos selected by namespace_id from active gallery
+	public function getRandomImage($table, $column, $namespace_id){
+		$temp = $this->connection->table($table)->where(array($column => $namespace_id));
+		$randomImage = array();
+
+		foreach ($temp as $key => $value) {
+			array_push($randomImage, $value->namespace_id."/".$value->gallery_id."/".$value->filename);
+		}
+		
+		$randomImage = $randomImage[array_rand($randomImage, 1)];
+
+		return $randomImage;
+	}
 
 }

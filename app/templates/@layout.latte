@@ -42,7 +42,7 @@
         <!-- Add your site or application content here -->
         <div id="topContainer">
             <div class="centerContainer">
-                <a href="{link HomePage:}" class="logo fl"><img src="{$basePath}/img/logo.png" alt="CEIT-KE" /></a>
+                <a href="{$basePath}" class="logo fl"><img src="{$basePath}/img/logo.png" alt="CEIT-KE" /></a>
                 
                 {if !$user->isLoggedIn()}
                 <div id="topContactInfo" class="fr">
@@ -100,9 +100,9 @@
 
                 <ul id="nav" class="nav nav-pills">
 
-                    <li><a href="{link HomePage:}">Home<span>CleverFrogs</span></a></li>
+                    <li><a href="{$basePath}">Home<span>CleverFrogs</span></a></li>
                     <li><a href="{link Team:}">Team<span>Team members</span></a></li>
-                    <li><a href="{link PhotoGallery:}">Gallery<span>photo & video</span></a></li>
+                    <li><a href="{$basePath}/PhotoGallery#slide-main">Gallery<span>photo & video</span></a></li>
                     <li><a href="{link Contact:}">Contact<span>Contact us</span></a></li>
                 </ul>
             </div><!--end of centerContainer-->

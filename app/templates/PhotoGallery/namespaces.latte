@@ -1,0 +1,40 @@
+<!--[if lte IE 9]>
+<p style="font-size: 20px; padding: 50px;">Sorry, this only works in modern browsers...</p>
+<![endif]-->
+<section class="cn-container">
+
+<div class="cn-slide" id="slide-main">
+    <nav>
+    {foreach $namespaces_images as $namespace => $key}
+            <a class="window window1" href="#slide-{$namespace}"> 
+                <div class="titlePG">{$namespaces[$namespace]}</div> 
+                <img class="taller" src="{$basePath}/uploads/gallery/{$key}">
+            </a>  
+    {/foreach}
+    </nav>
+</div>
+
+{foreach $namespaces_images as $namespace => $key}
+<div class="cn-slide cn-slide-sub" id="slide-{$namespace}">
+    {foreach $gallery_namespaces as $gallery => $galleryKey}
+
+        {if $iterator->first}
+            <h2>{$namespaces[$namespace]}</h2>
+            <a href="#slide-main" class="cn-back">Back</a>
+            <nav>
+        {/if}
+        {if $galleryKey->namespace_id == $namespace}
+            <a class="window window1" n:href='photoGallery:default title => "Gallery - photos",page=>"gallery", gallery_id => $galleryKey->gallery_id, page=>"gallery" '> 
+                <div class="titlePG">{$galleryKey->title}</div> 
+                <img class="taller" src="{$basePath}/uploads/gallery/{$galleries_images[$galleryKey->gallery_id]}">
+            </a>
+        {/if}
+
+        {if $iterator->last}
+            </nav>
+        {/if}
+    {/foreach}
+</div>
+{/foreach}
+
+</section> 

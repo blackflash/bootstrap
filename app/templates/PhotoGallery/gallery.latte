@@ -1,0 +1,42 @@
+<a href="{$basePath}/PhotoGallery#slide-{$gallery_photo->fetch()->namespace_id}">Back</a>
+
+<div class="da-gallery prettyPhoto gridster">
+    <ul>
+        {foreach $gallery_photo as $photo}
+            <li data-row="{$photo->data_row}" data-col="{$photo->data_col}" data-sizex="1" data-sizey="1" class="photo_id" data-photoId="{$photo->photo_id}">
+                <div class="imagePhoto">
+                    <div class="orderPhotoIcon" id=""></div>
+                    <a href="{$basePath}/uploads/gallery/{$photo->namespace_id}/{$photo->gallery_id}/{$photo->filename}" rel="prettyPhoto[pp1]" class="photoLink" title="{$photo->description}">
+                        <img src="{$basePath}/uploads/gallery/{$photo->namespace_id}/{$photo->gallery_id}/thumbs/{$photo->filename}" class="photoImage" alt="{$photo->title}" />
+                    </a>
+                </div>
+            </li>
+        {/foreach}
+    </ul>
+</div>   
+
+<!-- prettyPhoto Plugin -->
+<link rel="stylesheet" type="text/css" href="{$basePath}/css/core/gallery.css" media="screen" />
+
+<script type="text/javascript" src="{$basePath}/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{$basePath}/plugins/prettyphoto/js/jquery.prettyPhoto.min.js"></script>
+<link rel="stylesheet" href="{$basePath}/plugins/prettyphoto/css/prettyPhoto.css" media="screen" />
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $("a[rel^='prettyPhoto']").prettyPhoto();
+  });
+</script>
+
+<script type="text/javascript" src="{$basePath}/js/grid/jquery.gridster.js"></script>
+<link rel="stylesheet" href="{$basePath}/css/jquery.gridster_Width.css" media="screen" />
+<script type="text/javascript">
+    (".gridster ul").gridster({
+        widget_margins: [20, 20],
+        widget_base_dimensions: [140, 140],
+        avoid_overlapped_widgets: true,
+        max_size_x: 10,
+        max_size_y: 1,
+    });
+
+
+</script>
