@@ -305,6 +305,57 @@
         </div>
     </div>
 
+    <div class="grid_2">
+        <div class="da-panel collapsible collapsed" >
+            <div class="da-panel-header">
+                <span class="da-panel-title">
+                    <img src="images/icons/black/16/pencil.png" alt="" />
+                    Add Video to Gallery
+                </span>
+            </div>
+            <div class="da-panel-content">
+                <form class="da-form" enctype="multipart/form-data" method="post" action="{$basePath}/admin/?do=addVideoToGallery">
+                    <div class="da-form-row">
+                        <label>Title</label>
+                        <div class="da-form-item large">
+                            <input type="text" name="title reqField" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="da-form-row">
+                        <label>Description</label>
+                        <div class="da-form-item large">
+                            <span class="formNote">Example: http://vimeo.com/60323288/?autoplay=1</span>
+                            <input type="text" name="description reqField" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="da-form-row">
+                        <label>Video link</label>
+                        <div class="da-form-item large">
+                            <textarea cols="auto" rows="auto" name="videoLink reqField"></textarea>
+                        </div>
+                    </div>
+                    <div class="da-form-row">
+                        <label>Gallery</label>
+                        <div class="da-form-item large locationSelectorGallery">
+                            <select name="namespace_id" class="chzn-select">
+                                {foreach $gallery as $gall}
+                                    <option value="{$gall->gallery_id}">{$gall->title}</option>
+                                {/foreach}
+                            </select>
+                            
+                        </div>
+                    </div>
+
+                    
+                    <div class="da-button-row">
+                        <input type="reset" value="Reset" class="da-button gray left" />
+                        <input type="submit" value="Submit" class="da-button green" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
    <div class="grid_4">
         <div class="da-panel collapsible">
             <div class="da-panel-header">
@@ -315,6 +366,7 @@
                 
             </div>
             <div class="da-panel-content">
+
                 <table id="da-ex-datatable-numberpaging" class="da-table">
                     <thead>
                         <tr>
@@ -392,7 +444,39 @@
                 </span>
             </div>
             <div class="da-panel-content with-div">
+
+                
+                <div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
+                    <ul class="gallery">
+                        {foreach $video as $value}
+                            {if $gallery_id == $value->gallery_id}
+                                <li data-row="{$value->data_row}" data-col="{$value->data_col}" data-sizex="1" data-sizey="1">
+                                    <a href="{$value->link}" rel="prettyPhoto[video]" title="{$value->description}">
+                                        <img src="{$basePath}/images/stylistica_icons/128x128/video_camera.png" alt="{$value->title}"  />
+                                    </a>
+                                    <small class="photoTittle photoTitleSmall_{$value->video_id}">{$value->title}</small>
+                                    <div class="photoEditButtons">
+                                        <span class="da-gallery-hover">
+                                            <ul>
+                                                <li class="da-gallery-delete">
+                                                    <a href="{$basePath}/admin/?do=deleteByTable&table=gallery_video&column=video_id&row_id={$value->video_id}&gallery_id={$value->video_id}&success=1">
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                </li>
+
+                            {/if}
+                            
+                        {/foreach}
+                    </ul>
+
+                </div>
+
                 <padding2 class="da-gallery prettyPhoto gridster">
+
                     <ul>
                         {foreach $gallery_photo as $photo}
                             {if $gallery_id == $photo->gallery_id}

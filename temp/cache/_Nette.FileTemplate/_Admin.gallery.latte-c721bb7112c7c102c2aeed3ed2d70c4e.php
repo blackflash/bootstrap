@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.93719800 1361540097";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1361539378;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.42014100 1361844047";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1361843665;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'sz7anh4oln')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ky4qeqvu8e')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -325,6 +325,58 @@ if (!empty($_control->snippetMode)) {
         </div>
     </div>
 
+    <div class="grid_2">
+        <div class="da-panel collapsible collapsed" >
+            <div class="da-panel-header">
+                <span class="da-panel-title">
+                    <img src="images/icons/black/16/pencil.png" alt="" />
+                    Add Video to Gallery
+                </span>
+            </div>
+            <div class="da-panel-content">
+                <form class="da-form" enctype="multipart/form-data" method="post" action="<?php echo htmlSpecialChars($basePath) ?>/admin/?do=addVideoToGallery">
+                    <div class="da-form-row">
+                        <label>Title</label>
+                        <div class="da-form-item large">
+                            <input type="text" name="title reqField" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="da-form-row">
+                        <label>Description</label>
+                        <div class="da-form-item large">
+                            <span class="formNote">Example: http://vimeo.com/60323288/?autoplay=1</span>
+                            <input type="text" name="description reqField" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="da-form-row">
+                        <label>Video link</label>
+                        <div class="da-form-item large">
+                            <textarea cols="auto" rows="auto" name="videoLink reqField"></textarea>
+                        </div>
+                    </div>
+                    <div class="da-form-row">
+                        <label>Gallery</label>
+                        <div class="da-form-item large locationSelectorGallery">
+                            <select name="namespace_id" class="chzn-select">
+<?php $iterations = 0; foreach ($gallery as $gall): ?>
+                                    <option value="<?php echo htmlSpecialChars($gall->gallery_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($gall->title, ENT_NOQUOTES) ?></option>
+<?php $iterations++; endforeach ?>
+                            </select>
+                            
+                        </div>
+                    </div>
+
+                    
+                    <div class="da-button-row">
+                        <input type="reset" value="Reset" class="da-button gray left" />
+                        <input type="submit" value="Submit" class="da-button green" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
    <div class="grid_4">
         <div class="da-panel collapsible">
             <div class="da-panel-header">
@@ -335,6 +387,7 @@ if (!empty($_control->snippetMode)) {
                 
             </div>
             <div class="da-panel-content">
+
                 <table id="da-ex-datatable-numberpaging" class="da-table">
                     <thead>
                         <tr>
@@ -424,7 +477,44 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
                 </span>
             </div>
             <div class="da-panel-content with-div">
+
+                
+                <div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
+                    <ul class="gallery">
+<?php $iterations = 0; foreach ($video as $value): if ($gallery_id == $value->gallery_id): ?>
+                                <li data-row="<?php echo htmlSpecialChars($value->data_row) ?>
+" data-col="<?php echo htmlSpecialChars($value->data_col) ?>" data-sizex="1" data-sizey="1">
+                                    <a href="<?php echo htmlSpecialChars($value->link) ?>
+" rel="prettyPhoto[video]" title="<?php echo htmlSpecialChars($value->description) ?>">
+                                        <img src="<?php echo htmlSpecialChars($basePath) ?>
+/images/stylistica_icons/128x128/video_camera.png" alt="<?php echo htmlSpecialChars($value->title) ?>"  />
+                                    </a>
+                                    <small class="photoTittle photoTitleSmall_<?php echo htmlSpecialChars($value->video_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($value->title, ENT_NOQUOTES) ?></small>
+                                    <div class="photoEditButtons">
+                                        <span class="da-gallery-hover">
+                                            <ul>
+                                                <li class="da-gallery-delete">
+                                                    <a href="<?php echo htmlSpecialChars($basePath) ?>
+/admin/?do=deleteByTable&table=gallery_video&column=video_id&row_id=<?php echo htmlSpecialChars($value->video_id) ?>
+&gallery_id=<?php echo htmlSpecialChars($value->video_id) ?>&success=1">
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                </li>
+
+<?php endif ?>
+                            
+<?php $iterations++; endforeach ?>
+                    </ul>
+
+                </div>
+
                 <padding2 class="da-gallery prettyPhoto gridster">
+
                     <ul>
 <?php $iterations = 0; foreach ($gallery_photo as $photo): if ($gallery_id == $photo->gallery_id): ?>
                             <li data-row="<?php echo htmlSpecialChars($photo->data_row) ?>

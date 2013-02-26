@@ -20,5 +20,12 @@ class ContactPresenter extends BasePresenter
 		//$this->template->tasks = $this->taskRepository->findIncomplete();
 	}
 
+	private function skuska(){
+		echo "<pre>";
+		print_r("test");
+		echo "</pre>";
+		die();
+	}
+
 
 }

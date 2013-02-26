@@ -1,4 +1,26 @@
-<a href="{$basePath}/PhotoGallery#slide-{$gallery_photo->fetch()->namespace_id}">Back</a>
+{ifset $gallery_photo->fetch()->namespace_id}
+    <a href="{$basePath}/PhotoGallery#slide-{$gallery_photo->fetch()->namespace_id}">Back</a>
+{/ifset}
+
+{if $videoCheckNamespace != ""}
+    <a href="{$basePath}/PhotoGallery#slide-{$videoCheckNamespace}">Back</a>
+
+<div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
+    <ul class="gallery">
+        {foreach $gallery_video as $value}
+                <li data-row="{$value->data_row}" data-col="{$value->data_col}" data-sizex="1" data-sizey="1">
+                    <a href="{$value->link}" rel="prettyPhoto[video]" title="{$value->description}">
+                        <img src="{$basePath}/images/stylistica_icons/128x128/video_camera.png" alt="{$value->title}"  />
+                    </a>
+                </li>
+        {/foreach}
+    </ul>
+</div>
+
+<div class="sepContainer"></div>
+
+{/if}
+    
 
 <div class="da-gallery prettyPhoto gridster">
     <ul>

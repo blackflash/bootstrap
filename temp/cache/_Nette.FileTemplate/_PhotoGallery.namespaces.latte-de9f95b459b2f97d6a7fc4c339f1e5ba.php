@@ -1,10 +1,10 @@
-<?php //netteCache[01]000415a:2:{s:4:"time";s:21:"0.16852600 1361508603";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:93:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\namespaces.latte";i:2;i:1361508601;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000415a:2:{s:4:"time";s:21:"0.96213700 1361845107";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:93:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\namespaces.latte";i:2;i:1361845106;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\namespaces.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ju0hiim307')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '4m4eb53mbw')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -20,7 +20,7 @@ if (!empty($_control->snippetMode)) {
 <!--[if lte IE 9]>
 <p style="font-size: 20px; padding: 50px;">Sorry, this only works in modern browsers...</p>
 <![endif]-->
-<section class="cn-container">
+<div class="cn-container">
 
 <div class="cn-slide" id="slide-main">
     <nav>
@@ -57,4 +57,4 @@ if (!empty($_control->snippetMode)) {
 </div>
 <?php $iterations++; endforeach; array_pop($_l->its); $iterator = end($_l->its) ?>
 
-</section> 
+</div> 

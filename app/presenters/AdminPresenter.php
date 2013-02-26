@@ -74,8 +74,10 @@ class AdminPresenter extends BasePresenter
 			case 'CleverFrogs - Gallery':
 				$this->template->gallery = $this->context->galleryRepository->getAllGalleries();
 				$this->template->namespaces = $this->context->galleryRepository->getByTable("gallery_namespace");
+				$this->template->video = $this->context->galleryRepository->getByTableAndId("gallery_video","gallery_id",$gallery_id);
 				$this->template->gallery_photo = $this->context->galleryRepository->getByTableAndId("gallery_photo","gallery_id",$gallery_id);
 				$this->template->gallery_photo_exist = $this->template->gallery_photo->fetch();
+				$this->template->gallery_photo_exist .= $this->template->video->fetch();
 			break;
 
 	    	default:
@@ -242,7 +244,6 @@ class AdminPresenter extends BasePresenter
 		$data = array(
 			'title' => $_POST["title"], 
 			'description' => $_POST["description"], 
-			'description' => $_POST["description"], 
 			'namespace_id' => $_POST["namespace_id"]
 		);
 		
@@ -251,6 +252,24 @@ class AdminPresenter extends BasePresenter
 		$this->context->galleryRepository->insertRowByTable($name,$data);
 		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => "1"));
 	}
+
+	public function handleaddVideoToGallery(){
+
+		$data = array(
+			'title' => $_POST["title_reqField"], 
+			'description' => $_POST["description_reqField"], 
+			'link' => $_POST["videoLink_reqField"], 
+			'gallery_id' => $_POST["namespace_id"]
+		);
+		
+		$name = "gallery_video";
+
+
+		$this->context->galleryRepository->insertRowByTable($name,$data);
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => "1"));
+	}
+
+
 
 	public function handleactivateByTableAndRow($gallery_id,$activate,$table){
 		$activate =  ($activate == 1) ? 0 : 1;
@@ -422,6 +441,14 @@ class AdminPresenter extends BasePresenter
 	public function handledeletePhoto($photo_id,$gallery_id,$success){	
 
 		$this->context->galleryRepository->delete($photo_id);
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => $success, "gallery_id" => $gallery_id));	
+
+	}
+
+	// delete photo by ID
+	public function handledeleteByTable($table,$column,$row_id,$gallery_id,$success){	
+
+		$this->context->galleryRepository->deleteRowByTableAndId($table,$column,$row_id);
 		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Gallery","page"=>"gallery", "success" => $success, "gallery_id" => $gallery_id));	
 
 	}

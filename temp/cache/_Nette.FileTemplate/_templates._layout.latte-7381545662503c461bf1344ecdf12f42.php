@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.31096500 1361509154";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1361509153;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.11022700 1361842197";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1361650341;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'vjvuzn7n88')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ge29gjw3w0')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lbc8d69764a4_title')) { function _lbc8d69764a4_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lbde25dec4c2_title')) { function _lbde25dec4c2_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lbad34bd6a51_head')) { function _lbad34bd6a51_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lbaa623b0514_head')) { function _lbaa623b0514_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -69,7 +69,6 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap-responsive.css" />
-    <!--<script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script> -->
     
     <!-- LIGHTBOX -->
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/lightbox.css" type="text/css" media="screen" />

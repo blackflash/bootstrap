@@ -1,16 +1,16 @@
-<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.22920900 1359849042";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte";i:2;i:1359548415;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.00238800 1361842197";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte";i:2;i:1359548415;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'av3ipmgwbk')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '3jzzz1utmh')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lb66997aff95_content')) { function _lb66997aff95_content($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['content'][] = '_lb84b5d3c240_content')) { function _lb84b5d3c240_content($_l, $_args) { extract($_args)
 ?>        <div class="blankSeparator"></div>
 
         <div class="centerContainer">

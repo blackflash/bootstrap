@@ -228,6 +228,12 @@ class GalleryRepository extends Repository {
 	}
 
 	public function insertRowByTable($tableName,$data){
+
+		if($tableName == "gallery_video"){
+			$namespace_id =  $this->connection->table("gallery")->where("gallery_id",$data["gallery_id"]);
+			$data["namespace_id"] = $namespace_id->fetch()->namespace_id;
+		}
+
 		return $this->connection->table($tableName)->insert($data);
 	}
 
@@ -283,7 +289,11 @@ class GalleryRepository extends Repository {
 			array_push($randomImage, $value->namespace_id."/".$value->gallery_id."/".$value->filename);
 		}
 		
-		$randomImage = $randomImage[array_rand($randomImage, 1)];
+		if(isset($randomImage) && sizeof($randomImage) > 0){
+			$randomImage = $randomImage[array_rand($randomImage, 1)];
+		}else 
+			$randomImage = "";
+		
 
 		return $randomImage;
 	}

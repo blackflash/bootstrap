@@ -1,10 +1,10 @@
-<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.48993200 1361539980";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte";i:2;i:1361539882;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.70727500 1361846396";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte";i:2;i:1361846395;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'pm2vimgf48')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'q4alezjqzc')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -16,8 +16,29 @@ if (!empty($_control->snippetMode)) {
 //
 // main template
 //
-?>
-<a href="<?php echo htmlSpecialChars($basePath) ?>/PhotoGallery#slide-<?php echo htmlSpecialChars($gallery_photo->fetch()->namespace_id) ?>">Back</a>
+if (isset($gallery_photo->fetch()->namespace_id)): ?>
+    <a href="<?php echo htmlSpecialChars($basePath) ?>/PhotoGallery#slide-<?php echo htmlSpecialChars($gallery_photo->fetch()->namespace_id) ?>">Back</a>
+<?php endif ?>
+
+<?php if ($videoCheckNamespace != ""): ?>
+    <a href="<?php echo htmlSpecialChars($basePath) ?>/PhotoGallery#slide-<?php echo htmlSpecialChars($videoCheckNamespace) ?>">Back</a>
+
+<div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
+    <ul class="gallery">
+<?php $iterations = 0; foreach ($gallery_video as $value): ?>
+                <li data-row="<?php echo htmlSpecialChars($value->data_row) ?>" data-col="<?php echo htmlSpecialChars($value->data_col) ?>" data-sizex="1" data-sizey="1">
+                    <a href="<?php echo htmlSpecialChars($value->link) ?>" rel="prettyPhoto[video]" title="<?php echo htmlSpecialChars($value->description) ?>">
+                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/128x128/video_camera.png" alt="<?php echo htmlSpecialChars($value->title) ?>"  />
+                    </a>
+                </li>
+<?php $iterations++; endforeach ?>
+    </ul>
+</div>
+
+<div class="sepContainer"></div>
+
+<?php endif ?>
+    
 
 <div class="da-gallery prettyPhoto gridster">
     <ul>
