@@ -24,6 +24,7 @@ class AdminPresenter extends BasePresenter
 	    }
 	}
 
+	
 	public function renderDefault($title = "CleverFrogs - dashboard",$page = "dashboard", $success = "0", $gallery_id = "none")
 	{
 		$user = $this->getUser();
