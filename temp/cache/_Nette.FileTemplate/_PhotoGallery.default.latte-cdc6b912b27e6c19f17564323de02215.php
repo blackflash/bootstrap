@@ -1,23 +1,23 @@
-<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.07607700 1361846818";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte";i:2;i:1361846816;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.88398800 1361874299";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte";i:2;i:1361873948;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'fl3kk5ny96')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '39149jgkun')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lbfa9c7834f5_content')) { function _lbfa9c7834f5_content($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['content'][] = '_lb9c8aa1cdd9_content')) { function _lb9c8aa1cdd9_content($_l, $_args) { extract($_args)
 ?><link rel="stylesheet" type="text/css" href="<?php echo htmlSpecialChars($basePath) ?>/css/photoGallery.css" media="screen" />
 <!--end of <script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
 
  <div id="breadCrumbsContainer">
             <div class="centerContainer">
                 <p>You are here:
-                    <a href="<?php echo htmlSpecialChars($basePath) ?>">Home</a>
+                    <a href="http://cleverfrogs.com">Home</a>
                     &nbsp; / &nbsp;
                     <strong><?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ?></strong>
                 </p>
@@ -29,7 +29,7 @@ if (!function_exists($_l->blocks['content'][] = '_lbfa9c7834f5_content')) { func
         <div class="row-fluid">
             <div class="container">
 
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate($includeBoard, $template->getParameters(), $_l->templates['fl3kk5ny96'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate($includeBoard, $template->getParameters(), $_l->templates['39149jgkun'])->render() ?>
 
             </div>        
         </div><!--end of row-fluid-->     

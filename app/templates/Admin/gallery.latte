@@ -324,13 +324,13 @@
                     <div class="da-form-row">
                         <label>Description</label>
                         <div class="da-form-item large">
-                            <span class="formNote">Example: http://vimeo.com/60323288/?autoplay=1</span>
                             <input type="text" name="description reqField" autocomplete="off">
                         </div>
                     </div>
                     <div class="da-form-row">
                         <label>Video link</label>
                         <div class="da-form-item large">
+                            <span class="formNote">Example: http://vimeo.com/60323288/?autoplay=1</span>
                             <textarea cols="auto" rows="auto" name="videoLink reqField"></textarea>
                         </div>
                     </div>
@@ -475,7 +475,7 @@
 
                 </div>
 
-                <padding2 class="da-gallery prettyPhoto gridster">
+                <padding2 class="da-gallery prettyPhoto gridster gridster2">
 
                     <ul>
                         {foreach $gallery_photo as $photo}
@@ -664,6 +664,16 @@
         });
 
         $(".gridster ul").gridster().data('gridster').disable();
+
+        $(".gridster2 ul").gridster({
+            widget_margins: [20, 20],
+            widget_base_dimensions: [140, 140],
+            avoid_overlapped_widgets: true,
+            max_size_x: 10,
+            max_size_y: 1,
+        });
+
+        $(".gridster2 ul").gridster().data('gridster2').disable();
 
     </script>
 

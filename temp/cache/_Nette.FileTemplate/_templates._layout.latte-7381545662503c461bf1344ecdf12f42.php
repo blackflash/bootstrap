@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.11022700 1361842197";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1361650341;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.98903000 1361874299";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1361873914;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ge29gjw3w0')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '3v6s8y0pyi')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lbde25dec4c2_title')) { function _lbde25dec4c2_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lbd2756171f9_title')) { function _lbd2756171f9_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lbaa623b0514_head')) { function _lbaa623b0514_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lbd062ce7a4b_head')) { function _lbd062ce7a4b_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -87,7 +87,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <!-- Add your site or application content here -->
         <div id="topContainer">
             <div class="centerContainer">
-                <a href="<?php echo htmlSpecialChars($basePath) ?>" class="logo fl"><img src="<?php echo htmlSpecialChars($basePath) ?>/img/logo.png" alt="CEIT-KE" /></a>
+                <a href="http://cleverfrogs.com" class="logo fl"><img src="<?php echo htmlSpecialChars($basePath) ?>/img/logo.png" alt="CEIT-KE" /></a>
                 
 <?php if (!$user->isLoggedIn()): ?>
                 <div id="topContactInfo" class="fr">
@@ -149,9 +149,9 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 
                 <ul id="nav" class="nav nav-pills">
 
-                    <li><a href="<?php echo htmlSpecialChars($basePath) ?>">Home<span>CleverFrogs</span></a></li>
+                    <li><a href="http://cleverfrogs.com">Home<span>CleverFrogs</span></a></li>
                     <li><a href="<?php echo htmlSpecialChars($_control->link("Team:")) ?>">Team<span>Team members</span></a></li>
-                    <li><a href="<?php echo htmlSpecialChars($basePath) ?>/PhotoGallery#slide-main">Gallery<span>photo & video</span></a></li>
+                    <li><a href="<?php echo htmlSpecialChars($_control->link("PhotoGallery:")) ?>#slide-main">Gallery<span>photo & video</span></a></li>
                     <li><a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact<span>Contact us</span></a></li>
                 </ul>
             </div><!--end of centerContainer-->

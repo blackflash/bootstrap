@@ -1,10 +1,10 @@
-<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.70727500 1361846396";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte";i:2;i:1361846395;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.73741100 1361908254";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte";i:2;i:1361875014;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'q4alezjqzc')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'lmne74dimp')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -27,6 +27,8 @@ if (isset($gallery_photo->fetch()->namespace_id)): ?>
     <ul class="gallery">
 <?php $iterations = 0; foreach ($gallery_video as $value): ?>
                 <li data-row="<?php echo htmlSpecialChars($value->data_row) ?>" data-col="<?php echo htmlSpecialChars($value->data_col) ?>" data-sizex="1" data-sizey="1">
+                    <small class="photoTittle photoTitleSmall_<?php echo htmlSpecialChars($value->video_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($value->title, ENT_NOQUOTES) ?></small>
                     <a href="<?php echo htmlSpecialChars($value->link) ?>" rel="prettyPhoto[video]" title="<?php echo htmlSpecialChars($value->description) ?>">
                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/128x128/video_camera.png" alt="<?php echo htmlSpecialChars($value->title) ?>"  />
                     </a>
@@ -82,4 +84,9 @@ if (isset($gallery_photo->fetch()->namespace_id)): ?>
         max_size_x: 10,
         max_size_y: 1,
     });
+
+     $(".gridster ul").gridster().data('gridster').disable();
 </script>
+
+
+<div class="fillContainerM"></div>

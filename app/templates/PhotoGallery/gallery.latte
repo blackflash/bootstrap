@@ -9,6 +9,7 @@
     <ul class="gallery">
         {foreach $gallery_video as $value}
                 <li data-row="{$value->data_row}" data-col="{$value->data_col}" data-sizex="1" data-sizey="1">
+                    <small class="photoTittle photoTitleSmall_{$value->video_id}">{$value->title}</small>
                     <a href="{$value->link}" rel="prettyPhoto[video]" title="{$value->description}">
                         <img src="{$basePath}/images/stylistica_icons/128x128/video_camera.png" alt="{$value->title}"  />
                     </a>
@@ -59,4 +60,9 @@
         max_size_x: 10,
         max_size_y: 1,
     });
+
+     $(".gridster ul").gridster().data('gridster').disable();
 </script>
+
+
+<div class="fillContainerM"></div>

@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.42014100 1361844047";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1361843665;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.82831400 1361874455";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1361874449;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ky4qeqvu8e')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'w0a5g6r4y3')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -344,13 +344,13 @@ if (!empty($_control->snippetMode)) {
                     <div class="da-form-row">
                         <label>Description</label>
                         <div class="da-form-item large">
-                            <span class="formNote">Example: http://vimeo.com/60323288/?autoplay=1</span>
                             <input type="text" name="description reqField" autocomplete="off" />
                         </div>
                     </div>
                     <div class="da-form-row">
                         <label>Video link</label>
                         <div class="da-form-item large">
+                            <span class="formNote">Example: http://vimeo.com/60323288/?autoplay=1</span>
                             <textarea cols="auto" rows="auto" name="videoLink reqField"></textarea>
                         </div>
                     </div>
@@ -513,7 +513,7 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
 
                 </div>
 
-                <padding2 class="da-gallery prettyPhoto gridster">
+                <padding2 class="da-gallery prettyPhoto gridster gridster2">
 
                     <ul>
 <?php $iterations = 0; foreach ($gallery_photo as $photo): if ($gallery_id == $photo->gallery_id): ?>
@@ -713,6 +713,16 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
         });
 
         $(".gridster ul").gridster().data('gridster').disable();
+
+        $(".gridster2 ul").gridster({
+            widget_margins: [20, 20],
+            widget_base_dimensions: [140, 140],
+            avoid_overlapped_widgets: true,
+            max_size_x: 10,
+            max_size_y: 1,
+        });
+
+        $(".gridster2 ul").gridster().data('gridster2').disable();
 
     </script>
 
