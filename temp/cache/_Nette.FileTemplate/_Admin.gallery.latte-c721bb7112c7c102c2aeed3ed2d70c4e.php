@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.66873600 1362112582";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1362112581;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.44941000 1362148734";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1362139336;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'x5hqxiy23q')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'aei6x01w2g')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -479,42 +479,41 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
             <div class="da-panel-content with-div">
                 
                 
-                <div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
-                    <ul class="gallery">
+            <div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
+                <ul class="gallery">
 <?php $iterations = 0; foreach ($video as $value): if ($gallery_id == $value->gallery_id): ?>
-                                <li data-row="<?php echo htmlSpecialChars($value->data_row) ?>
+                            <li data-row="<?php echo htmlSpecialChars($value->data_row) ?>
 " data-col="<?php echo htmlSpecialChars($value->data_col) ?>" data-sizex="1" data-sizey="1">
-                                    <a href="<?php echo htmlSpecialChars($value->link) ?>
+                                <a href="<?php echo htmlSpecialChars($value->link) ?>
 " rel="prettyPhoto[video]" title="<?php echo htmlSpecialChars($value->description) ?>">
-                                        <img src="<?php echo htmlSpecialChars($basePath) ?>
+                                    <img src="<?php echo htmlSpecialChars($basePath) ?>
 /images/stylistica_icons/128x128/video_camera.png" alt="<?php echo htmlSpecialChars($value->title) ?>"  />
-                                    </a>
-                                    <small class="photoTittle photoTitleSmall_<?php echo htmlSpecialChars($value->video_id) ?>
+                                </a>
+                                <small class="photoTittle photoTitleSmall_<?php echo htmlSpecialChars($value->video_id) ?>
 "><?php echo Nette\Templating\Helpers::escapeHtml($value->title, ENT_NOQUOTES) ?></small>
-                                    <div class="photoEditButtons">
-                                        <span class="da-gallery-hover">
-                                            <ul>
-                                                <li class="da-gallery-delete">
-                                                    <a href="<?php echo htmlSpecialChars($basePath) ?>
+                                <div class="photoEditButtons">
+                                    <span class="da-gallery-hover">
+                                        <ul>
+                                            <li class="da-gallery-delete">
+                                                <a href="<?php echo htmlSpecialChars($basePath) ?>
 /admin/?do=deleteByTable&table=gallery_video&column=video_id&row_id=<?php echo htmlSpecialChars($value->video_id) ?>
 &gallery_id=<?php echo htmlSpecialChars($value->video_id) ?>&success=1">
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </span>
-                                    </div>
-                                </li>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </li>
 
 <?php endif ?>
-                            
+                        
 <?php $iterations++; endforeach ?>
-                    </ul>
+                </ul>
 
-                </div>
+            </div>
 
-                <padding2 class="da-gallery prettyPhoto gridster gridster2">
-
+            <padding2 class="da-gallery prettyPhoto gridster gridster2">
                     <ul>
 <?php $iterations = 0; foreach ($gallery_photo as $photo): if ($gallery_id == $photo->gallery_id): ?>
                             <li data-row="<?php echo htmlSpecialChars($photo->data_row) ?>

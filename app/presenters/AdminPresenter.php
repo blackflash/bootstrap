@@ -120,6 +120,27 @@ class AdminPresenter extends BasePresenter
 	    }
 	}
 
+	function handlejsonUpdateLocation($location_id, $title, $description, $city_id){
+		if ($this->isAjax()) {
+
+			$success = $this->context->galleryRepository->updateTableById("location", "location_id", $location_id, 
+				array( "title" => $title, "description" => $description, "city_id" => $city_id));
+
+			$this->template->locations   = $this->context->generalRepository->getByTable("location");
+			
+			$jsondata = array(
+				'success'     => $success, 
+				"location_id"    => $location_id,
+				"title"       => $title,
+				"description" => $description,
+				"city_id" => $city_id
+			);
+
+	        echo json_encode($jsondata);
+	        die();
+	    }
+	}
+
 	/*------------------- TASKS ----------------*/
 
 	public function handleactivateTask($taskId,$activate){
