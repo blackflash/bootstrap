@@ -186,20 +186,14 @@
                                     <td>{$task->created}</td>
                                     <td id="taskStatus_{$task->id}">{$task->text}</td>
                                     <td class="da-icon-column">
+                                        <a href="#" name="printtask">
+                                            <img src="{$basePath}/images/icons/color/pencil.png" />
+                                        </a>
                                         <a href="{$basePath}/admin/?do=deleteTask&taskId={$task->id}">
                                             <img src="{$basePath}/images/icons/color/trash.png" />
                                         </a>
-
-                                        <a href="#" name="printtask">
-                                            <img src="{$basePath}/images/icons/color/pdf.png" />
-                                        </a>
-                                        
                                     </td>
-                                    
-                                    
-
                                 </tr>
-
 
                                 <script type="text/javascript">
                                     $(function () {

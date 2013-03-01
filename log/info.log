@@ -1,0 +1,1 @@
+[2013-03-01 05-55-26] Nette\Application\UI\BadSignalException: There is no handler for signal 'jsonDeleteLocation' in class AdminPresenter. in C:\Program Files (x86)\VertrigoServ\www\bootstrap\libs\Nette\Application\UI\PresenterComponent.php:280  @  http://localhost/bootstrap/admin/?do=jsonDeleteLocation  @@  exception-2013-03-01-05-55-26-6858499f1bc1b830cbc0e1319139e403.html

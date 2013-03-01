@@ -1,10 +1,10 @@
-<?php //netteCache[01]000403a:2:{s:4:"time";s:21:"0.49632400 1362093512";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:81:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\tasks.latte";i:2;i:1360459085;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000403a:2:{s:4:"time";s:21:"0.07333100 1362112434";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:81:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\tasks.latte";i:2;i:1362112432;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\tasks.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '7eyj96jadx')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'hpqgv8p4dm')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -208,21 +208,15 @@ if (!empty($_control->snippetMode)) {
                                     <td id="taskStatus_<?php echo htmlSpecialChars($task->id) ?>
 "><?php echo Nette\Templating\Helpers::escapeHtml($task->text, ENT_NOQUOTES) ?></td>
                                     <td class="da-icon-column">
+                                        <a href="#" name="printtask">
+                                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/pencil.png" />
+                                        </a>
                                         <a href="<?php echo htmlSpecialChars($basePath) ?>
 /admin/?do=deleteTask&taskId=<?php echo htmlSpecialChars($task->id) ?>">
                                             <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/trash.png" />
                                         </a>
-
-                                        <a href="#" name="printtask">
-                                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/pdf.png" />
-                                        </a>
-                                        
                                     </td>
-                                    
-                                    
-
                                 </tr>
-
 
                                 <script type="text/javascript">
                                     $(function () {

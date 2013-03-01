@@ -33,6 +33,7 @@ common:
 		listRepository: Todo\ListRepository
 		projectRepository: Todo\ProjectRepository
 		galleryRepository: Todo\GalleryRepository
+		generalRepository: Todo\GeneralRepository
 
 	factories:
 

@@ -348,7 +348,8 @@ h1, h2, h3, h4, h5, h6 {
     /*------------- top section ---------------*/
 
     div#topContainer {
-    	background: url("../img/topBG.png") 0 0 repeat;
+        background-color: #f9f9f9;
+    	/*background: url("../img/topBG.png") 0 0 repeat;*/
     	height: 130px;
     }
 

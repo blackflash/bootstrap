@@ -4,7 +4,7 @@
                     <!-- Main Navigation -->
                     <div id="da-main-nav" class="da-button-container">
                         <ul>
-                            
+                            {if $user->identity->username == "admin" }
                             <li  {if $title == "CleverFrogs - dashboard" } class="active" {/if}>
                             	<a href="{link Admin:}">  
                                 	<!-- Icon Container -->
@@ -14,16 +14,21 @@
                                 	Dashboard
                                 </a>
                             </li>
-
+                            {/if}
                             {if $user->identity->username == "admin" }
-                            <li  {if $title == "CleverFrogs - graphs" } class="active" {/if}>
-                                <a n:href='Admin:default title=>"CleverFrogs - graphs",page=>"graphs" '>  
+                            <li {if $title == "CleverFrogs - campaigns" } class="active" {/if}>
+                                <a href='' >
                                     <!-- Icon Container -->
                                     <span class="da-nav-icon">
-                                        <img src="{$basePath}/images/icons/black/32/graph.png" alt="Graphs" />
+                                        <img src="{$basePath}/images/icons/black/32/cog_4.png" alt="Campaigns" />
                                     </span>
-                                    Graphs
+                                    Campaigns
                                 </a>
+                                <ul {if $title != "CleverFrogs - campaigns" } class="closed" {/if}>
+                                    <li><a n:href='Admin:default title=>"CleverFrogs - campaigns",page=>"campaigns" ' >Create Campaign</a></li>
+                                    <li><a href="form-elements.html">Create category of products</a></li>
+                                    <li><a href="form-validation.html">Create product or service</a></li>
+                                </ul>
                             </li>
                             {/if}
 
@@ -51,17 +56,7 @@
                             </li>
                             {/if}
 
-                            {if $user->identity->username == "admin" }
-                            <li {if $title == "CleverFrogs - projects" } class="active" {/if}>
-                                <a n:href='Admin:default title=>"CleverFrogs - projects",page=>"projects" ' >
-                                    <!-- Icon Container -->
-                                    <span class="da-nav-icon">
-                                        <img src="{$basePath}/images/icons/black/32/abacus.png" alt="Projects" />
-                                    </span>
-                                    Projects
-                                </a>
-                            </li>
-                            {/if}
+                            
                             <!--end of 
                             {if $user->identity->username == "admin" }
                             <li {if $title == "CleverFrogs - commit history" } class="active" {/if}>
@@ -75,28 +70,7 @@
                             </li>
                             {/if}
                             -->
-                            {if $user->identity->username == "admin" }
-                            <li {if $title == "CleverFrogs - documentation" } class="active" {/if}>
-                                <a n:href='Admin:default title=>"CleverFrogs - documentation",page=>"documentation" ' >
-                                    <!-- Icon Container -->
-                                    <span class="da-nav-icon">
-                                        <img src="{$basePath}/images/icons/black/32/word_documents_1.png" alt="Documentation" />
-                                    </span>
-                                    Documentation
-                                </a>
-                            </li>
-                            {/if}
-                            {if $user->identity->username == "admin" }
-                            <li {if $title == "CleverFrogs - feedbacks" } class="active" {/if}>
-                                <a n:href='Admin:default title=>"CleverFrogs - feedbacks",page=>"feedbacks" ' >
-                                    <!-- Icon Container -->
-                                    <span class="da-nav-icon">
-                                        <img src="{$basePath}/images/icons/black/32/pacman.png" alt="Feedbacks" />
-                                    </span>
-                                    Feedbacks
-                                </a>
-                            </li>
-                            {/if}
+
                             {if $user->identity->username == "admin" }
                             <li {if $title == "CleverFrogs - Gallery" } class="active" {/if}>
                                 <a n:href='Admin:default title=>"CleverFrogs - Gallery",page=>"gallery" ' >
@@ -108,6 +82,43 @@
                                 </a>
                             </li>
                             {/if}
+
+                            {if $user->identity->username == "admin" }
+                            <li {if $title == "CleverFrogs - Locations" } class="active" {/if}>
+                                <a n:href='Admin:default title=>"CleverFrogs - Locations",page=>"locations" ' >
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <img src="{$basePath}/images/icons/black/32/airplane.png" alt="Locations" />
+                                    </span>
+                                    Locations
+                                </a>
+                            </li>
+                            {/if}
+
+                            {if $user->identity->username == "admin" }
+                            <li {if $title == "CleverFrogs - documentation" } class="active" {/if}>
+                                <a n:href='Admin:default title=>"CleverFrogs - documentation",page=>"documentation" ' >
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <img src="{$basePath}/images/icons/black/32/word_documents_1.png" alt="Documentation" />
+                                    </span>
+                                    Documentation
+                                </a>
+                            </li>
+                            {/if}
+                            <!--end of 
+                            {if $user->identity->username == "admin" }
+                            <li {if $title == "CleverFrogs - feedbacks" } class="active" {/if}>
+                                <a n:href='Admin:default title=>"CleverFrogs - feedbacks",page=>"feedbacks" ' >
+                                    <span class="da-nav-icon">
+                                        <img src="{$basePath}/images/icons/black/32/pacman.png" alt="Feedbacks" />
+                                    </span>
+                                    Feedbacks
+                                </a>
+                            </li>
+                            {/if}
+                            -->
+                            
                             
                         </ul>
                     </div>

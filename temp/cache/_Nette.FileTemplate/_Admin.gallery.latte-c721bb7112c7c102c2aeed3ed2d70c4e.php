@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.60279200 1362084757";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1362081116;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.66873600 1362112582";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte";i:2;i:1362112581;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ytashamvuj')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'x5hqxiy23q')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -442,7 +442,7 @@ if (!empty($_control->snippetMode)) {
 ,<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($gall->title)) ?>)" /></a>
 
                                     <a href="#" onclick="JavaScript:deleteConfirm(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($gall->gallery_id)) ?>)" name="">
-                                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/cross.png" 
+                                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/trash.png" 
                                             onclick="JavaScript:ajaxPreview(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($gall->gallery_id)) ?>)"
                                             />
                                         </a>
@@ -477,6 +477,7 @@ collapsed<?php endif ?>" name='<?php if ($gallery_photo_exist == ""): ?>hideButt
                 </span>
             </div>
             <div class="da-panel-content with-div">
+                
                 
                 <div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
                     <ul class="gallery">

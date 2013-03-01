@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.93359700 1361843366";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\default.latte";i:2;i:1361230618;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.61711200 1362110631";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\default.latte";i:2;i:1362110624;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ued6j4pfv1')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'jkztz5mnks')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -123,13 +123,13 @@ if (!empty($_control->snippetMode)) {
 
 <body>
 
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate("options.latte", $template->getParameters(), $_l->templates['ued6j4pfv1'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate("options.latte", $template->getParameters(), $_l->templates['jkztz5mnks'])->render() ?>
 
 	<!-- Main Wrapper. Set this to 'fixed' for fixed layout and 'fluid' for fluid layout' -->
 	<div id="da-wrapper" class="fluid">
     
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate("header.latte", $template->getParameters(), $_l->templates['ued6j4pfv1'])->render() ?>
-    
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate("header.latte", $template->getParameters(), $_l->templates['jkztz5mnks'])->render() ?>
+        
         <!-- Content -->
         <div id="da-content">
             
@@ -139,12 +139,12 @@ if (!empty($_control->snippetMode)) {
 	            <!-- Sidebar Separator do not remove -->
                 <div id="da-sidebar-separator"></div>
                 
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate("sidebar.latte", $template->getParameters(), $_l->templates['ued6j4pfv1'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate("sidebar.latte", $template->getParameters(), $_l->templates['jkztz5mnks'])->render() ?>
                 
                 <!-- Main Content Wrapper -->
                 <div id="da-content-wrap" class="clearfix">
                 
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate($includeBoard, $template->getParameters(), $_l->templates['ued6j4pfv1'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate($includeBoard, $template->getParameters(), $_l->templates['jkztz5mnks'])->render() ?>
             
         </div>
         

@@ -4,6 +4,7 @@ use Nette\Application\UI\Form;
 use Nette\Image;
 use Nette\Http\Request;
 use Nette\Http\FileUpload;
+use Nette\Http\Url;
 require LIBS_DIR . '/mpdf/mpdf.php';
 require LIBS_DIR . '/docgen/docgen.php';
 
@@ -38,19 +39,15 @@ class AdminPresenter extends BasePresenter
 	    		$this->template->dishFeedbacks = $this->context->galleryRepository->getCountOfRowsByTable("questionnaire");
     		break;
 
-    		case 'CleverFrogs - graphs':
-	    		
-    		break;
-
 	    	case 'CleverFrogs - users':
 	    		$this->template->users   = $this->context->userRepository->getAllUsers();
 				$this->template->projects= $this->context->projectRepository->getTable();
 				$this->template->commits = $this->get_commits("CleverFrogs", "blackflash");
 	    	break;
 
-	    	case 'CleverFrogs - projects':
+	    	case 'CleverFrogs - campaigns':
 	    		$this->template->users   = $this->context->userRepository->getAllUsers();
-				$this->template->projects= $this->context->projectRepository->getTable();
+				$this->template->campaign = $this->context->projectRepository->getTable();
 	    	break;
 	    	
 	    	case 'CleverFrogs - commit history':
@@ -80,12 +77,47 @@ class AdminPresenter extends BasePresenter
 				$this->template->gallery_photo_exist .= $this->template->video->fetch();
 			break;
 
+			case 'CleverFrogs - Locations':
+				$this->template->cities   = $this->context->generalRepository->getByTable("city");
+				$this->template->locations   = $this->context->generalRepository->getByTable("location");
+			break;
+
 	    	default:
 	    		$this->template->includeBoard = $page.".latte";
 	    	break;
 	    }
 	   
         $this->template->includeBoard = $page.".latte";
+	}
+
+	/*------------------ LOCATIONS ----------------*/
+
+	public function handleaddCity(){
+
+		$name = "city";
+		$data = $this->request->getPost();
+
+		$this->context->generalRepository->insertRowByTable($name,$data);
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Locations","page"=>"locations", "success" => "1"));
+	}
+
+	public function handleaddLocation(){
+
+		$name = "location";
+		$data = $this->request->getPost();
+
+		$this->context->generalRepository->insertRowByTable($name,$data);
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Locations","page"=>"locations", "success" => "1"));
+	}
+
+	public function handlejsonDeleteLocation($location_id){
+		if ($this->isAjax()) {
+
+			$jsondata = $this->context->generalRepository->deleteRowByTableAndId("location","location_id",$location_id);
+
+	        echo json_encode($jsondata);
+	        die();
+	    }
 	}
 
 	/*------------------- TASKS ----------------*/
