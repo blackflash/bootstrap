@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.55631800 1362114435";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\locations.latte";i:2;i:1362114433;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.98311700 1362146761";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\locations.latte";i:2;i:1362146761;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\locations.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'yhegn337ea')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '2evf27jtcf')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -138,8 +138,44 @@ if (!empty($_control->snippetMode)) {
     }
 
 
-</script>
+    /*---------------- UPDATE LOCATION ---------------*/
+
+    function editLocation(location_id, title, description, city_id){
+
+        /*var path = window.location.href.split('/');
+
+        var src = path[0] + "/" + path[1] + "/" + path[2] + "/" + path[3] +  "/www/uploads/gallery/" + namespace_id+ "/" + gallery_id + "/" +  filename;
+        var srcThumb = path[0] + "/" + path[1] + "/" + path[2] + "/" + path[3] +  "/www/uploads/gallery/" + namespace_id+ "/" + gallery_id+ "/thumbs/" + filename;
+
+        var title = $('.photoTitleSmall_' + photo_id).html();
+        var description = $('.photoTitleSmallDescription_' + photo_id).html();
+*/
+        
+        console.log(city_id );
+
+        $('.editLocationId').attr("name",location_id);
+        $('.editLocationTitle').attr("value",title);
+        $('.editLocationDescription').html(description);
+
+
+        $('#editLocationCity option[value="'+city_id+'"]').attr('selected', 'selected');
+        $('#editLocationCity').chosen().change();
+        $('#editLocationCity').trigger('liszt:updated');
+        
+
+         $("#da-ex-dialog-form-div").dialog("option",{
+            resizable: false,
+            modal: true,
+            hide: 'slow',
+            show: 'slow',
+            width: 400,
+        }).dialog("open")
     
+    }
+
+</script>
+
+    <!-- DELETE DIALOG -->
     <div id="DeleteDialog" title="Delete confirmation" style="display: none">
         <div id="grid_2">
             <center><h3>Are you sure ?</h3>
@@ -150,6 +186,46 @@ if (!empty($_control->snippetMode)) {
         </div>
     </div>
 
+    <!-- UPDATE LOCATION DIALOG -->
+    <div id="da-ex-dialog-form-div" class="no-padding" title="Edit Photo">
+        <div class="da-panel-content">
+            <form id="da-ex-dialog-form-val" class="da-form photoUpdateForm">
+                <div id="da-validate-error" class="da-message error" style="display:none;"></div>
+
+                <div class="editLocationId" name=""></div>
+
+                <fieldset class="da-form-inline">
+                    <legend>City <span class="required">*</legend>
+                    <select name="city_id" class="chzn-select" id="editLocationCity">
+<?php $iterations = 0; foreach ($iterator = $_l->its[] = new Nette\Iterators\CachingIterator($cities) as $city): ?>
+                            <option value="<?php echo htmlSpecialChars($city->city_id) ?>
+" position="<?php echo htmlSpecialChars($iterator->counter) ?>" class="updateLocationCity"><?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?></option>
+<?php $iterations++; endforeach; array_pop($_l->its); $iterator = end($_l->its) ?>
+                    </select>
+                    <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
+                </fieldset>
+
+                <fieldset class="da-form-inline">
+                    <legend>Title</legend>
+                    <div class="da-form-row">
+                        <input type="text" name="reqField" class="editLocationTitle" />
+                    </div>
+                </fieldset>
+
+                <fieldset class="da-form-inline">
+                    <legend>Description</legend>
+                    <div class="da-form-row">
+                        <textarea rows="auto" cols="auto" class="editLocationDescription" name="reqField"></textarea>
+                    </div>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+    <!-- end of Non displayed panels -->
+
+
+    <!-- ADD CITY PANEL -->
     <div class="grid_2">
         <div class="da-panel collapsible collapsed" >
             <div class="da-panel-header">
@@ -182,6 +258,8 @@ if (!empty($_control->snippetMode)) {
         </div>
     </div>
 
+
+    <!--end of ADD LOCATION -->
     <div class="grid_2">
         <div class="da-panel collapsible collapsed" >
             <div class="da-panel-header">
@@ -213,7 +291,6 @@ if (!empty($_control->snippetMode)) {
 "><?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?></option>
 <?php $iterations++; endforeach ?>
                             </select>
-                            
                         </div>
                     </div>
                     
@@ -261,7 +338,13 @@ if (!empty($_control->snippetMode)) {
                                 <td id="taskStatus_<?php echo htmlSpecialChars($location->location_id) ?>
 "><?php echo Nette\Templating\Helpers::escapeHtml($location->description, ENT_NOQUOTES) ?></td>
                                 <td class="da-icon-column">
-                                    <a href="#">
+                                    <a href="#" onclick="JavaScript:editLocation(
+                                                <?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($location->location_id)) ?>,
+                                                <?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($location->title)) ?>,
+                                                <?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($location->description)) ?>,
+                                                <?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($location->city_id)) ?>
+
+                                    )">
                                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/pencil.png" />
                                     </a>
                                     <a href="#" onclick="JavaScript:deleteConfirm(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($location->location_id)) ?>)">

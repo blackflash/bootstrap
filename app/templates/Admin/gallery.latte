@@ -446,37 +446,36 @@
             <div class="da-panel-content with-div">
                 
                 
-                <div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
-                    <ul class="gallery">
-                        {foreach $video as $value}
-                            {if $gallery_id == $value->gallery_id}
-                                <li data-row="{$value->data_row}" data-col="{$value->data_col}" data-sizex="1" data-sizey="1">
-                                    <a href="{$value->link}" rel="prettyPhoto[video]" title="{$value->description}">
-                                        <img src="{$basePath}/images/stylistica_icons/128x128/video_camera.png" alt="{$value->title}"  />
-                                    </a>
-                                    <small class="photoTittle photoTitleSmall_{$value->video_id}">{$value->title}</small>
-                                    <div class="photoEditButtons">
-                                        <span class="da-gallery-hover">
-                                            <ul>
-                                                <li class="da-gallery-delete">
-                                                    <a href="{$basePath}/admin/?do=deleteByTable&table=gallery_video&column=video_id&row_id={$value->video_id}&gallery_id={$value->video_id}&success=1">
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </span>
-                                    </div>
-                                </li>
+            <div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
+                <ul class="gallery">
+                    {foreach $video as $value}
+                        {if $gallery_id == $value->gallery_id}
+                            <li data-row="{$value->data_row}" data-col="{$value->data_col}" data-sizex="1" data-sizey="1">
+                                <a href="{$value->link}" rel="prettyPhoto[video]" title="{$value->description}">
+                                    <img src="{$basePath}/images/stylistica_icons/128x128/video_camera.png" alt="{$value->title}"  />
+                                </a>
+                                <small class="photoTittle photoTitleSmall_{$value->video_id}">{$value->title}</small>
+                                <div class="photoEditButtons">
+                                    <span class="da-gallery-hover">
+                                        <ul>
+                                            <li class="da-gallery-delete">
+                                                <a href="{$basePath}/admin/?do=deleteByTable&table=gallery_video&column=video_id&row_id={$value->video_id}&gallery_id={$value->video_id}&success=1">
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </li>
 
-                            {/if}
-                            
-                        {/foreach}
-                    </ul>
+                        {/if}
+                        
+                    {/foreach}
+                </ul>
 
-                </div>
+            </div>
 
-                <padding2 class="da-gallery prettyPhoto gridster gridster2">
-
+            <padding2 class="da-gallery prettyPhoto gridster gridster2">
                     <ul>
                         {foreach $gallery_photo as $photo}
                             {if $gallery_id == $photo->gallery_id}
