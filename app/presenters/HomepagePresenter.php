@@ -32,6 +32,8 @@ class HomepagePresenter extends BasePresenter
 
 	        $user->login($values->username, $values->password);
 
+	        $user->setExpiration(0);
+
 	        $this->template->username = $values->username;
 
 	        $this->flashMessage('Login was successful.', 'success');
