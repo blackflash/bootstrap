@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.22657500 1362112669";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte";i:2;i:1362112667;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.83236300 1362229886";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte";i:2;i:1362229876;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'khgk9lojmy')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'uvf72gofjx')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -66,11 +66,31 @@ if (!empty($_control->snippetMode)) {
         window.globalVar = id; 
     }
 
-    function deleteUser()
+    /*---------start of delete  -------*/
+
+    function deleteCampaignStart()
     {   
-        window.location = $("#deleteLink_"+window.globalVar).attr('href');
+        ajaxDeleteCampaign(window.globalVar);
+        return false;
     }
 
+    function ajaxDeleteCampaign(id){
+       $.ajax({    //create an ajax request to load_page.php
+          type: "POST",
+          url: "?do=jsonDeleteCampaign",
+          data: { campaign_id: id },
+          dataType: "html",   //expect html to be returned
+          success: function(msg){ 
+
+              if(parseInt(msg)!=0)    //if no errors
+              {
+                $( "#DeleteDialog" ).dialog( "close" );
+                $("#campaign_"+id).remove();
+              }
+          }
+      });
+    }
+    /*-------------end of delete -------------------*/
 
     function ajaxPreview(id){
         
@@ -124,37 +144,9 @@ if (!empty($_control->snippetMode)) {
         <div id="grid_2">
             <center><h3>Are you sure ?</h3>
                 <div class="clearfix"></div>
-                <input type="button" class="da-button red large"  id="deleteButton" value="Delete" onclick="JavaScript:deleteUser()" />
+                <input type="button" class="da-button red large"  id="deleteButton" value="Delete" onclick="JavaScript:deleteCampaignStart()" />
                 <input type="button" class="da-button gray large" id="cancelButton" value="Cancel" onclick='JavaScript:$( "#DeleteDialog" ).dialog( "close" );' /> 
             </center>
-        </div>
-    </div>
-        
-    <div id="da-ex-validate4" title="Add Users to project" style="display: none">
-        <div class="da-form">
-            <fieldset class="da-form-inline">
-                <legend>Account Info</legend>
-                <div class="da-form-row">
-                    <label>Users on project:</label>
-                    <div class="da-form-item large" id="listOfUsersOnProject">
-                        <span class="formNote">Choose users</span>
-                        <select size="5" multiple="multiple" style="width: 400px;" class="chzn-select"> 
-<?php $iterations = 0; foreach ($users as $user): ?>
-                                <option name="user_<?php echo htmlSpecialChars($user->id) ?>
-" value="<?php echo htmlSpecialChars($user->id) ?>">
-                                    <?php echo Nette\Templating\Helpers::escapeHtml($user->name, ENT_NOQUOTES) ?>
-
-                                </option>
-<?php $iterations++; endforeach ?>
-                        </select>
-                    </div>
-                </div>
-                <div style="height: 50px; width: 100%;"></div>
-            <input type="hidden" value="" class="project_ID" name="project_ID" />
-            <div class="da-button-row" style="width: 92%">
-                <button id="submitProject" class="da-button blue"  onclick="JavaScript:showGrowl()">Submit</button>
-            </div>
-            </fieldset>
         </div>
     </div>
 
@@ -174,7 +166,7 @@ if (!empty($_control->snippetMode)) {
                 <div class="da-panel-header">
                     <span class="da-panel-title">
                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/black/16/list.png" alt="" />
-                        Projects list
+                        Campaigns list
                     </span>
                     
                 </div>
@@ -183,72 +175,99 @@ if (!empty($_control->snippetMode)) {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Project name</th>
+                                <th>Location</th>
+                                <th>Campaign name</th>
                                 <th>Estimated time</th>
-                                <th>State</th>
+                                <th>Status</th>
                                 <th>Description</th>
                                 <th>Edit Options</th>
                             </tr>
                         </thead>
                         <tbody>
-<?php $iterations = 0; foreach ($campaign as $project): ?>
-                                <tr>
-                                    <td><?php echo Nette\Templating\Helpers::escapeHtml($project->id, ENT_NOQUOTES) ?></td>
-                                    <td><?php echo Nette\Templating\Helpers::escapeHtml($project->name, ENT_NOQUOTES) ?></td>
-                                    <td id="defaultCountdown_<?php echo htmlSpecialChars($project->id) ?>"></td>
-                                    <td id="projectStatus_<?php echo htmlSpecialChars($project->id) ?>
-"><?php echo Nette\Templating\Helpers::escapeHtml($project->status, ENT_NOQUOTES) ?></td>
-                                    <td><?php echo Nette\Templating\Helpers::escapeHtml($project->description, ENT_NOQUOTES) ?></td>
+<?php $iterations = 0; foreach ($campaigns as $campaign): ?>
+                                <tr timeCheck="<?php echo htmlSpecialChars($campaign->campaign_id) ?>
+" id="campaign_<?php echo htmlSpecialChars($campaign->campaign_id) ?>">
+                                    <td><?php echo Nette\Templating\Helpers::escapeHtml($campaign->campaign_id, ENT_NOQUOTES) ?></td>
+                                    <td>
+<?php $iterations = 0; foreach ($locations as $location): if ($location->location_id == $campaign->location_id): $iterations = 0; foreach ($cities as $city): if ($city->city_id == $location->city_id): ?>
+                                                        <?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?>
+ - <?php echo Nette\Templating\Helpers::escapeHtml($location->title, ENT_NOQUOTES) ?>
+
+<?php endif ;$iterations++; endforeach ;endif ;$iterations++; endforeach ?>
+                                    </td>
+                                    <td><?php echo Nette\Templating\Helpers::escapeHtml($campaign->title, ENT_NOQUOTES) ?></td>
+                                    <td id="defaultCountdown_<?php echo htmlSpecialChars($campaign->campaign_id) ?>"></td>
+                                    <td id="campaignStatus_<?php echo htmlSpecialChars($campaign->campaign_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($campaign->status, ENT_NOQUOTES) ?></td>
+                                    <td><?php echo Nette\Templating\Helpers::escapeHtml($campaign->description, ENT_NOQUOTES) ?></td>
                                     <td class="da-icon-column">
-                                        <a href="#" class="<?php echo htmlSpecialChars($project->id) ?>
-" id="previewLink_<?php echo htmlSpecialChars($project->id) ?>" 
-                                            onclick="JavaScript:showProjectDialog(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($project->id)) ?>)">
+                                        <a href="#" class="<?php echo htmlSpecialChars($campaign->campaign_id) ?>
+" id="previewLink_<?php echo htmlSpecialChars($campaign->campaign_id) ?>" 
+                                            onclick="JavaScript:showProjectDialog(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->campaign_id)) ?>)">
                                             <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/magnifier.png" />
                                         </a>
                                         
                                         <a href="#"><img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/pencil.png" /></a>
                                         
-                                        <a href="#" onclick="JavaScript:deleteConfirm(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($project->id)) ?>)" name="">
+                                        <a href="#" onclick="JavaScript:deleteConfirm(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->campaign_id)) ?>)" name="">
                                             <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/trash.png" />
                                         </a>
                                         
                                         <a href="<?php echo htmlSpecialChars($basePath) ?>
-/admin/?do=deleteProject&projectId=<?php echo htmlSpecialChars($project->id) ?>" id="deleteLink_<?php echo htmlSpecialChars($project->id) ?>" style="display: none"></a>
+/admin/?do=deleteProject&projectId=<?php echo htmlSpecialChars($campaign->campaign_id) ?>
+" id="deleteLink_<?php echo htmlSpecialChars($campaign->campaign_id) ?>" style="display: none"></a>
                                     </td>
                                 </tr>
 
                                 <script type="text/javascript">
                                     $(function () {
                                         var Y,m,d,H,i,s;
-                                        Y = <?php echo Nette\Templating\Helpers::escapeJs(date("Y",strtotime ($project->date_finish))) ?>;
-                                        m = <?php echo Nette\Templating\Helpers::escapeJs(date("m",strtotime ($project->date_finish))) ?>;
-                                        d = <?php echo Nette\Templating\Helpers::escapeJs(date("d",strtotime ($project->date_finish))) ?>;
-                                        H = <?php echo Nette\Templating\Helpers::escapeJs(date("H",strtotime ($project->date_finish))) ?>;
-                                        i = <?php echo Nette\Templating\Helpers::escapeJs(date("i",strtotime ($project->date_finish))) ?>;
-                                        s = <?php echo Nette\Templating\Helpers::escapeJs(date("s",strtotime ($project->date_finish))) ?>;
+                                        Y = <?php echo Nette\Templating\Helpers::escapeJs(date("Y",strtotime ($campaign->date_finish))) ?>;
+                                        m = <?php echo Nette\Templating\Helpers::escapeJs(date("m",strtotime ($campaign->date_finish))) ?>;
+                                        d = <?php echo Nette\Templating\Helpers::escapeJs(date("d",strtotime ($campaign->date_finish))) ?>;
+                                        H = <?php echo Nette\Templating\Helpers::escapeJs(date("H",strtotime ($campaign->date_finish))) ?>;
+                                        i = <?php echo Nette\Templating\Helpers::escapeJs(date("i",strtotime ($campaign->date_finish))) ?>;
+                                        s = <?php echo Nette\Templating\Helpers::escapeJs(date("s",strtotime ($campaign->date_finish))) ?>;
 
                                         var austDay = new Date();
                                         austDay = new Date(Y, m - 1, d, H, i, s);
                                         //console.log(austDay);
-                                        $('#defaultCountdown_'+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>+" ").countdown( { until: austDay,compact: true } );
+                                        $('#defaultCountdown_'+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>+" ").countdown( { until: austDay,compact: true } );
 
                                         if(
-                                            $('#defaultCountdown_'+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>
-+" ").text() == "" && $('#projectStatus_'+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>+" ").text() != "done" ||
-                                            $('#defaultCountdown_'+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>
-+" ").text() == "00:00:00" && $('#projectStatus_'+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>+" ").text() != "done"
+                                            $('#defaultCountdown_'+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>
++" ").text() == "" && $('#campaignStatus_'+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>+" ").text() != "done" ||
+                                            $('#defaultCountdown_'+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>
++" ").text() == "00:00:00" && $('#campaignStatus_'+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>+" ").text() != "done"
                                             ){
-                                            $("#defaultCountdown_"+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>+" ").css("background-color","#ff8c8c");
+                                            $("#defaultCountdown_"+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>+" ").css("background-color","orange");
                                         }
 
-                                        if($('#defaultCountdown_'+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>
-+" ").text() == "00:00:00" && $('#projectStatus_'+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>+" ").text() == "done"){
-                                            $("#defaultCountdown_"+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>+" ").css("background-color","#8cffaa");
-                                            $('#projectStatus_'+<?php echo Nette\Templating\Helpers::escapeJs($project->id) ?>+" ").css("background-color","#8cffaa");
+                                        if($('#defaultCountdown_'+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>
++" ").text() == "00:00:00" && $('#campaignStatus_'+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>+" ").text() == "done"){
+                                            $("#defaultCountdown_"+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>+" ").css("background-color","#8cffaa");
+                                            $('#campaignStatus_'+<?php echo Nette\Templating\Helpers::escapeJs($campaign->campaign_id) ?>+" ").css("background-color","#8cffaa");
                                         }
 
                                     });
-                                </script> 
+                               
+                                    $(document).ready(function(){
+                                        var auto_refresh = setInterval( // Check every 10 seconds
+                                        function ()  // Call out to get the time
+                                        {   
+                                            $('#da-ex-datatable-numberpaging > tbody  > tr').each(function() {
+                                                if($('#defaultCountdown_'+$(this).attr('timeCheck')).text() == "00:00:00"){
+                                                    $("#defaultCountdown_"+$(this).attr('timeCheck')).css("background-color","orange");
+
+                                                    if($('#defaultCountdown_'+$(this).attr('timeCheck')).text() == "00:00:00" && $('#campaignStatus_'+$(this).attr('timeCheck')).text() == "done"){
+                                                        $('#campaignStatus_'+$(this).attr('timeCheck')).css("background-color","#8cffaa");
+                                                        $("#defaultCountdown_"+$(this).attr('timeCheck')).css("background-color","#8cffaa");
+                                                    }
+                                                }
+                                            });
+                                        }, 10000); // end check
+                                    }); // end ready
+                                </script>
 
 <?php $iterations++; endforeach ?>
                         </tbody>
@@ -269,30 +288,59 @@ if (!empty($_control->snippetMode)) {
                                     
                                 </div>
                                 <div class="da-panel-content">
-                                    <form id="da-ex-wizard-form" class="da-form" method="post" action="<?php echo htmlSpecialChars($basePath) ?>/admin/?do=createProject">
+                                    <form id="da-ex-wizard-form" class="da-form create_campaign" method="post" action="<?php echo htmlSpecialChars($basePath) ?>/admin/?do=createCampaign">
                                         <fieldset class="da-form-inline">
                                             <legend>Basic info</legend>
                                             <div class="da-form-row">
-                                                <label>Name <span class="required">*</span></label>
+                                                <label>Campaign name <span class="required">*</span></label>
                                                 <div class="da-form-item large">
-                                                    <input type="text" name="name" class="required" />
+                                                    <input type="text" name="title" class="required" autocomplete="off" />
                                                 </div>
                                             </div>
                                             <div class="da-form-row">
-                                                <label>Status <span class="required">*</span></label>
+                                                <label>Description <span class="required">*</span></label>
                                                 <div class="da-form-item large">
-                                                    <input type="text" name="status" class="required" />
+                                                    <textarea name="description" class="required"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="da-form-row">
-                                                <label>Owner <span class="required">*</span></label>
-                                                <div class="da-form-item large">
-                                                    <input type="text" name="owner" class="required" />
+
+                                            <div class="da-form-item large locationSelectorGallery">
+                                                <div class="da-form-row">
+                                                    <label>Location <span class="required">*</span></label>
+                                                    <select id="da-ex-val-chzn" name="location_id" class="required">
+                                                        <option></option>
+<?php $iterations = 0; foreach ($locations as $location): ?>
+                                                            <option value="<?php echo htmlSpecialChars($location->location_id) ?>">
+<?php $iterations = 0; foreach ($cities as $city): if ($city->city_id == $location->city_id): ?>
+                                                                        <?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?>
+ - <?php echo Nette\Templating\Helpers::escapeHtml($location->title, ENT_NOQUOTES) ?>
+
+<?php endif ;$iterations++; endforeach ?>
+                                                            </option>
+<?php $iterations++; endforeach ?>
+                                                    </select>
+                                                    <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
                                                 </div>
                                             </div>
+
+                                            <div class="da-form-item large locationSelectorGallery">
+                                                <div class="da-form-row">
+                                                    <label>Category <span class="required">*</span></label>
+                                                    <select class="chzn-select" name="category_id">
+                                                        <option></option>
+<?php $iterations = 0; foreach ($categories as $category): ?>
+                                                            <option value="<?php echo htmlSpecialChars($category->category_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($category->title, ENT_NOQUOTES) ?></option>
+<?php $iterations++; endforeach ?>
+                                                    </select>
+                                                    <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
+                                                </div>
+                                            </div>
+
+
                                         </fieldset>
                                         <fieldset class="da-form-inline">
-                                            <legend>Deadlines</legend>
+                                            <legend>Deadlines and Main Question</legend>
                                             <div class="da-form-row">
                                                 <label>Start date project <span class="required">*</span></label>
                                                 <div class="da-form-item large">
@@ -306,35 +354,14 @@ if (!empty($_control->snippetMode)) {
                                                 </div>
                                             </div>
                                             <div class="da-form-row">
-                                                <label>Description <span class="required">*</span></label>
+                                                <label>Main Question <span class="required">*</span></label>
                                                 <div class="da-form-item large">
-                                                    <textarea name="description" class="required"></textarea>
+                                                    <textarea name="main_question" class="required"></textarea>
                                                 </div>
                                             </div>
                                             
                                         </fieldset>
-                                        <fieldset class="da-form-inline">
-                                            <legend>Repository info</legend>
-                                            <div class="da-form-row">
-                                                <label>Repository link <span class="required">*</span></label>
-                                                <div class="da-form-item large">
-                                                    <input type="text" name="repository_link" class="required" />
-                                                </div>
-                                            </div>
-                                            <div class="da-form-row">
-                                                <label>Repository login <span class="required">*</span></label>
-                                                <div class="da-form-item large">
-                                                    <input type="text" name="repository_login" class="required" />
-                                                </div>
-                                            </div>
-                                            <div class="da-form-row">
-                                                <label>Repository pass <span class="required">*</span></label>
-                                                <div class="da-form-item large">
-                                                    <input type="text" name="repository_pass" class="required" />
-                                                </div>
-                                            </div>
-                                            
-                                        </fieldset>
+                                        
                                         <fieldset class="da-form-inline">
                                             <legend>Confirmation</legend>
                                             <div class="da-form-row">
@@ -365,8 +392,5 @@ if (!empty($_control->snippetMode)) {
 
                         </script>
                 
-
     </div>
-    
 </div>
-

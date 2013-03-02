@@ -71,7 +71,7 @@ a("#da-ex-validate6").validate({
 		description:{required:true},
 		image:{required:true,accept:[".jpeg"]},
 		category_id:{required:true}
-});
+}});
 
 
 	a("#da-ex-validate4").validate({

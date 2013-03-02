@@ -47,11 +47,31 @@
         window.globalVar = id; 
     }
 
-    function deleteUser()
+    /*---------start of delete  -------*/
+
+    function deleteCampaignStart()
     {   
-        window.location = $("#deleteLink_"+window.globalVar).attr('href');
+        ajaxDeleteCampaign(window.globalVar);
+        return false;
     }
 
+    function ajaxDeleteCampaign(id){
+       $.ajax({    //create an ajax request to load_page.php
+          type: "POST",
+          url: "?do=jsonDeleteCampaign",
+          data: { campaign_id: id },
+          dataType: "html",   //expect html to be returned
+          success: function(msg){ 
+
+              if(parseInt(msg)!=0)    //if no errors
+              {
+                $( "#DeleteDialog" ).dialog( "close" );
+                $("#campaign_"+id).remove();
+              }
+          }
+      });
+    }
+    /*-------------end of delete -------------------*/
 
     function ajaxPreview(id){
         
@@ -105,35 +125,9 @@
         <div id="grid_2">
             <center><h3>Are you sure ?</h3>
                 <div class="clearfix"></div>
-                <input type="button" class="da-button red large"  id="deleteButton" value="Delete" onclick="JavaScript:deleteUser()"/>
+                <input type="button" class="da-button red large"  id="deleteButton" value="Delete" onclick="JavaScript:deleteCampaignStart()"/>
                 <input type="button" class="da-button gray large" id="cancelButton" value="Cancel" onclick='JavaScript:$( "#DeleteDialog" ).dialog( "close" );'/> 
             </center>
-        </div>
-    </div>
-        
-    <div id="da-ex-validate4" title="Add Users to project" style="display: none">
-        <div class="da-form">
-            <fieldset class="da-form-inline">
-                <legend>Account Info</legend>
-                <div class="da-form-row">
-                    <label>Users on project:</label>
-                    <div class="da-form-item large" id="listOfUsersOnProject">
-                        <span class="formNote">Choose users</span>
-                        <select size="5" multiple="multiple" style="width: 400px;" class="chzn-select"> 
-                            {foreach $users as $user}
-                                <option name="user_{$user->id}" value="{$user->id}">
-                                    {$user->name} 
-                                </option>
-                            {/foreach}
-                        </select>
-                    </div>
-                </div>
-                <div style="height: 50px; width: 100%;"></div>
-            <input type="hidden" value="" class="project_ID" name="project_ID" />
-            <div class="da-button-row" style="width: 92%">
-                <button id="submitProject" class="da-button blue"  onclick="JavaScript:showGrowl()">Submit</button>
-            </div>
-            </fieldset>
         </div>
     </div>
 
@@ -153,7 +147,7 @@
                 <div class="da-panel-header">
                     <span class="da-panel-title">
                         <img src="{$basePath}/images/icons/black/16/list.png" alt="" />
-                        Projects list
+                        Campaigns list
                     </span>
                     
                 </div>
@@ -162,66 +156,95 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Project name</th>
+                                <th>Location</th>
+                                <th>Campaign name</th>
                                 <th>Estimated time</th>
-                                <th>State</th>
+                                <th>Status</th>
                                 <th>Description</th>
                                 <th>Edit Options</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {foreach $campaign as $project}
-                                <tr>
-                                    <td>{$project->id}</td>
-                                    <td>{$project->name}</td>
-                                    <td id="defaultCountdown_{$project->id}"></td>
-                                    <td id="projectStatus_{$project->id}">{$project->status}</td>
-                                    <td>{$project->description}</td>
+                            {foreach $campaigns as $campaign}
+                                <tr timeCheck="{$campaign->campaign_id}" id="campaign_{$campaign->campaign_id}">
+                                    <td>{$campaign->campaign_id}</td>
+                                    <td>
+                                        {foreach $locations as $location}
+                                            {if $location->location_id == $campaign->location_id}
+                                                {foreach $cities as $city}
+                                                    {if $city->city_id == $location->city_id}
+                                                        {$city->title} - {$location->title}
+                                                    {/if}
+                                                {/foreach}
+                                            {/if}
+                                        {/foreach}
+                                    </td>
+                                    <td>{$campaign->title}</td>
+                                    <td id="defaultCountdown_{$campaign->campaign_id}"></td>
+                                    <td id="campaignStatus_{$campaign->campaign_id}">{$campaign->status}</td>
+                                    <td>{$campaign->description}</td>
                                     <td class="da-icon-column">
-                                        <a href="#" class="{$project->id}" id="previewLink_{$project->id}" 
-                                            onclick="JavaScript:showProjectDialog({$project->id})">
+                                        <a href="#" class="{$campaign->campaign_id}" id="previewLink_{$campaign->campaign_id}" 
+                                            onclick="JavaScript:showProjectDialog({$campaign->campaign_id})">
                                             <img src="{$basePath}/images/icons/color/magnifier.png" />
                                         </a>
                                         
                                         <a href="#"><img src="{$basePath}/images/icons/color/pencil.png" /></a>
                                         
-                                        <a href="#" onclick="JavaScript:deleteConfirm({$project->id})" name="">
+                                        <a href="#" onclick="JavaScript:deleteConfirm({$campaign->campaign_id})" name="">
                                             <img src="{$basePath}/images/icons/color/trash.png" />
                                         </a>
                                         
-                                        <a href="{$basePath}/admin/?do=deleteProject&projectId={$project->id}" id="deleteLink_{$project->id}" style="display: none"></a>
+                                        <a href="{$basePath}/admin/?do=deleteProject&projectId={$campaign->campaign_id}" id="deleteLink_{$campaign->campaign_id}" style="display: none"></a>
                                     </td>
                                 </tr>
 
                                 <script type="text/javascript">
                                     $(function () {
                                         var Y,m,d,H,i,s;
-                                        Y = {date("Y",strtotime ($project->date_finish)) };
-                                        m = {date("m",strtotime ($project->date_finish)) };
-                                        d = {date("d",strtotime ($project->date_finish)) };
-                                        H = {date("H",strtotime ($project->date_finish)) };
-                                        i = {date("i",strtotime ($project->date_finish)) };
-                                        s = {date("s",strtotime ($project->date_finish)) };
+                                        Y = {date("Y",strtotime ($campaign->date_finish)) };
+                                        m = {date("m",strtotime ($campaign->date_finish)) };
+                                        d = {date("d",strtotime ($campaign->date_finish)) };
+                                        H = {date("H",strtotime ($campaign->date_finish)) };
+                                        i = {date("i",strtotime ($campaign->date_finish)) };
+                                        s = {date("s",strtotime ($campaign->date_finish)) };
 
                                         var austDay = new Date();
                                         austDay = new Date(Y, m - 1, d, H, i, s);
                                         //console.log(austDay);
-                                        $('#defaultCountdown_'+{$project->id}+" ").countdown( { until: austDay,compact: true } );
+                                        $('#defaultCountdown_'+{$campaign->campaign_id}+" ").countdown( { until: austDay,compact: true } );
 
                                         if(
-                                            $('#defaultCountdown_'+{$project->id}+" ").text() == "" && $('#projectStatus_'+{$project->id}+" ").text() != "done" ||
-                                            $('#defaultCountdown_'+{$project->id}+" ").text() == "00:00:00" && $('#projectStatus_'+{$project->id}+" ").text() != "done"
+                                            $('#defaultCountdown_'+{$campaign->campaign_id}+" ").text() == "" && $('#campaignStatus_'+{$campaign->campaign_id}+" ").text() != "done" ||
+                                            $('#defaultCountdown_'+{$campaign->campaign_id}+" ").text() == "00:00:00" && $('#campaignStatus_'+{$campaign->campaign_id}+" ").text() != "done"
                                             ){
-                                            $("#defaultCountdown_"+{$project->id}+" ").css("background-color","#ff8c8c");
+                                            $("#defaultCountdown_"+{$campaign->campaign_id}+" ").css("background-color","orange");
                                         }
 
-                                        if($('#defaultCountdown_'+{$project->id}+" ").text() == "00:00:00" && $('#projectStatus_'+{$project->id}+" ").text() == "done"){
-                                            $("#defaultCountdown_"+{$project->id}+" ").css("background-color","#8cffaa");
-                                            $('#projectStatus_'+{$project->id}+" ").css("background-color","#8cffaa");
+                                        if($('#defaultCountdown_'+{$campaign->campaign_id}+" ").text() == "00:00:00" && $('#campaignStatus_'+{$campaign->campaign_id}+" ").text() == "done"){
+                                            $("#defaultCountdown_"+{$campaign->campaign_id}+" ").css("background-color","#8cffaa");
+                                            $('#campaignStatus_'+{$campaign->campaign_id}+" ").css("background-color","#8cffaa");
                                         }
 
                                     });
-                                </script> 
+                               
+                                    $(document).ready(function(){
+                                        var auto_refresh = setInterval( // Check every 10 seconds
+                                        function ()  // Call out to get the time
+                                        {   
+                                            $('#da-ex-datatable-numberpaging > tbody  > tr').each(function() {
+                                                if($('#defaultCountdown_'+$(this).attr('timeCheck')).text() == "00:00:00"){
+                                                    $("#defaultCountdown_"+$(this).attr('timeCheck')).css("background-color","orange");
+
+                                                    if($('#defaultCountdown_'+$(this).attr('timeCheck')).text() == "00:00:00" && $('#campaignStatus_'+$(this).attr('timeCheck')).text() == "done"){
+                                                        $('#campaignStatus_'+$(this).attr('timeCheck')).css("background-color","#8cffaa");
+                                                        $("#defaultCountdown_"+$(this).attr('timeCheck')).css("background-color","#8cffaa");
+                                                    }
+                                                }
+                                            });
+                                        }, 10000); // end check
+                                    }); // end ready
+                                </script>
 
                             {/foreach}
                         </tbody>
@@ -242,30 +265,58 @@
                                     
                                 </div>
                                 <div class="da-panel-content">
-                                    <form id="da-ex-wizard-form" class="da-form" method="post" action="{$basePath}/admin/?do=createProject">
+                                    <form id="da-ex-wizard-form" class="da-form create_campaign" method="post" action="{$basePath}/admin/?do=createCampaign">
                                         <fieldset class="da-form-inline">
                                             <legend>Basic info</legend>
                                             <div class="da-form-row">
-                                                <label>Name <span class="required">*</span></label>
+                                                <label>Campaign name <span class="required">*</span></label>
                                                 <div class="da-form-item large">
-                                                    <input type="text" name="name" class="required" />
+                                                    <input type="text" name="title" class="required" autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <div class="da-form-row">
-                                                <label>Status <span class="required">*</span></label>
+                                                <label>Description <span class="required">*</span></label>
                                                 <div class="da-form-item large">
-                                                    <input type="text" name="status" class="required" />
+                                                    <textarea name="description" class="required"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="da-form-row">
-                                                <label>Owner <span class="required">*</span></label>
-                                                <div class="da-form-item large">
-                                                    <input type="text" name="owner" class="required" />
+
+                                            <div class="da-form-item large locationSelectorGallery">
+                                                <div class="da-form-row">
+                                                    <label>Location <span class="required">*</span></label>
+                                                    <select id="da-ex-val-chzn" name="location_id" class="required">
+                                                        <option></option>
+                                                        {foreach $locations as $location}
+                                                            <option value="{$location->location_id}">
+                                                                {foreach $cities as $city}
+                                                                    {if $city->city_id == $location->city_id}
+                                                                        {$city->title} - {$location->title}
+                                                                    {/if}
+                                                                {/foreach}
+                                                            </option>
+                                                        {/foreach}
+                                                    </select>
+                                                    <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
                                                 </div>
                                             </div>
+
+                                            <div class="da-form-item large locationSelectorGallery">
+                                                <div class="da-form-row">
+                                                    <label>Category <span class="required">*</span></label>
+                                                    <select class="chzn-select" name="category_id">
+                                                        <option></option>
+                                                        {foreach $categories as $category}
+                                                            <option value="{$category->category_id}">{$category->title}</option>
+                                                        {/foreach}
+                                                    </select>
+                                                    <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
+                                                </div>
+                                            </div>
+
+
                                         </fieldset>
                                         <fieldset class="da-form-inline">
-                                            <legend>Deadlines</legend>
+                                            <legend>Deadlines and Main Question</legend>
                                             <div class="da-form-row">
                                                 <label>Start date project <span class="required">*</span></label>
                                                 <div class="da-form-item large">
@@ -279,35 +330,14 @@
                                                 </div>
                                             </div>
                                             <div class="da-form-row">
-                                                <label>Description <span class="required">*</span></label>
+                                                <label>Main Question <span class="required">*</span></label>
                                                 <div class="da-form-item large">
-                                                    <textarea name="description" class="required"></textarea>
+                                                    <textarea name="main_question" class="required"></textarea>
                                                 </div>
                                             </div>
                                             
                                         </fieldset>
-                                        <fieldset class="da-form-inline">
-                                            <legend>Repository info</legend>
-                                            <div class="da-form-row">
-                                                <label>Repository link <span class="required">*</span></label>
-                                                <div class="da-form-item large">
-                                                    <input type="text" name="repository_link" class="required" />
-                                                </div>
-                                            </div>
-                                            <div class="da-form-row">
-                                                <label>Repository login <span class="required">*</span></label>
-                                                <div class="da-form-item large">
-                                                    <input type="text" name="repository_login" class="required" />
-                                                </div>
-                                            </div>
-                                            <div class="da-form-row">
-                                                <label>Repository pass <span class="required">*</span></label>
-                                                <div class="da-form-item large">
-                                                    <input type="text" name="repository_pass" class="required" />
-                                                </div>
-                                            </div>
-                                            
-                                        </fieldset>
+                                        
                                         <fieldset class="da-form-inline">
                                             <legend>Confirmation</legend>
                                             <div class="da-form-row">
@@ -338,8 +368,5 @@
 
                         </script>
                 
-
     </div>
-    
 </div>
-

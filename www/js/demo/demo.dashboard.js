@@ -1,5 +1,15 @@
-(function(a){a(document).ready(function(d){a(".da-circular-stat").daCircularStat();
-	var c=a("#da-ex-wizard-form").validate({onsubmit:false});
+(function(a){a(document).ready(function(d){
+
+
+	a(".da-circular-stat").daCircularStat();
+
+	var c = a("#da-ex-wizard-form").validate({
+		onsubmit:false,
+		rules:{
+			location_id:{required:true
+		}}
+	});
+
 	a("#da-ex-wizard-form").daWizard({forwardOnly:false,onLeaveStep:function(e,g){return c.form()},onBeforeSubmit:function(){return c.form()}});
 	
 

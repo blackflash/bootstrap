@@ -16,7 +16,7 @@
 	background:url(../images/ui-datepicker-bg.png) repeat-x left bottom !important;
 	padding-bottom:4px;
 	background-color:#ffffff !important;
-	z-index:99999;
+	z-index:9999999;
 }
 
 .ui-datepicker .ui-datepicker-header

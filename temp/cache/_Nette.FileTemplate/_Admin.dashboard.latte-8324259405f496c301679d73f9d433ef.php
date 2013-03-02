@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.27345600 1362106023";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1361412203;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.78529100 1362191625";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362191624;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'wwemgnjk5x')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'nywc7l9vks')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -356,7 +356,7 @@ chart.draw(data, options);
                             <div class="heading">List of campaigns</div>
                             <br />
                             <div id="jp-container" class="jp-container">
-                                <a href="#" onclick="JavaScript:drawChart()">
+                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
                                     <div>
                                         <h3>Campaign / Product 1</h3>
                                         <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_1.jpg" />
@@ -367,7 +367,7 @@ chart.draw(data, options);
                                         </p>
                                     </div>
                                 </a>
-                                <a href="#" onclick="JavaScript:drawChart()">
+                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
                                     <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_2.jpg" />
                                     <div>
                                         <h3>Campaign / Product 2</h3>
@@ -377,7 +377,7 @@ chart.draw(data, options);
                                         </p>
                                     </div>
                                 </a>
-                                <a href="#" onclick="JavaScript:drawChart()">
+                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
                                     <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_3.jpg" />
                                     <div>
                                         <h3>Campaign / Product 3</h3>
@@ -387,7 +387,7 @@ chart.draw(data, options);
                                         </p>
                                     </div>
                                 </a>
-                                <a href="#" onclick="JavaScript:drawChart()">
+                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
                                     <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_4.jpg" />
                                     <div>
                                         <h3>Campaign / Product 4</h3>
@@ -405,7 +405,7 @@ chart.draw(data, options);
                             <div id="main"></div>
                         </li>         
                 
-                        <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
+                        <li data-row="1" data-col="2" data-sizex="2" data-sizey="1" id="donut_graph">
                             <div class="heading">Actual results</div>
                             <br />
                             <div id="chart_div" style="z-index: 1; position: absolute; left: 0px; top: 20px;">

@@ -46,8 +46,10 @@ class AdminPresenter extends BasePresenter
 	    	break;
 
 	    	case 'CleverFrogs - campaigns':
-	    		$this->template->users   = $this->context->userRepository->getAllUsers();
-				$this->template->campaign = $this->context->projectRepository->getTable();
+				$this->template->campaigns  = $this->context->generalRepository->getByTable("campaign");
+				$this->template->cities     = $this->context->generalRepository->getByTable("city");
+				$this->template->locations  = $this->context->generalRepository->getByTable("location");
+				$this->template->categories = $this->context->generalRepository->getByTable("campaign_ps_category");
 	    	break;
 
 	    	case 'CleverFrogs - categories':
@@ -93,6 +95,39 @@ class AdminPresenter extends BasePresenter
 	    }
 	   
         $this->template->includeBoard = $page.".latte";
+	}
+
+	/*----------------CAMPAIGN------------------*/
+
+	public function handlecreateCampaign()
+	{	
+	    try {
+
+	    	$name = "campaign";
+			$data = $this->request->getPost();
+
+
+			$data["date_start"] = $this->parseDate($data["date_start"]);
+			$data["date_finish"] = $this->parseDate($data["date_finish"]);
+
+
+	        $this->context->generalRepository->insertRowByTable($name,$data);
+	        
+			$this->redirect('Admin:default',array( "title"=>"CleverFrogs - campaigns","page"=>"campaigns"));
+
+	    } catch (NS\AuthenticationException $e) {
+	        $form->addError('Something went wrong !');
+	    }
+	}
+
+	public function handlejsonDeleteCampaign($campaign_id){
+		if ($this->isAjax()) {
+
+			$jsondata = $this->context->generalRepository->deleteRowByTableAndId("campaign","campaign_id",$campaign_id);
+
+	        echo json_encode($jsondata);
+	        die();
+	    }
 	}
 
 	/*------------------ CATEGORIES ----------------*/
@@ -190,6 +225,7 @@ class AdminPresenter extends BasePresenter
 			
 		}
 
+		return;
 		$this->exit_status('Something went wrong with your upload! '.$_FILES['pic']['error']);
 	}
 
