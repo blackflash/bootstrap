@@ -49,6 +49,11 @@ class AdminPresenter extends BasePresenter
 	    		$this->template->users   = $this->context->userRepository->getAllUsers();
 				$this->template->campaign = $this->context->projectRepository->getTable();
 	    	break;
+
+	    	case 'CleverFrogs - categories':
+				$this->template->campaign_ps_category = $this->context->generalRepository->getByTable("campaign_ps_category");
+				$this->template->campaign_ps          = $this->context->generalRepository->getByTable("campaign_ps");
+			break;
 	    	
 	    	case 'CleverFrogs - commit history':
 	    		$this->template->commits = $this->get_commits("CleverFrogs", "blackflash");
@@ -90,6 +95,163 @@ class AdminPresenter extends BasePresenter
         $this->template->includeBoard = $page.".latte";
 	}
 
+	/*------------------ CATEGORIES ----------------*/
+	public function handleaddCategory(){
+
+		$name = "campaign_ps_category";
+		$data = $this->request->getPost();
+
+		$this->context->generalRepository->insertRowByTable($name,$data);
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - categories","page"=>"categories_ps", "success" => "1"));
+	}
+
+	public function handleaddPS(){
+
+		$name = "campaign_ps";
+		$data = $this->request->getPost();
+		$file = $this->request->getFiles("image");
+
+		$this->context->generalRepository->insertRowByTable($name,$data);
+
+		$this->uploadPS($ps_id,$data["category_id"]);
+		
+		//$this->redirect('Admin:default',array( "title"=>"CleverFrogs - categories","page"=>"categories_ps", "success" => "1"));
+	}
+
+	function uploadPS($ps_id,$category_id){
+
+		$dir_category = "uploads/ps/".$category_id."/";
+		if(!is_dir($dir_category)){ 
+			mkdir($dir_category,0777);
+			mkdir($dir_category."thumbs/",0777);
+		}
+
+
+		$this->savePSImage($dir_category,$category_id,$ps_id);
+
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - categories","page"=>"categories_ps", "success" => "1"));
+	}
+
+	function savePSImage($dir_category,$category_id,$ps_id){
+
+		$upload_dir = $dir_category;
+		$allowed_ext = array('jpg','jpeg','png','gif');
+		$pic = array();
+
+		$ps_id_G = $ps_id;
+		$namespace_id_G = $category_id;
+
+		if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
+			exit_status('Error! Wrong HTTP method!');
+		}
+
+		if(array_key_exists('image',$_FILES) && $_FILES['image']['error'] == 0 ){
+			
+			$picture = $_FILES['image'];
+
+			
+
+			if(!in_array($this->get_extension($picture['name']),$allowed_ext)){
+				$this->exit_status('Only '.implode(',',$allowed_ext).' files are allowed!');
+			}	
+			
+
+			
+			// Move the uploaded file from the temporary 
+			// directory to the uploads folder:
+			if(move_uploaded_file($picture['tmp_name'], $upload_dir.$picture['name'])){
+
+
+				$image = Image::fromFile($upload_dir.$picture['name']);
+				$image->resize(720, NULL,Image::SHRINK_ONLY);
+				$image->save($upload_dir.$picture['name']);
+
+				//rename file
+				$lastIndex = $this->context->generalRepository->getLastInsertedId("campaign_ps","ps_id");
+
+				$file = $upload_dir.$lastIndex.".jpg";
+
+				rename($upload_dir.$picture['name'],$file);
+
+				$this->context->generalRepository->updateTableById("campaign_ps","ps_id",$lastIndex,array('image' => $lastIndex.".jpg"));
+
+				$thumb = $upload_dir."thumbs/".$lastIndex.".jpg";
+
+				if(!copy($file, $thumb)){
+					$this->exit_status('Error copy file!');
+				}
+
+				$image = Image::fromFile($thumb);
+				$image->resize(150, NULL,Image::SHRINK_ONLY);
+				$image->save($thumb);
+
+				return;
+			}
+			
+		}
+
+		$this->exit_status('Something went wrong with your upload! '.$_FILES['pic']['error']);
+	}
+
+	function handlejsonUpdatePS($ps_id, $title, $description, $category_id){
+		if ($this->isAjax()) {
+
+			//make sure that after change category image fill be moved too
+			$row = $this->context->generalRepository->getByTableAndId("campaign_ps", "ps_id", $ps_id)->fetch();
+			$old_upload_dir = "uploads/ps/".$row->category_id."/";
+			$old_upload_dir_thumb = "uploads/ps/".$row->category_id."/thumbs/";
+
+			$new_upload_dir = "uploads/ps/".$category_id."/";
+			$new_upload_dir_thumb = "uploads/ps/".$category_id."/thumbs/";
+
+			if(!is_dir($new_upload_dir)) 
+				mkdir($new_upload_dir,0777);
+			if(!is_dir($new_upload_dir_thumb)) 
+				mkdir($new_upload_dir_thumb,0777);
+
+
+			if($row->category_id != $category_id){
+				copy($old_upload_dir.$row->image, $new_upload_dir.$row->image);
+				copy($old_upload_dir_thumb.$row->image, $new_upload_dir_thumb.$row->image);
+			}
+
+			if (file_exists($old_upload_dir.$row->image) && is_file($old_upload_dir.$row->image)) {
+				unlink($old_upload_dir.$row->image);
+			}
+			
+			if (file_exists($old_upload_dir_thumb.$row->image) && is_file($old_upload_dir_thumb.$row->image)) {
+				unlink($old_upload_dir_thumb.$row->image);
+			}
+
+
+			//update table with modified data
+			$success = $this->context->galleryRepository->updateTableById("campaign_ps", "ps_id", $ps_id, 
+				array( "title" => $title, "description" => $description, "category_id" => $category_id));
+
+			$jsondata = array(
+				'success'     => $success, 
+				"ps_id"       => $ps_id,
+				"title"       => $title,
+				"description" => $description,
+				"category_id" => $category_id
+			);
+
+	        echo json_encode($jsondata);
+	        die();
+	    }
+	}
+
+	public function handlejsonDeletePS($ps_id){
+		if ($this->isAjax()) {
+
+			$this->context->generalRepository->deleteImage("campaign_ps","ps_id",$ps_id);
+			$jsondata = $this->context->generalRepository->deleteRowByTableAndId("campaign_ps","ps_id",$ps_id);
+
+	        echo json_encode($jsondata);
+	        die();
+	    }
+	}
+
 	/*------------------ LOCATIONS ----------------*/
 
 	public function handleaddCity(){
@@ -126,8 +288,6 @@ class AdminPresenter extends BasePresenter
 			$success = $this->context->galleryRepository->updateTableById("location", "location_id", $location_id, 
 				array( "title" => $title, "description" => $description, "city_id" => $city_id));
 
-			$this->template->locations   = $this->context->generalRepository->getByTable("location");
-			
 			$jsondata = array(
 				'success'     => $success, 
 				"location_id"    => $location_id,

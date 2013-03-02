@@ -161,7 +161,6 @@ class GalleryRepository extends Repository {
 			unlink($filepath_regular["thumb"]);
 		}
 
-
 	}
 
 	public function getPathImage($namespace_id, $gallery_id, $filename) {

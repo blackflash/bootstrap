@@ -16,7 +16,7 @@
                             </li>
                             {/if}
                             {if $user->identity->username == "admin" }
-                            <li {if $title == "CleverFrogs - campaigns" } class="active" {/if}>
+                            <li {if $title == "CleverFrogs - campaigns" || $title == "CleverFrogs - categories"} class="active" {/if}>
                                 <a href='' >
                                     <!-- Icon Container -->
                                     <span class="da-nav-icon">
@@ -24,10 +24,9 @@
                                     </span>
                                     Campaigns
                                 </a>
-                                <ul {if $title != "CleverFrogs - campaigns" } class="closed" {/if}>
-                                    <li><a n:href='Admin:default title=>"CleverFrogs - campaigns",page=>"campaigns" ' >Create Campaign</a></li>
-                                    <li><a href="form-elements.html">Create category of products</a></li>
-                                    <li><a href="form-validation.html">Create product or service</a></li>
+                                <ul {if $title != "CleverFrogs - campaigns" && $title != "CleverFrogs - categories" } class="closed" {/if}>
+                                    <li><a n:href='Admin:default title=>"CleverFrogs - campaigns",page=>"campaigns"' >Create Campaign</a></li>
+                                    <li><a n:href='Admin:default title=>"CleverFrogs - categories",page=>"categories_ps"'>Categories & PS</a></li>
                                 </ul>
                             </li>
                             {/if}

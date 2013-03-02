@@ -62,6 +62,17 @@ a("#da-ex-validate3").validate({
 		spin1:{required:true,min:5,max:10}}
 });
 
+a("#da-ex-validate6").validate({
+
+	ignore:".ignore",
+
+	rules:{
+		title:{required:true},
+		description:{required:true},
+		image:{required:true,accept:[".jpeg"]},
+		category_id:{required:true}
+});
+
 
 	a("#da-ex-validate4").validate({
 

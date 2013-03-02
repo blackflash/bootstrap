@@ -276,3 +276,7 @@ a.feedbackImage2b img:hover {
 .locationSelectorGallery .chzn-search input{
 	width: 100% !important;	
 }
+
+.campaign_image img{
+	max-height: 100px;
+}

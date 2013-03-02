@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.75034500 1362176164";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\locations.latte";i:2;i:1362176158;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000411a:2:{s:4:"time";s:21:"0.45101400 1362187607";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:89:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\categories_ps.latte";i:2;i:1362187605;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
-// source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\locations.latte
+// source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\categories_ps.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'q8hb2iwtwz')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'jictpmj56f')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -66,26 +66,26 @@ if (!empty($_control->snippetMode)) {
         window.globalVar = location_id; 
     }
 
-    /*---------start of delete Location -------*/
+    /*---------start of delete PS -------*/
 
-    function deleteLocationStart()
+    function deletePSStart()
     {   
-        ajaxDeleteLocation(window.globalVar);
+        ajaxDeletePS(window.globalVar);
         return false;
     }
 
-    function ajaxDeleteLocation(id){
+    function ajaxDeletePS(id){
        $.ajax({    //create an ajax request to load_page.php
           type: "POST",
-          url: "?do=jsonDeleteLocation",
-          data: { location_id: id },
+          url: "?do=jsonDeletePS",
+          data: { ps_id: id },
           dataType: "html",   //expect html to be returned
           success: function(msg){ 
 
               if(parseInt(msg)!=0)    //if no errors
               {
                 $( "#DeleteDialog" ).dialog( "close" );
-                $("#location_id_"+id).remove();
+                $("#campaign_ps_id_"+id).remove();
               }
           }
       });
@@ -100,25 +100,27 @@ if (!empty($_control->snippetMode)) {
     }
 
 
-    /*---------------- UPDATE LOCATION ---------------*/
+    /*---------------- UPDATE PRODUCT or SERVICE ---------------*/
 
-    function editLocation(location_id){
+    function editLocation(ps_id){
 
-        var title       = $(".location_title_"+location_id).html();
-        var description = $(".location_description_"+location_id).html();
-        var city_id     = $(".location_city_"+location_id).attr("name");
+        var title       = $(".campaign_title_"+ps_id).html();
+        var description = $(".campaign_description_"+ps_id).html();
+        var category_id = $(".campaign_category_id_"+ps_id).attr("name");
 
-        $('.editLocationId').attr("name",location_id);
-        $('.editLocationTitle').attr("value",title);
-        $('.editLocationDescription').val(description);
+        console.log(category_id);
+
+        $('.editPSId').attr("name",ps_id);
+        $('.editPSTitle').attr("value",title);
+        $('.editPSDescription').val(description);
 
 
-        $('#editLocationCity option[value="'+city_id+'"]').attr('selected', 'selected');
-        $('#editLocationCity').chosen().change();
-        $('#editLocationCity').trigger('liszt:updated');
+        $('#editPSCategory option[value="'+category_id+'"]').attr('selected', 'selected');
+        $('#editPSCategory').chosen().change();
+        $('#editPSCategory').trigger('liszt:updated');
         
 
-         $("#da-ex-dialog-form-div").dialog("option",{
+        $("#da-ex-dialog-form-div").dialog("option",{
             resizable: false,
             modal: true,
             hide: 'slow',
@@ -129,46 +131,46 @@ if (!empty($_control->snippetMode)) {
     }
 
     // on submit editPhoto Dialog -> start update
-    $(document).on("submit", ".locationUpdateForm", function(event){
+    $(document).on("submit", ".psUpdateForm", function(event){
             
-        var location_id =  $('.editLocationId').attr("name");
-        var title       =  $('.editLocationTitle').attr("value");
-        var description =  $('.editLocationDescription').val();
-        var city_id     =  $('#editLocationCity').attr("value");
+        var ps_id       =  $('.editPSId').attr("name");
+        var title       =  $('.editPSTitle').attr("value");
+        var description =  $('.editPSDescription').val();
+        var category_id =  $('#editPSCategory').attr("value");
 
-       //console.log(location_id + " " + title + " " + description + " " + city_id);
+       //console.log(ps_id + " " + title + " " + description + " " + category_id);
 
-        ajaxStartUpdateLocation(location_id, title, description, city_id);
+        ajaxStartUpdatePS(ps_id, title, description, category_id);
         return false;
     });
 
-    function ajaxStartUpdateLocation(location_id, title, description, city_id){
-       ajaxUpdateLocation(location_id, title, description, city_id);
+    function ajaxStartUpdatePS(ps_id, title, description, category_id){
+       ajaxUpdateLocation(ps_id, title, description, category_id);
        return false;
     }
 
-    function ajaxUpdateLocation(location_id, title, description, city_id){
+    function ajaxUpdateLocation(ps_id, title, description, category_id){
         
         $.ajax({    //create an ajax request to load_page.php
           type: "POST",
-          url: "?do=jsonUpdateLocation",
-          data: { location_id: location_id,title: title, description: description, city_id: city_id },
+          url: "?do=jsonUpdatePS",
+          data: { ps_id: ps_id, title: title, description: description, category_id: category_id },
           dataType: "html",   //expect html to be returned
           success: function(msg){ 
 
               if(parseInt(msg)!=0)    //if no errors
               {
                 var myObject = JSON.parse(msg);
-                myObject["location_id"];
-                var city_title = $(".hidden_city_"+myObject["city_id"]).attr("name");
+                myObject["ps_id"];
+                var city_title = $(".hidden_category_"+myObject["category_id"]).attr("name");
 
-                $(".location_city_"+myObject["location_id"]).html(city_title);
-                $(".location_city_"+myObject["location_id"]).attr("name",city_title);
+                $(".campaign_category_id_"+myObject["ps_id"]).html(city_title);
+                $(".campaign_category_id_"+myObject["ps_id"]).attr("name",city_title);
 
 
-                $(".location_title_"+myObject["location_id"]).html(myObject["title"]);
+                $(".campaign_title_"+myObject["ps_id"]).html(myObject["title"]);
                 
-                $(".location_description_"+myObject["location_id"]).html(myObject["description"]);
+                $(".campaign_description_"+myObject["ps_id"]).html(myObject["description"]);
               }
 
               $("#da-ex-dialog-form-div").dialog("close");
@@ -183,7 +185,7 @@ if (!empty($_control->snippetMode)) {
         <div id="grid_2">
             <center><h3>Are you sure ?</h3>
                 <div class="clearfix"></div>
-                <input type="button" class="da-button red large"  id="deleteButton" value="Delete" onclick="JavaScript:deleteLocationStart()" />
+                <input type="button" class="da-button red large"  id="deleteButton" value="Delete" onclick="JavaScript:deletePSStart()" />
                 <input type="button" class="da-button gray large" id="cancelButton" value="Cancel" onclick='JavaScript:$( "#DeleteDialog" ).dialog( "close" );' /> 
             </center>
         </div>
@@ -192,20 +194,19 @@ if (!empty($_control->snippetMode)) {
     <!-- UPDATE LOCATION DIALOG -->
     <div id="da-ex-dialog-form-div" class="no-padding" title="Edit Photo">
         <div class="da-panel-content">
-            <form id="da-ex-dialog-form-val" class="da-form locationUpdateForm">
+            <form id="da-ex-dialog-form-val" class="da-form psUpdateForm">
                 <div id="da-validate-error" class="da-message error" style="display:none;"></div>
 
-                <div class="editLocationId" name=""></div>
-
+                <div class="editPSId" name=""></div>
 
                 <fieldset class="da-form-inline">
                     <legend>City <span class="required">*</legend>
                     <div class="da-form-item large locationSelectorGallery">
                         <div class="da-form-row">
-                            <select name="city_id" class="chzn-select" id="editLocationCity">
-<?php $iterations = 0; foreach ($cities as $city): ?>
-                                    <option value="<?php echo htmlSpecialChars($city->city_id) ?>
-" class="updateLocationCity"><?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?></option>
+                            <select name="city_id" class="chzn-select" id="editPSCategory">
+<?php $iterations = 0; foreach ($campaign_ps_category as $category): ?>
+                                    <option value="<?php echo htmlSpecialChars($category->category_id) ?>
+" class="updatePSCategory"><?php echo Nette\Templating\Helpers::escapeHtml($category->title, ENT_NOQUOTES) ?></option>
 <?php $iterations++; endforeach ?>
                             </select>
                             <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
@@ -216,14 +217,14 @@ if (!empty($_control->snippetMode)) {
                 <fieldset class="da-form-inline">
                     <legend>Title</legend>
                     <div class="da-form-row">
-                        <input type="text" name="reqField" class="editLocationTitle" />
+                        <input type="text" name="reqField" class="editPSTitle" />
                     </div>
                 </fieldset>
 
                 <fieldset class="da-form-inline">
                     <legend>Description</legend>
                     <div class="da-form-row">
-                        <textarea rows="auto" cols="auto" class="editLocationDescription" name="reqField"></textarea>
+                        <textarea rows="auto" cols="auto" class="editPSDescription" name="reqField"></textarea>
                     </div>
                 </fieldset>
 
@@ -232,20 +233,19 @@ if (!empty($_control->snippetMode)) {
     </div>
     <!-- end of Non displayed panels -->
 
-
-    <!-- ADD CITY PANEL -->
+    <!-- ADD CATEGORY PANEL -->
     <div class="grid_2">
         <div class="da-panel collapsible collapsed" >
             <div class="da-panel-header">
                 <span class="da-panel-title">
                     <img src="images/icons/black/16/pencil.png" alt="" />
-                    Add City
+                    Add Category
                 </span>
             </div>
             <div class="da-panel-content">
-                <form class="da-form" enctype="multipart/form-data" method="post" action="<?php echo htmlSpecialChars($basePath) ?>/admin/?do=addCity">
+                <form class="da-form" enctype="multipart/form-data" method="post" action="<?php echo htmlSpecialChars($basePath) ?>/admin/?do=addCategory">
                     <div class="da-form-row">
-                        <label>City</label>
+                        <label>Title</label>
                         <div class="da-form-item large">
                                 <input type="text" name="title" autocomplete="OFF" />
                         </div>
@@ -267,36 +267,48 @@ if (!empty($_control->snippetMode)) {
     </div>
 
 
-    <!--end of ADD LOCATION -->
+    <!--ADD PRODUCT OR SERVICE -->
     <div class="grid_2">
         <div class="da-panel collapsible collapsed" >
             <div class="da-panel-header">
                 <span class="da-panel-title">
                     <img src="images/icons/black/16/pencil.png" alt="" />
-                    Add Location
+                    Add Product or Service
                 </span>
             </div>
             <div class="da-panel-content">
-                <form class="da-form" enctype="multipart/form-data" method="post" action="<?php echo htmlSpecialChars($basePath) ?>/admin/?do=addLocation">
+                <form id="da-ex-validate6" class="da-form" enctype="multipart/form-data" method="post" action="<?php echo htmlSpecialChars($basePath) ?>/admin/?do=addPS">
+                    
                     <div class="da-form-row">
-                        <label>Location</label>
+                        <label>Image<span class="required">*</span></label>
+                        <div class="da-form-item large">
+                            <span class="formNote">Picture of product or service</span>
+                            <input type="file" name="image" class="da-custom-file" />
+                            <label for="image" class="error" generated="true" style="display:none;"></label>
+                        </div>
+                    </div>
+
+                    <div class="da-form-row">
+                        <label>Title<span class="required">*</label>
                         <div class="da-form-item large">
                             <input type="text" name="title" autocomplete="off" />
+                            <label for="title" class="error" generated="true" style="display:none;"></label>
                         </div>
                     </div>
                     <div class="da-form-row">
-                        <label>Description</label>
+                        <label>Description<span class="required">*</label>
                         <div class="da-form-item large">
                             <input type="text" name="description" autocomplete="off" />
+                            <label for="description" class="error" generated="true" style="display:none;"></label>
                         </div>
                     </div>
                     <div class="da-form-row">
-                        <label>City</label>
+                        <label>Category<span class="required">*</label>
                         <div class="da-form-item large locationSelectorGallery">
-                            <select name="city_id" class="chzn-select">
-<?php $iterations = 0; foreach ($cities as $city): ?>
-                                    <option value="<?php echo htmlSpecialChars($city->city_id) ?>
-"><?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?></option>
+                            <select name="category_id" class="chzn-select">
+<?php $iterations = 0; foreach ($campaign_ps_category as $category): ?>
+                                    <option value="<?php echo htmlSpecialChars($category->category_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($category->title, ENT_NOQUOTES) ?></option>
 <?php $iterations++; endforeach ?>
                             </select>
                         </div>
@@ -317,7 +329,7 @@ if (!empty($_control->snippetMode)) {
             <div class="da-panel-header">
                 <span class="da-panel-title">
                     <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/black/16/list.png" alt="" />
-                    Locations list
+                    Products & Services list
                 </span>
                 
             </div>
@@ -326,33 +338,37 @@ if (!empty($_control->snippetMode)) {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>City</th>
+                            <th>Category</th>
                             <th>Title</th>
                             <th>Description</th>
+                            <th>Image</th>
                             <th>Edit Options</th>
                         </tr>
                     </thead>
                     <tbody>
-<?php $iterations = 0; foreach ($locations as $location): ?>
-                            <tr id="location_id_<?php echo htmlSpecialChars($location->location_id) ?>">
-                                <td><?php echo Nette\Templating\Helpers::escapeHtml($location->location_id, ENT_NOQUOTES) ?></td>
-                                <td class="location_city_<?php echo htmlSpecialChars($location->location_id) ?>" 
-<?php $iterations = 0; foreach ($cities as $city): if ($location->city_id == $city->city_id): ?>
-                                            name="<?php echo htmlSpecialChars($city->city_id) ?>
-"> <?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?>
+<?php $iterations = 0; foreach ($campaign_ps as $campaign): ?>
+                            <tr id="campaign_ps_id_<?php echo htmlSpecialChars($campaign->ps_id) ?>">
+                                <td><?php echo Nette\Templating\Helpers::escapeHtml($campaign->ps_id, ENT_NOQUOTES) ?></td>
+                                <td class="campaign_category_id_<?php echo htmlSpecialChars($campaign->ps_id) ?>" 
+<?php $iterations = 0; foreach ($campaign_ps_category as $category): if ($category->category_id == $campaign->category_id): ?>
+                                            name="<?php echo htmlSpecialChars($category->category_id) ?>
+"> <?php echo Nette\Templating\Helpers::escapeHtml($category->title, ENT_NOQUOTES) ?>
 
 <?php endif ;$iterations++; endforeach ?>
                                 </td>
-                                <td class="location_title_<?php echo htmlSpecialChars($location->location_id) ?>
-"><?php echo Nette\Templating\Helpers::escapeHtml($location->title, ENT_NOQUOTES) ?></td>
-                                <td id="taskStatus_<?php echo htmlSpecialChars($location->location_id) ?>
-" class="location_description_<?php echo htmlSpecialChars($location->location_id) ?>
-"><?php echo Nette\Templating\Helpers::escapeHtml($location->description, ENT_NOQUOTES) ?></td>
+                                <td class="campaign_title_<?php echo htmlSpecialChars($campaign->ps_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($campaign->title, ENT_NOQUOTES) ?></td>
+                                <td class="campaign_description_<?php echo htmlSpecialChars($campaign->ps_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($campaign->description, ENT_NOQUOTES) ?></td>
+                                <td class="campaign_image">
+                                    <img src="<?php echo htmlSpecialChars($basePath) ?>
+/www/uploads/ps/<?php echo htmlSpecialChars($campaign->category_id) ?>/thumbs/<?php echo htmlSpecialChars($campaign->image) ?>" />
+                                </td>
                                 <td class="da-icon-column">
-                                    <a href="#" onclick="JavaScript:editLocation(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($location->location_id)) ?>)">
+                                    <a href="#" onclick="JavaScript:editLocation(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->ps_id)) ?>)">
                                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/pencil.png" />
                                     </a>
-                                    <a href="#" onclick="JavaScript:deleteConfirm(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($location->location_id)) ?>)">
+                                    <a href="#" onclick="JavaScript:deleteConfirm(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->ps_id)) ?>)">
                                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/trash.png" />
                                     </a>
                                 </td>
@@ -365,12 +381,11 @@ if (!empty($_control->snippetMode)) {
     </div><!--end of grid-->
 
     <div class="clear"></div>
-        
-<?php $iterations = 0; foreach ($cities as $city): ?>
-        <div class="hidden_city_<?php echo htmlSpecialChars($city->city_id) ?>" name="<?php echo htmlSpecialChars($city->title) ?>" style="display:none"></div>
-<?php $iterations++; endforeach ?>
-
-    </div>
     
+<?php $iterations = 0; foreach ($campaign_ps_category as $category): ?>
+        <div class="hidden_category_<?php echo htmlSpecialChars($category->category_id) ?>
+" name="<?php echo htmlSpecialChars($category->title) ?>" style="display:none"></div>
+<?php $iterations++; endforeach ?>
+             
+    </div>
 </div>
-

@@ -29,8 +29,8 @@ class GeneralRepository extends Repository
 		return $this->connection->table($tableName)->count();
 	}
 
-	public function getByTableAndId($tableName,$column, $gallery_id){
-		return $this->connection->table($tableName)->where(array($column => $gallery_id));
+	public function getByTableAndId($tableName,$column, $id){
+		return $this->connection->table($tableName)->where(array($column => $id));
 	}
 
 	public function getByTableAndIdWithOrder($tableName,$column, $gallery_id,$orderColumnName,$ordering){
@@ -54,5 +54,54 @@ class GeneralRepository extends Repository
 	public function deleteRowByTableAndId($tableName,$column,$value){
 		return $this->connection->table($tableName)->where(array($column => $value))->delete();
 	}
+
+
+	/*--------- delete process ---------*/
+
+	// delete photo from folder and table
+	public function deleteImage($table,$column,$id) {
+		$this->deleteFile($table,$column,$id);
+	}
+
+	
+	/**
+	 * Deletes image file.
+	 * 
+	 * @param int $id Image ID
+	 */
+	protected function deleteFile($table,$column,$id) {
+
+
+		$result = $this->getByTableAndId($table,$column,$id)->fetch();
+
+		if (!$result) {
+			throw new InvalidArgumentException('Photo with ID [' . $id . '] was not found.');
+		}
+
+		$filename = $result['image'];
+		$category_id = $result['category_id'];
+
+		$filepath_regular = $this->getPathImage($category_id, $filename);
+
+		if (file_exists($filepath_regular["image"]) && is_file($filepath_regular["image"])) {
+			unlink($filepath_regular["image"]);
+		}
+		
+		if (file_exists($filepath_regular["thumb"]) && is_file($filepath_regular["thumb"])) {
+			unlink($filepath_regular["thumb"]);
+		}
+
+	}
+
+	public function getPathImage($category_id, $filename) {
+		
+		$data = array(
+			'image' => "uploads/ps/".$category_id."/".$filename, 
+			'thumb' => "uploads/ps/".$category_id."/thumbs/".$filename
+		);
+
+		return $data;
+	}
+
 
 }

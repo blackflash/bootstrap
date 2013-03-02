@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.53783000 1362112319";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte";i:2;i:1362112318;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.64377200 1362168577";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte";i:2;i:1362168576;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '1yw5zuuni9')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'bm2rocm20y')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -35,7 +35,7 @@ if (!empty($_control->snippetMode)) {
                                 </a>
                             </li>
 <?php endif ;if ($user->identity->username == "admin"): ?>
-                            <li <?php if ($title == "CleverFrogs - campaigns"): ?>
+                            <li <?php if ($title == "CleverFrogs - campaigns" || $title == "CleverFrogs - categories"): ?>
  class="active" <?php endif ?>>
                                 <a href='' >
                                     <!-- Icon Container -->
@@ -44,12 +44,12 @@ if (!empty($_control->snippetMode)) {
                                     </span>
                                     Campaigns
                                 </a>
-                                <ul <?php if ($title != "CleverFrogs - campaigns"): ?>
+                                <ul <?php if ($title != "CleverFrogs - campaigns" && $title != "CleverFrogs - categories"): ?>
  class="closed" <?php endif ?>>
-                                    <li><a  href="<?php echo htmlSpecialChars($_control->link("Admin:default", array('title'=>"CleverFrogs - campaigns",'page'=>"campaigns" ))) ?>
+                                    <li><a  href="<?php echo htmlSpecialChars($_control->link("Admin:default", array('title'=>"CleverFrogs - campaigns",'page'=>"campaigns"))) ?>
 ">Create Campaign</a></li>
-                                    <li><a href="form-elements.html">Create category of products</a></li>
-                                    <li><a href="form-validation.html">Create product or service</a></li>
+                                    <li><a href="<?php echo htmlSpecialChars($_control->link("Admin:default", array('title'=>"CleverFrogs - categories",'page'=>"categories_ps"))) ?>
+">Categories & PS</a></li>
                                 </ul>
                             </li>
 <?php endif ?>
