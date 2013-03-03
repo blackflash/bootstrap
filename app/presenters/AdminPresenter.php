@@ -268,16 +268,15 @@ class AdminPresenter extends BasePresenter
 			if($row->category_id != $category_id){
 				copy($old_upload_dir.$row->image, $new_upload_dir.$row->image);
 				copy($old_upload_dir_thumb.$row->image, $new_upload_dir_thumb.$row->image);
-			}
 
-			if (file_exists($old_upload_dir.$row->image) && is_file($old_upload_dir.$row->image)) {
-				unlink($old_upload_dir.$row->image);
+				if (file_exists($old_upload_dir.$row->image) && is_file($old_upload_dir.$row->image)) {
+					unlink($old_upload_dir.$row->image);
+				}
+				
+				if (file_exists($old_upload_dir_thumb.$row->image) && is_file($old_upload_dir_thumb.$row->image)) {
+					unlink($old_upload_dir_thumb.$row->image);
+				}
 			}
-			
-			if (file_exists($old_upload_dir_thumb.$row->image) && is_file($old_upload_dir_thumb.$row->image)) {
-				unlink($old_upload_dir_thumb.$row->image);
-			}
-
 
 			//update table with modified data
 			$success = $this->context->galleryRepository->updateTableById("campaign_ps", "ps_id", $ps_id, 
