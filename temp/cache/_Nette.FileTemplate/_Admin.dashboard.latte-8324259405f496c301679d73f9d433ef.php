@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.32047100 1362324072";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362324070;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.41507200 1362341147";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362341146;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'mjvu4kqhbq')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'p0yu5prjft')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -23,33 +23,7 @@ if (!empty($_control->snippetMode)) {
 
 <!--Pie chart-->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-google.load("visualization", "1", { packages:["corechart"]});
-google.setOnLoadCallback(drawChart);
-function drawChart() {
-       var data = new google.visualization.DataTable();
-       data.addColumn('string', 'Task');
-       data.addColumn('number', 'Hours per Day');
-       data.addRows([
-       ['Product A', 24],
-       ['Product B', 36],
-       ['Product C', 40],
-       ]);
-var options = {
-width: 450, height: 300,
-fill: "none",
-colors:['#ECD078','#D95B43','#C02942'],
-legend: { position: 'none'},
-   animation:{
-       duration: 800,
-       easing: 'in'
-     }
-};
-var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-chart.draw(data, options);
-}
 
-</script>
 
 
 <!-- Demo JavaScript Files -->
@@ -384,7 +358,7 @@ chart.draw(data, options);
                                 <script type="text/javascript">
                                     var counter = 1;
                                     $('.jp-container a img').each(function() {
-                                        console.log(counter + this);
+                                        //console.log(counter + this);
                                         $(".campaign_description_"+counter).css("height",  this["naturalHeight"]-20)
                                         counter++;
                                     });
@@ -594,24 +568,82 @@ chart.draw(data, options);
     
     });
 </script>
+    
+   
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
+    
+    $(document).ready(function() {
+        ajaxStartCalculate("10");
+    });
+
+    function ajaxStartCalculate(campaign_id){
+       ajaxCalculatePieData(campaign_id);
+       return false;
+    }
+
+    function ajaxCalculatePieData(campaign_id){
+        
+        $.ajax({    //create an ajax request to load_page.php
+          type: "POST",
+          url: "?do=jsonGetChartData",
+          data: { campaign_id: campaign_id },
+          dataType: "html",   //expect html to be returned
+          success: function(msg){ 
+              if(parseInt(msg)!=0)    //if no errors
+              {
+                setupData(msg);
+              }
+          }
+      });
+    }
+
     google.load("visualization", "1", { packages:["corechart"]});
     google.setOnLoadCallback(drawChart);
 
-    function drawChart() {
+    function setupData(msg){
 
-       var data = new google.visualization.DataTable();
-       data.addColumn('string', 'Task');
-       data.addColumn('number', 'Hours per Day');
-       data.addRows([
-           ['Product A',     roundNumber(11*Math.random(),2)],
-           ['Product B',     roundNumber(11*Math.random(),2)],
-           ['Product C',     roundNumber(11*Math.random(),2)],
-           ['Product C',     roundNumber(11*Math.random(),2)],
-           ['Product D',     roundNumber(11*Math.random(),2)]
-       ]);
+        var data = JSON.parse(msg);
+        var temp;
+
+        var dataArray = [];
+        var obj = jQuery.parseJSON(msg);
+
+
+        $.each(obj, function (index, value) {
+            dataArray.push([value["title"].toString(), value["percentage"] ]);
+        });
+        console.log(dataArray);
+
+        var json = [['Product A', 38.096],['Product B', 23.81]];
+        drawChart(dataArray);
+
+    }
+
+    function drawChart(json) {
+
+        
+        var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Hours per Day');
+        
+        
+        data.addRows(json);
+        
+
+        /*var testData = "";
+        $.each(JSON.parse(msg), function() {
+                testData += "[ '"+this["title"]+"' , "+this["percentage"]+" ],"
+        });
+
+        console.log(testData);
+       
+        data.addRows([
+            testData
+        ]);
+        */
 
         var options = {
         width: 480, height: 250,
@@ -627,6 +659,7 @@ chart.draw(data, options);
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+
         chart.draw(data, options);
     }
     function roundNumber(num, dec) {

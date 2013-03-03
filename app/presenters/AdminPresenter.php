@@ -44,7 +44,6 @@ class AdminPresenter extends BasePresenter
 	    		$category_ids = array();
 	    		$images = array();
 
-
 	    		foreach ($this->template->campaigns as $key => $value) {
 	    			$category_ids += array($value->category_id => $value->category_id);
 	    		}
@@ -55,6 +54,8 @@ class AdminPresenter extends BasePresenter
 
 	    		$this->template->pictures = $images;
 
+	    		/*------------- ACTUAL RESULTS CAMPAIGNS --------------*/
+				$this->template->actual_results_campaign = $this->calculatePiechartData(10);
 
     		break;
 
@@ -114,6 +115,56 @@ class AdminPresenter extends BasePresenter
 	    }
 	   
         $this->template->includeBoard = $page.".latte";
+	}
+
+	/*----------------DASHBOAR DATA CALCULACTION --------------*/
+
+	
+
+	public function handlejsonGetChartData($campaign_id){
+		if ($this->isAjax()) {
+
+			$data = $this->calculatePiechartData($campaign_id);
+
+
+	        echo json_encode($data);
+	        die();
+	    }
+	}
+
+	protected function calculatePiechartData($campaign_id){
+		$campaign    = $this->context->generalRepository->getByTableAndId("campaign","campaign_id",10)->fetch();
+				$campaign_id = $campaign->campaign_id;
+	    		$allRows = $this->context->generalRepository->getByTableAndId("campaign_result","campaign_id",$campaign_id);
+				$countOfps  = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_ps","category_id",$campaign->category_id);
+
+				$COUNTALL   = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_result","campaign_id",$campaign_id);
+				$MULTIPLIER = round(100/$COUNTALL, 3, PHP_ROUND_HALF_UP);
+
+
+				$resultsOfps = array();
+	    		$nameOfps = array();
+	    		$completeArrayOfPS = array();
+
+	    		// make array with count of every PS
+	    		$tempForPS = array();
+	    		foreach ($allRows as $key => $value) {
+	    			$count = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_result","ps_id",$value->ps_id);
+	    			$tempForPS += array($value->ps_id => $count);
+	    		}
+
+	    		foreach ($tempForPS as $key => $value) {
+	    			$completeArrayOfPS += array($key => array("percentage" => $MULTIPLIER*$value));
+	    		}
+
+	    		foreach ($completeArrayOfPS as $key => $value) {
+	    			$temp = $this->context->generalRepository->getByTableAndId("campaign_ps","ps_id",$key)->fetch()->title;
+
+	    			$completeArrayOfPS[$key] += array("title" => $temp);
+
+	    		}
+
+	    		return $completeArrayOfPS;
 	}
 
 	/*----------------CAMPAIGN------------------*/

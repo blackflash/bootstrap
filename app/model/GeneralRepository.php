@@ -59,7 +59,9 @@ class GeneralRepository extends Repository
 		return $this->connection->table($tableName)->where(array($column => $value))->delete();
 	}
 
-
+	public function getCountOfRowsByTableAndId($tableName,$column,$value){
+		return $this->connection->table($tableName)->where(array($column => $value))->count();
+	}
 
 	/*--------- delete process ---------*/
 
