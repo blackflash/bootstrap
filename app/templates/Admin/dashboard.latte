@@ -345,7 +345,7 @@ chart.draw(data, options);
                                                     {if $location->location_id == $campaign->location_id}
                                                         {foreach $cities as $city}
                                                             {if $city->city_id == $location->city_id}
-                                                                {$city->title}<br>{$campaign->title}  - {$location->title} 
+                                                                ID: {$campaign->campaign_id} | {$city->title}<br>{$campaign->title}  - {$location->title} 
                                                             {/if}
                                                         {/foreach}
                                                     {/if}

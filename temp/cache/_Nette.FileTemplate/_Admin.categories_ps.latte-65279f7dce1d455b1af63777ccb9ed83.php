@@ -1,10 +1,10 @@
-<?php //netteCache[01]000411a:2:{s:4:"time";s:21:"0.39431800 1362278475";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:89:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\categories_ps.latte";i:2;i:1362278473;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000411a:2:{s:4:"time";s:21:"0.87055800 1362313525";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:89:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\categories_ps.latte";i:2;i:1362313524;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\categories_ps.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '26r2jvuj2f')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '5a17jvu650')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -93,6 +93,24 @@ if (!empty($_control->snippetMode)) {
 
     /*---------end of delete location ----------*/
 
+    /*--------------- reupload image -----------*/
+
+    function reuploadImage(ps_id, category_id) {
+        $("#reupload_image_panel").dialog({
+            resizable: false,
+            modal: true,
+            hide: 'slow',
+            show: 'slow',
+            width: 400
+        });
+
+        $(".reupload_ps_id").attr("value",ps_id);
+        $(".reupload_category_id").attr("value",category_id);
+    }
+
+    /*-------- end of reupload image ---------*/
+
+
     function showGrowl(){
         $( "#da-ex-validate4" ).dialog("close");
         $("#da-ex-growl").trigger('click');
@@ -137,8 +155,9 @@ if (!empty($_control->snippetMode)) {
         var title       =  $('.editPSTitle').attr("value");
         var description =  $('.editPSDescription').val();
         var category_id =  $('#editPSCategory').attr("value");
+        var image       =  $('#ps_image');
 
-       //console.log(ps_id + " " + title + " " + description + " " + category_id);
+        //console.log(ps_id + " " + title + " " + description + " " + category_id);
 
         ajaxStartUpdatePS(ps_id, title, description, category_id);
         return false;
@@ -191,6 +210,29 @@ if (!empty($_control->snippetMode)) {
         </div>
     </div>
 
+    <!-- UPDATE IMAGE DIALOG -->
+    <div id="reupload_image_panel" class="no-padding" title="Reupload Photo" style="display:none">
+        <div class="da-panel-content">
+            <form id="da-ex-dialog-form-val" class="da-form" enctype="multipart/form-data" method="post" action="<?php echo htmlSpecialChars($basePath) ?>/admin/?do=reuploadImage">
+                <div class="da-form-row">
+                    <label>Reupload image</label>
+                    <div class="da-form-item large">
+                        <span class="formNote">JPG, JPEG, PNG, GIF only</span>
+                        <input type="file" name="image" class="reupload_image" />
+                    </div>
+                </div>
+
+                <input type="hidden" class="reupload_ps_id" name="ps_id" value="" />
+                <input type="hidden" class="reupload_category_id" name="category_id" value="" />
+
+                <div class="da-button-row">
+                    <input type="button" class="da-button gray left" id="cancelButton" value="Close" onclick='JavaScript:$( "#reupload_image_panel" ).dialog( "close" );' /> 
+                    <input class="da-button green large" type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- UPDATE LOCATION DIALOG -->
     <div id="da-ex-dialog-form-div" class="no-padding" title="Edit Photo">
         <div class="da-panel-content">
@@ -231,6 +273,8 @@ if (!empty($_control->snippetMode)) {
             </form>
         </div>
     </div>
+
+
     <!-- end of Non displayed panels -->
 
     <!-- ADD CATEGORY PANEL -->
@@ -365,8 +409,12 @@ if (!empty($_control->snippetMode)) {
 /www/uploads/ps/<?php echo htmlSpecialChars($campaign->category_id) ?>/thumbs/<?php echo htmlSpecialChars($campaign->image) ?>" />
                                 </td>
                                 <td class="da-icon-column">
-                                    <a href="#" onclick="JavaScript:editLocation(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->ps_id)) ?>)">
+                                    <a href="#da-ex-dialog-form-div" onclick="JavaScript:editLocation(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->ps_id)) ?>)">
                                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/pencil.png" />
+                                    </a>
+                                    <a href="#reupload_image_panel" onclick="JavaScript:reuploadImage(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->ps_id)) ?>
+,<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->category_id)) ?>)">
+                                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/image.png" />
                                     </a>
                                     <a href="#" onclick="JavaScript:deleteConfirm(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->ps_id)) ?>)">
                                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/trash.png" />

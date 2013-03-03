@@ -74,6 +74,24 @@
 
     /*---------end of delete location ----------*/
 
+    /*--------------- reupload image -----------*/
+
+    function reuploadImage(ps_id, category_id) {
+        $("#reupload_image_panel").dialog({
+            resizable: false,
+            modal: true,
+            hide: 'slow',
+            show: 'slow',
+            width: 400
+        });
+
+        $(".reupload_ps_id").attr("value",ps_id);
+        $(".reupload_category_id").attr("value",category_id);
+    }
+
+    /*-------- end of reupload image ---------*/
+
+
     function showGrowl(){
         $( "#da-ex-validate4" ).dialog("close");
         $("#da-ex-growl").trigger('click');
@@ -118,8 +136,9 @@
         var title       =  $('.editPSTitle').attr("value");
         var description =  $('.editPSDescription').val();
         var category_id =  $('#editPSCategory').attr("value");
+        var image       =  $('#ps_image');
 
-       //console.log(ps_id + " " + title + " " + description + " " + category_id);
+        //console.log(ps_id + " " + title + " " + description + " " + category_id);
 
         ajaxStartUpdatePS(ps_id, title, description, category_id);
         return false;
@@ -172,6 +191,29 @@
         </div>
     </div>
 
+    <!-- UPDATE IMAGE DIALOG -->
+    <div id="reupload_image_panel" class="no-padding" title="Reupload Photo" style="display:none">
+        <div class="da-panel-content">
+            <form id="da-ex-dialog-form-val" class="da-form" enctype="multipart/form-data" method="post" action="{$basePath}/admin/?do=reuploadImage">
+                <div class="da-form-row">
+                    <label>Reupload image</label>
+                    <div class="da-form-item large">
+                        <span class="formNote">JPG, JPEG, PNG, GIF only</span>
+                        <input type="file" name="image" class="reupload_image" />
+                    </div>
+                </div>
+
+                <input type="hidden" class="reupload_ps_id" name="ps_id" value="">
+                <input type="hidden" class="reupload_category_id" name="category_id" value="">
+
+                <div class="da-button-row">
+                    <input type="button" class="da-button gray left" id="cancelButton" value="Close" onclick='JavaScript:$( "#reupload_image_panel" ).dialog( "close" );'/> 
+                    <input class="da-button green large" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- UPDATE LOCATION DIALOG -->
     <div id="da-ex-dialog-form-div" class="no-padding" title="Edit Photo">
         <div class="da-panel-content">
@@ -211,6 +253,8 @@
             </form>
         </div>
     </div>
+
+
     <!-- end of Non displayed panels -->
 
     <!-- ADD CATEGORY PANEL -->
@@ -341,8 +385,11 @@
                                     <img src="{$basePath}/www/uploads/ps/{$campaign->category_id}/thumbs/{$campaign->image}">
                                 </td>
                                 <td class="da-icon-column">
-                                    <a href="#" onclick="JavaScript:editLocation({$campaign->ps_id })">
+                                    <a href="#da-ex-dialog-form-div" onclick="JavaScript:editLocation({$campaign->ps_id })">
                                         <img src="{$basePath}/images/icons/color/pencil.png" />
+                                    </a>
+                                    <a href="#reupload_image_panel" onclick="JavaScript:reuploadImage({$campaign->ps_id},{$campaign->category_id})">
+                                        <img src="{$basePath}/images/icons/color/image.png" />
                                     </a>
                                     <a href="#" onclick="JavaScript:deleteConfirm({$campaign->ps_id})">
                                         <img src="{$basePath}/images/icons/color/trash.png" />

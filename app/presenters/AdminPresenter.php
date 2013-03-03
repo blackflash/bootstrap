@@ -172,6 +172,20 @@ class AdminPresenter extends BasePresenter
 		//$this->redirect('Admin:default',array( "title"=>"CleverFrogs - categories","page"=>"categories_ps", "success" => "1"));
 	}
 
+	function handlereuploadImage(){
+
+		$data = $this->request->getPost();
+
+		$dir_category = "uploads/ps/".$data["category_id"]."/";
+
+
+
+		$this->savePSImage($dir_category,$data["category_id"],$data["ps_id"],true);
+
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - categories","page"=>"categories_ps", "success" => "1"));
+		
+	}
+
 	function uploadPS($ps_id,$category_id){
 
 		$dir_category = "uploads/ps/".$category_id."/";
@@ -181,12 +195,12 @@ class AdminPresenter extends BasePresenter
 		}
 
 
-		$this->savePSImage($dir_category,$category_id,$ps_id);
+		$this->savePSImage($dir_category,$category_id,$ps_id,false);
 
 		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - categories","page"=>"categories_ps", "success" => "1"));
 	}
 
-	function savePSImage($dir_category,$category_id,$ps_id){
+	function savePSImage($dir_category,$category_id,$ps_id,$reupload){
 
 		$upload_dir = $dir_category;
 		$allowed_ext = array('jpg','jpeg','png','gif');
@@ -203,26 +217,24 @@ class AdminPresenter extends BasePresenter
 			
 			$picture = $_FILES['image'];
 
-			
-
 			if(!in_array($this->get_extension($picture['name']),$allowed_ext)){
 				$this->exit_status('Only '.implode(',',$allowed_ext).' files are allowed!');
 			}	
 			
-
-			
 			// Move the uploaded file from the temporary 
 			// directory to the uploads folder:
 			if(move_uploaded_file($picture['tmp_name'], $upload_dir.$picture['name'])){
-
 
 				$image = Image::fromFile($upload_dir.$picture['name']);
 				$image->resize(720, NULL,Image::SHRINK_ONLY);
 				$image->save($upload_dir.$picture['name']);
 
 				//rename file
-				$lastIndex = $this->context->generalRepository->getLastInsertedId("campaign_ps","ps_id");
-
+				if(!$reupload)
+					$lastIndex = $this->context->generalRepository->getLastInsertedId("campaign_ps","ps_id");
+				else
+					$lastIndex = $ps_id;
+				
 				$file = $upload_dir.$lastIndex.".jpg";
 
 				rename($upload_dir.$picture['name'],$file);
@@ -248,7 +260,7 @@ class AdminPresenter extends BasePresenter
 		$this->exit_status('Something went wrong with your upload! '.$_FILES['pic']['error']);
 	}
 
-	function handlejsonUpdatePS($ps_id, $title, $description, $category_id){
+	function handlejsonUpdatePS($ps_id, $title, $description, $category_id, $image){
 		if ($this->isAjax()) {
 
 			//make sure that after change category image fill be moved too

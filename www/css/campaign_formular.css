@@ -10,6 +10,7 @@
 
 .thumbnail{
 	max-width: 50%;
+	margin: 10px auto;
 }
 
 .product_service {
@@ -20,4 +21,12 @@
 
 .description {
 	text-align: justify;
+}
+
+.formular_text p{
+	width: 95%;
+}
+
+.thumbnails h3 {
+	text-align: center;
 }
