@@ -280,3 +280,7 @@ a.feedbackImage2b img:hover {
 .campaign_image img{
 	max-height: 100px;
 }
+.jp-container a:hover {
+	text-decoration: none !important;
+}
+

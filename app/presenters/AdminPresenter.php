@@ -37,6 +37,25 @@ class AdminPresenter extends BasePresenter
 
 	    	case 'CleverFrogs - dashboard':
 	    		$this->template->dishFeedbacks = $this->context->galleryRepository->getCountOfRowsByTable("questionnaire");
+	    		$this->template->campaigns  = $this->context->generalRepository->getByTable("campaign");
+				$this->template->locations  = $this->context->generalRepository->getByTable("location");
+				$this->template->cities     = $this->context->generalRepository->getByTable("city");
+	    		
+	    		$category_ids = array();
+	    		$images = array();
+
+
+	    		foreach ($this->template->campaigns as $key => $value) {
+	    			$category_ids += array($value->category_id => $value->category_id);
+	    		}
+
+	    		foreach ($category_ids as $key => $value) {
+	    			$images += array($key => $this->context->galleryRepository->getByTableAndId("campaign_ps","category_id",$value)->fetch()->image);
+	    		}
+
+	    		$this->template->pictures = $images;
+
+
     		break;
 
 	    	case 'CleverFrogs - users':

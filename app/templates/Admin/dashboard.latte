@@ -337,48 +337,39 @@ chart.draw(data, options);
                             <div class="heading">List of campaigns</div>
                             <br>
                             <div id="jp-container" class="jp-container">
-                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
-                                    <div>
-                                        <h3>Campaign / Product 1</h3>
-                                        <img src="{$basePath}/img/feedbacks/exa_1.jpg"/>
-                                        <p>
-                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
-                                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                            Ut enim ad minim veniam quis nostrud exercitation ullamco.
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
-                                    <img src="{$basePath}/img/feedbacks/exa_2.jpg"/>
-                                    <div>
-                                        <h3>Campaign / Product 2</h3>
-                                        <p>
-                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
-                                            adipisicing elit.
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
-                                    <img src="{$basePath}/img/feedbacks/exa_3.jpg"/>
-                                    <div>
-                                        <h3>Campaign / Product 3</h3>
-                                        <p>
-                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
-                                            adipisicing elit, sed do eiusmod tempor incididunt.
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
-                                    <img src="{$basePath}/img/feedbacks/exa_4.jpg"/>
-                                    <div>
-                                        <h3>Campaign / Product 4</h3>
-                                        <p>
-                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
-                                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                            Ut enim ad minim veniam quis nostrud exercitation ullamco.
-                                        </p>
-                                    </div>
-                                </a>
+                                {foreach $campaigns as $campaign}
+                                    <a href="#donut_graph" onclick="JavaScript:drawChart()" class="campaign_block">
+                                        <div>
+                                            <h3>
+                                                {foreach $locations as $location}
+                                                    {if $location->location_id == $campaign->location_id}
+                                                        {foreach $cities as $city}
+                                                            {if $city->city_id == $location->city_id}
+                                                                {$city->title}<br>{$campaign->title}  - {$location->title} 
+                                                            {/if}
+                                                        {/foreach}
+                                                    {/if}
+                                                {/foreach}
+                                            </h3>  
+                                            {$campaign->main_question}
+                                            <br><br>
+                                            <img class="campaign_image" src="{$basePath}/www/uploads/ps/{$campaign->category_id}/thumbs/{$pictures[$campaign->category_id]}">
+                                            <p class="campaign_description_{$iterator->counter}">
+                                                {$campaign->description}
+                                            </p>
+                                        </div>
+                                    </a>
+                                {/foreach}
+
+                                <script type="text/javascript">
+                                    var counter = 1;
+                                    $('.jp-container a img').each(function() {
+                                        console.log(counter + this);
+                                        $(".campaign_description_"+counter).css("height",  this["naturalHeight"]-20)
+                                        counter++;
+                                    });
+                                </script>
+
                             </div>
                         </li>   
                         <li data-row="2" data-col="2" data-sizex="2" data-sizey="2">
@@ -432,7 +423,11 @@ chart.draw(data, options);
 </script>
 
 <script type="text/javascript">
-    $(function() {
+
+
+            
+
+    $(function() { 
     
         // the element we want to apply the jScrollPane
         var $el                 = $('#jp-container').jScrollPane({

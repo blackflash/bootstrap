@@ -261,11 +261,11 @@ class GalleryRepository extends Repository {
 	}
 
 	//return array of random selected images
-	public function getRandomImages($arrayOfNamespaces,$columnName){
+	public function getRandomImages($arrayOfNamespaces,$columnName,$table){
 		$namespaces = array();
 
 		foreach ($arrayOfNamespaces as $key => $value) {
-			array_push($namespaces, $this->getRandomImage("gallery_photo",$columnName,$value));
+			array_push($namespaces, $this->getRandomImage($table,$columnName,$value));
 		}
 
 		$filenames = array();
@@ -275,6 +275,7 @@ class GalleryRepository extends Repository {
 			$filenames += array( $value => $namespaces[$counter]);
 			$counter++;
 		}
+
 		return $filenames;
 	}
 

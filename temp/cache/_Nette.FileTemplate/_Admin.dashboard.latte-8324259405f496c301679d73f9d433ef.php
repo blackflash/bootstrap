@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.78529100 1362191625";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362191624;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.70149000 1362276800";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362276799;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'nywc7l9vks')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '734ks0i4by')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -356,48 +356,39 @@ chart.draw(data, options);
                             <div class="heading">List of campaigns</div>
                             <br />
                             <div id="jp-container" class="jp-container">
-                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
-                                    <div>
-                                        <h3>Campaign / Product 1</h3>
-                                        <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_1.jpg" />
-                                        <p>
-                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
-                                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                            Ut enim ad minim veniam quis nostrud exercitation ullamco.
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
-                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_2.jpg" />
-                                    <div>
-                                        <h3>Campaign / Product 2</h3>
-                                        <p>
-                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
-                                            adipisicing elit.
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
-                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_3.jpg" />
-                                    <div>
-                                        <h3>Campaign / Product 3</h3>
-                                        <p>
-                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
-                                            adipisicing elit, sed do eiusmod tempor incididunt.
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#donut_graph" onclick="JavaScript:drawChart()">
-                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/img/feedbacks/exa_4.jpg" />
-                                    <div>
-                                        <h3>Campaign / Product 4</h3>
-                                        <p>
-                                            Short description of the product campaign. Lorem ipsum dolor sit amet, consectetur 
-                                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                            Ut enim ad minim veniam quis nostrud exercitation ullamco.
-                                        </p>
-                                    </div>
-                                </a>
+<?php $iterations = 0; foreach ($iterator = $_l->its[] = new Nette\Iterators\CachingIterator($campaigns) as $campaign): ?>
+                                    <a href="#donut_graph" onclick="JavaScript:drawChart()" class="campaign_block">
+                                        <div>
+                                            <h3>
+<?php $iterations = 0; foreach ($locations as $location): if ($location->location_id == $campaign->location_id): $iterations = 0; foreach ($cities as $city): if ($city->city_id == $location->city_id): ?>
+                                                                <?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?>
+<br /><?php echo Nette\Templating\Helpers::escapeHtml($campaign->title, ENT_NOQUOTES) ?>
+  - <?php echo Nette\Templating\Helpers::escapeHtml($location->title, ENT_NOQUOTES) ?>
+
+<?php endif ;$iterations++; endforeach ;endif ;$iterations++; endforeach ?>
+                                            </h3>  
+                                            <?php echo Nette\Templating\Helpers::escapeHtml($campaign->main_question, ENT_NOQUOTES) ?>
+
+                                            <br /><br />
+                                            <img class="campaign_image" src="<?php echo htmlSpecialChars($basePath) ?>
+/www/uploads/ps/<?php echo htmlSpecialChars($campaign->category_id) ?>/thumbs/<?php echo htmlSpecialChars($pictures[$campaign->category_id]) ?>" />
+                                            <p class="campaign_description_<?php echo htmlSpecialChars($iterator->counter) ?>">
+                                                <?php echo Nette\Templating\Helpers::escapeHtml($campaign->description, ENT_NOQUOTES) ?>
+
+                                            </p>
+                                        </div>
+                                    </a>
+<?php $iterations++; endforeach; array_pop($_l->its); $iterator = end($_l->its) ?>
+
+                                <script type="text/javascript">
+                                    var counter = 1;
+                                    $('.jp-container a img').each(function() {
+                                        console.log(counter + this);
+                                        $(".campaign_description_"+counter).css("height",  this["naturalHeight"]-20)
+                                        counter++;
+                                    });
+                                </script>
+
                             </div>
                         </li>   
                         <li data-row="2" data-col="2" data-sizex="2" data-sizey="2">
@@ -451,7 +442,11 @@ chart.draw(data, options);
 </script>
 
 <script type="text/javascript">
-    $(function() {
+
+
+            
+
+    $(function() { 
     
         // the element we want to apply the jScrollPane
         var $el                 = $('#jp-container').jScrollPane({

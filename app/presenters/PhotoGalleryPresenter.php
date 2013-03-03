@@ -20,7 +20,7 @@ class PhotoGalleryPresenter extends BasePresenter
 		//prepade array of images for namespaces
 		$namespaces = $this->makeUniqueNamespacesArray($this->context->galleryRepository->getArrayOfActiveGalleries());
 
-		$this->template->namespaces_images = $this->context->galleryRepository->getRandomImages($namespaces,"namespace_id");
+		$this->template->namespaces_images = $this->context->galleryRepository->getRandomImages($namespaces,"namespace_id","gallery_photo");
 
 		$arrayName = array();
 
