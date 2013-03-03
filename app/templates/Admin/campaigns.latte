@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="{$basePath}/css/jquery.countdown.css" media="screen" />
 <script type="text/javascript" src="{$basePath}/js/jquery.countdown.js"></script>
 
@@ -162,6 +161,7 @@
                                 <th>Estimated time</th>
                                 <th>Status</th>
                                 <th>Description</th>
+                                <th>Campaign</th>
                                 <th>Edit Options</th>
                             </tr>
                         </thead>
@@ -193,6 +193,7 @@
                                     <td id="defaultCountdown_{$campaign->campaign_id}"></td>
                                     <td id="campaignStatus_{$campaign->campaign_id}">{$campaign->status}</td>
                                     <td>{$campaign->description}</td>
+                                    <td><a href="{$basePath}/campaign/?campaign_id={$campaign->campaign_id}" target="_blank">Campaign</a></td>
                                     <td class="da-icon-column">
                                         <a href="#" class="{$campaign->campaign_id}" id="previewLink_{$campaign->campaign_id}" 
                                             onclick="JavaScript:showProjectDialog({$campaign->campaign_id})">

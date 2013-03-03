@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.01335000 1362241185";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte";i:2;i:1362241184;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.65359500 1362281544";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte";i:2;i:1362280153;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'prlgdjr1vm')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'xh4bv14tgx')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -17,7 +17,6 @@ if (!empty($_control->snippetMode)) {
 // main template
 //
 ?>
-
 <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/jquery.countdown.css" media="screen" />
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/jquery.countdown.js"></script>
 
@@ -181,6 +180,7 @@ if (!empty($_control->snippetMode)) {
                                 <th>Estimated time</th>
                                 <th>Status</th>
                                 <th>Description</th>
+                                <th>Campaign</th>
                                 <th>Edit Options</th>
                             </tr>
                         </thead>
@@ -209,6 +209,8 @@ if (!empty($_control->snippetMode)) {
                                     <td id="campaignStatus_<?php echo htmlSpecialChars($campaign->campaign_id) ?>
 "><?php echo Nette\Templating\Helpers::escapeHtml($campaign->status, ENT_NOQUOTES) ?></td>
                                     <td><?php echo Nette\Templating\Helpers::escapeHtml($campaign->description, ENT_NOQUOTES) ?></td>
+                                    <td><a href="<?php echo htmlSpecialChars($basePath) ?>
+/campaign/?campaign_id=<?php echo htmlSpecialChars($campaign->campaign_id) ?>" target="_blank">Campaign</a></td>
                                     <td class="da-icon-column">
                                         <a href="#" class="<?php echo htmlSpecialChars($campaign->campaign_id) ?>
 " id="previewLink_<?php echo htmlSpecialChars($campaign->campaign_id) ?>" 

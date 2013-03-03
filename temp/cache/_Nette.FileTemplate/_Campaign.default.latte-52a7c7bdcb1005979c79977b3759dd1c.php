@@ -1,10 +1,10 @@
-<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.05740200 1362278321";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Campaign\default.latte";i:2;i:1362278151;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.65824400 1362281880";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Campaign\default.latte";i:2;i:1362281868;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Campaign\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'h333ya5zej')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'j853i68vll')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -41,13 +41,13 @@ if (!empty($_control->snippetMode)) {
 
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/reset.css" type="text/css" />
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/campaign_formular.css" type="text/css" />
-    <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>
+    <!--end of <script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
 
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap-responsive.css" />
     
-    <!-- LIGHTBOX -->
-    <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/lightbox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/jquery-1.7.2.min.js"></script>
+    
     <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css' />
 
     <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/netteForms.js"></script>
@@ -58,26 +58,54 @@ if (!empty($_control->snippetMode)) {
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
 
+    <script type="text/javascript">
+        function submitFeedback(ps_id,campaign_id){
+            ajaxStartSubmitFeedback(ps_id,campaign_id);
+        }
+
+        function ajaxStartSubmitFeedback(ps_id, campaign_id){
+           ajaxSubmitFeedback(ps_id,campaign_id);
+           return false;
+        }
+
+        function ajaxSubmitFeedback(ps_id,campaign_id){
+            
+            $.ajax({    //create an ajax request to load_page.php
+              type: "POST",
+              url: "?do=jsonSubmitFeedback",
+              data: { ps_id: ps_id, campaign_id: campaign_id },
+              dataType: "html",   //expect html to be returned
+              success: function(msg){ 
+
+                  if(parseInt(msg)!=0)    //if no errors
+                  {
+                    console.log("DONE");
+                  }
+
+              }
+          });
+        }
+    </script>
+
     <div class="container">
         <ul class="thumbnails">
 <?php $iterations = 0; foreach ($products_services as $ps): ?>
                 <li class="span6">
                     <div class="span6">
-                        <a class="thumbnail">
+                        <a class="thumbnail" id="product_service" onclick="JavaScript:submitFeedback(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($ps->ps_id)) ?>
+,<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign_id)) ?>)"">
                             <img src="<?php echo htmlSpecialChars($basePath) ?>/www/uploads/ps/<?php echo htmlSpecialChars($ps->category_id) ?>
 /<?php echo htmlSpecialChars($ps->image) ?>" />
                         </a>
                     </div>
                     <div class="span6">
                         <h3><?php echo Nette\Templating\Helpers::escapeHtml($ps->title, ENT_NOQUOTES) ?></h3>
-                        <p><?php echo Nette\Templating\Helpers::escapeHtml($ps->description, ENT_NOQUOTES) ?></p>
+                        <p class="description"><?php echo Nette\Templating\Helpers::escapeHtml($ps->description, ENT_NOQUOTES) ?></p>
                     </div>
                 </li>
 <?php $iterations++; endforeach ?>
         </ul>
     </div>
-    
-
 
     <script src="<?php echo htmlSpecialChars($basePath) ?>/js/plugins.js"></script>
 

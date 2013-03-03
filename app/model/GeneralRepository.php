@@ -41,6 +41,10 @@ class GeneralRepository extends Repository
 		return $this->connection->table($table)->max($column);
 	}
 
+	public function insertRowByTable($tableName,$data){
+		return $this->connection->table($tableName)->insert($data);
+	}
+	
 	public function findBy(array $by)
 	{
 		return $this->getTable()->where($by);
@@ -54,6 +58,7 @@ class GeneralRepository extends Repository
 	public function deleteRowByTableAndId($tableName,$column,$value){
 		return $this->connection->table($tableName)->where(array($column => $value))->delete();
 	}
+
 
 
 	/*--------- delete process ---------*/

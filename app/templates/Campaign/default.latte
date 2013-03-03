@@ -21,13 +21,13 @@
 
     <link rel="stylesheet" href="{$basePath}/css/reset.css" type="text/css">
     <link rel="stylesheet" href="{$basePath}/css/campaign_formular.css" type="text/css">
-    <script type="text/javascript" src="{$basePath}/js/cssrefresh.js"></script>
+    <!--end of <script type="text/javascript" src="{$basePath}/js/cssrefresh.js"></script>-->
 
     <link rel="stylesheet" href="{$basePath}/css/bootstrap.css">
     <link rel="stylesheet" href="{$basePath}/css/bootstrap-responsive.css">
     
-    <!-- LIGHTBOX -->
-    <link rel="stylesheet" href="{$basePath}/css/lightbox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="{$basePath}/js/jquery-1.7.2.min.js"></script>
+    
     <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="{$basePath}/js/netteForms.js"></script>
@@ -38,25 +38,52 @@
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
 
+    <script type="text/javascript">
+        function submitFeedback(ps_id,campaign_id){
+            ajaxStartSubmitFeedback(ps_id,campaign_id);
+        }
+
+        function ajaxStartSubmitFeedback(ps_id, campaign_id){
+           ajaxSubmitFeedback(ps_id,campaign_id);
+           return false;
+        }
+
+        function ajaxSubmitFeedback(ps_id,campaign_id){
+            
+            $.ajax({    //create an ajax request to load_page.php
+              type: "POST",
+              url: "?do=jsonSubmitFeedback",
+              data: { ps_id: ps_id, campaign_id: campaign_id },
+              dataType: "html",   //expect html to be returned
+              success: function(msg){ 
+
+                  if(parseInt(msg)!=0)    //if no errors
+                  {
+                    console.log("DONE");
+                  }
+
+              }
+          });
+        }
+    </script>
+
     <div class="container">
         <ul class="thumbnails">
             {foreach $products_services as $ps}
                 <li class="span6">
                     <div class="span6">
-                        <a class="thumbnail">
+                        <a class="thumbnail" id="product_service" onclick="JavaScript:submitFeedback({$ps->ps_id},{$campaign_id})"">
                             <img src="{$basePath}/www/uploads/ps/{$ps->category_id}/{$ps->image}">
                         </a>
                     </div>
                     <div class="span6">
                         <h3>{$ps->title}</h3>
-                        <p>{$ps->description}</p>
+                        <p class="description">{$ps->description}</p>
                     </div>
                 </li>
             {/foreach}
         </ul>
     </div>
-    
-
 
     <script src="{$basePath}/js/plugins.js"></script>
 
