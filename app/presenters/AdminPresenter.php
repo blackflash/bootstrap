@@ -36,11 +36,14 @@ class AdminPresenter extends BasePresenter
 	    switch ($title) {
 
 	    	case 'CleverFrogs - dashboard':
-	    		$this->template->dishFeedbacks = $this->context->galleryRepository->getCountOfRowsByTable("questionnaire");
 	    		$this->template->campaigns  = $this->context->generalRepository->getByTable("campaign");
-				$this->template->locations  = $this->context->generalRepository->getByTable("location");
-				$this->template->cities     = $this->context->generalRepository->getByTable("city");
-	    		
+				$this->template->locations  = $this->context->generalRepository->getByTableWithOrder("location","title","ASC");
+				$this->template->cities     = $this->context->generalRepository->getByTableWithOrder("city","title","ASC");
+	    			
+				$this->template->totalFeedbacks = $this->context->generalRepository->getCountOfRowsByTable("campaign_result"); 
+				$this->template->totalFeedbacksLast7days = $this->context->generalRepository->getCountOfFeedbacksbyTime("campaign_result","submit_time","7");
+
+
 	    		$category_ids = array();
 	    		$images = array();
 
@@ -120,12 +123,18 @@ class AdminPresenter extends BasePresenter
 	/*----------------DASHBOAR DATA CALCULACTION --------------*/
 
 	
+	public function handlejsonUpdateSummaryData($campaign_id){
+		if ($this->isAjax()) {
+			$data = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_result","campaign_id",$campaign_id);
+	        echo json_encode($data);
+	        die();
+	    }
+	}
 
 	public function handlejsonGetChartData($campaign_id){
 		if ($this->isAjax()) {
 
 			$data = $this->calculatePiechartData($campaign_id);
-
 
 	        echo json_encode($data);
 	        die();
@@ -133,38 +142,44 @@ class AdminPresenter extends BasePresenter
 	}
 
 	protected function calculatePiechartData($campaign_id){
-		$campaign    = $this->context->generalRepository->getByTableAndId("campaign","campaign_id",10)->fetch();
-				$campaign_id = $campaign->campaign_id;
-	    		$allRows = $this->context->generalRepository->getByTableAndId("campaign_result","campaign_id",$campaign_id);
-				$countOfps  = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_ps","category_id",$campaign->category_id);
+		$campaign    = $this->context->generalRepository->getByTableAndId("campaign","campaign_id",$campaign_id)->fetch();
+		$campaign_id = $campaign->campaign_id;
+		$allRows = $this->context->generalRepository->getByTableAndId("campaign_result","campaign_id",$campaign_id);
 
-				$COUNTALL   = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_result","campaign_id",$campaign_id);
-				$MULTIPLIER = round(100/$COUNTALL, 3, PHP_ROUND_HALF_UP);
+		$COUNTALL   = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_result","campaign_id",$campaign_id);
+		$MULTIPLIER = round(100/$COUNTALL, 3, PHP_ROUND_HALF_UP);
 
 
-				$resultsOfps = array();
-	    		$nameOfps = array();
-	    		$completeArrayOfPS = array();
+		
 
-	    		// make array with count of every PS
-	    		$tempForPS = array();
-	    		foreach ($allRows as $key => $value) {
-	    			$count = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_result","ps_id",$value->ps_id);
-	    			$tempForPS += array($value->ps_id => $count);
-	    		}
+		$resultsOfps = array();
+		$nameOfps = array();
+		$completeArrayOfPS = array();
 
-	    		foreach ($tempForPS as $key => $value) {
-	    			$completeArrayOfPS += array($key => array("percentage" => $MULTIPLIER*$value));
-	    		}
+		// make array with count of every PS - tu je chyba lebo ja potrebujem count sice vsetkych produktov ale aj podla kampane !
+		$tempForPS = array();
+		foreach ($allRows as $key => $value) {
+			$data = array(
+				'ps_id' => $value->ps_id,
+				"campaign_id" => $value->campaign_id
+			);
 
-	    		foreach ($completeArrayOfPS as $key => $value) {
-	    			$temp = $this->context->generalRepository->getByTableAndId("campaign_ps","ps_id",$key)->fetch()->title;
+			$count = $this->context->generalRepository->getCountOfRowsByTableMultiCon("campaign_result",$data);
+			$tempForPS += array($value->ps_id => $count);
+		}
 
-	    			$completeArrayOfPS[$key] += array("title" => $temp);
+		foreach ($tempForPS as $key => $value) {
+			$completeArrayOfPS += array($key => array("percentage" => $MULTIPLIER*$value));
+		}
 
-	    		}
+		foreach ($completeArrayOfPS as $key => $value) {
+			$temp = $this->context->generalRepository->getByTableAndId("campaign_ps","ps_id",$key)->fetch()->title;
 
-	    		return $completeArrayOfPS;
+			$completeArrayOfPS[$key] += array("title" => $temp);
+
+		}
+
+		return $completeArrayOfPS;
 	}
 
 	/*----------------CAMPAIGN------------------*/

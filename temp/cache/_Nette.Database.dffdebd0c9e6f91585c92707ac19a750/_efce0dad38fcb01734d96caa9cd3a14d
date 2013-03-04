@@ -1,1 +1,1 @@
-<?php //netteCache[01]000070a:2:{s:4:"time";s:21:"0.13028700 1362327288";s:10:"serialized";b:1;}?>a:2:{s:18:"campaign_result_id";b:1;s:5:"ps_id";b:1;}
+<?php //netteCache[01]000070a:2:{s:4:"time";s:21:"0.26054800 1362359374";s:10:"serialized";b:1;}?>a:3:{s:18:"campaign_result_id";b:1;s:5:"ps_id";b:1;s:11:"campaign_id";b:1;}

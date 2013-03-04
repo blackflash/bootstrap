@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.41507200 1362341147";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362341146;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.37537300 1362358676";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362358643;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'p0yu5prjft')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'i6zn8hmqi8')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -48,7 +48,7 @@ if (!empty($_control->snippetMode)) {
 
 <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/jquery.gridster.css" media="screen" />
 <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/graphs.css" media="screen" />
-<!--end of <script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
+<!--<script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
 
 
 <!--end of ScrollPanel-->
@@ -71,81 +71,68 @@ if (!empty($_control->snippetMode)) {
 <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/demo/demo.ui.js"></script>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-  google.load("visualization", "1", { packages:["corechart"]});
-  google.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Campaign (months)',  'Service 1', 'Service 2', 'Service 3'],
-      ['January', 8, 7, 5],
-      ['February', 6, 6, 8],
-      ['March', 5, 5, 10],
-      ['April', 4 ,4, 12]
-    ]);
 
-    var options = {
-      title: 'The Title',
-      vAxis: { title: 'Accumulated Rating'},
-      backgroundColor: "none",
-      isStacked: true
-    };
-
-    var chart = new google.visualization.SteppedAreaChart(document.getElementById('stepped_chart'));
-    chart.draw(data, options);
-  }
-</script>
 
 <div id="graphsContent" class="clearfix">
 
 
     <div id="da-content-area">
 
-        <div class="grid_1 logoPlace right">
-            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/logo.png" alt="Hotel Chopok" />
-        </div>
-        
-        <div class="grid_1 areaSelector1">
-            <div class="da-panel-content">
+        <!--end of <div class="grid_1 logoPlace right">
+            <img src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/images/logo.png" alt="Hotel Chopok" />
+        </div>-->
+        <div class="grid_4">
+
+            <div class="grid_1 areaSelector2">
                 <div class="da-form-item locationSelector">
-                    <select id="da-ex-val-chzn" name="chosen1">
-                        <option>Select location/s</option>
-                        <option value="1">Kosice</option>
-                        <option value="2">Bratislava</option>
-                        <option value="3">Prague</option>
-                        <option value="4">Brno</option>
-                        <option value="5">Presov</option>
-                        <option value="6">Brusel</option>
-                        <option value="7">Amsterdam</option>
-                        <option value="8">Paris</option>
-                        <option value="8">Poprad</option>
-                        <option value="8">Poprad - sever</option>
+                    <select class="chzn-select">
+                        <option>Select city</option>
+<?php $iterations = 0; foreach ($cities as $city): ?>
+                                <option value="<?php echo htmlSpecialChars($city->city_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($city->title, ENT_NOQUOTES) ?></option>
+<?php $iterations++; endforeach ?>
                     </select>
-                    <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
+                </div>            
+            </div>
+
+            <div class="grid_1 areaSelector1">
+                <div class="da-panel-content">
+                    <div class="da-form-item locationSelector">
+                        <select id="da-ex-val-chzn" name="chosen1">
+                            <option>Select location</option>
+<?php $iterations = 0; foreach ($locations as $location): ?>
+                                <option value="<?php echo htmlSpecialChars($location->location_id) ?>
+"><?php echo Nette\Templating\Helpers::escapeHtml($location->title, ENT_NOQUOTES) ?></option>
+<?php $iterations++; endforeach ?>
+                        </select>
+                        <label for="da-ex-val-chzn" generated="true" class="error" style="display:none;"></label>
+                    </div>
                 </div>
             </div>
+
+            <div class="grid_1 areaSelector2">
+                <div class="da-form-item locationSelector">
+                    <select class="chzn-select">
+                        <option>Select time period</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+                </div>            
+            </div>
+            
         </div>
 
-        <div class="grid_1 areaSelector2">
-            <div class="da-form-item locationSelector">
-                <select class="chzn-select">
-                    <option>Select time period</option>
-                    <option>January</option>
-                    <option>February</option>
-                    <option>March</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>August</option>
-                    <option>September</option>
-                    <option>October</option>
-                    <option>November</option>
-                    <option>December</option>
-                </select>
-            </div>            
-        </div>
-        
-
+        <br /><br />
         <div class="clearfix"></div>
 
         <span id="da-ex-slider-range-fixed-info3" class="formNote left">Selected year: <span class="da-highlight">2013</span></span>
@@ -162,33 +149,35 @@ if (!empty($_control->snippetMode)) {
             <ul class="da-summary-stat" >
                 <li>
                     <a href="#">
-                        <span class="da-summary-icon" style="background-color: none;">
-                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/64x64/comments.png" />
-                        </span>
-                        <span class="da-summary-text">
-                            <span class="value">512</span>
-                            <span class="label">Number of feedbacks today campaign "XZ"</span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
                         <span class="da-summary-icon">
                             <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/64x64/info.png" />
                         </span>
                         <span class="da-summary-text">
-                            <span class="value up">286</span>                                        
+                            <span class="value up"><?php echo Nette\Templating\Helpers::escapeHtml($totalFeedbacks, ENT_NOQUOTES) ?></span>                                        
                             <span class="label">Number of total feedbacks</span>
                         </span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="#">
+                        <span class="da-summary-icon" style="background-color: none;">
+                            <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/64x64/comments.png" />
+                        </span>
+                        <span class="da-summary-text">
+                            <span class="value"><?php echo Nette\Templating\Helpers::escapeHtml($totalFeedbacksLast7days, ENT_NOQUOTES) ?></span>
+                            <span class="label">Number of feedbacks of campaigns last 7 days</span>
+                        </span>
+                    </a>
+                </li>
+                
                 <li>
                     <a href="#">
                         <span class="da-summary-icon">
                             <img src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/64x64/chart.png" />
                         </span>
                         <span class="da-summary-text">
-                            <span class="value down">61</span>
+                            <span class="value down" id="campaign_summary">00</span>
                             <span class="label">Number of total feedbacks - campaign "XZ"</span>
                         </span>
                     </a>
@@ -331,7 +320,7 @@ if (!empty($_control->snippetMode)) {
                             <br />
                             <div id="jp-container" class="jp-container">
 <?php $iterations = 0; foreach ($iterator = $_l->its[] = new Nette\Iterators\CachingIterator($campaigns) as $campaign): ?>
-                                    <a href="#donut_graph" onclick="JavaScript:drawChart()" class="campaign_block">
+                                    <a href="#" onclick="JavaScript:ajaxStartCalculate(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($campaign->campaign_id)) ?>)" class="campaign_block">
                                         <div>
                                             <h3>
 <?php $iterations = 0; foreach ($locations as $location): if ($location->location_id == $campaign->location_id): $iterations = 0; foreach ($cities as $city): if ($city->city_id == $location->city_id): ?>
@@ -355,15 +344,7 @@ if (!empty($_control->snippetMode)) {
                                     </a>
 <?php $iterations++; endforeach; array_pop($_l->its); $iterator = end($_l->its) ?>
 
-                                <script type="text/javascript">
-                                    var counter = 1;
-                                    $('.jp-container a img').each(function() {
-                                        //console.log(counter + this);
-                                        $(".campaign_description_"+counter).css("height",  this["naturalHeight"]-20)
-                                        counter++;
-                                    });
-                                </script>
-
+                                
                             </div>
                         </li>   
                         <li data-row="2" data-col="2" data-sizex="2" data-sizey="2">
@@ -388,6 +369,39 @@ if (!empty($_control->snippetMode)) {
 <div class="clearfix"></div>
 </div>
 </div>
+
+<script type="text/javascript">
+    var counter = 1;
+    $('.jp-container a img').each(function() {
+        //console.log(counter + this);
+        $(".campaign_description_"+counter).css("height",  this["naturalHeight"]-20)
+        counter++;
+    });
+</script>
+
+<script type="text/javascript">
+    google.load("visualization", "1", { packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Campaign (months)',  'Service 1', 'Service 2', 'Service 3'],
+          ['January', 8, 7, 5],
+          ['February', 6, 6, 8],
+          ['March', 5, 5, 10],
+          ['April', 4 ,4, 12]
+        ]);
+
+        var options = {
+            title: 'The Title',
+            vAxis: { title: 'Accumulated Rating'},
+            backgroundColor: "none",
+            isStacked: true
+        };
+
+        var chart = new google.visualization.SteppedAreaChart(document.getElementById('stepped_chart'));
+        chart.draw(data, options);
+     }
+</script>
 
 <script type="text/javascript">
 
@@ -417,10 +431,6 @@ if (!empty($_control->snippetMode)) {
 </script>
 
 <script type="text/javascript">
-
-
-            
-
     $(function() { 
     
         // the element we want to apply the jScrollPane
@@ -552,11 +562,8 @@ if (!empty($_control->snippetMode)) {
                         });
                         
                         $vBar.wrap( $vBarWrapper );
-                    
                     }
-                
                 }
-                
             },
             
             // the jScrollPane instance
@@ -568,19 +575,32 @@ if (!empty($_control->snippetMode)) {
     
     });
 </script>
-    
-   
 
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
     
     $(document).ready(function() {
-        ajaxStartCalculate("10");
+        //ajaxStartCalculate("10");
     });
 
     function ajaxStartCalculate(campaign_id){
        ajaxCalculatePieData(campaign_id);
+       ajaxUpdateSummaryData(campaign_id);
        return false;
+    }
+
+    function ajaxUpdateSummaryData(campaign_id){
+        $.ajax({    //create an ajax request to load_page.php
+          type: "POST",
+          url: "?do=jsonUpdateSummaryData",
+          data: { campaign_id: campaign_id },
+          dataType: "html",   //expect html to be returned
+          success: function(msg){ 
+              if(parseInt(msg)!=0)    //if no errors
+              {
+                $("#campaign_summary").html(msg);
+              }
+          }
+      });
     }
 
     function ajaxCalculatePieData(campaign_id){
@@ -604,52 +624,29 @@ if (!empty($_control->snippetMode)) {
 
     function setupData(msg){
 
-        var data = JSON.parse(msg);
-        var temp;
-
         var dataArray = [];
         var obj = jQuery.parseJSON(msg);
-
 
         $.each(obj, function (index, value) {
             dataArray.push([value["title"].toString(), value["percentage"] ]);
         });
-        console.log(dataArray);
 
-        var json = [['Product A', 38.096],['Product B', 23.81]];
         drawChart(dataArray);
-
     }
 
-    function drawChart(json) {
-
-        
+    function drawChart(chartData) {
         var data = new google.visualization.DataTable();
 
         data.addColumn('string', 'Task');
         data.addColumn('number', 'Hours per Day');
         
-        
-        data.addRows(json);
-        
-
-        /*var testData = "";
-        $.each(JSON.parse(msg), function() {
-                testData += "[ '"+this["title"]+"' , "+this["percentage"]+" ],"
-        });
-
-        console.log(testData);
-       
-        data.addRows([
-            testData
-        ]);
-        */
+        data.addRows(chartData);
 
         var options = {
         width: 480, height: 250,
         backgroundColor: { stroke:'none', fill:'none', strokeSize: 1},
-        chartArea:{ width:"100%",height:"75%"},
-        colors:['#ECD078','#D95B43','#C02942','#a6d037'],
+        chartArea:{ width:"90%",height:"75%"},
+        colors:['#ECD078','#D95B43','#C02942','#a6d037',"orange","red"],
         legend: { position: "right"},
         pieHole: 0.5,
            animation:{

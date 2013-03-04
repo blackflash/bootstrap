@@ -365,6 +365,7 @@ div.smallText {
 }
 
 #chart_div {
+	margin-left: -70px;
 }
 
 .da-summary-icon img  {

@@ -25,9 +25,29 @@ class GeneralRepository extends Repository
 		return $this->connection->table($tableName);
 	}
 
+	public function getByTableWithOrder($tableName,$orderColumnName,$ordering){
+		return $this->connection->table($tableName)->order($orderColumnName,$ordering);
+	}
+
+	/*---------------- COUNTERS ----------------*/
+	public function getCountOfFeedbacksbyTime($table,$column,$time){
+		return $this->connection->query("Select count(*) as feedbacks from ".$table." WHERE ".$column." BETWEEN CURRENT_TIMESTAMP - INTERVAL '".$time."' DAY AND CURRENT_TIMESTAMP")->fetch()->feedbacks;
+	}
+
 	public function getCountOfRowsByTable($tableName){
 		return $this->connection->table($tableName)->count();
 	}
+
+	public function getCountOfRowsByTableAndId($tableName,$column,$value){
+		return $this->connection->table($tableName)->where(array($column => $value))->count();
+	}
+
+	public function getCountOfRowsByTableMultiCon($tableName,$data){
+		return $this->connection->table($tableName)->where($data)->count();
+	}
+	/*---------------- end of counters -------------*/
+
+
 
 	public function getByTableAndId($tableName,$column, $id){
 		return $this->connection->table($tableName)->where(array($column => $id));
@@ -59,9 +79,7 @@ class GeneralRepository extends Repository
 		return $this->connection->table($tableName)->where(array($column => $value))->delete();
 	}
 
-	public function getCountOfRowsByTableAndId($tableName,$column,$value){
-		return $this->connection->table($tableName)->where(array($column => $value))->count();
-	}
+	
 
 	/*--------- delete process ---------*/
 
