@@ -24,7 +24,8 @@
 
     <link rel="stylesheet" href="{$basePath}/css/bootstrap.css">
     <link rel="stylesheet" href="{$basePath}/css/bootstrap-responsive.css">
-    
+    <script type="text/javascript" src="{$basePath}/js/cssrefresh.js"></script>
+
     <!-- LIGHTBOX -->
     <link rel="stylesheet" href="{$basePath}/css/lightbox.css" type="text/css" media="screen" />
     <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -39,8 +40,8 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div id="topContainer">
-            <div class="centerContainer">
+        <div id="span4 offset4">
+            <div class="container">
                 <a href="http://cleverfrogs.com" class="logo fl"><img src="{$basePath}/img/logoB.png" alt="CEIT-KE" /></a>
                 
                 {if !$user->isLoggedIn()}
@@ -60,19 +61,11 @@
                                 </div>
                                 
                                 <div class="sign-in-form">
-                                    
-                                    <div class="pair">
-                                        {label username /}
-                                        <div class="span2">{input username}</div>
-                                    </div>
-                                    <div class="pair">
-                                        {label password /}
-                                        <div class="span2">{input password}</div>
-                                    </div>
-
-                                    <div class="pair">
-                                       {input login}
-                                    </div>
+                                    {label username /}
+                                    <div class="span5 pull-left">{input username}</div>
+                                    {label password /}
+                                    <div class="span2 pull-left input_password">{input password}</div>
+                                    <div class="span1 pull-left">{input login}</div>
                                 </div>
                             {/form}
                         </li>
@@ -94,71 +87,82 @@
             </div><!--end of centerContainer-->
         </div> <!-- end of topContainer -->
 
-        <div id="menuContainer">
-            <div class="centerContainer">
-
-                <ul id="nav" class="nav nav-pills">
-
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="nav-collapse collapse">
+                <ul class="nav" id="nav">
                     <li><a href="http://cleverfrogs.com">Home<span>CleverFrogs</span></a></li>
                     <li><a href="{link Team:}">Team<span>Team members</span></a></li>
                     <li><a href="{link PhotoGallery:}#slide-main">Gallery<span>photo & video</span></a></li>
                     <li><a href="{link Contact:}">Contact<span>Contact us</span></a></li>
                 </ul>
-            </div><!--end of centerContainer-->
-        </div><!--end of menuContainer-->
+              </div>
+            </div>
+          </div>
+        </div>
 
        {include #content}
 
         <div class="blankSeparator"></div>
 
         <div id="footerContainer">
-            <div class="centerContainer">
+            <div class="container">
+                <div class="row">
+                    <div class="span4">
+                        <div id="footerProducts">
+                            <h5 class="colorWhite">About project</h5>
+                            <a href='#'>news</a>
+                        </div><!--end of footerProducts-->
+                        <div id="footerProjects">
+                            <h5 class="colorWhite">Projects</h5>
+                            <a href="#">Project CleverFrogs</a>
+                        </div>
+                    </div><!--end of span4-->
 
-                <div class="oneThirdCol">
-                    <div id="footerProducts">
-                        <h5 class="colorWhite">About project</h5>
-                        <a href='#'>news</a>
-                    </div><!--end of footerProducts-->
-                    <div id="footerProjects">
-                        <h5 class="colorWhite">Projects</h5>
-                        <a href="#">Project CleverFrogs</a>
-                    </div>
-                </div><!--end of oneThirdCol-->
+                    <div class="span4">
+                        <h5 class="colorWhite">Newsletter subscription</h5>
+                        <p>
+                            Get the latest information about our project.
+                        </p>
 
-                <div class="oneThirdCol">
-                    <h5 class="colorWhite">Newsletter subscription</h5>
-                    <p>
-                        Get the latest information about our project.
-                    </p>
+                        <form action="" method="get">
+                            <fieldset>
+                                <div class="input-append">
+                                    <input class="span2" id="appendedInputButton" type="text">
+                                    <button class="btn" type="button">Subscribe</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <a href="#" class="policy">Terms & conditions</a>
+                    </div><!--end of span4-->
 
-                    <form action="" method="get">
-                        <fieldset>
-                            <div class="input-append">
-                                <input class="span2" id="appendedInputButton" type="text">
-                                <button class="btn" type="button">Subscribe</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <a href="#" class="policy">Terms & conditions</a>
-                </div><!--end of oneThirdCol-->
-
-                <div class="oneThirdCol  lastCol">
-                    <h5 class="colorWhite">Contact Us</h5>
-                    <p>
-                        Contact us by <a href="{link Contact:}">Contact formular</a>.
-                    </p>
-                </div><!--end of oneThirdCol-->
+                    <div class="span4  lastCol">
+                        <h5 class="colorWhite">Contact Us</h5>
+                        <p>
+                            Contact us by <a href="{link Contact:}">Contact formular</a>.
+                        </p>
+                    </div><!--end of span4-->
+                </div><!--end of span4-->
 
             </div><!--end of centerContainer-->
         </div><!--end of footerContainer-->
 
+
         <div id="copyrightContainer">
-            <div class="centerContainer">
+            <div class="container">
                 <p id="bottomCopyright" class="fr">
                 </p>
-                <center><small class="colorWhite copyrightText">&copy; Copyright AMBI s.r.o. All rights reserved. </small></center>
+                <small class="colorWhite copyrightText">&copy; Copyright AMBI s.r.o. All rights reserved. </small>
             </div><!--end of centerContainer-->
         </div><!--end of copyrigtContainer-->
+
+
 
 
         <script src="{$basePath}/js/plugins.js"></script>

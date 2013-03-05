@@ -278,6 +278,10 @@ a.readMoreLink {
     text-transform: uppercase;
 }
 
+.containerWidth {
+    text-align: center;
+}
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
@@ -323,7 +327,6 @@ h1, h2, h3, h4, h5, h6 {
     /*------------- structure styles ---------------*/
 
     div.centerContainer {
-    	width: 960px;
     	margin: 0 auto;
     	overflow: hidden;
     }
@@ -362,6 +365,7 @@ h1, h2, h3, h4, h5, h6 {
     	background: url("../img/topPaper.png") 0 0 no-repeat;
     	width: 350px;
     	height: 119px;
+        margin-top: 15px;
     }
 
     div#topContactInfo ul {
@@ -395,7 +399,6 @@ h1, h2, h3, h4, h5, h6 {
 
     div#menuContainer {
     	background: url("../img/menuBG.png") 0 0 repeat-x;
-    	height:80px;
     }
 
 
@@ -403,9 +406,9 @@ h1, h2, h3, h4, h5, h6 {
     ul#nav li {
     	display: inline;
     	float: left;
-    	background: url("../img/menuSep.png") center right no-repeat;
-
-    	margin: 16px 30px 0 0;
+    	//background: url("../img/menuSep.png") center right no-repeat;
+        padding: 10px;
+    	margin: 0px 20px 0 0;
     }
 
     ul#nav li a {
@@ -1094,10 +1097,47 @@ div#loginPanel {
     border-radius: 5px;
     color: white;
     padding: 7px 29px;
-    float: right;
-    margin-right: 14px;
     background: url("../img/blueButtonBG.png") 0 0 repeat-x;
 }
+
+@media screen and (min-width: 980px) {
+    .input_password {
+        float: left !important;
+        width: 47% !important;
+
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .input_password {
+        float: left !important;
+        width: 51% !important;
+    }
+
+    .sign-in-form {
+        padding-left: 10px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .input_password {
+        float: left !important;
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .input_password {
+        float: left !important;
+        width: 56% !important;
+    }
+
+    .sign-in-form {
+        padding-left: 30px;
+    }
+}
+
+
 
 .sign-in-form input[type="submit"]:hover{
      -moz-border-radius: 5px;
@@ -1106,8 +1146,6 @@ div#loginPanel {
     border-radius: 5px;
     color: white;
     padding: 7px 29px;
-    float: right;
-    margin-right: 14px;
     background: url("../img/blueButtonBGOver.png") 0 0 repeat-x;
     cursor: pointer;
 }

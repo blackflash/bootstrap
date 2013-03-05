@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.09316200 1362111835";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1362111829;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.79659300 1362526530";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1362526530;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'q14b48f13o')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '92sn9wtfao')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lbad37306a11_title')) { function _lbad37306a11_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lbb059bb2995_title')) { function _lbb059bb2995_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lb17b73ccf94_head')) { function _lb17b73ccf94_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lbe746f066da_head')) { function _lbe746f066da_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -69,7 +69,8 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap-responsive.css" />
-    
+    <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>
+
     <!-- LIGHTBOX -->
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/lightbox.css" type="text/css" media="screen" />
     <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css' />
@@ -85,8 +86,8 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div id="topContainer">
-            <div class="centerContainer">
+        <div id="span4 offset4">
+            <div class="container">
                 <a href="http://cleverfrogs.com" class="logo fl"><img src="<?php echo htmlSpecialChars($basePath) ?>/img/logoB.png" alt="CEIT-KE" /></a>
                 
 <?php if (!$user->isLoggedIn()): ?>
@@ -106,20 +107,11 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 <?php $iterations++; endforeach ?>
                                 
                                 <div class="sign-in-form">
-                                    
-                                    <div class="pair">
 <?php if ($_label = $_form["username"]->getLabel()) echo $_label->addAttributes(array()) ?>
-                                        <div class="span2"><?php echo $_form["username"]->getControl()->addAttributes(array()) ?></div>
-                                    </div>
-                                    <div class="pair">
+                                    <div class="span5 pull-left"><?php echo $_form["username"]->getControl()->addAttributes(array()) ?></div>
 <?php if ($_label = $_form["password"]->getLabel()) echo $_label->addAttributes(array()) ?>
-                                        <div class="span2"><?php echo $_form["password"]->getControl()->addAttributes(array()) ?></div>
-                                    </div>
-
-                                    <div class="pair">
-                                       <?php echo $_form["login"]->getControl()->addAttributes(array()) ?>
-
-                                    </div>
+                                    <div class="span2 pull-left input_password"><?php echo $_form["password"]->getControl()->addAttributes(array()) ?></div>
+                                    <div class="span1 pull-left"><?php echo $_form["login"]->getControl()->addAttributes(array()) ?></div>
                                 </div>
 <?php Nette\Latte\Macros\FormMacros::renderFormEnd($_form) ?>
                         </li>
@@ -144,71 +136,82 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
             </div><!--end of centerContainer-->
         </div> <!-- end of topContainer -->
 
-        <div id="menuContainer">
-            <div class="centerContainer">
-
-                <ul id="nav" class="nav nav-pills">
-
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="nav-collapse collapse">
+                <ul class="nav" id="nav">
                     <li><a href="http://cleverfrogs.com">Home<span>CleverFrogs</span></a></li>
                     <li><a href="<?php echo htmlSpecialChars($_control->link("Team:")) ?>">Team<span>Team members</span></a></li>
                     <li><a href="<?php echo htmlSpecialChars($_control->link("PhotoGallery:")) ?>#slide-main">Gallery<span>photo & video</span></a></li>
                     <li><a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact<span>Contact us</span></a></li>
                 </ul>
-            </div><!--end of centerContainer-->
-        </div><!--end of menuContainer-->
+              </div>
+            </div>
+          </div>
+        </div>
 
 <?php Nette\Latte\Macros\UIMacros::callBlock($_l, 'content', $template->getParameters()) ?>
 
         <div class="blankSeparator"></div>
 
         <div id="footerContainer">
-            <div class="centerContainer">
+            <div class="container">
+                <div class="row">
+                    <div class="span4">
+                        <div id="footerProducts">
+                            <h5 class="colorWhite">About project</h5>
+                            <a href='#'>news</a>
+                        </div><!--end of footerProducts-->
+                        <div id="footerProjects">
+                            <h5 class="colorWhite">Projects</h5>
+                            <a href="#">Project CleverFrogs</a>
+                        </div>
+                    </div><!--end of span4-->
 
-                <div class="oneThirdCol">
-                    <div id="footerProducts">
-                        <h5 class="colorWhite">About project</h5>
-                        <a href='#'>news</a>
-                    </div><!--end of footerProducts-->
-                    <div id="footerProjects">
-                        <h5 class="colorWhite">Projects</h5>
-                        <a href="#">Project CleverFrogs</a>
-                    </div>
-                </div><!--end of oneThirdCol-->
+                    <div class="span4">
+                        <h5 class="colorWhite">Newsletter subscription</h5>
+                        <p>
+                            Get the latest information about our project.
+                        </p>
 
-                <div class="oneThirdCol">
-                    <h5 class="colorWhite">Newsletter subscription</h5>
-                    <p>
-                        Get the latest information about our project.
-                    </p>
+                        <form action="" method="get">
+                            <fieldset>
+                                <div class="input-append">
+                                    <input class="span2" id="appendedInputButton" type="text" />
+                                    <button class="btn" type="button">Subscribe</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <a href="#" class="policy">Terms & conditions</a>
+                    </div><!--end of span4-->
 
-                    <form action="" method="get">
-                        <fieldset>
-                            <div class="input-append">
-                                <input class="span2" id="appendedInputButton" type="text" />
-                                <button class="btn" type="button">Subscribe</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <a href="#" class="policy">Terms & conditions</a>
-                </div><!--end of oneThirdCol-->
-
-                <div class="oneThirdCol  lastCol">
-                    <h5 class="colorWhite">Contact Us</h5>
-                    <p>
-                        Contact us by <a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact formular</a>.
-                    </p>
-                </div><!--end of oneThirdCol-->
+                    <div class="span4  lastCol">
+                        <h5 class="colorWhite">Contact Us</h5>
+                        <p>
+                            Contact us by <a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact formular</a>.
+                        </p>
+                    </div><!--end of span4-->
+                </div><!--end of span4-->
 
             </div><!--end of centerContainer-->
         </div><!--end of footerContainer-->
 
+
         <div id="copyrightContainer">
-            <div class="centerContainer">
+            <div class="container">
                 <p id="bottomCopyright" class="fr">
                 </p>
-                <center><small class="colorWhite copyrightText">&copy; Copyright AMBI s.r.o. All rights reserved. </small></center>
+                <small class="colorWhite copyrightText">&copy; Copyright AMBI s.r.o. All rights reserved. </small>
             </div><!--end of centerContainer-->
         </div><!--end of copyrigtContainer-->
+
+
 
 
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/plugins.js"></script>
