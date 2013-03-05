@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.37537300 1362358676";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362358643;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.18719200 1362477865";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1362442065;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'i6zn8hmqi8')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ws2siukxpc')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -279,6 +279,7 @@ if (!empty($_control->snippetMode)) {
                                     <div class="bechmark-percentage-red"><small>68%</small></div>
                                     <div class="bechmark-percentage-red"><small>82%</small></div>
                                 </div>
+
                                 
                                 <div class="rightBT">
                                     <div id="da-ex-benchmark-a" class="animated green"></div>
