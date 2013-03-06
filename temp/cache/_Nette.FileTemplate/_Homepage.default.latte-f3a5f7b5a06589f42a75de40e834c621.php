@@ -1,16 +1,16 @@
-<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.53957000 1362524208";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte";i:2;i:1362524207;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.58987300 1362528892";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte";i:2;i:1362528797;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'iurtmbneha')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'i6prljppz9')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lba49655dc61_content')) { function _lba49655dc61_content($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['content'][] = '_lb637e47ebdd_content')) { function _lb637e47ebdd_content($_l, $_args) { extract($_args)
 ?>        <div class="blankSeparator"></div>
 
         <div class="container">
@@ -53,47 +53,47 @@ if (!function_exists($_l->blocks['content'][] = '_lba49655dc61_content')) { func
                 <div class="span12">
                     <h2 class="sectionHeading">Our solution</h2>
                     <br />
-                    <div class="row">
-                        <div class="span5" style="margin-top: 10px;">
+                    <div class="container">
+                        <div class="span4 offset1" style="margin-top: 10px;">
                             <div class="row-fluid">
                                 <div class="span2"><img style="margin-top: 10px;"src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/48x48/comments.png" /></div>
-                                <div class="span9">
+                                <div class="span10">
                                     <h4>Get instant feedback</h4>
                                     <small>Give your customers easy and comfortable way of expressing their feelings and requirements. Show them that they are important for you.</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="span5" style="margin-top: 10px;">
+                        <div class="span4 offset1" style="margin-top: 10px;">
                             <div class="row-fluid">
                                 <div class="span2"><img style="margin-top: 10px;"src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/48x48/network.png" /></div>
-                                <div class="span9">
+                                <div class="span10">
                                     <h4>Link it with what you already know</h4>
                                     <small>Use clear and comfortable way of displaying and analysing data about your customers. It will give you the possibility to be faster and better than others.</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="span5" style="margin-top: 10px;">
+                        <div class="span4 offset1" style="margin-top: 10px;">
                             <div class="row-fluid">
                                 <div class="span2"><img style="margin-top: 10px;"src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/48x48/light_bulb.png" /></div>
-                                <div class="span9">
+                                <div class="span10">
                                     <h4>Discover new patterns</h4>
                                     <small>Analyse the data, learn from it and put your learning into practice. It will make your customers happier and more satisfied.</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="span5" style="margin-top: 10px;">
+                        <div class="span4 offset1" style="margin-top: 10px;">
                             <div class="row-fluid">
                                 <div class="span2"><img style="margin-top: 10px;"src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/48x48/star.png" /></div>
-                                <div class="span9">
+                                <div class="span10">
                                     <h4>Create new relationships</h4>
                                     <small>Be proactive. It is better than being just reactive. Build multiple communication channels with your customers.</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="span5" style="margin-top: 10px;">
+                        <div class="span4 offset1" style="margin-top: 10px;">
                             <div class="row-fluid">
                                 <div class="span2"><img style="margin-top: 10px;"src="<?php echo htmlSpecialChars($basePath) ?>/images/stylistica_icons/48x48/chart.png" /></div>
-                                <div class="span9">
+                                <div class="span10">
                                     <h4>Improve</h4>
                                     <small>React to events and conditions by 20% faster. Make your customers` satisfaction higher by 15%. Raise your sales by more than 20% YoY.</small>
                                 </div>

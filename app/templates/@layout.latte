@@ -40,8 +40,8 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div id="span4 offset4">
             <div class="container">
+
                 <a href="http://cleverfrogs.com" class="logo fl"><img src="{$basePath}/img/logoB.png" alt="CEIT-KE" /></a>
                 
                 {if !$user->isLoggedIn()}
@@ -85,26 +85,25 @@
                 {/if}
                 
             </div><!--end of centerContainer-->
-        </div> <!-- end of topContainer -->
 
         <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
-            <div class="container">
-              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <div class="nav-collapse collapse">
-                <ul class="nav" id="nav">
-                    <li><a href="http://cleverfrogs.com">Home<span>CleverFrogs</span></a></li>
-                    <li><a href="{link Team:}">Team<span>Team members</span></a></li>
-                    <li><a href="{link PhotoGallery:}#slide-main">Gallery<span>photo & video</span></a></li>
-                    <li><a href="{link Contact:}">Contact<span>Contact us</span></a></li>
-                </ul>
-              </div>
+            <div class="navbar-inner">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="nav-collapse collapse">
+                    <div class="centerMenu">
+                        <ul class="nav" id="nav">
+                                <li><a href="{$basePath}">Home<span>CleverFrogs</span></a></li>
+                                <li><a href="{link Team:}">Team<span>Team members</span></a></li>
+                                <li><a href="{link PhotoGallery:}#slide-main">Gallery<span>photo & video</span></a></li>
+                                <li><a href="{link Contact:}">Contact<span>Contact us</span></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
        {include #content}
@@ -113,7 +112,7 @@
 
         <div id="footerContainer">
             <div class="container">
-                <div class="row">
+                <div class="row copyrightColumns">
                     <div class="span4">
                         <div id="footerProducts">
                             <h5 class="colorWhite">About project</h5>

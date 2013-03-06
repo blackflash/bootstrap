@@ -326,6 +326,7 @@ h1, h2, h3, h4, h5, h6 {
 
     /*------------- structure styles ---------------*/
 
+
     div.centerContainer {
     	margin: 0 auto;
     	overflow: hidden;
@@ -1041,7 +1042,6 @@ div#loginPanel {
     border: 1px solid #e1e5e9;
 
     margin-top: 10px;
-    margin-left: 200px;
 }
 
 .loginButton {
@@ -1104,36 +1104,62 @@ div#loginPanel {
     .input_password {
         float: left !important;
         width: 47% !important;
+    }
 
+    .centerMenu {
+        width: 960px !important;
+        margin: auto !important;
     }
 }
 
 @media screen and (max-width: 1200px) {
     .input_password {
         float: left !important;
-        width: 51% !important;
+        width: 52% !important;
     }
 
     .sign-in-form {
         padding-left: 10px;
+    }
+
+    .centerMenu {
+        width: 700px !important;
+        margin: auto !important;
     }
 }
 
 @media screen and (max-width: 980px) {
     .input_password {
         float: left !important;
-        width: 50% !important;
+        width: 52% !important;
     }
+
 }
 
 @media screen and (max-width: 767px) {
     .input_password {
         float: left !important;
-        width: 56% !important;
+        width: 62% !important;
+    }
+
+    .centerMenu {
+        width: auto !important;
+    }
+
+    .centerMenu li {
+        width: 100%;
     }
 
     .sign-in-form {
         padding-left: 30px;
+    }
+
+    .copyrightColumns {
+        padding-left: 50px; !important;
+    }
+
+    #copyrightContainer small {
+        padding-left: 50px;
     }
 }
 

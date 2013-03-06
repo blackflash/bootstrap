@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.79659300 1362526530";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1362526530;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.23304600 1362529818";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1362529664;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '92sn9wtfao')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 's7a1mbdi36')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lbb059bb2995_title')) { function _lbb059bb2995_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lb91c713fa5a_title')) { function _lb91c713fa5a_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lbe746f066da_head')) { function _lbe746f066da_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lb3cb590aa2a_head')) { function _lb3cb590aa2a_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -86,8 +86,8 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div id="span4 offset4">
             <div class="container">
+
                 <a href="http://cleverfrogs.com" class="logo fl"><img src="<?php echo htmlSpecialChars($basePath) ?>/img/logoB.png" alt="CEIT-KE" /></a>
                 
 <?php if (!$user->isLoggedIn()): ?>
@@ -134,26 +134,25 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 <?php endif ?>
                 
             </div><!--end of centerContainer-->
-        </div> <!-- end of topContainer -->
 
         <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
-            <div class="container">
-              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <div class="nav-collapse collapse">
-                <ul class="nav" id="nav">
-                    <li><a href="http://cleverfrogs.com">Home<span>CleverFrogs</span></a></li>
-                    <li><a href="<?php echo htmlSpecialChars($_control->link("Team:")) ?>">Team<span>Team members</span></a></li>
-                    <li><a href="<?php echo htmlSpecialChars($_control->link("PhotoGallery:")) ?>#slide-main">Gallery<span>photo & video</span></a></li>
-                    <li><a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact<span>Contact us</span></a></li>
-                </ul>
-              </div>
+            <div class="navbar-inner">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="nav-collapse collapse">
+                    <div class="centerMenu">
+                        <ul class="nav" id="nav">
+                                <li><a href="<?php echo htmlSpecialChars($basePath) ?>">Home<span>CleverFrogs</span></a></li>
+                                <li><a href="<?php echo htmlSpecialChars($_control->link("Team:")) ?>">Team<span>Team members</span></a></li>
+                                <li><a href="<?php echo htmlSpecialChars($_control->link("PhotoGallery:")) ?>#slide-main">Gallery<span>photo & video</span></a></li>
+                                <li><a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact<span>Contact us</span></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
 <?php Nette\Latte\Macros\UIMacros::callBlock($_l, 'content', $template->getParameters()) ?>
@@ -162,7 +161,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 
         <div id="footerContainer">
             <div class="container">
-                <div class="row">
+                <div class="row copyrightColumns">
                     <div class="span4">
                         <div id="footerProducts">
                             <h5 class="colorWhite">About project</h5>
