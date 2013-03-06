@@ -951,36 +951,7 @@ a.redButton:hover {
     line-height: 20px;
    }
 
-   form#contactForm {
-    overflow: hidden;
-}
 
-form#contactForm p {
-    margin-top: 0;
-}
-
-form#contactForm input[type="text"] {
-    width: 270px;
-}
-
-    form#contactForm input[type="text"]:hover {
-        border: 1px solid #b8babd;
-    }
-
-form#contactForm textarea {
-    height: 180px;
-    width: 570px;
-    min-width: 570px;
-    max-width: 570px;
-    min-height: 180px;
-    max-height:  250px;
-}
-
-p.oneHalfCol {
-    width: 47%;
-    margin-right: 3%;
-    float: left;
-}
 
 /*---- R&D section ----*/
 .RDbanner {
@@ -1134,6 +1105,10 @@ div#loginPanel {
         width: 52% !important;
     }
 
+    .contactBar {
+        padding-left: 30px;
+    }
+
 }
 
 @media screen and (max-width: 767px) {
@@ -1161,6 +1136,15 @@ div#loginPanel {
     #copyrightContainer small {
         padding-left: 50px;
     }
+
+    .contactBar {
+        padding-left: 0px;
+    }
+
+    #breadCrumbsContainer p {
+        padding-left: 10px;
+    }
+
 }
 
 
@@ -1195,3 +1179,6 @@ div#loginPanel {
     margin-top: -5px;
 }
 
+.navbar {
+    margin-bottom: 0 !important;
+}

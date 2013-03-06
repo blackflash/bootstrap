@@ -1,6 +1,6 @@
 {block content}
 <div id="breadCrumbsContainer">
-            <div class="centerContainer">
+            <div class="container">
                 <p>You are here:
                     <a href="http://cleverfrogs.com">Home</a>
                     &nbsp; / &nbsp;
@@ -12,67 +12,67 @@
 
         <div class="blankSeparator"></div>
 
-        <div class="centerContainer">
-					
-			<div class="sidebarContainer fl">
-				<div class="sidebarItem">
-					<div class="sidebarHeader">
-						<h5>CleverFrogs</h5>
-					</div>
-					
-					<ul class="basicList">
-						<li>
-							<p>Email adress:
-							<a href="mailto:info@cleverfrogs.com">info@cleverfrogs.com</a></p>
-						</li>
-		
-						<li class="noBottomBorder">
-							<p class="kontaktFU">
-								<br>
-								<b>Contact information :</b><br>
-								Phone num.: +421 918 999 999
-							</p>
-						</li>
-					</ul>
-			</div> <!-- end sidebarItem -->
+        <div class="container">
+			
+        <div class="span12">
 
+			<div class="span4">		
+				<div class="sidebarContainer ">
+					<div class="sidebarItem">
+						<div class="sidebarHeader">
+							<h5>CleverFrogs</h5>
+						</div>
+						
+						<ul class="basicList">
+							<li>
+								<p>Email adress:
+								<a href="mailto:info@cleverfrogs.com">info@cleverfrogs.com</a></p>
+							</li>
+			
+							<li class="noBottomBorder">
+								<p class="kontaktFU">
+									<br>
+									<b>Contact information :</b><br>
+									Phone num.: +421 918 999 999
+								</p>
+							</li>
+						</ul>
+				</div> <!-- end sidebarItem -->
+			</div>
 
 		</div><!--end of sidebarContainer -->
 
-		<div id="rightPanelContact">
-			<img src="{$basePath}/img/contactPageImg.png" alt="Contact" />	<br><br>
-			<p>Do you find our solution interesting? Do you want to ask some questions? Would you like to cooperate with us? Do not hesitate to contact us.</p>
-			
-			<div class="sepContainer"><!-- --></div>
+			<div class="span7 contactBar">
+				<img src="{$basePath}/img/contactPageImg.png" alt="Contact" />	<br><br>
+				<p>Do you find our solution interesting? Do you want to ask some questions? Would you like to cooperate with us? Do not hesitate to contact us.</p>
+				
+				<div class="sepContainer"><!-- --></div>
 
-			<form action="{$basePath}/cleverfrogs/sendEmail/sk"  method="post" id="contactForm">
-				<fieldset>
-					<p class="oneHalfCol">
-						<label for="meno">Your name*</label>
-						<input type="text"  name="meno" autocomplete="OFF" value="<?php if(isset($meno)) echo $meno ?>"/>
-					</p>
+				<form action="{$basePath}/cleverfrogs/sendEmail/sk"  method="post" id="contactForm">
+					<fieldset>
+						<p class="span3">
+							<input class="input-block-level" type="text" placeholder="Your name*" name="meno" autocomplete="OFF" value="<?php if(isset($meno)) echo $meno ?>"/>
+						</p>
 
-					<p class="oneHalfCol">
-						<label for="email">Your email*</label>
-						<input type="text"  name="email" autocomplete="OFF" value="<?php if(isset($email)) echo $email ?>"/>
-					</p>
-					
-					<div class="cl"><!-- --></div>
-					
-					<p>
-						<label for="text">Text*</label>
-						<textarea id="text" cols="10" rows="10" name="text"><?php if(isset($text)) echo $text ?></textarea>
-					</p>
-					
-					<br>
-					<button class="btn btn-large btn-block btn-primary" type="button">submit</button>
-					<p class="additionalOptions fl"></p>
-				</fieldset>
-			</form>
+						<p class="span3">
+							<input class="input-block-level" type="text" placeholder="Your email*"  name="email" autocomplete="OFF" value="<?php if(isset($email)) echo $email ?>"/>
+						</p>
+						
+						<div class="cl"><!-- --></div>
+						
+						<p class="span6">
+							<textarea  class="input-block-level" id="text" placeholder="Text*" cols="10" rows="10" name="text"><?php if(isset($text)) echo $text ?></textarea>
+						</p>
+						
+						<br>
+						<button class="btn btn-large btn-block btn-primary" type="button">submit</button>
+						<p class="additionalOptions fl"></p>
+					</fieldset>
+				</form>
 
+			</div>
 		</div>
-	</div>
-	
+	</div>	
 </div>
 
 {/block}
