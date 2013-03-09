@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{$basePath}/css/component_compact_news/compact_news.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="{$basePath}/css/component_compact_news/compact_news_green.css" type="text/css" media="screen"/>
 <script src="{$basePath}/js/component_compact_news/cufon.js" type="text/javascript"></script>
 <script src="{$basePath}/js/component_compact_news/Bebas_400.font.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -9,7 +9,6 @@
 	<div id="cn_preview" class="cn_preview">
 			{foreach $news as $new}
 
-				{if $new->is_active == 1}
 					{if $iterator->first}
 					<div class="cn_content" style="top:5px;">
 					{else}
@@ -24,26 +23,25 @@
 							<!--end of <a n:href="markDone!" target="_blank" class="cn_more">Read more</a>-->
 						{/if}
 					</div>
-				{/if}
 			{/foreach}
 		</div>
 		<div id="cn_list" class="cn_list">
 			{foreach $news as $new}
-				{if $new->is_active == 1}
-					{if $iterator->first}
+				{if $iterator->first}
 						<div class="cn_page" style="display:block;">
-					{/if}
-							<div class="cn_item {if $iterator->first}selected{/if}">
-								<h2>{$new->title}</h2>
-								<p>{$new->text}</p>
-							</div>
-					{if $iterator->counter%4 == 0}
-						</div>
-						<div class="cn_page">
-					{/if}
-					{if $iterator->last}
-						</div>
-					{/if}
+				{/if}
+						
+				<div class="cn_item {if $iterator->first}selected{/if}">
+					<h2>{$new->title}</h2>
+					<p>{$new->text}</p>
+				</div>
+				{if $iterator->counter%4 == 0}
+					</div>
+					<div class="cn_page">
+				{/if}
+						
+				{if $iterator->last}
+					</div>
 				{/if}
 	        {/foreach}
 			<div class="cn_nav">

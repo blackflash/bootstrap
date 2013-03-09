@@ -28,7 +28,7 @@ class compactNewsControl extends UI\Control {
 	public function render()
     {
         $this->template->setFile(__DIR__ . '/CompactNews.latte');
-        $this->template->news = $this->generalRepository->getByTable("component_compact_news");
+        $this->template->news = $this->generalRepository->getByTableAndId("component_compact_news","is_active","1");
         $this->template->render();
     }
 

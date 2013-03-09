@@ -16,6 +16,7 @@ class AdminPresenter extends BasePresenter
 
 	/** @var @var Todo\ListRepository */
 	private $userRepository;
+	private $generalRepository;
 
 	protected function startup()
 	{
@@ -23,6 +24,11 @@ class AdminPresenter extends BasePresenter
 	    if (!$this->getUser()->isLoggedIn()) {
 	        $this->redirect('Homepage:');
 	    }
+	}
+
+	public function inject(Todo\GeneralRepository $generalRepository)
+	{
+		$this->generalRepository = $generalRepository;
 	}
 
 	public function renderDefault($title = "CleverFrogs - dashboard",$page = "dashboard", $success = "0", $gallery_id = "none")
@@ -121,6 +127,12 @@ class AdminPresenter extends BasePresenter
 	    }
 	   
         $this->template->includeBoard = $page.".latte";
+	}
+
+	/*---------------------COMPONENTS--------------------------*/
+	protected function createComponentCompactNewsAdmin()
+	{
+		return new Todo\CompactNewsAdminControl($this->generalRepository);
 	}
 
 	/*----------------DASHBOAR DATA CALCULACTION --------------*/
@@ -246,8 +258,6 @@ class AdminPresenter extends BasePresenter
 		$data = $this->request->getPost();
 
 		$dir_category = "uploads/ps/".$data["category_id"]."/";
-
-
 
 		$this->savePSImage($dir_category,$data["category_id"],$data["ps_id"],true);
 

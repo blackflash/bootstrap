@@ -12,7 +12,6 @@ class HomepagePresenter extends BasePresenter
 
 	private $generalRepository;
 
-
 	protected function startup()
 	{
 	    parent::startup();
