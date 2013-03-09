@@ -1,50 +1,63 @@
-<link rel="stylesheet" href="{$basePath}/css/component_compact_news/compact_news.css" type="text/css" media="screen"/>
-<script src="{$basePath}/js/component_compact_news/cufon.js" type="text/javascript"></script>
-<script src="{$basePath}/js/component_compact_news/Bebas_400.font.js" type="text/javascript"></script>
+<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.87293800 1362829410";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\CompactNews.latte";i:2;i:1362829409;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+
+// source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\CompactNews.latte
+
+?><?php
+// prolog Nette\Latte\Macros\CoreMacros
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'vbhdldpadc')
+;
+// prolog Nette\Latte\Macros\UIMacros
+
+// snippets support
+if (!empty($_control->snippetMode)) {
+	return Nette\Latte\Macros\UIMacros::renderSnippets($_control, $_l, get_defined_vars());
+}
+
+//
+// main template
+//
+?>
+<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_compact_news/compact_news.css" type="text/css" media="screen" />
+<script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_compact_news/cufon.js" type="text/javascript"></script>
+<script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_compact_news/Bebas_400.font.js" type="text/javascript"></script>
 <script type="text/javascript">
 	Cufon('.cn_wrapper h1,h2', {});
 </script>
 
 <div class="cn_wrapper">
 	<div id="cn_preview" class="cn_preview">
-			{foreach $news as $new}
+<?php $iterations = 0; foreach ($iterator = $_l->its[] = new Nette\Iterators\CachingIterator($news) as $new): ?>
 
-				{if $new->is_active == 1}
-					{if $iterator->first}
+<?php if ($new->is_active == 1): if ($iterator->first): ?>
 					<div class="cn_content" style="top:5px;">
-					{else}
+<?php else: ?>
 					<div class="cn_content">
-					{/if}
-						<img src="{$basePath}/uploads/news/{$new->image}" alt=""/>
-						<h1>{$new->title}</h1>
-						<span class="cn_date"><?php echo date('F/j/Y',strtotime($new->date)); ?></span>
-						<p>{$new->text}</p>
-						{if $new->link != "#"}
-							<a href="{$new->link}" target="_blank" class="cn_more">Read more</a>
-						{/if}
+<?php endif ?>
+						<img src="<?php echo htmlSpecialChars($basePath) ?>/uploads/news/<?php echo htmlSpecialChars($new->image) ?>" alt="" />
+						<h1><?php echo Nette\Templating\Helpers::escapeHtml($new->title, ENT_NOQUOTES) ?></h1>
+						<span class="cn_date"><?php echo date('F/j/Y',strtotime($new->date)) ?></span>
+						<p><?php echo Nette\Templating\Helpers::escapeHtml($new->text, ENT_NOQUOTES) ?></p>
+<?php if ($new->link != "#"): ?>
+							<a href="<?php echo htmlSpecialChars($new->link) ?>" target="_blank" class="cn_more">Read more</a>
+							<!--end of <a n:href="markDone!" target="_blank" class="cn_more">Read more</a>-->
+<?php endif ?>
 					</div>
-				{/if}
-			{/foreach}
+<?php endif ;$iterations++; endforeach; array_pop($_l->its); $iterator = end($_l->its) ?>
 		</div>
 		<div id="cn_list" class="cn_list">
-			{foreach $news as $new}
-				{if $new->is_active == 1}
-					{if $iterator->first}
+<?php $iterations = 0; foreach ($iterator = $_l->its[] = new Nette\Iterators\CachingIterator($news) as $new): if ($new->is_active == 1): if ($iterator->first): ?>
 						<div class="cn_page" style="display:block;">
-					{/if}
-							<div class="cn_item {if $iterator->first}selected{/if}">
-								<h2>{$new->title}</h2>
-								<p>{$new->text}</p>
+<?php endif ?>
+							<div class="cn_item <?php if ($iterator->first): ?>selected<?php endif ?>">
+								<h2><?php echo Nette\Templating\Helpers::escapeHtml($new->title, ENT_NOQUOTES) ?></h2>
+								<p><?php echo Nette\Templating\Helpers::escapeHtml($new->text, ENT_NOQUOTES) ?></p>
 							</div>
-					{if $iterator->counter%4 == 0}
+<?php if ($iterator->counter%4 == 0): ?>
 						</div>
 						<div class="cn_page">
-					{/if}
-					{if $iterator->last}
+<?php endif ;if ($iterator->last): ?>
 						</div>
-					{/if}
-				{/if}
-	        {/foreach}
+<?php endif ;endif ;$iterations++; endforeach; array_pop($_l->its); $iterator = end($_l->its) ?>
 			<div class="cn_nav">
 				<a id="cn_prev" class="cn_prev disabled"></a>
 				<a id="cn_next" class="cn_next"></a>
@@ -55,7 +68,7 @@
 
         <!-- The JavaScript -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		<script type="text/javascript" src="{$basePath}/js/component_compact_news/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/component_compact_news/jquery.easing.1.3.js"></script>
         <script type="text/javascript">
             $(function() {
                 //caching

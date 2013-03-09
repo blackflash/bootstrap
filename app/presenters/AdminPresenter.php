@@ -111,6 +111,9 @@ class AdminPresenter extends BasePresenter
 				$this->template->cities   = $this->context->generalRepository->getByTable("city");
 				$this->template->locations   = $this->context->generalRepository->getByTable("location");
 			break;
+			case 'CleverFrogs - News':
+				$this->template->news   = $this->context->generalRepository->getByTable("component_compact_news");
+			break;
 
 	    	default:
 	    		$this->template->includeBoard = $page.".latte";

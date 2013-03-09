@@ -10,13 +10,18 @@ use Nette\Application\UI,
 class HomepagePresenter extends BasePresenter
 {
 
-	private $taskRepository;
+	private $generalRepository;
+
 
 	protected function startup()
 	{
 	    parent::startup();
 	}
 
+	public function inject(Todo\GeneralRepository $generalRepository)
+	{
+		$this->generalRepository = $generalRepository;
+	}
 
 	public function signInFormSubmitted($form)
 	{
@@ -53,12 +58,15 @@ class HomepagePresenter extends BasePresenter
 		$news = new CompactNewsControl();
 		$news  = $news->getNews();*/
 		
-		$this->template->news  = $this->context->generalRepository->getByTable("component_compact_news");
 
 		// PARSER XML
 		//$this->startXMLParse();
-		
-		
+	}
+
+	// Component 
+	protected function createComponentCompactNews()
+	{
+		return new Todo\CompactNewsControl($this->generalRepository);
 	}
 
 	/*------------------------- XML PARSER ------------------------------*/

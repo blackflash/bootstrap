@@ -105,6 +105,20 @@
                                 </a>
                             </li>
                             {/if}
+                            {if $user->identity->username == "admin" }
+                            <li {if $title == "CleverFrogs - News" || $title == "CleverFrogs - webpage"} class="active" {/if}>
+                                <a href='' >
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <img src="{$basePath}/images/icons/black/32/cog_5.png" alt="webpage" />
+                                    </span>
+                                    WebPage
+                                </a>
+                                <ul {if $title != "CleverFrogs - News"}class="closed"{/if} >
+                                    <li><a n:href='Admin:default title=>"CleverFrogs - News",page=>"component_compact_news"' >News</a></li>
+                                </ul>
+                            </li>
+                            {/if}
                             <!--end of 
                             {if $user->identity->username == "admin" }
                             <li {if $title == "CleverFrogs - feedbacks" } class="active" {/if}>
