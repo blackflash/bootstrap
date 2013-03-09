@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.06996600 1362534100";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1362533433;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.27403700 1362783229";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1362783227;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '7tvo7b1bf6')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'sg7a63zaqx')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lb06515a97d8_title')) { function _lb06515a97d8_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lbed5564e9a8_title')) { function _lbed5564e9a8_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lbd68e294ac8_head')) { function _lbd68e294ac8_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lb46369371f4_head')) { function _lb46369371f4_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -111,7 +111,9 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
                                     <div class="span5 pull-left"><?php echo $_form["username"]->getControl()->addAttributes(array()) ?></div>
 <?php if ($_label = $_form["password"]->getLabel()) echo $_label->addAttributes(array()) ?>
                                     <div class="span2 pull-left input_password"><?php echo $_form["password"]->getControl()->addAttributes(array()) ?></div>
-                                    <div class="span1 pull-left"><?php echo $_form["login"]->getControl()->addAttributes(array()) ?></div>
+                                    <div class="span1 pull-left">
+                                        <input id="frmsignInForm-login" class="btn btn-primary" type="submit" value="Login" name="login" />
+                                    </div>
                                 </div>
 <?php Nette\Latte\Macros\FormMacros::renderFormEnd($_form) ?>
                         </li>
@@ -223,11 +225,10 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
 
         <!--end of oddelenie js kvoli prettyPhoto.js-->
-        <?php if($title != "Gallery"){  
+        <?php if($title != "Gallery" && $title != "Home"){  
             echo '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>';
         }
 ?>
-
 
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/vendor/bootstrap.js"></script>
 

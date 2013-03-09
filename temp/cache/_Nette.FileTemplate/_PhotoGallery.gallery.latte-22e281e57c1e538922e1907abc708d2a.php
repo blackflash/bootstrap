@@ -1,10 +1,10 @@
-<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.73741100 1361908254";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte";i:2;i:1361875014;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000412a:2:{s:4:"time";s:21:"0.72793300 1362702071";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:90:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte";i:2;i:1362702070;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\PhotoGallery\gallery.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'lmne74dimp')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '6gf53j4fxw')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -21,7 +21,6 @@ if (isset($gallery_photo->fetch()->namespace_id)): ?>
 <?php endif ?>
 
 <?php if ($videoCheckNamespace != ""): ?>
-    <a href="<?php echo htmlSpecialChars($basePath) ?>/PhotoGallery#slide-<?php echo htmlSpecialChars($videoCheckNamespace) ?>">Back</a>
 
 <div id="vimeo-demo" class="content da-gallery prettyPhoto gridster" style="">
     <ul class="gallery">

@@ -270,7 +270,7 @@ a.readMoreLink {
 }
 
 .colorBlue {
-    color: #007fbb;
+    color: #83fa19;
 }
 
 .colorWhite {
@@ -309,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     a {
-    	color: #007fbb;
+    	color: #83fa19;
     	text-decoration: none;
     }
 
@@ -458,7 +458,7 @@ h1, h2, h3, h4, h5, h6 {
 
      #mainSlider ul li h1{
     	text-transform: uppercase;
-    	color: #007fbb;
+    	color: #83fa19;
     }
 
     .slideParagraph {
@@ -503,7 +503,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     div#serviceListContainer h3 {
-    	color: #007fbb;
+    	color: #83fa19;
     	margin-top: 12px;
     }
 
@@ -519,12 +519,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /*------------- news section ---------------*/
 h3.sectionHeading {
-	color: #007fbb;
+	color: #83fa19;
 	margin-bottom: 30px;
 }
 
 h3.sectionHeading span {
-	background-color: #007fbb;
+	background-color: #83fa19;
 	color: white;
 	padding: 7px 10px;
 
@@ -1062,15 +1062,7 @@ div#loginPanel {
       padding: 0 10px;
 }
 
-.sign-in-form input[type="submit"]{
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
-    color: white;
-    padding: 7px 29px;
-    background: url("../img/blueButtonBG.png") 0 0 repeat-x;
-}
+
 
 @media screen and (min-width: 980px) {
     .input_password {
@@ -1148,17 +1140,8 @@ div#loginPanel {
 
 }
 
-
-
-.sign-in-form input[type="submit"]:hover{
-     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
-    color: white;
+.sign-in-form input[type="submit"]{
     padding: 7px 29px;
-    background: url("../img/blueButtonBGOver.png") 0 0 repeat-x;
-    cursor: pointer;
 }
 
 .error li {
@@ -1182,4 +1165,8 @@ div#loginPanel {
 
 .navbar {
     margin-bottom: 0 !important;
+}
+
+#productVideo {
+ 
 }

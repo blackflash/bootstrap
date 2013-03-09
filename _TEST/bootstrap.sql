@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 06, 2013 at 02:33 AM
+-- Generation Time: Mar 07, 2013 at 11:59 PM
 -- Server version: 5.5.18
 -- PHP Version: 5.3.8
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `campaign` (
   KEY `location_id_6` (`location_id`),
   KEY `location_id_7` (`location_id`),
   KEY `location_id_2` (`location_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `campaign`
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `campaign_ps` (
   PRIMARY KEY (`ps_id`),
   KEY `category_id` (`category_id`),
   KEY `category_id_2` (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=67 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
 
 --
 -- Dumping data for table `campaign_ps`
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `campaign_result` (
   PRIMARY KEY (`campaign_result_id`),
   KEY `campaign_id` (`campaign_id`),
   KEY `ps_id` (`ps_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=64 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54 ;
 
 --
 -- Dumping data for table `campaign_result`
@@ -293,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `gallery_photo` (
   PRIMARY KEY (`photo_id`),
   KEY `gallery_id` (`gallery_id`),
   KEY `namespace_id` (`namespace_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=214 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=213 ;
 
 --
 -- Dumping data for table `gallery_photo`
@@ -361,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `gallery_video` (
   KEY `gallery_id` (`gallery_id`),
   KEY `gallery_id_2` (`gallery_id`),
   KEY `gallery_id_3` (`gallery_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `gallery_video`
@@ -793,7 +793,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `user`
@@ -819,7 +819,7 @@ CREATE TABLE IF NOT EXISTS `user_profile` (
   KEY `user_id` (`user_id`),
   KEY `project_id` (`project_id`),
   KEY `project_id_2` (`project_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `user_profile`
@@ -849,8 +849,8 @@ ALTER TABLE `campaign_ps`
 -- Constraints for table `campaign_result`
 --
 ALTER TABLE `campaign_result`
-  ADD CONSTRAINT `campaign_result_ibfk_4` FOREIGN KEY (`ps_id`) REFERENCES `campaign_ps` (`ps_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `campaign_result_ibfk_3` FOREIGN KEY (`campaign_id`) REFERENCES `campaign` (`campaign_id`) ON DELETE SET NULL ON UPDATE NO ACTION;
+  ADD CONSTRAINT `campaign_result_ibfk_3` FOREIGN KEY (`campaign_id`) REFERENCES `campaign` (`campaign_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  ADD CONSTRAINT `campaign_result_ibfk_4` FOREIGN KEY (`ps_id`) REFERENCES `campaign_ps` (`ps_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `gallery`
@@ -886,8 +886,8 @@ ALTER TABLE `task`
 -- Constraints for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  ADD CONSTRAINT `user_profile_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_profile_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -24,6 +24,7 @@
 
     <link rel="stylesheet" href="{$basePath}/css/bootstrap.css">
     <link rel="stylesheet" href="{$basePath}/css/bootstrap-responsive.css">
+    <script type="text/javascript" src="{$basePath}/js/cssrefresh.js"></script>
 
     <!-- LIGHTBOX -->
     <link rel="stylesheet" href="{$basePath}/css/lightbox.css" type="text/css" media="screen" />
@@ -64,7 +65,9 @@
                                     <div class="span5 pull-left">{input username}</div>
                                     {label password /}
                                     <div class="span2 pull-left input_password">{input password}</div>
-                                    <div class="span1 pull-left">{input login}</div>
+                                    <div class="span1 pull-left">
+                                        <input id="frmsignInForm-login" class="btn btn-primary" type="submit" value="Login" name="login">
+                                    </div>
                                 </div>
                             {/form}
                         </li>
@@ -173,10 +176,9 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
 
         <!--end of oddelenie js kvoli prettyPhoto.js-->
-        <?php if($title != "Gallery"){  
+        <?php if($title != "Gallery" && $title != "Home"){  
             echo '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>';
         } ?>
-
 
         <script src="{$basePath}/js/vendor/bootstrap.js"></script>
 

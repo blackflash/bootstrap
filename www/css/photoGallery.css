@@ -70,7 +70,7 @@ h2 {
 	font-style: italic;
 	font-size: 13px;
 	border-radius: 3px;
-	background: rgba(103,59,77,0.1);
+	background: rgba(193,231,112,0.1);
 	-webkit-transition: all 0.2s linear;
 	-moz-transition: all 0.2s linear;
 	-o-transition: all 0.2s linear;
@@ -78,11 +78,11 @@ h2 {
 	transition: all 0.2s linear;
 }
 .codrops-demos a:hover{
-	background: rgba(103,59,77,0.4);
+	background: rgba(193,231,112,0.4);
 }
 .codrops-demos a.current-demo,
 .codrops-demos a.current-demo:hover{
-	background: rgba(103,59,77,0.4);
+	background: rgba(193,231,112,0.4);
 }
 
 .cn-container{
@@ -96,7 +96,7 @@ h2 {
 	display: block;
 }
 .cn-container h2{
-	color: #049cdb;
+	color: #c1e770;
 	position: absolute;
 	z-index: 10000;
 	font-size: 20px;
@@ -177,7 +177,7 @@ h2 {
 	transition: opacity 0.3s linear, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .cn-slide nav a:hover{
-	border-color: #049cdb;
+	border-color: #c1e770;
 	color: #fff;
 }
 .cn-slide:target nav a{
@@ -238,12 +238,12 @@ h2 {
 .cn-content p{
 	line-height: 24px;
 	text-shadow: 1px 1px 1px rgba(255,255,255,0.9);
-	color: rgba(103,59,77,0.9);
+	color: rgba(193,231,112,0.9);
 	padding: 15px 20px;
 	margin-bottom: 10px;
 	background: rgba(255,255,255,0.96);
 	font-style: italic;
-	border-top: 7px solid rgba(103,59,77,0.6);
+	border-top: 7px solid rgba(193,231,112,0.6);
 	-webkit-transition: opacity 0.3s linear;
 	-moz-transition: opacity 0.3s linear;
 	-o-transition: opacity 0.3s linear;

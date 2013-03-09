@@ -15,7 +15,6 @@ class HomepagePresenter extends BasePresenter
 	protected function startup()
 	{
 	    parent::startup();
-	    $this->taskRepository = $this->context->taskRepository;
 	}
 
 
@@ -49,6 +48,12 @@ class HomepagePresenter extends BasePresenter
 		$this->template->title = 'Home';
 
 		parent::createComponentSignInForm();
+
+		/*create new component example
+		$news = new CompactNewsControl();
+		$news  = $news->getNews();*/
+		
+		$this->template->news  = $this->context->generalRepository->getByTable("component_compact_news");
 
 		// PARSER XML
 		//$this->startXMLParse();
