@@ -248,6 +248,10 @@ textarea {
   height: 377px;
 }
 
+.fillContainerXXL {
+  height: 392px;
+}
+
 p {
 	margin: 15px 0;
 	line-height: 1.5em;
@@ -433,58 +437,7 @@ h1, h2, h3, h4, h5, h6 {
     	color: #92979d;
     }
 
-    /*------------- slider ---------------*/
-
-    div#sliderContainer {
-    	background: url("../img/sliderBG.png") 0 0 repeat-x;
-    	height: 300px;
-    }
-
-    #mainSlider {
-    	width: 840px;
-    	float: left;
-    }
-
-    #mainSlider ul li{
-    	width: 720px;
-    	height: 265px;
-    	padding: 35px 60px 0 60px;
-    	overflow: hidden;
-    }
-
-    .slideImg {
-    	margin-right: 30px;
-    }
-
-     #mainSlider ul li h1{
-    	text-transform: uppercase;
-    	color: #83fa19;
-    }
-
-    .slideParagraph {
-    	font-size: 14px;
-    	text-align: justify;
-    }
-
-    .slideParagraph2 {
-    	line-height: 22px;
-    	width: 250px;
-    	float: left;
-    }
-
-    .checkImg {
-    	margin-right: 10px;
-    }
-
-    #sliderBtnPrev, #sliderBtnNext {
-    	float: left;
-    	width: 60px;
-    }
-
-    #sliderBtnPrev img, #sliderBtnNext img{
-    	margin-top: 120px;
-    	cursor: pointer;
-    }
+    
 
 
 
@@ -1101,6 +1054,10 @@ div#loginPanel {
     .contactBar {
         padding-left: 30px;
     }
+
+    #sliderContainer {
+        display: none !important;
+    }    
 
 }
 

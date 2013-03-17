@@ -12,15 +12,6 @@ use Nette\Application\ForbiddenRequestException;
 class GeneralRepository extends Repository
 {
 
-	/**
-	 * Vrací seznam nehotových úkolů.
-	 * @return Nette\Database\Table\Selection
-	 */
-	public function findIncomplete()
-	{
-		return $this->findBy(array('done' => false))->order('created ASC');
-	}
-	
 	public function getByTable($tableName){
 		return $this->connection->table($tableName);
 	}
@@ -65,10 +56,7 @@ class GeneralRepository extends Repository
 		return $this->connection->table($tableName)->insert($data);
 	}
 	
-	public function findBy(array $by)
-	{
-		return $this->getTable()->where($by);
-	}
+	
 
 	public function updateTableById($tableName, $rowName, $rowId, $data)
 	{

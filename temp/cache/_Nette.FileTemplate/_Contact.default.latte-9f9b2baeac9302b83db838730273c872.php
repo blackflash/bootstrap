@@ -1,16 +1,16 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.02929000 1362698374";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1362698372;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.04197500 1363519211";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1363519209;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'gge9hhka9s')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '777hl7gzcj')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lb112f589103_content')) { function _lb112f589103_content($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['content'][] = '_lb668433d490_content')) { function _lb668433d490_content($_l, $_args) { extract($_args)
 ?><div id="breadCrumbsContainer">
             <div class="container">
                 <p>You are here:
@@ -47,6 +47,26 @@ if (!function_exists($_l->blocks['content'][] = '_lb112f589103_content')) { func
 									<b>Contact information :</b><br />
 									Phone num.: +421 918 999 999
 								</p>
+							</li>
+							<li style="margin-top: 20px;">
+								<form action="http://www.paypal.com/cgi-bin/webscr" method="POST">
+					                <input type="hidden" name="cmd" value="_xclick" />
+					                <input type="hidden" name="business" value="ado.gaspar@gmail.com" />
+					                <input type="hidden" name="item_name" value="Collage image" />
+					                <input type="hidden" name="item_number" value="1" />
+					                <input type="hidden" name="amount" value="0.99" />
+					                <input type="hidden" name="no_shipping" value="1" />
+					                <input type="hidden" name="no_note" value="1" />
+					                <input type="hidden" name="currency_code" value="USD" />
+					                <input type="hidden" name="lc" value="US" />
+					                <input type="hidden" name="bn" value="PP-BuyNowBF" />
+					                <input type="hidden" name="return" value="http://cleverfrogs.com/admin/?success=1" />
+					                <input type="hidden" name="cancel_return" value="http://cleverfrogs.com/admin/" />
+					                <input type="hidden" name="rm" value="2" />
+					                <input type="hidden" name="notify_url" value="http://cleverfrogs.com/admin/?do=paypal" />
+					                <input type="hidden" name="custom" value="<?php echo htmlSpecialChars($user->identity->id) ?>" />
+					                <input type="submit" class="btn btn-large btn-block btn-primary" value="Donate" />
+					            </form>
 							</li>
 						</ul>
 				</div> <!-- end sidebarItem -->

@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.81246500 1362825251";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte";i:2;i:1362825250;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.72251700 1362928898";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte";i:2;i:1362928897;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '2qhr3njkcm')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'c1rvkx3huu')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -137,7 +137,7 @@ if (!empty($_control->snippetMode)) {
                                 </a>
                             </li>
 <?php endif ;if ($user->identity->username == "admin"): ?>
-                            <li <?php if ($title == "CleverFrogs - News" || $title == "CleverFrogs - webpage"): ?>
+                            <li <?php if ($title == "CleverFrogs - News" || $title == "CleverFrogs - webpage" || $title == "CleverFrogs - Slider"): ?>
  class="active" <?php endif ?>>
                                 <a href='' >
                                     <!-- Icon Container -->
@@ -146,8 +146,10 @@ if (!empty($_control->snippetMode)) {
                                     </span>
                                     WebPage
                                 </a>
-                                <ul <?php if ($title != "CleverFrogs - News"): ?>
+                                <ul <?php if ($title != "CleverFrogs - News" && $title != "CleverFrogs - Slider"): ?>
 class="closed"<?php endif ?> >
+                                    <li><a  href="<?php echo htmlSpecialChars($_control->link("Admin:default", array('title'=>"CleverFrogs - Slider",'page'=>"component_slider"))) ?>
+">Slider</a></li>
                                     <li><a  href="<?php echo htmlSpecialChars($_control->link("Admin:default", array('title'=>"CleverFrogs - News",'page'=>"component_compact_news"))) ?>
 ">News</a></li>
                                 </ul>

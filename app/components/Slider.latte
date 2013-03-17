@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="{$basePath}/css/component_slider/component_slider.css" media="screen" />
+
+<div id="sliderContainer">
+    <div class="container" style="width: 960px;">
+
+        <div id="sliderBtnPrev">
+            <img src="{$basePath}/img/component_slider/btnPrev.png" alt="Previous" />
+        </div>
+
+        <div id="mainSlider">
+            <ul> 
+                {foreach $slider as $slide}
+                    <li>
+                        <div class="imageContainer">
+                            <img src="{$basePath}/uploads/slider/{$slide->image}"  class="slideImg fl img-rounded">
+                        </div>
+                        <h2><a href="{$slide->link}" target="_blank" class="sectionHeading">{$slide->title}</a></h2>
+                        <p class="slideParagraph">
+                            <small>
+                                {$slide->text}
+                            </small>
+                        </p>
+                        <div class="slideParagraph2">
+                            <small>
+                                {$slide->paragraph}     
+                            </small>              
+                        </div>
+                    </li>
+                {/foreach}
+            </ul>
+        </div>
+
+        <div id="sliderBtnNext">
+            <img src="{$basePath}/img/component_slider/btnNext.png" alt="Next" />
+        </div>
+
+    </div><!--end of centerContainer-->
+</div><!--end of sliderContainer-->

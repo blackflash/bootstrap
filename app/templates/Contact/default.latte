@@ -33,8 +33,28 @@
 								<p class="kontaktFU">
 									<br>
 									<b>Contact information :</b><br>
-									Phone num.: +421 918 999 999
+									Phone num.: +421 905 903 101
 								</p>
+							</li>
+							<li style="margin-top: 20px;">
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="POST">
+					                <input type="hidden" name="cmd" value="_xclick">
+					                <input type="hidden" name="business" value="ado.gaspar@gmail.com">
+					                <input type="hidden" name="item_name" value="Cleverfrogs donation">
+					                <input type="hidden" name="item_number" value="1">
+					                <input type="hidden" name="amount" value="0.99">
+					                <input type="hidden" name="no_shipping" value="1">
+					                <input type="hidden" name="no_note" value="1">
+					                <input type="hidden" name="currency_code" value="USD">
+					                <input type="hidden" name="lc" value="US">
+					                <input type="hidden" name="bn" value="PP-BuyNowBF">
+					                <input type="hidden" name="return" value="http://cleverfrogs.com/questionnaire/">
+					                <input type="hidden" name="cancel_return" value="http://cleverfrogs.com/contact/">
+					                <input type="hidden" name="rm" value="2">
+					                <input type="hidden" name="notify_url" value="http://cleverfrogs.com/admin/?do=paypal">
+					                <input type="hidden" name="custom" value="{$user->identity->id}">
+					                <input type="submit" class="btn btn-large btn-block btn-primary" value="Donate">
+					            </form>
 							</li>
 						</ul>
 				</div> <!-- end sidebarItem -->

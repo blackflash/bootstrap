@@ -1,17 +1,18 @@
-<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.13609700 1362828892";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte";i:2;i:1362828589;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.58073200 1362999529";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte";i:2;i:1362999528;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Homepage\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '561gln29a6')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ss6mg5dpna')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lb016578f829_content')) { function _lb016578f829_content($_l, $_args) { extract($_args)
-?>        <div class="blankSeparator"></div>
+if (!function_exists($_l->blocks['content'][] = '_lbe1562311c5_content')) { function _lbe1562311c5_content($_l, $_args) { extract($_args)
+;$_ctrl = $_control->getComponent("slider"); if ($_ctrl instanceof Nette\Application\UI\IRenderable) $_ctrl->validateControl(); $_ctrl->render() ?>
+        <div class="fillContainerXS"></div>
 
         <div class="container">
 
@@ -20,35 +21,16 @@ if (!function_exists($_l->blocks['content'][] = '_lb016578f829_content')) { func
 
                 <h5 class="sectionHeading">Actual <span class="label label-info" style="padding:5px;">news</span> </h5>
 <?php $_ctrl = $_control->getComponent("compactNews"); if ($_ctrl instanceof Nette\Application\UI\IRenderable) $_ctrl->validateControl(); $_ctrl->render() ?>
-
-                <!--end of <ul id="newsList">
-                    
-                    <li>
-                        <h6>20. Januar 2013</h6>
-                        <h5><a href="http://wayra.org/" target="_blank"> We are part of Wayra project</a></h5>
-                        <small> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>   <br>
-                        <a href="http://wayra.org/" target="_blank" class="readMoreLink">More</a>
-                    </li>
-                    
-                    <li>
-                        <h6>18. October 2012</h6>
-                        <h5><a href="http://www.venture-lab.org/" target="_blank"> We are part of Stanford project</a></h5>
-                        <small>In winter 2012 we became part of Stanford project and thanks to its Startup Boards course we were able to recruit first class Board members and get advice that moved our project well ahead.</small> <br>
-                        <a href="http://www.venture-lab.org/" target="_blank" class="readMoreLink">More</a>
-                    </li>-->
-
+                <div class="fillContainerXXS"></div>
 
             </div><!--end of leftContainer-->
 
             <div id="rightContainer" class="fr">
-                
                 <div id="productVideo">
                     <iframe src="http://player.vimeo.com/video/57792959?title=0&amp;byline=0&amp;portrait=0" width="458" height="350" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                 </div>
 
                 <img src="<?php echo htmlSpecialChars($basePath) ?>/img/tablet.png" alt="CleverFrogs" />
-
-                
 
             </div><!--end of rightContainer-->
 

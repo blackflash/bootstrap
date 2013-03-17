@@ -240,10 +240,6 @@ class GalleryRepository extends Repository {
 		return $this->connection->table($table)->max($column);
 	}
 
-	public function findBy(array $by)
-	{
-		return $this->getTable()->where($by);
-	}
 
 	public function updateTableById($tableName, $rowName, $rowId, $data)
 	{

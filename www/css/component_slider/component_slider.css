@@ -1,0 +1,58 @@
+/*------------- slider ---------------*/
+
+    div#sliderContainer {
+    	background: url("../../img/component_slider/sliderBG.png") 0 0 repeat-x;
+    	height: 300px;
+    }
+
+    #mainSlider {
+    	width: 840px;
+    	float: left;
+    }
+
+    #mainSlider ul li{
+    	width: 720px;
+    	height: 265px;
+    	padding: 25px 60px 0 60px;
+    	overflow: hidden;
+    }
+
+    .imageContainer {
+        float: left;
+        padding-right: 20px;
+        margin-left: -20px;
+    }
+
+    .imageContainer {
+    	margin-right: 20px;
+    }
+
+     #mainSlider ul li h1{
+    	text-transform: uppercase;
+    	color: #83fa19;
+    }
+
+    .slideParagraph {
+    	font-size: 14px;
+    	text-align: justify;
+    }
+
+    .slideParagraph2 {
+    	line-height: 22px;
+    	width: 250px;
+    	float: left;
+    }
+
+    .checkImg {
+    	margin-right: 10px;
+    }
+
+    #sliderBtnPrev, #sliderBtnNext {
+    	float: left;
+    	width: 60px;
+    }
+
+    #sliderBtnPrev img, #sliderBtnNext img{
+    	margin-top: 120px;
+    	cursor: pointer;
+    }

@@ -53,6 +53,20 @@
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
+<!-- jGrowl Plugin -->
+<script type="text/javascript" src="{$basePath}/plugins/jgrowl/jquery.jgrowl.min.js"></script>
+<link rel="stylesheet" href="{$basePath}/plugins/jgrowl/jquery.jgrowl.css" media="screen" />
+
+
+<button id="da-ex-growl-0" class="da-button pink" style="display: none;">Default Growl</button>
+
+{if $success == 1}
+    <script type="text/javascript">
+        $(function(){
+            $('#da-ex-growl-0').click();
+        });
+    </script>
+{/if}
 
 <div id="graphsContent" class="clearfix">
 
@@ -63,7 +77,7 @@
             <img src="{$basePath}/images/logo.png" alt="Hotel Chopok" />
         </div>-->
         <div class="grid_4">
-
+            
             <div class="grid_1 areaSelector2">
                 <div class="da-form-item locationSelector">
                     <select class="chzn-select">

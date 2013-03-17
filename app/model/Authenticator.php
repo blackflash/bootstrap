@@ -22,8 +22,6 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 		$this->users = $users;
 	}
 
-
-
 	/**
 	 * Performs an authentication.
 	 * @return Nette\Security\Identity

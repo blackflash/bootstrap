@@ -22,30 +22,7 @@ class HomepagePresenter extends BasePresenter
 		$this->generalRepository = $generalRepository;
 	}
 
-	public function signInFormSubmitted($form)
-	{
-	    try {
-	        $user = $this->getUser();
-	        $values = $form->getValues();
 
-
-	        if ($values->persistent) {
-	            $user->setExpiration('+30 days', FALSE);
-	        }
-
-	        $user->login($values->username, $values->password);
-
-	        $user->setExpiration(0);
-
-	        $this->template->username = $values->username;
-
-	        $this->flashMessage('Login was successful.', 'success');
-
-	        $this->redirect('Admin:');
-	    } catch (NS\AuthenticationException $e) {
-	        $form->addError('Incorrect login or password.');
-	    }
-	}
 
 	public function renderDefault()
 	{
@@ -53,19 +30,120 @@ class HomepagePresenter extends BasePresenter
 
 		parent::createComponentSignInForm();
 
-		/*create new component example
-		$news = new CompactNewsControl();
-		$news  = $news->getNews();*/
-		
+		$this->template->slider = $this->context->generalRepository->getByTableAndId("component_slider","is_active","1");
 
 		// PARSER XML
 		//$this->startXMLParse();
 	}
 
-	// Component 
+
+	/*---------- PAYPAL ----------*/
+	public function handlepaypal(){
+		file_put_contents("export.txt", "TEST:\n".var_export($_POST, true));
+ 				// PHP 4.1
+		// read the post from PayPal system and add 'cmd'
+		$req = 'cmd=_notify-validate';
+
+		foreach ($_POST as $key => $value) {
+			$value = urlencode(stripslashes($value));
+			$req .= "&$key=$value";
+		}
+
+		$header = "";
+		// post back to PayPal system to validate
+		$header .= "POST /cgi-bin/webscr HTTP/1.0\r\n";
+		$header .= "Content-Type: application/x-www-form-urlencoded\r\n";
+		$header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
+		$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);
+
+		// assign posted variables to local variables
+		$item_name        = $_POST['item_name'];
+		$item_number      = $_POST['item_number'];
+		$payment_status   = $_POST['payment_status'];
+		$payment_amount   = $_POST['mc_gross'];
+		$payment_currency = $_POST['mc_currency'];
+		$txn_id           = $_POST['txn_id'];
+		$receiver_email   = (string)$_POST['receiver_email'];
+		$payer_email      = $_POST['payer_email'];
+		$user_id          = $_POST["custom"]; 		//our user id
+
+		if (!$fp) {
+		// HTTP ERROR
+		} else {
+			fputs ($fp, $header . $req);
+			while (!feof($fp)) {
+				$res = fgets ($fp, 1024);
+				if (strcmp ($res, "VERIFIED") == 0) {
+					// check the payment_status is Completed
+					// check that txn_id has not been previously processed
+					// check that receiver_email is your Primary PayPal email
+					// check that payment_amount/payment_currency are correct
+					// process payment
+					if($payment_status == "Completed"){
+						$txn_id_check = $this->context->generalRepository->getCountOfRowsByTableAndId("transaction_log","txn_id",$txn_id);
+						
+						print_r("status ok\n");
+						print_r("TXN".$txn_id_check."\n");
+						
+						if($txn_id_check != 1){
+
+							print_r("inside txn"."\n");
+							print_r($receiver_email."\n");
+
+							if($receiver_email == "ado.gaspar@gmail.com"){
+
+								print_r("receiver ok"."\n");
+								print_r($payment_amount."\n");
+								print_r($payment_currency."\n");
+								
+								if($payment_amount == "0.99" && $payment_currency == "USD"){
+
+									print_r("inside TABLES");
+
+									$this->context->generalRepository->insertRowByTable("transaction_log",array('txn_id' => $txn_id, "email" => $payer_email ));
+									
+
+									$balance = $this->context->generalRepository->findBy("user_profile", array('user_id' => $user_id  ))->fetch();
+									$balance = $balance->balance + 5;
+									
+									print_r($balance);
+
+									$this->context->generalRepository->updateTableById("user_profile","user_id",$user_id, array('balance' => $balance));
+								}
+							}
+						}
+
+					}
+
+				}
+				else if (strcmp ($res, "INVALID") == 0) {
+				// log for manual investigation
+					echo "<pre>";
+					print_r("there was some problem with payment");
+					echo "</pre>";
+					die();
+
+				}
+			}
+		fclose ($fp);
+		}
+
+		$this->redirect("this");
+
+		//$this->redirect('Admin:default',array( "title"=>"CleverFrogs - dashboard","page"=>"dashboard", "success" => "1"));
+
+	}
+
+	// Component news
 	protected function createComponentCompactNews()
 	{
 		return new Todo\CompactNewsControl($this->generalRepository);
+	}
+
+	// Component slider
+	protected function createComponentSlider()
+	{
+		return new Todo\SliderControl($this->generalRepository);
 	}
 
 	/*------------------------- XML PARSER ------------------------------*/

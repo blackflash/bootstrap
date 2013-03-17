@@ -12,14 +12,6 @@ use Nette\Application\ForbiddenRequestException;
 class TaskRepository extends Repository
 {
 
-	/**
-	 * Vrací seznam nehotových úkolů.
-	 * @return Nette\Database\Table\Selection
-	 */
-	public function findIncomplete()
-	{
-		return $this->findBy(array('done' => false))->order('created ASC');
-	}
 
 	public function getTable()
 	{
@@ -50,11 +42,6 @@ class TaskRepository extends Repository
 			INSERT INTO `bootstrap`.`task` (`id`, `text`, `created`, `done`, `user_id`, `project_id`, `list_id`) VALUES
 			 (NULL, "'.$description.'", CURRENT_TIMESTAMP ,0,1,1,2)');
 
-	}
-
-	public function findBy(array $by)
-	{
-		return $this->getTable()->where($by);
 	}
 
 

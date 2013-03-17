@@ -57,9 +57,9 @@ abstract class Repository extends Nette\Object
 	 * Vrací řádky podle filtru, např. array('name' => 'John').
 	 * @return Nette\Database\Table\Selection
 	 */
-	public function findBy(array $by)
+	public function findBy($tableName, array $by)
 	{
-		return $this->getTable()->where($by);
+		return $this->connection->table($tableName)->where($by);
 	}
 
 }

@@ -32,12 +32,13 @@ class AdminPresenter extends BasePresenter
 	}
 
 	public function renderDefault($title = "CleverFrogs - dashboard",$page = "dashboard", $success = "0", $gallery_id = "none")
-	{
-		$user = $this->getUser();
-		$this->template->user = $user;
+	{	
+		$this->template->user = $this->getUser();
+		$this->template->user_profile = $this->context->generalRepository->getByTableAndId("user_profile","user_id",$this->template->user->identity->id)->fetch();
 	    $this->template->title = $title;
 	    $this->template->success = $success;
 	    $this->template->gallery_id = $gallery_id;
+		//print_r($this->template->user->identity);
 
 	    switch ($title) {
 
@@ -134,6 +135,12 @@ class AdminPresenter extends BasePresenter
 	{
 		return new Todo\CompactNewsAdminControl($this->generalRepository);
 	}
+
+	protected function createComponentSliderAdmin()
+	{
+		return new Todo\SliderAdminControl($this->generalRepository);
+	}
+
 
 	/*----------------DASHBOAR DATA CALCULACTION --------------*/
 
@@ -305,7 +312,8 @@ class AdminPresenter extends BasePresenter
 			if(move_uploaded_file($picture['tmp_name'], $upload_dir.$picture['name'])){
 
 				$image = Image::fromFile($upload_dir.$picture['name']);
-				$image->resize(720, NULL,Image::SHRINK_ONLY);
+				//$image->resize(720, NULL,Image::SHRINK_ONLY);
+				$image->resize(600, 400,Image::EXACT);
 				$image->save($upload_dir.$picture['name']);
 
 				//rename file

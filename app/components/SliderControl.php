@@ -7,7 +7,7 @@ use Nette\Application\UI,
 	Nette\Application\UI\Form,
 	Nette\Database\Connection;
 
-class compactNewsControl extends UI\Control {
+class sliderControl extends UI\Control {
 
     /** @var Nette\Database\Table\Selection */
 	private $selected;
@@ -23,8 +23,8 @@ class compactNewsControl extends UI\Control {
 
 	public function render()
     {
-        $this->template->setFile(__DIR__ . '/CompactNews.latte');
-        $this->template->news = $this->generalRepository->getByTableAndId("component_compact_news","is_active","1");
+        $this->template->setFile(__DIR__ . '/Slider.latte');
+        $this->template->slider = $this->generalRepository->getByTableAndId("component_slider","is_active","1");
         $this->template->render();
     }
 

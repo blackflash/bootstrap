@@ -37,7 +37,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	}
 
 	public function signInFormSubmitted($form)
-	{
+	{	
 	    try {
 	        $user = $this->getUser();
 	        $values = $form->getValues();

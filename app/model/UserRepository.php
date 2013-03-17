@@ -15,7 +15,7 @@ class UserRepository extends Repository
 	 */
 	public function findByName($username)
 	{
-		return $this->findBy(array('username' => $username))->fetch();
+		return $this->findBy("user",array('username' => $username))->fetch();
 	}
 
 	public function getAllUsers()
