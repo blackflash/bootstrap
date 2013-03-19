@@ -18,10 +18,11 @@ class CampaignPresenter extends BasePresenter
 		$this->template->title = 'Campaign';
 		$this->template->campaign_id = $campaign_id;
 
-		$this->template->campaign  			= $this->context->generalRepository->getByTableAndId("campaign","campaign_id",$campaign_id);
-		$this->template->products_services  = $this->context->generalRepository->getByTableAndId("campaign_ps","category_id",$this->template->campaign->fetch()->category_id);
-	
+		$this->template->campaign  			= $this->context->generalRepository->getByTableAndId("campaign","campaign_id",$campaign_id)->fetch();
+		$this->template->products_services  = $this->context->generalRepository->getByTableAndId("campaign_ps","category_id",$this->template->campaign->category_id);
 		
+		$this->template->show_description = $this->template->campaign->show_description;
+		$this->template->show_title = $this->template->campaign->show_title;
 	}
 
 	public function handlejsonsubmitFeedback($ps_id, $campaign_id){

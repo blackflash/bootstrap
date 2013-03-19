@@ -217,6 +217,8 @@ class AdminPresenter extends BasePresenter
 			$data["date_start"] = $this->parseDate($data["date_start"]);
 			$data["date_finish"] = $this->parseDate($data["date_finish"]);
 
+			if(isset($data["show_title"])) $data["show_title"] = 1;
+			if(isset($data["show_description"])) $data["show_description"] = 1;
 
 	        $this->context->generalRepository->insertRowByTable($name,$data);
 	        

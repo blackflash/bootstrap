@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.96462000 1362323959";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte";i:2;i:1362323957;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.28174400 1363563938";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte";i:2;i:1363563923;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\campaigns.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '1swoif8th9')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'swbvsgf1lo')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -312,6 +312,16 @@ if (!empty($_control->snippetMode)) {
                                                 <label>Description <span class="required">*</span></label>
                                                 <div class="da-form-item large">
                                                     <textarea name="description" class="required"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="da-form-row">
+                                                <label>Elements settings</label>
+                                                <div class="da-form-item">
+                                                    <ul class="da-form-list">
+                                                        <li><input type="checkbox" name="show_title" /> <label>Show title</label></li>
+                                                        <li><input type="checkbox" name="show_description" /><label>Show description</label></li>
+                                                    </ul>
                                                 </div>
                                             </div>
 

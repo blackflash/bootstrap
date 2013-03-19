@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.04989100 1363492085";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1363479355;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.62847500 1363608680";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1363567374;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ixgftgqrn3')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'e806v7jerm')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lba04ca5a523_title')) { function _lba04ca5a523_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lb65f706e88c_title')) { function _lb65f706e88c_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lb24a456321e_head')) { function _lb24a456321e_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lbed70379cd8_head')) { function _lbed70379cd8_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -88,7 +88,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <!-- Add your site or application content here -->
             <div class="container">
 
-                <a href="http://cleverfrogs.com" class="logo fl"><img src="<?php echo htmlSpecialChars($basePath) ?>/img/logoB.png" alt="CEIT-KE" /></a>
+                <a href="http://cleverfrogs.com" class="logo fl"><img src="<?php echo htmlSpecialChars($basePath) ?>/img/logoB.png" alt="CleverFrogs" /></a>
                 
 <?php if (!$user->isLoggedIn()): ?>
                 <div id="topContactInfo" class="fr">

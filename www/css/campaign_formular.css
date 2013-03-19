@@ -9,24 +9,26 @@
    ========================================================================== */
 
 .thumbnail{
-	max-width: 50%;
-	margin: 10px auto;
+	background-color: red !important;
+	max-width: 20% !important !important;
+	margin: 10px auto !important;
+	z-index: 10000 !important;
 }
 
 .product_service {
-	display: block;
-	max-width: 40%;
-	margin: 2em;
+	display: block !important;
+	max-width: 40% !important;
+	margin: 2em !important;
 }
 
 .description {
-	text-align: justify;
+	text-align: justify !important;
 }
 
 .formular_text p{
-	width: 95%;
+	width: 95% !important;
 }
 
 .thumbnails h3 {
-	text-align: center;
+	text-align: center !important;
 }

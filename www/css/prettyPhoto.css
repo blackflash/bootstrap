@@ -6,6 +6,8 @@
 		Default Theme
 	----------------------------------- */
 
+
+
 	div.pp_default .pp_top,
 	div.pp_default .pp_top .pp_middle,
 	div.pp_default .pp_top .pp_left,
@@ -20,7 +22,7 @@
 	div.pp_default .pp_top .pp_right { background: url(../images/prettyPhoto/default/sprite.png) -112px -93px no-repeat; } /* Top right corner */
 	
 	div.pp_default .pp_content .ppt { color: #f8f8f8; }
-	div.pp_default .pp_content_container .pp_left { background: url(../images/prettyPhoto/default/sprite_y.png) -7px 0 repeat-y; padding-left: 13px; }
+	div.pp_default .pp_content_container .pp_left {  background: url(../images/prettyPhoto/default/sprite_y.png) -7px 0 repeat-y; padding-left: 13px;}
 	div.pp_default .pp_content_container .pp_right { background: url(../images/prettyPhoto/default/sprite_y.png) top right repeat-y; padding-right: 13px; }
 	div.pp_default .pp_content { background-color: #fff; } /* Content background */
 	div.pp_default .pp_next:hover { background: url(../images/prettyPhoto/default/sprite_next.png) center right  no-repeat; cursor: pointer; } /* Next button */
@@ -212,7 +214,6 @@
 	/* ----------------------------------
 		Facebook style Theme
 	----------------------------------- */
-	div.pluginCountButton { background-color: red !important; width: 500px; }
 	div.facebook .pp_top .pp_left { background: url(../images/prettyPhoto/facebook/sprite.png) -88px -53px no-repeat; } /* Top left corner */
 	div.facebook .pp_top .pp_middle { background: url(../images/prettyPhoto/facebook/contentPatternTop.png) top left repeat-x; } /* Top pattern/color */
 	div.facebook .pp_top .pp_right { background: url(../images/prettyPhoto/facebook/sprite.png) -110px -53px no-repeat; } /* Top right corner */
@@ -523,3 +524,4 @@
 			margin: 0 0 5px 15px;
 			z-index: 9999;
 		}
+

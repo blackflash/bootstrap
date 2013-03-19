@@ -10,74 +10,449 @@
         <meta name="author" content="Codrops" />
         <link rel="shortcut icon" href="../favicon.ico"> 
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.css">
+
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
+		<link rel="stylesheet" href="css/main.css">
+
+		
 		<!--[if lte IE 8]>
 			 <link rel="stylesheet" type="text/css" href="css/simple.css" />
 		<![endif]-->
     </head>
     <body>
-        <div class="container">
+        <div class="containerQuestionnaire">
 		
 			<!-- Codrops top bar -->
             <div class="codrops-top">
-                <a href="http://tympanus.net/Tutorials/CSS3ImageAccordion/">
-                    <strong>&laquo; Previous Demo: </strong>Image Accordion with CSS3
-                </a>
-                <span class="right">
-                    <a href="http://tympanus.net/codrops/2012/06/12/css-only-responsive-layout-with-smooth-transitions/">
-                        <strong>Back to the Codrops Article</strong>
-                    </a>
-                </span>
+                <img class="logoCleverFrogs" src="./img/logoB.png">
+               
                 <div class="clr"></div>
             </div><!--/ Codrops top bar -->
 			
 			<div class="st-container">
-			
-				<input type="radio" name="radio-set" checked="checked" id="st-control-1"/>
-				<a href="#st-panel-1">Serendipity</a>
-				<input type="radio" name="radio-set" id="st-control-2"/>
-				<a href="#st-panel-2">Happiness</a>
-				<input type="radio" name="radio-set" id="st-control-3"/>
-				<a href="#st-panel-3">Tranquillity</a>
-				<input type="radio" name="radio-set" id="st-control-4"/>
-				<a href="#st-panel-4">Positivity</a>
-				<input type="radio" name="radio-set" id="st-control-5"/>
-				<a href="#st-panel-5">Passion</a>
+				
+				<button class="btn btn-large btn-block submitButton" onclick="submit();">Odoslať</button>
+
+				<input type="radio" name="radio-set" class="menu0" checked="checked" id="st-control-1"/>
+				<a href="#st-panel-1">Rezervácie</a>
+				<input type="radio" name="radio-set" id="st-control-2" class="menu1"/>
+				<a href="#st-panel-2">Recepcia</a>
+				<input type="radio" name="radio-set" id="st-control-3" class="menu2"/>
+				<a href="#st-panel-3">Ubytovanie</a>
+				<input type="radio" name="radio-set" id="st-control-4" class="menu3"/>
+				<a href="#st-panel-4">Reštaurácia</a>
+				<input type="radio" name="radio-set" id="st-control-5" class="menu4"/>
+				<a href="#st-panel-5">Wellness</a>
+
 				
 				<div class="st-scroll">
 				
 					<!-- Placeholder text from http://hipsteripsum.me/ -->
-					
 					<section class="st-panel" id="st-panel-1">
-						<div class="st-deco" data-icon="H"></div>
-						<h2>Serendipity</h2>
-						<p>Banksy adipisicing eiusmod banh mi sed. Squid stumptown est odd future nisi, commodo mlkshk pop-up adipisicing retro.</p>
+						<div class="st-deco" data-icon="o"></div>
+						<h2>Rezervácie</h2>
+						<p class="question">Ako ste boli spokojní s rezervačným oddelením ?</p>
+
+
+						<div class="container starsRatingSystem g0">
+							<div class="row g0q0">
+				                <div class="span2">
+				                    <p class="color0">Rýchlosť a profesionalita:</p>
+				                </div>
+				                
+				                <div class="span9 pull-right margin">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="0" rate="1">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="0" rate="2">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="0" rate="3">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="0" rate="4">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="0" rate="5">
+				                </div>
+				                <div class="attention a0" style="display: none;">Neoznačená odpoveď</div>
+				            </div>
+
+				            <div class="row g0q1">
+				                <div class="span2">
+				                    <p class="color1">Presnosť:</p>
+				                </div>
+				                
+				                <div class="span9 pull-right margin">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="0" rate="1">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="0" rate="2">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="0" rate="3">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="0" rate="4">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="0" rate="5">
+				                </div>
+				                <div class="attention a1" style="display: none;">Neoznačená odpoveď</div>
+				            </div>
+
+				            <div class="row g0q2">
+				                <div class="span2">
+				                    <p class="color2">Ochota pomôcť a priateľskosť:</p>
+				                </div>
+				                
+				                <div class="span9 pull-right margin">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="0" rate="1">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="0" rate="2">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="0" rate="3">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="0" rate="4">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="0" rate="5">
+				                </div>
+				                <div class="attention a2" style="display: none;">Neoznačená odpoveď</div>
+				            </div>
+
+				             <div class="row g0q3">
+				                <div class="span2">
+				                    <p class="color3">Znalosť rezervačného agenta:</p>
+				                </div>
+				                
+				                <div class="span9 pull-right margin">
+				                    <img class="star" src="./img/star_BW.png" q="3" g="0" rate="1">
+				                    <img class="star" src="./img/star_BW.png" q="3" g="0" rate="2">
+				                    <img class="star" src="./img/star_BW.png" q="3" g="0" rate="3">
+				                    <img class="star" src="./img/star_BW.png" q="3" g="0" rate="4">
+				                    <img class="star" src="./img/star_BW.png" q="3" g="0" rate="5">
+				                </div>
+				                <div class="attention a3" style="display: none;">Neoznačená odpoveď</div>
+				            </div>
+				            
+				        </div><!--end of starRatingSystem-->
+
+
 					</section>
 					
+
+
 					<section class="st-panel st-color" id="st-panel-2">
-						<div class="st-deco" data-icon="2"></div>
-						<h2>Happiness</h2>
-						<p>Art party readymade beard labore cosby sweater culpa. Art party whatever incididunt, scenester umami polaroid tofu.</p>
+						<div class="st-deco" data-icon="0"></div>
+						<h2>Recepcia</h2>
+						<p class="question">Ako hodnotíte prácu recepcie a príchod do hotela ?</p>
+
+						<div class="container starsRatingSystem g1">
+							<div class="row g1q0">
+				                <div class="span2">
+				                    <p class="color0">Proces registrácie – check in:</p>
+				                </div>
+				                
+				                <div class="span9 pull-right margin">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="1" rate="1">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="1" rate="2">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="1" rate="3">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="1" rate="4">
+				                    <img class="star" src="./img/star_BW.png" q="0" g="1" rate="5">
+				                </div>
+				                <div class="attention a0" style="display: none;">Neoznačená odpoveď</div>
+				            </div>
+
+				            <div class="row g1q1">
+				                <div class="span2">
+				                    <p class="color1">Proces od ubytovania – check out :</p>
+				                </div>
+				                
+				                <div class="span9 pull-right margin">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="1" rate="1">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="1" rate="2">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="1" rate="3">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="1" rate="4">
+				                    <img class="star" src="./img/star_BW.png" q="1" g="1" rate="5">
+				                </div>
+				                <div class="attention a1" style="display: none;">Neoznačená odpoveď</div>
+				            </div>
+
+				            <div class="row g1q2">
+				                <div class="span2">
+				                    <p class="color2">Ochotapomôcť a priateľskosť:</p>
+				                </div>
+				                
+				                <div class="span9 pull-right margin">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="1" rate="1">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="1" rate="2">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="1" rate="3">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="1" rate="4">
+				                    <img class="star" src="./img/star_BW.png" q="2" g="1" rate="5">
+				                </div>
+				                <div class="attention a2" style="display: none;">Neoznačená odpoveď</div>
+				            </div>
+
+				        </div><!--end of starRatingSystem-->
 					</section>
 					
+
+
 					<section class="st-panel" id="st-panel-3">
-						<div class="st-deco" data-icon="B"></div>
-						<h2>Tranquillity</h2>
-						<p>Sint aute occaecat id vice. Post-ironic fap pork belly next level godard, id fanny pack williamsburg forage truffaut.</p>
+						<div class="st-deco" data-icon="S"></div>
+						<h2>Ubytovanie</h2>
+						<p class="question">Ako hodnotíte ubytovanie a kvalitu izieb ?</p>
+
+						<div class="container starsRatingSystem group2">
+							<div class="row q0">
+						        <div class="span2">
+						            <p class="color0">Čistota izby:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="0" g="2" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="0" g="2" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="0" g="2" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="0" g="2" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="0" g="2" rate="5">
+						        </div>
+						        <div class="attention a0" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row q1">
+						        <div class="span2">
+						            <p class="color1">Vybavenie izby:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="1"  g="2" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="1"  g="2" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="1"  g="2" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="1"  g="2" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="1"  g="2" rate="5">
+						        </div>
+						        <div class="attention a1" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row q2">
+						        <div class="span2">
+						            <p class="color2">Atmosféra v hoteli:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="2" g="2" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="2" g="2" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="2" g="2" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="2" g="2" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="2" g="2" rate="5">
+						        </div>
+						        <div class="attention a2" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						     <div class="row q3">
+						        <div class="span2">
+						            <p class="color3">Večerný program:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="3" g="2" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="3" g="2" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="3" g="2" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="3" g="2" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="3" g="2" rate="5">
+						        </div>
+						        <div class="attention a3" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+						</div><!--end of starRatingSystem-->
+
 					</section>
 					
+
+
 					<section class="st-panel st-color" id="st-panel-4">
-						<div class="st-deco" data-icon="x"></div>
-						<h2>Positivity</h2>
-						<p>Mixtape fap leggings art party, butcher authentic farm-to-table you probably haven't heard of them do labore cosby sweater.</p>
+						<div class="st-deco" data-icon="D"></div>
+						<h2>Reštaurácia</h2>
+						<p class="question">Ako hodnotíte prácu reštaurácie  ?</p>
+
+						<div class="container starsRatingSystem group3">
+							<div class="row q0">
+						        <div class="span2">
+						            <p class="color0">Atmosféra a dekorácie:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="0" g="3" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="0" g="3" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="0" g="3" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="0" g="3" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="0" g="3" rate="5">
+						        </div>
+						        <div class="attention a0" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row q1">
+						        <div class="span2">
+						            <p class="color1">Raňajkový bufet:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="1" g="3" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="1" g="3" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="1" g="3" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="1" g="3" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="1" g="3" rate="5">
+						        </div>
+						        <div class="attention a1" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row q2">
+						        <div class="span2">
+						            <p class="color2">Kvalita a kreativita večerného menu:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="2" g="3" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="2" g="3" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="2" g="3" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="2" g="3" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="2" g="3" rate="5">
+						        </div>
+						        <div class="attention a2" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						     <div class="row q3">
+						        <div class="span2">
+						            <p class="color3">Ponuka vína:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="3" g="3" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="3" g="3" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="3" g="3" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="3" g="3" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="3" g="3" rate="5">
+						        </div>
+						        <div class="attention a3" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row q4">
+						        <div class="span2">
+						            <p class="color4">Bar a kaviareň:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="4" g="3" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="4" g="3" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="4" g="3" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="4" g="3" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="4" g="3" rate="5">
+						        </div>
+						        <div class="attention a4" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row q5">
+						        <div class="span2">
+						            <p class="color5">Ochota pomôcť a priateľskosť:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="5" g="3" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="5" g="3" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="5" g="3" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="5" g="3" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="5" g="3" rate="5">
+						        </div>
+						        <div class="attention a5" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+						</div><!--end of starRatingSystem-->
+						
 					</section>
 					
+
+
 					<section class="st-panel" id="st-panel-5">
-						<div class="st-deco" data-icon="Ç"></div>
-						<h2>Passion</h2>
-						<p>Fixie ad odd future polaroid dreamcatcher, nesciunt carles bicycle rights accusamus mcsweeney's mumblecore nulla irony.</p>
+						<div class="st-deco" data-icon="H"></div>
+						<h2>Wellness</h2>
+						<p class="question">Ako hodnotíte wellness hotela ?</p>
+
+						<div class="container starsRatingSystem group4">
+							<div class="row">
+						        <div class="span2">
+						            <p class="color0">Čistota wellness:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="0" g="4" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="0" g="4" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="0" g="4" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="0" g="4" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="0" g="4" rate="5">
+						        </div>
+						        <div class="attention a0" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row">
+						        <div class="span2">
+						            <p class="color1">Dostatok uterákov a plachiet:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="1" g="4" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="1" g="4" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="1" g="4" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="1" g="4" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="1" g="4" rate="5">
+						        </div>
+						        <div class="attention a1" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row">
+						        <div class="span2">
+						            <p class="color2">Ponuka odpočívadiel a oddychových častí:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="2" g="4" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="2" g="4" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="2" g="4" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="2" g="4" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="2" g="4" rate="5">
+						        </div>
+						        <div class="attention a2" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						     <div class="row">
+						        <div class="span2">
+						            <p class="color3">Atmosféra a dekorácie:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="3" g="4" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="3" g="4" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="3" g="4" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="3" g="4" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="3" g="4" rate="5">
+						        </div>
+						        <div class="attention a3" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row">
+						        <div class="span2">
+						            <p class="color4">Ponuka masáží a procedúr:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="4" g="4" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="4" g="4" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="4" g="4" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="4" g="4" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="4" g="4" rate="5">
+						        </div>
+						        <div class="attention a4" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+
+						    <div class="row">
+						        <div class="span2">
+						            <p class="color5">Ochotapomôcť a priateľskosť:</p>
+						        </div>
+						        
+						        <div class="span9 pull-right margin">
+						            <img class="star" src="./img/star_BW.png" q="5" g="4" rate="1">
+						            <img class="star" src="./img/star_BW.png" q="5" g="4" rate="2">
+						            <img class="star" src="./img/star_BW.png" q="5" g="4" rate="3">
+						            <img class="star" src="./img/star_BW.png" q="5" g="4" rate="4">
+						            <img class="star" src="./img/star_BW.png" q="5" g="4" rate="5">
+						        </div>
+						        <div class="attention a5" style="display: none;">Neoznačená odpoveď</div>
+						    </div>
+						</div><!--end of starRatingSystem-->
+
 					</section>
 
 				</div><!-- // st-scroll -->
@@ -85,5 +460,260 @@
 			</div><!-- // st-container -->
 			
         </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            
+            var question_count_g0 = 4;
+            var question_count_g1 = 3;
+            var question_count_g2 = 4;
+            var question_count_g3 = 6;
+            var question_count_g4 = 6;
+
+            var checker0, checker1, checker2, checker3, checker4;
+
+            var holder0 = [];
+            var holder1 = [];
+            var holder2 = [];
+            var holder3 = [];
+            var holder4 = [];
+
+            var group0complete = true;
+            var group1complete = true;
+            var group2complete = true;
+            var group3complete = true;
+            var group4complete = true;
+
+            var g,question,question_value;
+        	var readyToSend = false;
+
+
+            //function to handle the clicks on the stars
+            $('img.star').click(function(){
+
+                $(this).attr("src","./img/star_C.png");
+                $(this).attr("class","star selected");
+                $(this).prevAll().attr("src","./img/star_C.png");
+                $(this).prevAll().attr("class","star selected");
+                $(this).nextAll().attr("src","./img/star_BW.png");
+                $(this).nextAll().attr("class","star");
+
+                //$('#rating' + $(this).attr("q")).text($(this).attr("rate"));
+
+                $(this).prevAll().attr("value","");
+                $(this).nextAll().attr("value","");
+                $(this).attr("value","1");
+
+                g = $(this).attr("g");
+            	question = $(this).attr("q");
+            	question_value = $(this).attr("rate");
+
+                //console.log("group: " + g + " question: " + question + " question value: " + question_value);
+                
+               //----- CHECK GROUP 0 -----*/
+                if(g == 0){
+                	for (var i = 0 ; i < question_count_g0; i++) {
+	                	if(i == question){
+	                		holder0[i] = question_value;
+	                	}
+	                	group0complete = false;
+                    }
+        			
+        			checker0 = question_count_g0;
+	                for (var i = 0 ; i < question_count_g0; i++) {
+	                	if(typeof(holder0[i]) != "undefined"){
+	                		checker0--;
+	                	}
+                    }
+
+                    if(checker0 == 0) group0complete = true;
+                }
+
+
+                //----- CHECK GROUP 1 -----*/
+                if(g == 1) {
+                	for (var i = 0 ; i < question_count_g1; i++) {
+	                	if(i == question){
+	                		holder1[i] = question_value;
+	                	}
+	                	group1complete = false;
+                    }
+	                
+                    checker1 = question_count_g1;
+	                for (var i = 0 ; i < question_count_g1; i++) {
+	                	if(typeof(holder1[i]) != "undefined"){
+	                		checker1--;
+	                	}
+                    }
+
+                     if(checker1 == 0) group1complete = true;
+                }	
+
+
+                //----- CHECK GROUP 2 -----*/
+                if(g == 2) {
+                	for (var i = 0 ; i < question_count_g2; i++) {
+	                	if(i == question){
+	                		holder2[i] = question_value;
+	                	}
+	                	group2complete = false;
+                    }
+	                
+                    checker2 = question_count_g2;
+	                for (var i = 0 ; i < question_count_g2; i++) {
+	                	if(typeof(holder2[i]) != "undefined"){
+	                		checker2--;
+	                	}
+                    }
+
+                     if(checker2 == 0) group2complete = true;
+                }	
+
+                //----- CHECK GROUP 3 -----*/
+                if(g == 3) {
+                	for (var i = 0 ; i < question_count_g3; i++) {
+	                	if(i == question){
+	                		holder3[i] = question_value;
+	                	}
+	                	group3complete = false;
+                    }
+	                
+                    checker3 = question_count_g3;
+	                for (var i = 0 ; i < question_count_g3; i++) {
+	                	if(typeof(holder3[i]) != "undefined"){
+	                		checker3--;
+	                	}
+                    }
+
+                     if(checker3 == 0) group3complete = true;
+                }	
+
+                //----- CHECK GROUP 4 -----*/
+                if(g == 4) {
+                	for (var i = 0 ; i < question_count_g4; i++) {
+	                	if(i == question){
+	                		holder4[i] = question_value;
+	                	}
+	                	group4complete = false;
+                    }
+	                
+                    checker4 = question_count_g4;
+	                for (var i = 0 ; i < question_count_g4; i++) {
+	                	if(typeof(holder4[i]) != "undefined"){
+	                		checker4--;
+	                	}
+                    }
+
+                     if(checker4 == 0) group4complete = true;
+                }
+
+                console.log(checker0);
+                console.log(checker1);
+                console.log(checker2);
+                console.log(checker3);
+                console.log(checker4);
+                console.log(group0complete);
+                console.log(group1complete);
+                console.log(group2complete);
+                console.log(group3complete);
+                console.log(group4complete);
+                console.log("---------------");
+              	/*console.log(holder0);
+              	console.log(holder1);*/
+
+                //remove the error box
+                //$('.q' + $(this).attr("q")).removeClass('error');
+
+                $('.a' + $(this).attr("q")).css("display","none");
+				//$('.color' + $(this).attr("q")).css("color","#8b8b8b");
+
+
+				
+
+				/*console output
+                
+                console.log("-----");
+                */
+
+
+            });
+
+            //variable that indicates wheteher the array contains undefined value, aka. the user didnt answered all the questions
+            //submit the results to the server
+            function submit() {
+            	readyToSend = checkReady();
+            	console.log(readyToSend);
+            };
+
+            function checkReady(){
+            	if(group0complete == true && group1complete == true && group2complete == true){
+
+            		console.log("inside !");
+            		
+            		if(checker0 == 0 || typeof(checker0) == "undefined"){
+            			console.log("checker0 ok");
+            			if(checker1 == 0 || typeof(checker1) == "undefined"){
+            				console.log("checker1 ok");
+            				if(checker2 == 0 || typeof(checker2) == "undefined"){
+            					console.log("checker2 ok");
+            					if(checker3 == 0 || typeof(checker3) == "undefined"){
+            						console.log("checker3 ok");
+	            					if(checker4 == 0 || typeof(checker4) == "undefined"){
+            							console.log("checker4 ok");
+            							readyToSend = true;
+	            						console.log("OK to POST !");
+	            					}
+	            				}
+            				}
+            			}
+            		}
+
+            	}
+
+
+            	if(group0complete == false ) {
+            		if(checker0 <= question_count_g0) $('.menu0').click();
+            		readyToSend = false;
+            	}
+
+	            if(group1complete == false ) {
+            		if(checker1 <= question_count_g1) $('.menu1').click();
+            		readyToSend = false;
+            	}
+
+            	if(group2complete == false ) {
+            		if(checker2 <= question_count_g2) $('.menu2').click();
+            		readyToSend = false;
+            	}
+
+            	if(group3complete == false ) {
+            		if(checker3 <= question_count_g3) $('.menu3').click();
+            		readyToSend = false;
+            	}
+
+            	if(group4complete == false ) {
+            		if(checker4 <= question_count_g4) $('.menu4').click();
+            		readyToSend = false;
+            	}
+
+            	//one formular must be evaluated
+            	if(group1complete == false || typeof(checker0) == "undefined") {
+            		if(checker0 != 0) $('.menu0').click();
+            		readyToSend = false;
+            	}
+
+            	return readyToSend;
+            };
+
+        </script>
+
+
 	</body>
 </html>

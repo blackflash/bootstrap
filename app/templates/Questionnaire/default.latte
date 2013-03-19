@@ -17,6 +17,61 @@
         <div class="span12">
             <h1>THANK YOU !</h1>            
         </div>
+        <script type="text/javascript">
+            COUNTER_START = 30
+            function tick () {
+            if (document.getElementById ('counter').firstChild.data > 0) {
+            document.getElementById ('counter').firstChild.data = document.getElementById ('counter').firstChild.data - 1
+            setTimeout ('tick()', 1000)
+            } else {
+            document.getElementById ('counter').firstChild.data = 'There was a problem. Please click the Click Here link.'
+            }
+            }
+            if (document.getElementById) onload = function () {
+            var t = document.createTextNode (COUNTER_START)
+            var p = document.createElement ('h3')
+            p.appendChild (t)
+            p.setAttribute ('id', 'counter')
+            var body = document.getElementsByTagName ('h3')[0]
+            var firstChild = body.getElementsByTagName ('*')[0]
+            body.insertBefore (p, firstChild)
+            tick()
+            }
+        </script>
+
+
+
+
+<div id="content">
+
+<div id="filler">
+
+<div id="contentMiddle">
+
+<p>Processing payment. Please be patient this could take a few seconds.</p>
+
+<!--the time will appear between the h3 tags below-->
+<center><h3> </h3></center>
+
+<!--javascript below is set to send new premium member to member.php in 15 seconds-->
+<!--This gives PayPal time to update log and memberAdmin tables in database to premium member status-->
+<script type="text/javascript"> setTimeout("location.href = 'http://cleverfrogs.com/'", 15000); </script>
+
+<p>Once Pay Pal finishes processing your payment you will be redirected to a Premium Member page.</p>
+
+<p>If this page doesn't redirect in 30 seconds, please <a href="http://cleverfrogs.com/">click here</a> to continue.</p>
+
+<p>Once your transaction has been completed, a receipt from Pay Pal will be emailed to you.</p>
+
+<p>You may log in to your account at <a href="http://www.paypal.com/us" target="_blank">www.paypal.com/us</a> to view   details of this transaction.</p>
+
+</div>
+
+
+</div>
+</div>
+</div>
+
 
         <div class="fillContainerXXL"></div>
 

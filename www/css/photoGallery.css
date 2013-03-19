@@ -9,6 +9,10 @@
     font-style: normal;
 }
 
+.facebook {
+	width: 100px !important;
+}
+
 div#slide-main nav a {
 	text-decoration: none;
 }

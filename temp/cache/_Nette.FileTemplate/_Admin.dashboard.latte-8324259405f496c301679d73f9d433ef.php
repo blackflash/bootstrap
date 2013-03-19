@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.75647300 1363513612";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1363513334;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.19011700 1363521396";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1363519076;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'c3hprkdq75')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'gj6ztiqe28')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -96,26 +96,6 @@ if (!empty($_control->snippetMode)) {
             <img src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/images/logo.png" alt="Hotel Chopok" />
         </div>-->
         <div class="grid_4">
-            Balance: <?php echo Nette\Templating\Helpers::escapeHtml($user_profile->balance, ENT_NOQUOTES) ?>
-
-            <form action="http://www.paypal.com/cgi-bin/webscr" method="POST">
-                <input type="hidden" name="cmd" value="_xclick" />
-                <input type="hidden" name="business" value="ado.gaspar@gmail.com" />
-                <input type="hidden" name="item_name" value="Collage image" />
-                <input type="hidden" name="item_number" value="1" />
-                <input type="hidden" name="amount" value="0.99" />
-                <input type="hidden" name="no_shipping" value="1" />
-                <input type="hidden" name="no_note" value="1" />
-                <input type="hidden" name="currency_code" value="USD" />
-                <input type="hidden" name="lc" value="US" />
-                <input type="hidden" name="bn" value="PP-BuyNowBF" />
-                <input type="hidden" name="return" value="http://cleverfrogs.com/admin/?success=1" />
-                <input type="hidden" name="cancel_return" value="http://cleverfrogs.com/admin/" />
-                <input type="hidden" name="rm" value="2" />
-                <input type="hidden" name="notify_url" value="http://cleverfrogs.com/admin/?do=paypal" />
-                <input type="hidden" name="custom" value="<?php echo htmlSpecialChars($user->identity->id) ?>" />
-                <input type="submit" value="Pay now" />
-            </form>
             
             <div class="grid_1 areaSelector2">
                 <div class="da-form-item locationSelector">
