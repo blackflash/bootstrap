@@ -2,16 +2,13 @@
 @import url(http://fonts.googleapis.com/css?family=Tauri);
 @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
 
+
 .attention {
 	font-family: 'Myriad Pro', Arial, sans-serif;
 	color: red;
 	right: 3%;
 	margin-top: 30px;
 	position: absolute;
-}
-
-.red {
-	color: red;
 }
 
 .score {
@@ -27,10 +24,6 @@
 .scoreValue {
 	margin-top: 25%;
 	margin-left: 40px;
-}
-
-.green {
-	color: #8fd400;
 }
 
 .starsRatingSystem {
@@ -244,6 +237,7 @@ p {
 	/* Let's enforce some hardware acceleration */
 	-webkit-transform: translate3d(0, 0, 0);
 	-webkit-backface-visibility: hidden;
+
 }
 
 .st-panel{
@@ -327,7 +321,7 @@ p {
 }
 
 .st-panel h2 {
-	color: #8fd400;
+	color: #b4b3b4;
 	position: absolute;
 	font-size: 75px;
 	width: 80%;
@@ -417,7 +411,7 @@ p {
 	font-size: 55px;
 	font-weight: bold;
 	line-height: 22px;
-	color: #8b8b8b;
+	color: #8fd400;
 	z-index: 2;
 	padding: 0;
 	width: 80%;
@@ -431,12 +425,26 @@ p {
 #st-control-2:checked ~ .st-scroll #st-panel-2 p,
 #st-control-3:checked ~ .st-scroll #st-panel-3 p,
 #st-control-4:checked ~ .st-scroll #st-panel-4 p,
-#st-control-5:checked ~ .st-scroll #st-panel-5 p{
+#st-control-5:checked ~ .st-scroll #st-panel-5 p
+{
 	-webkit-animation: moveUp 0.6s ease-in-out 0.2s backwards;
 	-moz-animation: moveUp 0.6s ease-in-out 0.2s backwards;
 	-o-animation: moveUp 0.6s ease-in-out 0.2s backwards;
 	-ms-animation: moveUp 0.6s ease-in-out 0.2s backwards;
 	animation: moveUp 0.6s ease-in-out 0.2s backwards;
+}
+
+#st-control-1:checked ~ .st-scroll #st-panel-1 .star, 
+#st-control-2:checked ~ .st-scroll #st-panel-2 .star,
+#st-control-3:checked ~ .st-scroll #st-panel-3 .star,
+#st-control-4:checked ~ .st-scroll #st-panel-4 .star,
+#st-control-5:checked ~ .st-scroll #st-panel-5 .star
+{
+	-webkit-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+	-moz-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+	-o-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+	-ms-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+	animation: moveUp 0.6s ease-in-out 0.2s backward
 }
 
 @-webkit-keyframes moveUp{
@@ -499,7 +507,17 @@ p {
 .st-color,
 .st-deco{
 	background: #c1e770;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 }
+
+.backgroundTiled {
+	background-image: url("../img/bg.png") !important;
+}
+
+.backgroundStripes {
+	background-image: url("../img/stripes.png") !important;
+}
+
 .st-color [data-icon]:after {
 	color: #8fd400;
 }
@@ -516,9 +534,18 @@ p {
 }
 
 
+/* Colors */
+.red {
+	color: red;
+}
+
+.green {
+	color: #c1e770;
+}
+
 @media screen and (max-width: 1280px){
 	.st-deco {
-		background-color: red;
+		//background-color: red;
 		width: 120px;
 		height: 120px;
 		margin-left: -60px;
@@ -555,7 +582,7 @@ p {
 
 @media screen and (max-height: 800px){
 	.st-deco {
-		background-color: orange;
+		//background-color: orange;
 		width: 120px;
 		height: 120px;
 		margin-left: -60px;
