@@ -1,16 +1,16 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.31632300 1363608727";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1363560852;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.73389600 1363769780";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1363754110;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'jk7jviusi7')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '3u6kt5izj1')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lb3141e556f7_content')) { function _lb3141e556f7_content($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['content'][] = '_lbadc0f91cdb_content')) { function _lbadc0f91cdb_content($_l, $_args) { extract($_args)
 ?><div id="breadCrumbsContainer">
             <div class="container">
                 <p>You are here:
@@ -69,11 +69,12 @@ if (!function_exists($_l->blocks['content'][] = '_lb3141e556f7_content')) { func
 					            </form>
 							</li>-->
 							<li style="margin-top: 20px;">
-								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 									<input type="hidden" name="cmd" value="_s-xclick" />
-									<input type="hidden" name="hosted_button_id" value="GBWHWDJGCDE5N" />
+									<input type="hidden" name="hosted_button_id" value="HKKFBMSZYS582" />
 									<input type="submit" class="btn btn-large btn-block btn-primary" value="Donate" />
 								</form>
+
 							</li>
 						</ul>
 				</div> <!-- end sidebarItem -->

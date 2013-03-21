@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- META -->
+		<meta charset = "utf-8">
+		<meta name = "viewport" content = "width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta name = "apple-mobile-web-app-capable" content = "yes" /> 
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <title>Questionnaire</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="shortcut icon" href="../favicon.ico"> 
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.css">
+		<link rel="stylesheet" href="css/slider.css">
+		
+		<!-- jQuery library -->
+		<script type="text/javascript" src = "js/jquery-1.4.min.js"></script>
+		
+		<!-- iosSlider plugin -->
+		<script src = "js/jquery.iosslider.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+			
+				$('.iosSlider').iosSlider({
+					scrollbar: true,
+					snapToChildren: true,
+					desktopClickDrag: true,
+					infiniteSlider: true, 
+					navSlideSelector: $('.iosSliderButtons .button'),
+					scrollbarHeight: '2',
+					scrollbarBorderRadius: '0',
+					scrollbarOpacity: '0.5',
+					onSlideChange: slideContentChange,
+					onSliderLoaded: slideContentChange,
+					keyboardControls: true
+				});
+
+				$('.iosSliderButtons #item3').click();
+				
+				function slideContentChange(args) {
+					
+					/* indicator */
+					$('.iosSliderButtons .button').removeClass('selected');
+					$('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
+					
+				}
+				
+			});
+		</script>
+		
+		
+	</head>
+	
+	<body>
+		<div class="st-container">
+
+			<div class="score">Score: <div class="scoreValue">0</div></div>
+
+			<div class = 'iosSlider'>
+			
+				<div class = 'slider'>
+				
+					<div class = 'item' id = 'item1'>
+						<div class = 'caption'>
+							<span><strong>1 Touch Me.</strong> | Hardware accelerated using CSS3 for supported iOS, Android and WebKit</span>
+							<div class = 'bg'></div>
+						</div>
+					</div>
+					
+					<div class = 'item' id = 'item2'>
+						<div class = 'caption'>
+							<span><strong>2 Responsive.</strong> | Respond to change in browser width and adjust automatically</span>
+							<div class = 'bg'></div>
+						</div>
+					</div>
+					
+					<div class = 'item' id = 'item3'>
+						<div class = 'caption'>
+							<span><strong>3 Flexible</strong> |Run multiple sliders on the same web page</span>
+							<div class = 'bg'></div>
+						</div>
+					</div>
+					
+					<div class = 'item' id = 'item4'>
+						<div class = 'caption'>
+							<span><strong>4 Customize.</strong> | Settings for momentum, elastic, scrollbars and more...</span>
+							<div class = 'bg'></div>
+						</div>
+					</div>
+
+					<div class = 'item' id = 'item5'>
+						<div class = 'caption'>
+							<span><strong>4 Customize.</strong> | Settings for momentum, elastic, scrollbars and more...</span>
+							<div class = 'bg'></div>
+						</div>
+					</div>
+				
+				</div>
+				
+			</div>
+			
+			<div class = 'iosSliderButtons'>
+			
+				<div class = 'button first' id = 'item1'>
+					<div class="nav">Rezervácie</div>
+					<div class = 'border'></div>
+				</div>					
+				<div class = 'button' id = 'item2'>
+					<div class = 'border'></div>
+				</div>
+				<div class = 'button' id = 'item3'>
+					<div class = 'border'></div>
+				</div>
+				<div class = 'button' id = 'item4'>
+					<div class = 'border'></div>
+				</div>
+				<div class = 'button' id = 'item5'>
+					<div class = 'border'></div>
+				</div>
+			</div>
+		</div>
+		<div class="submitButtonContainer">
+			<button class="btn btn-large btn-block submitButton" onclick="submit();">Odoslať</button>
+		</div>
+				
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            
+            var question_count_g0 = 4;
+            var question_count_g1 = 3;
+            var question_count_g2 = 4;
+            var question_count_g3 = 6;
+            var question_count_g4 = 6;
+
+            var checker0, checker1, checker2, checker3, checker4;
+
+            var holder0 = [];
+            var holder1 = [];
+            var holder2 = [];
+            var holder3 = [];
+            var holder4 = [];
+
+            var group0complete = true;
+            var group1complete = true;
+            var group2complete = true;
+            var group3complete = true;
+            var group4complete = true;
+
+            var g,question,question_value;
+        	var readyToSend = false;
+
+        	var score0 = 0,score1 = 0,score2 = 0,score3 = 0,score4 = 0;
+
+            //function to handle the clicks on the stars
+            $('img.star').click(function(){
+
+                $(this).attr("src","./img/star_C.png");
+                $(this).attr("class","star selected");
+                $(this).prevAll().attr("src","./img/star_C.png");
+                $(this).prevAll().attr("class","star selected");
+                $(this).nextAll().attr("src","./img/star_BW.png");
+                $(this).nextAll().attr("class","star");
+
+                //$('#rating' + $(this).attr("q")).text($(this).attr("rate"));
+                $(this).prevAll().attr("value","");
+                $(this).nextAll().attr("value","");
+                $(this).attr("value","1");
+
+                g = $(this).attr("g");
+            	question = $(this).attr("q");
+            	question_value = $(this).attr("rate");
+
+               //console.log("group: " + g + " question: " + question + " question value: " + question_value);
+                
+               //----- CHECK GROUP 0 -----*/
+                if(g == 0){
+                	for (var i = 0 ; i < question_count_g0; i++) {
+	                	if(i == question.substring(1)){
+	                		holder0[i] = question_value;
+	                	}
+	                	group0complete = false;
+                    }
+
+        			score0 = 0;
+        			checker0 = question_count_g0;
+	                for (var i = 0 ; i < question_count_g0; i++) {
+	                	if(typeof(holder0[i]) != "undefined"){
+	                		checker0--;
+	                		score0++;
+	                	}
+                    }
+                    if(checker0 == 0) group0complete = true;
+                }
+
+
+                //----- CHECK GROUP 1 -----*/
+                if(g == 1) {
+                	for (var i = 0 ; i < question_count_g1; i++) {
+	                	if(i == question.substring(1)){
+	                		holder1[i] = question_value;
+	                	}
+	                	group1complete = false;
+                    }
+	                
+	                score1 = 0;
+                    checker1 = question_count_g1;
+	                for (var i = 0 ; i < question_count_g1; i++) {
+	                	if(typeof(holder1[i]) != "undefined"){
+	                		checker1--;
+	                		score1++;
+	                	}
+                    }
+                     if(checker1 == 0) group1complete = true;
+                }	
+
+
+                //----- CHECK GROUP 2 -----*/
+                if(g == 2) {
+                	for (var i = 0 ; i < question_count_g2; i++) {
+	                	if(i == question.substring(1)){
+	                		holder2[i] = question_value;
+	                	}
+	                	group2complete = false;
+                    }
+	                
+	                score2 = 0;
+                    checker2 = question_count_g2;
+	                for (var i = 0 ; i < question_count_g2; i++) {
+	                	if(typeof(holder2[i]) != "undefined"){
+	                		checker2--;
+	                		score2++;
+	                	}
+                    }
+                     if(checker2 == 0) group2complete = true;
+                }	
+
+                //----- CHECK GROUP 3 -----*/
+                if(g == 3) {
+                	for (var i = 0 ; i < question_count_g3; i++) {
+	                	if(i == question.substring(1)){
+	                		holder3[i] = question_value;
+	                	}
+	                	group3complete = false;
+                    }
+	                
+	                score3 = 0;
+                    checker3 = question_count_g3;
+	                for (var i = 0 ; i < question_count_g3; i++) {
+	                	if(typeof(holder3[i]) != "undefined"){
+	                		checker3--;
+	                		score3++;
+	                	}
+                    }
+                     if(checker3 == 0) group3complete = true;
+                }	
+
+                //----- CHECK GROUP 4 -----*/
+                if(g == 4) {
+                	for (var i = 0 ; i < question_count_g4; i++) {
+	                	if(i == question.substring(1)){
+	                		holder4[i] = question_value;
+	                	}
+	                	group4complete = false;
+                    }
+	                
+	                score4 = 0;
+                    checker4 = question_count_g4;
+	                for (var i = 0 ; i < question_count_g4; i++) {
+	                	if(typeof(holder4[i]) != "undefined"){
+	                		checker4--;
+	                		score4++;
+	                	}
+                    }
+                     if(checker4 == 0) group4complete = true;
+                }
+
+                /*console.log(checker0);
+                console.log("ch1 - " + checker1);
+                console.log(checker2);
+                console.log(checker3);
+                console.log(checker4);
+                console.log(group0complete);
+                console.log(group1complete);
+                console.log(group2complete);
+                console.log(group3complete);
+                console.log(group4complete);
+                console.log("---------------");
+              	console.log(holder0);*/
+
+                //remove the error box
+                //$('.q' + $(this).attr("q")).removeClass('error');
+                calculateScore();
+                if($(".scoreValue").html().length == 2){
+                	$(".scoreValue").css("margin-left", "30%");
+                }
+
+                $('.a' + $(this).attr("q")).css("display","none");
+				//$('.color' + $(this).attr("q")).css("color","#8b8b8b");
+				/*console output
+                console.log("-----");
+                */
+            });
+
+            //submit the results to the server
+            function submit() {
+            	calculateScore();
+            	readyToSend = checkReady();
+            	console.log(readyToSend);
+            };
+
+            function calculateScore(){
+            	var finalScore = score0+score1+score2+score3+score4
+            	$(".scoreValue").html(finalScore)
+            }
+
+            function checkReady(){
+            	if(group0complete == true && group1complete == true && group2complete == true){
+            		//console.log("inside !");
+            		if(checker0 == 0 || typeof(checker0) == "undefined"){
+            			//console.log("checker0 ok");
+            			if(checker1 == 0 || typeof(checker1) == "undefined"){
+            				//console.log("checker1 ok");
+            				if(checker2 == 0 || typeof(checker2) == "undefined"){
+            					//console.log("checker2 ok");
+            					if(checker3 == 0 || typeof(checker3) == "undefined"){
+            						//console.log("checker3 ok");
+	            					if(checker4 == 0 || typeof(checker4) == "undefined"){
+            							//console.log("checker4 ok");
+            							readyToSend = true;
+	            						console.log("OK to POST !");
+	            					}
+	            				}
+            				}
+            			}
+            		}
+            	}
+
+
+            	if(group0complete == false ) {
+            		if(checker0 <= question_count_g0) $('.menu0').click();
+            		readyToSend = false;
+            		
+            		//check unevaluated questions and popup error message
+            		for (var i = 0 ; i < question_count_g0; i++) {
+	                	if(typeof(holder0[i]) === "undefined"){
+	                		$(".a0"+i).css("display","block");
+	                	}
+                    }
+            	}
+
+	            if(group1complete == false ) {
+            		if(checker1 <= question_count_g1) $('.menu1').click();
+            		readyToSend = false;
+
+            		//check unevaluated questions and popup error message
+            		for (var i = 0 ; i < question_count_g1; i++) {
+	                	if(typeof(holder1[i]) === "undefined"){
+	                		$(".a1"+i).css("display","block");
+	                	}
+                    }
+            	}
+
+            	if(group2complete == false ) {
+            		if(checker2 <= question_count_g2) $('.menu2').click();
+            		readyToSend = false;
+
+            		//check unevaluated questions and popup error message
+            		for (var i = 0 ; i < question_count_g2; i++) {
+	                	if(typeof(holder2[i]) === "undefined"){
+	                		$(".a2"+i).css("display","block");
+	                	}
+                    }
+            	}
+
+            	if(group3complete == false ) {
+            		if(checker3 <= question_count_g3) $('.menu3').click();
+            		readyToSend = false;
+
+            		//check unevaluated questions and popup error message
+            		for (var i = 0 ; i < question_count_g3; i++) {
+	                	if(typeof(holder3[i]) === "undefined"){
+	                		$(".a3"+i).css("display","block");
+	                	}
+                    }
+            	}
+
+            	if(group4complete == false ) {
+            		if(checker4 <= question_count_g4) $('.menu4').click();
+            		readyToSend = false;
+
+            		//check unevaluated questions and popup error message
+            		for (var i = 0 ; i < question_count_g4; i++) {
+	                	if(typeof(holder4[i]) === "undefined"){
+	                		$(".a4"+i).css("display","block");
+	                	}
+                    }
+            	}
+
+            	//one formular must be evaluated
+            	if(group1complete == false || typeof(checker0) == "undefined") {
+            		if(checker0 != 0) $('.menu0').click();
+            		readyToSend = false;
+
+            		//check unevaluated questions and popup error message
+            		for (var i = 0 ; i < question_count_g0; i++) {
+	                	if(typeof(holder0[i]) === "undefined"){
+	                		$(".a0"+i).css("display","block");
+	                	}
+                    }
+            	}
+            	return readyToSend;
+            };
+        </script>
+
+	</body>
+</html>
