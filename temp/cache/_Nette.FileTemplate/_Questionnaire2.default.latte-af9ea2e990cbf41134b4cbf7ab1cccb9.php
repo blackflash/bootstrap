@@ -1,10 +1,10 @@
-<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.10845100 1364009240";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364009238;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.79755400 1364076595";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364076566;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '0lfri6nuyl')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'qmts489g9o')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -30,24 +30,25 @@ if (!empty($_control->snippetMode)) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
         <link rel="shortcut icon" href="<?php echo htmlSpecialChars($basePath) ?>/favicon.ico" /> 
 		
-		<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/bootstrap.css" />
-		<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/slider.css" />
+        <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/bootstrap.css" />
+        <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/slider.css" />
         <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>
 
-		<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css' />
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css' />
+        <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css' />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css' />
 
 
-		<!-- jQuery library -->
-		<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/jquery-ui.css" />
-  		<script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery-1.9.1.js"></script>
-  		<script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery-ui.js"></script>
-		<script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/vendor/bootstrap.min.js"></script>
-		
-		<script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery.blockUI.js"></script>
+        <!-- jQuery library -->
+        <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/jquery-ui.css" />
+        <script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery-1.9.1.js"></script>
+        <script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery-ui.js"></script>
+        
+        <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery.blockUI.js"></script>
+        <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/vendor/bootstrap.min.js"></script>
 
         <!-- iosSlider plugin -->
         <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery.iosslider.js"></script>
+        <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/animate.css" />
 		
 		<script type="text/javascript">
 
@@ -55,21 +56,67 @@ if (!empty($_control->snippetMode)) {
                 
                 $('.iosSlider').iosSlider({
                     scrollbar: true,
+                    scrollbarDrag: false,
                     snapSlideCenter: false,
                     desktopClickDrag: false,
-                    infiniteSlider: true, 
+                    infiniteSlider: false, 
                     navSlideSelector: $('.iosSliderButtons .button'),
                     scrollbarHeight: '2',
                     scrollbarBorderRadius: '0',
                     scrollbarOpacity: '0.5',
                     onSlideChange: slideContentChange,
                     onSliderLoaded: slideContentChange,
-                    keyboardControls: true,
+                    keyboardControls: false,
                     snapToChildren: true
                 });
+
                 
+                $('.submitButton').css('display',"none");
+                $(".bottomBar").css("height","120px");
+                $(".iosSliderButtons").css("marginTop","55px");
+                
+                $('img.star').click(function(){
+                    
+                    $('.submitButton').css('display',"block");
+
+                    $(".iosSliderButtons").animate({ 
+                        marginTop: "-0px"
+                    }, 500 );
+
+                    /*$(".iosSliderButtons").animate({ 
+                        marginTop: "60px"
+                    }, 500 );
+
+                    $('.submitButton').addClass('animated fadeInUp');*/
+                }); 
+
+                $('#firstTooltip').tooltip({
+                    placement : 'top',
+                    title : 'Začnite voľbou sekcie, ktorú chete ohodnotiť. ',
+                });
+
+                $('#firstTooltip').tooltip('show');
+
+                $(".iosSliderButtons").hover(function(){
+
+                    $('#firstTooltip').tooltip('hide');
+
+                });
+
+                $('img.star').click(function(){
+
+                    $('#firstTooltip').tooltip('hide');
+
+                 });
+                
+                /*$(".iosSliderButtons").animate({ 
+                    marginTop: "55px"
+                }, 500 );*/
+
                 //$('#myModal2').modal('show');
                 
+                
+
                 
                 for (i = 4; i >= 0; i--) {
                   $('.iosSliderButtons #item'+i).click();
@@ -78,6 +125,7 @@ if (!empty($_control->snippetMode)) {
                 function slideContentChange(args) {
                     /* indicator */
                     $('.iosSliderButtons .button').removeClass('selected');
+
                     $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
                 }
                 
@@ -173,7 +221,7 @@ if (!empty($_control->snippetMode)) {
                     
 
 			    </div>
-			    <div class="modal-footer">
+			    <div class="modal-firstTooltipter">
 			     <button class="btn btn-large btn-block btn-primary" onclick="summarySend();">Odoslať</button>
 			    </div>
 		    </div>
@@ -270,7 +318,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row g1q1">
                                 <div class="span2">
-                                    <p class="color1">Proces od ubytovania – check out :</p>
+                                    <p class="color1">Proces odubytovania – check out :</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -284,7 +332,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row g1q2">
                                 <div class="span2">
-                                    <p class="color2">Ochotapomôcť a priateľskosť:</p>
+                                    <p class="color2">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -552,9 +600,17 @@ if (!empty($_control->snippetMode)) {
 			</div>
 		</div>
 
+        <div class="tooltips">
+            <div id="firstTooltip" class="tooltip_1" rel="tooltip"></div>
+        </div>
+
+
+
+
         <div class="bottomBar">
+
             <div class = 'iosSliderButtons'>
-                    <div class = 'button first' id = 'item0'>
+                    <div class = 'button' id = 'item0'>
                         <div class="navigationMenu">Rezervácie</div>
                     </div>                  
                     <div class = 'button' id = 'item1'>
@@ -570,9 +626,7 @@ if (!empty($_control->snippetMode)) {
                         <div class="navigationMenu">Wellness</div>
                     </div>
             </div>
-
             <button class="btn btn-large btn-block submitButton" onclick="submit();">Odoslať</button>
-
         </div>
 
         <script>
@@ -603,6 +657,11 @@ if (!empty($_control->snippetMode)) {
 
             //function to handle the clicks on the stars
             $('img.star').click(function(){
+
+                 $(".bottomBar").css("height","125px");
+
+                 var options = {};
+                // $( ".submitButton" ).toggle( "slide", options, 500 );
 
             	var host = <?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>;
                 var rate = $(this).attr("rate");

@@ -5,6 +5,7 @@
 html {
 	background-image: url("../../img/component_questionnaire2/stripes.png");
 	font-family: 'Myriad Pro', Arial, sans-serif !important;
+	overflow:hidden;
 }
 
 h3 {
@@ -241,7 +242,30 @@ p {
 	opacity: 1;
 	filter: alpha(opacity:100);
 }
+/*--------tooltips-------*/
+.tooltips {
+	position: absolute;
+	bottom: 13%;
+	left: 48%;
+	height: 50px;
+	width: 120px;
+	z-index: 100;
+}
 
+
+.tooltip_1 { 
+	width: 0px;
+	height: 0px;
+	z-index: 0;
+}
+
+.tooltip-inner {
+	font-size: 15px;
+	height: 80px;
+	padding: 20px;
+	text-transform: uppercase;
+	line-height: 25px;
+}
 
 /*----------- other styles ---------*/
 .blockStart {
@@ -292,7 +316,7 @@ p {
 }
 
 .starsRatingSystem {
-    margin-top: 6%;
+    margin-top: 5%;
     z-index: 900;
     width: 100% !important;
 }
@@ -325,6 +349,7 @@ p {
 	top: 0;
 	left: 0;
 	font-family: 'Josefin Slab', 'Myriad Pro', Arial, sans-serif;
+
 }
 
 div.item h2 {
