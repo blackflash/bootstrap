@@ -1,19 +1,41 @@
-@import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
+/*@import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
 @import url(http://fonts.googleapis.com/css?family=Tauri);
-@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);*/
 
 html {
 	background-image: url("../../img/component_questionnaire2/stripes.png");
+	font-family: 'Myriad Pro', Arial, sans-serif !important;
 }
-
-
 
 h3 {
 	font-family: 'Myriad Pro', Arial, sans-serif !important;
 	color: #b3b3b3;
 }
 
+p {
+	font-family: 'Myriad Pro', Arial, sans-serif;
+	position: absolute;
+	text-align: center;
+	font-size: 20px;
+	line-height: 22px;
+	color: #8b8b8b;
+	z-index: 2;
+	padding: 0;
+	line-height: 60px;
+	margin: 10px 0 0 0;
+	-webkit-backface-visibility: hidden;
+}
 
+.flags {
+	width: 100%;
+	height: 300px;
+	margin-top: 40px;
+}
+
+.flag_uk {
+	margin-left: 12%;
+	float: left;
+}
 
 .timer {
 	width: 100%;
@@ -41,6 +63,13 @@ h3 {
 	z-index: 2000;
 }
 
+#myModal2 {
+	width: 900px; /* SET THE WIDTH OF THE MODAL */
+	margin-top: -50px; /* CHANGE MARGINS TO ACCOMODATE THE NEW WIDTH (original = margin: -250px 0 0 -280px;) */
+	margin-left: -35%;
+	z-index: 2000;
+}
+
 .st-container {
 	position: absolute;
 	width: 100%;
@@ -52,7 +81,7 @@ h3 {
 
 .iosSlider {
 	width: 100% !important;
-	height: 100%;
+	height: 83.5% !important;
 	margin-top: 0%;
 	z-index: 0 !important;
 }
@@ -69,7 +98,6 @@ h3 {
 
 .iosSlider .slider .item .caption {
 	position: absolute;
-	top: -20px;
 	right: 0;
 	width: 886px;
 	padding: 7px;
@@ -99,32 +127,21 @@ h3 {
 	z-index: 1;
 }
 
-.iosSliderButtons {
-	position: absolute;
-	height: 60px;
-	bottom: 10%;
-}
 
-.nav {
-	width: 256px;
-	position: fixed;
-	bottom: 8.5%;
+.navigationMenu {
 	cursor: pointer;
-	height: 50px;
-	line-height: 34px;
-
+	line-height: 64px;
 	font-size: 30px;
-
+	width: 100%;
 	z-index: 10;
 	font-weight: 700;
-	background: #8fd400;
+	background: white;
 	color: #fff;
 	text-align: center;
-	padding-top: 20px;
 	font-family: 'Open Sans', sans-serif;
 
+
 	*zoom: 1;
-	  margin-bottom: 0;
 	  text-align: center;
 	  cursor: pointer;
 	  color: #4b4b4b;
@@ -144,31 +161,79 @@ h3 {
 	  *margin-left: .3em;
 }
 
+.iosSliderButtons .button {
+	width: 19.999%;
+	float: left;
+	display: block;
+	opacity: 0.5;
+	filter: alpha(opacity:50);
+}
+
+.submitButton {
+	z-index: 11;
+	height: 60px;
+	text-transform: uppercase;
+	font-size: 35px;
+	line-height: 42px;
+	font-weight: bold;
+	font-family: 'Myriad Pro', Arial, sans-serif;
+
+	color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #8fd400;
+  background-image: -moz-linear-gradient(top, #8fd400, #86b200);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8fd400), to(#86b200));
+  background-image: -webkit-linear-gradient(top, #8fd400, #86b200);
+  background-image: -o-linear-gradient(top, #8fd400, #86b200);
+  background-image: linear-gradient(to bottom, #8fd400, #86b200);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8fd400', endColorstr='#ff86b200', GradientType=0);
+  border-color: #86b200 #86b200 #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #86b200;
+
+  	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+
+}
+
+.submitButton:hover,
+.submitButton:focus,
+.submitButton:active,
+.submitButton.active,
+.submitButton.disabled,
+.submitButton[disabled] {
+  color: #ffffff;
+  background-color: #86b200;
+  *background-color: #003bb3;
+}
+
+.bottomBar {
+	position: absolute;
+	height: auto;
+	height: 125px;
+	width: 100%;
+	bottom: 0;
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+}
+
 .question {
 	font-family: 'Myriad Pro', Arial, sans-serif;
 	position: absolute;
-	text-align: center;
-	font-size: 55px;
-	font-weight: bold;
+	text-align: left;
+	font-size: 270%;
+	font-weight: lighter;
 	line-height: 22px;
-	color: #8fd400;
+	color: #00254d;
 	z-index: 2;
 	padding: 0;
 	width: 90%;
-	left: 10%;
-	top: 3%;
+	left: 3%;
+	top: 2%;
 	line-height: 60px;
-	margin: 10px 0 0 0;
 	-webkit-backface-visibility: hidden;
-}
-
-.iosSliderButtons .button {
-	width: 256px;
-	float: left;
-	display: block;
-	height: 50px;
-	opacity: 0.5;
-	filter: alpha(opacity:50);
 }
 
 .iosSliderButtons .selected,
@@ -179,16 +244,28 @@ h3 {
 
 
 /*----------- other styles ---------*/
+.blockStart {
+	width: 80px;
+	height: 80px;
+	display: inline-block;
+	float: left;
+	padding: 15px;
+}
+
 .star {
+	width: 80px;
 	position: static;
     cursor: pointer;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
     z-index: 2;
     display: inline-block !important;
 }
 
-.star:hover {
-    display: block;
+/*--------- text ------*/
+.color0 {
+	width: 50px;
 }
 
 .attention {
@@ -215,7 +292,7 @@ h3 {
 }
 
 .starsRatingSystem {
-    margin-top: 10%;
+    margin-top: 6%;
     z-index: 900;
     width: 100% !important;
 }
@@ -228,72 +305,17 @@ h3 {
 	margin-top: 27px;
 }
 
-p {
-	font-family: 'Myriad Pro', Arial, sans-serif;
-	position: absolute;
-	text-align: center;
-	font-size: 27px;
-	font-weight: bold;
-	line-height: 22px;
-	color: #8b8b8b;
-	z-index: 2;
-	padding: 0;
-	line-height: 60px;
-	margin: 10px 0 0 0;
-	-webkit-backface-visibility: hidden;
-}
-
 .textShadow {
 	text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-.logoCleverFrogs {
+.logoCompany {
 	position: absolute;
-	width: 23%;
+	width: 20%;
 	margin-top: 1.5%;
-	left: 1%;
+	right: 1%;
 	z-index: 100;
-}
-
-.submitButton {
-	position: absolute;
-	bottom: 0%;
-	z-index: 10;
-	height: 60px;
-	text-transform: uppercase;
-	font-size: 35px;
-	line-height: 42px;
-	font-weight: bold;
-	font-family: 'Myriad Pro', Arial, sans-serif;
-
-	color: #ffffff;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #8fd400;
-	background-image: -moz-linear-gradient(top, #8fd400, #86b200);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8fd400), to(#86b200));
-	background-image: -webkit-linear-gradient(top, #8fd400, #86b200);
-	background-image: -o-linear-gradient(top, #8fd400, #86b200);
-	background-image: linear-gradient(to bottom, #8fd400, #86b200);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8fd400', endColorstr='#ff86b200', GradientType=0);
-	border-color: #86b200 #86b200 #002a80;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	*background-color: #86b200;
-	/* Darken IE7 buttons by default so they stand out more given they won't have borders */
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-
-}
-
-
-.submitButton:hover,
-.submitButton:focus,
-.submitButton:active,
-.submitButton.active,
-.submitButton.disabled,
-.submitButton[disabled] {
-  color: #ffffff;
-  background-color: #86b200;
-  *background-color: #003bb3;
+	float: right;
 }
 
 .st-container {
@@ -316,134 +338,12 @@ div.item h2 {
 	z-index: 100 !important;
 }
 
-@media screen and (max-width: 1280px){
-	.score {
-		//color: red !important;
-
-	}
-}
-
-@media screen and (max-height: 700px){
-
-	.summaryStar {
-		text-align: center;
-		margin-top: 10px;
-	}
-
-	.summaryStar > .star {
-		width: 70px;
-	}
-
-	.summaryText {
-		margin-top: 10px;
-		text-align: center;
-		font-size: 25px;
-		font-weight: bolder;
-		color: #8b8b8b;
-		font-family: 'Myriad Pro', Arial, sans-serif;
-	}
-
-	.summaryTextComp {
-		margin-top: 15px;
-		text-align: center;
-		font-size: 20px;
-		font-weight: bolder;
-		color: #8b8b8b;
-		line-height: 30px;
-		font-family: 'Myriad Pro', Arial, sans-serif;
-	}
-
-	.summaryThanks h3{
-		text-align: center;
-		font-size: 30px;
-		color: #8fd400;
-		margin-top: -10px;
-	}
-
-	.logoCleverFrogsSubmit {
-		width: 50%;
-		margin-left: 25%;
-	}
-
-	.summaryEmail {
-		text-align: center;
-		margin-top: 10px;
-	}
-
-	.score {
-		color: #8b8b8b;
-		z-index: 100;
-		font-weight: bolder;
-		position: absolute;
-		font-size: 40px;
-		margin-top: 2%;
-		left: 47%;
-	}
-
+@media screen and (min-width: 1285px){
 	.question {
-		font-family: 'Myriad Pro', Arial, sans-serif;
-		position: absolute;
-		text-align: center;
-		font-size: 35px;
-		font-weight: bold;
-		line-height: 22px;
-		color: #8fd400;
-		z-index: 2;
-		padding: 0;
-		width: 90%;
-		left: 10%;
-		top: 11%;
-		line-height: 60px;
-		margin: 10px 0 0 0;
-		-webkit-backface-visibility: hidden;
+		color: red !important;
 	}
 
-	.scoreValue {
-		margin-top: 25%;
-		margin-left: 40%;
-		color: #8fd400;
+	.starsRatingSystem  {
+		margin-left: -200px;
 	}
-
-	.logoCleverFrogs {
-		position: absolute;
-		width: 23%;
-		margin-top: 3%;
-		left: 1%;
-	}
-
-	.iosSlider {
-		width: 100%;
-		z-index: 0;
-	}
-	
-	.nav h2 {
-		z-index: 1;
-	}
-
-	.iosSlider .slider #item0 {
-		height: 570px;
-		background: url(../../img/component_questionnaire2/stripes.png);
-	}
-
-	.iosSlider .slider #item1 {
-		height: 570px;
-		background: url(../../img/component_questionnaire2/stripes.png);
-	}
-
-	.iosSlider .slider #item2 {
-		height: 570px;
-		background: url(../../img/component_questionnaire2/stripes.png);
-	}
-
-	.iosSlider .slider #item3 {
-		height: 570px;
-		background: url(../../img/component_questionnaire2/stripes.png);
-	}
-
-	.iosSlider .slider #item4 {
-		height: 570px;
-		background: url(../../img/component_questionnaire2/stripes.png);
-	}
-
-
 }

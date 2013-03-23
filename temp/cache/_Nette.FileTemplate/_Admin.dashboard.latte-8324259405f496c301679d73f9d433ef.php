@@ -1,10 +1,10 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.19011700 1363521396";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1363519076;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.80450900 1363832486";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte";i:2;i:1363832485;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\dashboard.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'gj6ztiqe28')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'lcv7tmqapq')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -268,30 +268,25 @@ if (!empty($_control->snippetMode)) {
                     </li>
 
                     <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
-                        <div class="heading">Benchmarks (averages)</div>
+                        <div class="heading">Result - Rezervácie</div>
 
                         <div class="benchmarkTable">
                             <div class="BTbigLeft">
                                 <div class="titlesBT">
-                                    <small>Best location</small>                <br />
-                                    <small>Kosice</small>                       <br />
-                                    <small class="blue">This location</small>   <br />
-                                    <small>Prague location</small>              <br />
-                                    <small>Worst location</small>       
+                                    <small>Rýchlosť a profesionalita </small>                <br />
+                                    <small>Presnosť </small>                       <br />
+                                    <small class="blue">Ochota pomôcť</small>   <br />
+                                    <small>Znalosť rez. agenta </small>              <br />
                                 </div>
                             </div>
 
                             <div class="BTbigRight">
-                                <div class="leftBT">
-                                    <div id="da-ex-benchmark-d" class="animated red negative"></div>
-                                    <div id="da-ex-benchmark-e" class="animated red negative"></div>
-                                </div>
+                                
                                 <div class="middleBT">
                                     <div class="bechmark-percentage"><small>90%</small></div>
-                                    <div class="bechmark-percentage"><small>71%</small></div>
-                                    <div class="bechmark-percentage"><small>30%</small></div>
-                                    <div class="bechmark-percentage-red"><small>68%</small></div>
-                                    <div class="bechmark-percentage-red"><small>82%</small></div>
+                                    <div class="bechmark-percentage"><small>70%</small></div>
+                                    <div class="bechmark-percentage"><small>60%</small></div>
+                                    <div class="bechmark-percentage"><small class="orange">50%</small></div>
                                 </div>
 
                                 
@@ -299,6 +294,7 @@ if (!empty($_control->snippetMode)) {
                                     <div id="da-ex-benchmark-a" class="animated green"></div>
                                     <div id="da-ex-benchmark-b" class="animated green"></div>
                                     <div id="da-ex-benchmark-c" class="animated green"></div>
+                                    <div id="da-ex-benchmark-d" class="animated orange"></div>
                                 </div>
                             </div>
                         </div><!--end of benchmarkTable-->
@@ -432,13 +428,13 @@ if (!empty($_control->snippetMode)) {
         $("#da-ex-benchmark-a").progressbar({ value: 90});
 
         $("#da-ex-benchmark-b").progressbar({ value: 1 });
-        $("#da-ex-benchmark-b").progressbar({ value: 71});
+        $("#da-ex-benchmark-b").progressbar({ value: 70});
 
         $("#da-ex-benchmark-c").progressbar({ value: 1 });
-        $("#da-ex-benchmark-c").progressbar({ value: 30});
+        $("#da-ex-benchmark-c").progressbar({ value: 60});
 
         $("#da-ex-benchmark-d").progressbar({ value: 1 });
-        $("#da-ex-benchmark-d").progressbar({ value: 68});
+        $("#da-ex-benchmark-d").progressbar({ value: 50});
 
         $("#da-ex-benchmark-e").progressbar({ value: 1 });
         $("#da-ex-benchmark-e").progressbar({ value: 82});

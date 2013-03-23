@@ -1,10 +1,10 @@
-<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.94439200 1363831001";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1363831000;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.10845100 1364009240";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364009238;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'x103j1y13r')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '0lfri6nuyl')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -28,52 +28,63 @@ if (!empty($_control->snippetMode)) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
         <title>Questionnaire</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-        <link rel="shortcut icon" href="../favicon.ico" /> 
+        <link rel="shortcut icon" href="<?php echo htmlSpecialChars($basePath) ?>/favicon.ico" /> 
 		
-		<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap.css" />
-        <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/bootstrap-responsive.css" />
-
-        
+		<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/bootstrap.css" />
 		<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/slider.css" />
-        <!--end of <script src = "<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
+        <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>
+
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css' />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css' />
 
 
 		<!-- jQuery library -->
-		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-  		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+		<link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/jquery-ui.css" />
+  		<script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery-1.9.1.js"></script>
+  		<script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery-ui.js"></script>
 		<script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/vendor/bootstrap.min.js"></script>
 		
-		<!-- iosSlider plugin -->
+		<script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery.blockUI.js"></script>
+
+        <!-- iosSlider plugin -->
         <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery.iosslider.js"></script>
-		<script src = "http://malsup.github.com/jquery.blockUI.js"></script>
 		
 		<script type="text/javascript">
-			$(document).ready(function() {
-				
-				$('.iosSlider').iosSlider({
-					scrollbar: true,
-					snapToChildren: true,
-					desktopClickDrag: true,
-					infiniteSlider: true, 
-					navSlideSelector: $('.iosSliderButtons .button'),
-					scrollbarHeight: '2',
-					scrollbarBorderRadius: '0',
-					scrollbarOpacity: '0.5',
-					onSlideChange: slideContentChange,
-					onSliderLoaded: slideContentChange,
-					keyboardControls: true
-				});
-				
-				function slideContentChange(args) {
-					/* indicator */
-					$('.iosSliderButtons .button').removeClass('selected');
-					$('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
-				}
-				
-			});
+
+            $(document).ready(function() {
+                
+                $('.iosSlider').iosSlider({
+                    scrollbar: true,
+                    snapSlideCenter: false,
+                    desktopClickDrag: false,
+                    infiniteSlider: true, 
+                    navSlideSelector: $('.iosSliderButtons .button'),
+                    scrollbarHeight: '2',
+                    scrollbarBorderRadius: '0',
+                    scrollbarOpacity: '0.5',
+                    onSlideChange: slideContentChange,
+                    onSliderLoaded: slideContentChange,
+                    keyboardControls: true,
+                    snapToChildren: true
+                });
+                
+                //$('#myModal2').modal('show');
+                
+                
+                for (i = 4; i >= 0; i--) {
+                  $('.iosSliderButtons #item'+i).click();
+                }
+
+                function slideContentChange(args) {
+                    /* indicator */
+                    $('.iosSliderButtons .button').removeClass('selected');
+                    $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
+                }
+                
+                 $('.btnStart').click();
+                
+
+            });
 
             function startCountDown(counter){
                 setTimeout("location.href = 'http://cleverfrogs.com/questionnaire2/'", counter);
@@ -81,88 +92,115 @@ if (!empty($_control->snippetMode)) {
 
             function summarySend(){
                 //$(".modal-body").replaceWith(".timer");
-                $('#myModal').modal('hide')
+                $('#myModal').modal('hide');
                 $.blockUI({ message: $('.timer') }); 
-                startCountDown(10000);
+                startCountDown(1000);
             }
 
+
+        
+          
 		</script>
 		
 	</head>
 	<body>
 		<div class="st-container">
 
-            
+           
+
             <div class="timer" style="display: none;">
                 <div class="summaryThanksSpinner">Ďakujeme za Váš názor</div>
                 <img class="spinner" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/spinner2.gif" />
                 <div class="summaryTextComp">Dáta sa spracovávajú...</div>
             </div><!--end of timer-->
             
+            <div id="myModal2" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
+                </div>
+                <div class="modal-body">
+                    <div class="summaryCompetition">
+                        <div class="summaryThanks"><h3>Zvoľte jazyk</h3></div>
+                        <div class="flags">
+                            <div class="flag_uk">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/www/img/flags/uk.png" />
+                                </button>
+                            </div>
+                            <div class="flag_uk">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/www/img/flags/sk.png" />
+                                </button>
+                            </div>
+                        </div>
+                    </div><!--end of summaryCompetition-->
+                    
+
+                </div>
+            </div>
+
 
 		    <!-- Button to trigger modal -->
-		    <a href="#myModal" role="button" class="btnFinish" style="display: none" data-toggle="modal"></a>
+            <a href="#myModal" role="button" class="btnFinish" style="display: none" data-toggle="modal"></a>
+		    <a href="#myModal@" role="button" class="btnStart" style="display: none" data-toggle="modal"></a>
 		     
 		    <!-- Modal -->
-            <div class="Frozer">
-    		    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    			    <div class="modal-header">
-    			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    			    <h3 id="myModalLabel"><img class="logoCleverFrogsSubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/logoB.png" /></h3>
-    			    </div>
-    			    <div class="modal-body">
-                        <div class="summaryCompetition">
-                            <div class="summaryThanks"><h3>Ďakujeme za Vašu spätnú väzbu !</h3></div>
+		    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			    <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
+			    </div>
+			    <div class="modal-body">
+                    <div class="summaryCompetition">
+                        <div class="summaryThanks"><h3>Ďakujeme za Vašu spätnú väzbu !</h3></div>
 
-                            <div>
-                                <div class="summaryText">Aké je Vaše celkové hodnotenie ?</div>
-                                <div class="summaryStar">
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="1" />
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="2" />
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="3" />
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="4" />
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="5" />
-                                </div>
-                                <div class="attention a00" style="display: none;">Neoznačená odpoveď</div>
+                        <div>
+                            <div class="summaryText">Aké je Vaše celkové hodnotenie ?</div>
+                            <div class="summaryStar">
+                                <img class="button561 star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" g="5" question="6" rate="1" />
+                                <img class="button562 star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" g="5" question="6" rate="2" />
+                                <img class="button563 star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" g="5" question="6" rate="3" />
+                                <img class="button564 star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" g="5" question="6" rate="4" />
                             </div>
+                            <div class="attention a00" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                        </div>
 
-                            <div class="summaryTextComp">Vaše hodnotenie bolo zaradené do žrebovania o ... <br /> Prosíme vyplňte Váš email ako kontaktný údaj v prípade výhry.</div>
-                            <div class="summaryEmail">
-                                <input class="span4" type="email" placeholder="Váš@email.sk" required />
-                            </div>
-                        </div><!--end of summaryCompetition-->
-                        
+                        <center><div class="summaryTextComp">Prosíme vyplňte Vaše číslo izby.</div></center>
+                        <div class="summaryEmail">
+                            <input class="span4" type="text" placeholder="číslo izby" required />
+                        </div>
+                    </div><!--end of summaryCompetition-->
+                    
 
-    			    </div>
-    			    <div class="modal-footer">
-    			     <button class="btn btn-large btn-block btn-primary" onclick="summarySend();">Odoslať</button>
-    			    </div>
-    		    </div>
-            </div>
-			<div class="score">Score: <div class="scoreValue">0</div></div>
-			<img class="logoCleverFrogs" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/logoB.png" />
+			    </div>
+			    <div class="modal-footer">
+			     <button class="btn btn-large btn-block btn-primary" onclick="summarySend();">Odoslať</button>
+			    </div>
+		    </div>
+
+
+			<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
+			<img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
 
 			<div class = 'iosSlider'>
 			
 				<div class = 'slider'>
 					<div class = 'item' id = 'item0'>
-						<h2>Rezervácie</h2>
 						<p class="question">Ako ste boli spokojní s rezervačným oddelením ?</p>
 
-						<div class="container starsRatingSystem g0">
+						<div class=" starsRatingSystem g0">
                             <div class="row g0q0">
                                 <div class="span2">
-                                    <p class="color0">Rýchlosť a profesionalita:</p>
+                                    <p class="color0" style="width: 35%;">Rýchlosť a profesionalita:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="1" />
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="2" />
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="3" />
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="4" />
-                                    <img class="button star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="00" g="0" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button001" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png"  g="0" q="00" question="0" rate="1" />
+                                    <img class="star button002" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png"  g="0" q="00" question="0" rate="2" />
+                                    <img class="star button003" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png"  g="0" q="00" question="0" rate="3" />
+                                    <img class="star button004" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png"  g="0" q="00" question="0" rate="4" />
                                 </div>
-                                <div class="attention a00" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a00" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row g0q1">
@@ -170,14 +208,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color1">Presnosť:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="01" g="0" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="01" g="0" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="01" g="0" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="01" g="0" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="01" g="0" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button011" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="01" g="0" question="1" rate="1" />
+                                    <img class="star button012" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="01" g="0" question="1" rate="2" />
+                                    <img class="star button013" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="01" g="0" question="1" rate="3" />
+                                    <img class="star button014" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="01" g="0" question="1" rate="4" />
                                 </div>
-                                <div class="attention a01" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a01" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row g0q2">
@@ -185,14 +222,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color2">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="02" g="0" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="02" g="0" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="02" g="0" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="02" g="0" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="02" g="0" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button021" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="02" g="0" question="2" rate="1" />
+                                    <img class="star button022" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="02" g="0" question="2" rate="2" />
+                                    <img class="star button023" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="02" g="0" question="2" rate="3" />
+                                    <img class="star button024" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="02" g="0" question="2" rate="4" />
                                 </div>
-                                <div class="attention a02" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a02" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                              <div class="row g0q3">
@@ -200,14 +236,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color3">Znalosť rezervačného agenta:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="03" g="0" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="03" g="0" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="03" g="0" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="03" g="0" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="03" g="0" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button031" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="03" g="0" question="3" rate="1" />
+                                    <img class="star button032" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="03" g="0" question="3" rate="2" />
+                                    <img class="star button033" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="03" g="0" question="3" rate="3" />
+                                    <img class="star button034" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="03" g="0" question="3" rate="4" />
                                 </div>
-                                <div class="attention a03" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a03" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
                             
                         </div><!--end of starRatingSystem-->
@@ -216,23 +251,21 @@ if (!empty($_control->snippetMode)) {
 					</div>
 					
 					<div class = 'item' id = 'item1'>
-						<h2>Recepcia</h2>
 						<p class="question">Ako hodnotíte prácu recepcie a príchod do hotela ?</p>
 						
 						<div class="container starsRatingSystem g1">
                             <div class="row g1q0">
                                 <div class="span2">
-                                    <p class="color0">Proces registrácie – check in:</p>
+                                    <p class="color0" style="width: 35%;">Proces registrácie – check in:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="10" g="1" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="10" g="1" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="10" g="1" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="10" g="1" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="10" g="1" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button101" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="10" g="1" question="0" rate="1" />
+                                    <img class="star button102" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="10" g="1" question="0" rate="2" />
+                                    <img class="star button103" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="10" g="1" question="0" rate="3" />
+                                    <img class="star button104" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="10" g="1" question="0" rate="4" />
                                 </div>
-                                <div class="attention a10" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a10" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row g1q1">
@@ -240,14 +273,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color1">Proces od ubytovania – check out :</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="11" g="1" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="11" g="1" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="11" g="1" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="11" g="1" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="11" g="1" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button111" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="11" g="1" question="1" rate="1" />
+                                    <img class="star button112" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="11" g="1" question="1" rate="2" />
+                                    <img class="star button113" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="11" g="1" question="1" rate="3" />
+                                    <img class="star button114" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="11" g="1" question="1" rate="4" />
                                 </div>
-                                <div class="attention a11" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a11" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row g1q2">
@@ -255,14 +287,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color2">Ochotapomôcť a priateľskosť:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="12" g="1" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="12" g="1" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="12" g="1" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="12" g="1" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="12" g="1" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button121" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="12" g="1" question="2" rate="1" />
+                                    <img class="star button122" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="12" g="1" question="2" rate="2" />
+                                    <img class="star button123" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="12" g="1" question="2" rate="3" />
+                                    <img class="star button124" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="12" g="1" question="2" rate="4" />
                                 </div>
-                                <div class="attention a12" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a12" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                         </div><!--end of starRatingSystem-->
@@ -270,23 +301,21 @@ if (!empty($_control->snippetMode)) {
 					</div>
 					
 					<div class = 'item' id = 'item2'>
-						<h2>Ubytovanie</h2>
 						<p class="question">Ako hodnotíte ubytovanie a kvalitu izieb ?</p>
 
 						<div class="container starsRatingSystem group2">
                             <div class="row q0">
                                 <div class="span2">
-                                    <p class="color0">Čistota izby:</p>
+                                    <p class="color0" style="width: 35%;">Čistota izby:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="20" g="2" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="20" g="2" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="20" g="2" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="20" g="2" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="20" g="2" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button201" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="20" g="2" question="0" rate="1" />
+                                    <img class="star button202" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="20" g="2" question="0" rate="2" />
+                                    <img class="star button203" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="20" g="2" question="0" rate="3" />
+                                    <img class="star button204" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="20" g="2" question="0" rate="4" />
                                 </div>
-                                <div class="attention a20" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a20" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q1">
@@ -294,14 +323,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color1">Vybavenie izby:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="21"  g="2" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="21"  g="2" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="21"  g="2" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="21"  g="2" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="21"  g="2" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button211" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="21"  g="2" question="1" rate="1" />
+                                    <img class="star button212" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="21"  g="2" question="1" rate="2" />
+                                    <img class="star button213" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="21"  g="2" question="1" rate="3" />
+                                    <img class="star button214" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="21"  g="2" question="1" rate="4" />
                                 </div>
-                                <div class="attention a21" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a21" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q2">
@@ -309,14 +337,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color2">Atmosféra v hoteli:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="22" g="2" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="22" g="2" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="22" g="2" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="22" g="2" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="22" g="2" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button221" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="22" g="2" question="2" rate="1" />
+                                    <img class="star button222" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="22" g="2" question="2" rate="2" />
+                                    <img class="star button223" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="22" g="2" question="2" rate="3" />
+                                    <img class="star button224" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="22" g="2" question="2" rate="4" />
                                 </div>
-                                <div class="attention a22" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a22" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                              <div class="row q3">
@@ -324,37 +351,34 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color3">Večerný program:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="23" g="2" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="23" g="2" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="23" g="2" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="23" g="2" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="23" g="2" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button231" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="23" g="2" question="3" rate="1" />
+                                    <img class="star button232" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="23" g="2" question="3" rate="2" />
+                                    <img class="star button233" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="23" g="2" question="3" rate="3" />
+                                    <img class="star button234" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="23" g="2" question="3" rate="4" />
                                 </div>
-                                <div class="attention a23" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a23" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
                         </div><!--end of starRatingSystem-->
 
 					</div>
 					
 					<div class = 'item' id = 'item3'>
-						<h2>Reštaurácia</h2>
 						<p class="question">Ako hodnotíte prácu reštaurácie  ?</p>
 
 						<div class="container starsRatingSystem group3">
                             <div class="row q0">
                                 <div class="span2">
-                                    <p class="color0">Atmosféra a dekorácie:</p>
+                                    <p class="color0" style="width: 35%;">Atmosféra a dekorácie:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="30" g="3" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="30" g="3" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="30" g="3" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="30" g="3" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="30" g="3" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button301" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="30" g="3" question="0" rate="1" />
+                                    <img class="star button302" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="30" g="3" question="0" rate="2" />
+                                    <img class="star button303" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="30" g="3" question="0" rate="3" />
+                                    <img class="star button304" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="30" g="3" question="0" rate="4" />
                                 </div>
-                                <div class="attention a30" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a30" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q1">
@@ -362,14 +386,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color1">Raňajkový bufet:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="31" g="3" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="31" g="3" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="31" g="3" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="31" g="3" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="31" g="3" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button311" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="31" g="3" question="1" rate="1" />
+                                    <img class="star button312" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="31" g="3" question="1" rate="2" />
+                                    <img class="star button313" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="31" g="3" question="1" rate="3" />
+                                    <img class="star button314" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="31" g="3" question="1" rate="4" />
                                 </div>
-                                <div class="attention a31" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a31" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q2">
@@ -377,14 +400,13 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color2">Kvalita a kreativita večerného menu:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="32" g="3" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="32" g="3" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="32" g="3" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="32" g="3" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="32" g="3" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button321" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="32" g="3" question="2" rate="1" />
+                                    <img class="star button322" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="32" g="3" question="2" rate="2" />
+                                    <img class="star button323" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="32" g="3" question="2" rate="3" />
+                                    <img class="star button324" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="32" g="3" question="2" rate="4" />
                                 </div>
-                                <div class="attention a32" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a32" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                              <div class="row q3">
@@ -392,143 +414,135 @@ if (!empty($_control->snippetMode)) {
                                     <p class="color3">Ponuka vína:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="33" g="3" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="33" g="3" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="33" g="3" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="33" g="3" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="33" g="3" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button331" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="33" g="3" question="3" rate="1" />
+                                    <img class="star button332" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="33" g="3" question="3" rate="2" />
+                                    <img class="star button333" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="33" g="3" question="3" rate="3" />
+                                    <img class="star button334" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="33" g="3" question="3" rate="4" />
                                 </div>
-                                <div class="attention a33" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a33" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q4">
                                 <div class="span2">
-                                    <p class="color4">Bar a kaviareň:</p>
+                                    <p class="color3">Bar a kaviareň:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="34" g="3" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="34" g="3" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="34" g="3" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="34" g="3" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="34" g="3" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button341" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="34" g="3" question="4" rate="1" />
+                                    <img class="star button342" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="34" g="3" question="4" rate="2" />
+                                    <img class="star button343" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="34" g="3" question="4" rate="3" />
+                                    <img class="star button344" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="34" g="3" question="4" rate="4" />
                                 </div>
-                                <div class="attention a34" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a34" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q5">
                                 <div class="span2">
-                                    <p class="color5">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color3">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="35" g="3" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="35" g="3" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="35" g="3" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="35" g="3" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="35" g="3" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button351" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="35" g="3" question="5" rate="1" />
+                                    <img class="star button352" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="35" g="3" question="5" rate="2" />
+                                    <img class="star button353" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="35" g="3" question="5" rate="3" />
+                                    <img class="star button354" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="35" g="3" question="5" rate="4" />
                                 </div>
-                                <div class="attention a35" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a35" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
+                            
                         </div><!--end of starRatingSystem-->
 						
 					</div>
 
 					<div class = 'item' id = 'item4'>
-						<h2>Wellness</h2>
 						<p class="question">Ako hodnotíte wellness hotela ?</p>
 
 						<div class="container starsRatingSystem group4">
-                            <div class="row">
+                            <div class="row q0">
                                 <div class="span2">
-                                    <p class="color0">Čistota wellness:</p>
+                                    <p class="color0" style="width: 35%;">Čistota wellness:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="40" g="4" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="40" g="4" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="40" g="4" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="40" g="4" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="40" g="4" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star  button401" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="40" g="4" question="0" rate="1" />
+                                    <img class="star  button402" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="40" g="4" question="0" rate="2" />
+                                    <img class="star  button403" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="40" g="4" question="0" rate="3" />
+                                    <img class="star  button404" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="40" g="4" question="0" rate="4" />
                                 </div>
-                                <div class="attention a40" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a40" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
-                            <div class="row">
+                            <div class="row q1">
                                 <div class="span2">
                                     <p class="color1">Dostatok uterákov a plachiet:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="41" g="4" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="41" g="4" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="41" g="4" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="41" g="4" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="41" g="4" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button411" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="41" g="4" question="1" rate="1" />
+                                    <img class="star button412" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="41" g="4" question="1" rate="2" />
+                                    <img class="star button413" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="41" g="4" question="1" rate="3" />
+                                    <img class="star button414" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="41" g="4" question="1" rate="4" />
                                 </div>
-                                <div class="attention a41" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a41" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
-                            <div class="row">
+                            <div class="row q2">
                                 <div class="span2">
                                     <p class="color2">Ponuka odpočívadiel a oddychových častí:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="42" g="4" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="42" g="4" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="42" g="4" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="42" g="4" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="42" g="4" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button421" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="42" g="4" question="2" rate="1" />
+                                    <img class="star button422" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="42" g="4" question="2" rate="2" />
+                                    <img class="star button423" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="42" g="4" question="2" rate="3" />
+                                    <img class="star button424" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="42" g="4" question="2" rate="4" />
                                 </div>
-                                <div class="attention a42" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a42" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
-                             <div class="row">
+                             <div class="row q3">
                                 <div class="span2">
                                     <p class="color3">Atmosféra a dekorácie:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="43" g="4" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="43" g="4" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="43" g="4" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="43" g="4" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="43" g="4" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button431" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="43" g="4" question="3" rate="1" />
+                                    <img class="star button432" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="43" g="4" question="3" rate="2" />
+                                    <img class="star button433" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="43" g="4" question="3" rate="3" />
+                                    <img class="star button434" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="43" g="4" question="3" rate="4" />
                                 </div>
-                                <div class="attention a43" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a43" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
-                            <div class="row">
+                            <div class="row q4">
                                 <div class="span2">
-                                    <p class="color4">Ponuka masáží a procedúr:</p>
+                                    <p class="color3">Ponuka masáži a procedúr:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="44" g="4" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="44" g="4" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="44" g="4" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="44" g="4" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="44" g="4" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button441" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="44" g="4" question="4" rate="1" />
+                                    <img class="star button442" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="44" g="4" question="4" rate="2" />
+                                    <img class="star button443" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="44" g="4" question="4" rate="3" />
+                                    <img class="star button444" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="44" g="4" question="4" rate="4" />
                                 </div>
-                                <div class="attention a44" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a44" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
-                            <div class="row">
+                            <div class="row q5">
                                 <div class="span2">
-                                    <p class="color5">Ochotapomôcť a priateľskosť:</p>
+                                    <p class="color3">Ochota pomôcť a priateľstkosť:</p>
                                 </div>
                                 
-                                <div class="span7 pull-right margin">
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="45" g="4" rate="1" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="45" g="4" rate="2" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="45" g="4" rate="3" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="45" g="4" rate="4" />
-                                    <img class="star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire/star_BW.png" q="45" g="4" rate="5" />
+                                <div class="span10 pull-right margin">
+                                    <img class="star button451" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" q="45" g="4" question="5" rate="1" />
+                                    <img class="star button452" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" q="45" g="4" question="5" rate="2" />
+                                    <img class="star button453" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="45" g="4" question="5" rate="3" />
+                                    <img class="star button454" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="45" g="4" question="5" rate="4" />
                                 </div>
-                                <div class="attention a45" style="display: none;">Neoznačená odpoveď</div>
+                                <div class="attention a45" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
+                            
                         </div><!--end of starRatingSystem-->
 						
 					</div>
@@ -536,32 +550,32 @@ if (!empty($_control->snippetMode)) {
 				</div>
 				
 			</div>
-			
-			<div class = 'iosSliderButtons'>
-					<div class = 'button first' id = 'item0'>
-						<div class="nav">Rezervácie</div>
-					</div>					
-					<div class = 'button' id = 'item1'>
-						<div class="nav">Recepcia</div>
-					</div>
-					<div class = 'button' id = 'item2'>
-						<div class="nav">Ubytovanie</div>
-					</div>
-					<div class = 'button' id = 'item3'>
-						<div class="nav">Reštaurácia</div>
-					</div>
-					<div class = 'button' id = 'item4'>
-						<div class="nav">Wellness</div>
-					</div>
-			</div>
 		</div>
-		<div class="submitButtonContainer">
-			<button class="btn btn-large btn-block submitButton" onclick="submit();">Odoslať</button>
-		</div>
-				
+
+        <div class="bottomBar">
+            <div class = 'iosSliderButtons'>
+                    <div class = 'button first' id = 'item0'>
+                        <div class="navigationMenu">Rezervácie</div>
+                    </div>                  
+                    <div class = 'button' id = 'item1'>
+                        <div class="navigationMenu">Recepcia</div>
+                    </div>
+                    <div class = 'button' id = 'item2'>
+                        <div class="navigationMenu">Ubytovanie</div>
+                    </div>
+                    <div class = 'button' id = 'item3'>
+                        <div class="navigationMenu">Reštaurácia</div>
+                    </div>
+                    <div class = 'button' id = 'item4'>
+                        <div class="navigationMenu">Wellness</div>
+                    </div>
+            </div>
+
+            <button class="btn btn-large btn-block submitButton" onclick="submit();">Odoslať</button>
+
+        </div>
+
         <script>
-
-
             var question_count_g0 = 4;
             var question_count_g1 = 3;
             var question_count_g2 = 4;
@@ -582,7 +596,7 @@ if (!empty($_control->snippetMode)) {
             var group3complete = true;
             var group4complete = true;
 
-            var g,question,question_value;
+            var g,question,rate;
         	var readyToSend = false;
 
         	var score0 = 0,score1 = 0,score2 = 0,score3 = 0,score4 = 0, finalScore = 0;
@@ -591,30 +605,41 @@ if (!empty($_control->snippetMode)) {
             $('img.star').click(function(){
 
             	var host = <?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>;
+                var rate = $(this).attr("rate");
+                var g = $(this).attr("g");
+                var question = $(this).attr("q");
+                var question_img = $(this).attr("question");
+                var item;
 
-                $(this).attr("src",host+"/img/component_questionnaire2/star_C.png");
-                $(this).attr("class","star selected");
-                $(this).prevAll().attr("src",host+"/img/component_questionnaire2/star_C.png");
-                $(this).prevAll().attr("class","star selected");
-                $(this).nextAll().attr("src",host+"/img/component_questionnaire2/star_BW.png");
-                $(this).nextAll().attr("class","star");
+                for (var i = 1 ; i < 5; i++) {
+                   item = g+question_img+i;
+                   $(".button"+item).attr("src",host+"/www/img/Emoticons/128x128/"+i+".png");
+                }
+
+                $(this).attr("src",host+"/www/img/Emoticons/128x128/"+rate+"_selected.png");
+
+                //$(this).attr("src",host+"/img/component_questionnaire2/star_C.png");
+                
+                //$(this).prevAll().attr("src",host+"/img/component_questionnaire2/star_C.png");
+                //$(this).prevAll().attr("class","star");
+                //$(this).nextAll().attr("class","star");
+                //$(this).nextAll().attr("src",host+"/img/component_questionnaire2/star_BW.png");
+
+
 
                 //$('#rating' + $(this).attr("q")).text($(this).attr("rate"));
-                $(this).prevAll().attr("value","");
+                /*$(this).prevAll().attr("value","");
                 $(this).nextAll().attr("value","");
-                $(this).attr("value","1");
+                $(this).attr("value","1");*/
 
-                g = $(this).attr("g");
-            	question = $(this).attr("q");
-            	question_value = $(this).attr("rate");
 
-               //console.log("group: " + g + " question: " + question + " question value: " + question_value);
+               //console.log("group: " + g + " question: " + question + " question value: " + rate);
                 
                //----- CHECK GROUP 0 -----*/
                 if(g == 0){
                 	for (var i = 0 ; i < question_count_g0; i++) {
 	                	if(i == question.substring(1)){
-	                		holder0[i] = question_value;
+	                		holder0[i] = rate;
 	                	}
 	                	group0complete = false;
                     }
@@ -635,7 +660,7 @@ if (!empty($_control->snippetMode)) {
                 if(g == 1) {
                 	for (var i = 0 ; i < question_count_g1; i++) {
 	                	if(i == question.substring(1)){
-	                		holder1[i] = question_value;
+	                		holder1[i] = rate;
 	                	}
 	                	group1complete = false;
                     }
@@ -656,7 +681,7 @@ if (!empty($_control->snippetMode)) {
                 if(g == 2) {
                 	for (var i = 0 ; i < question_count_g2; i++) {
 	                	if(i == question.substring(1)){
-	                		holder2[i] = question_value;
+	                		holder2[i] = rate;
 	                	}
 	                	group2complete = false;
                     }
@@ -676,7 +701,7 @@ if (!empty($_control->snippetMode)) {
                 if(g == 3) {
                 	for (var i = 0 ; i < question_count_g3; i++) {
 	                	if(i == question.substring(1)){
-	                		holder3[i] = question_value;
+	                		holder3[i] = rate;
 	                	}
 	                	group3complete = false;
                     }
@@ -696,7 +721,7 @@ if (!empty($_control->snippetMode)) {
                 if(g == 4) {
                 	for (var i = 0 ; i < question_count_g4; i++) {
 	                	if(i == question.substring(1)){
-	                		holder4[i] = question_value;
+	                		holder4[i] = rate;
 	                	}
 	                	group4complete = false;
                     }
@@ -749,7 +774,7 @@ if (!empty($_control->snippetMode)) {
             function calculateScore(){
             	var finalScore = 0;
             	finalScore = score0+score1+score2+score3+score4
-            	$(".scoreValue").html(finalScore)
+            	//$(".scoreValue").html(finalScore)
             }
 
             function checkReady(){
@@ -835,7 +860,7 @@ if (!empty($_control->snippetMode)) {
                     }
             	}
 
-            	//one formular must be evaluated
+            	/*one formular must be evaluated
             	if(group1complete == false || typeof(checker0) == "undefined") {
             		if(checker0 != 0) $('.iosSliderButtons #item0').click();
             		readyToSend = false;
@@ -846,7 +871,7 @@ if (!empty($_control->snippetMode)) {
 	                		$(".a0"+i).css("display","block");
 	                	}
                     }
-            	}
+            	}*/
             	return readyToSend;
             };
         </script>

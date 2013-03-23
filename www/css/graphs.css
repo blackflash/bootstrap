@@ -274,7 +274,7 @@ div.smallText {
 
 #da-ex-benchmark-d {
 	width: 100%;
-	margin-top: 130px;
+	margin-top: 25px;
 }
 
 
@@ -286,18 +286,18 @@ div.smallText {
 
 .leftBT {
 	float: left;
-	width: 43%;
+	width: 60%;
 }
 
 .middleBT {
 	float: left;
-	width: 12%;
+	width: 25%;
 	text-align: center;
 }
 
 .rightBT {
 	float: left;
-	width: 43%;
+	width: 60%;
 
 }
 
