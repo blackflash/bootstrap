@@ -252,11 +252,11 @@ p {
 	z-index: 100;
 }
 
-.tooltip_arrow {
-	height: 150px;
-	margin-top: 20px;
-	margin-left: 30px;
-	opacity: 0.5;
+.tooltip_arrow{
+	position: absolute;
+	width: 50px;
+	margin-left: 8%;
+	margin-top: -3em;
 }
 
 .tooltip_1 { 
@@ -265,10 +265,15 @@ p {
 	z-index: 0;
 }
 
+.tooltip_emoticon {
+	margin-top: 20px;
+}
+
 .tooltip-inner {
-	font-size: 15px;
-	height: 80px;
-	padding: 20px;
+	font-size: 18px;
+	width: 250px;
+	height: 100px;
+	padding-top: 30px;
 	text-transform: uppercase;
 	line-height: 25px;
 }
@@ -351,20 +356,26 @@ p {
 /*------- submit window -------*/
 
 .logoCompanySubmit {
-	width: 55%;
-	margin-top: 1.5%;
+	width: 45%;
+	padding-top: 1%;
 	text-align: center;
-	margin-left: 25%;
-	padding-bottom: 2%;
+	margin-left: 27%;
 }
 
 .summaryCompetition {
-	text-align: center;
+	text-align: center !important;
 	font-family: 'Myriad Pro', Arial, sans-serif;
 }
 
 .summaryText {
 	margin-top: 30px;
+	font-size: 26px;
+	padding-bottom: 20px;
+}
+
+.a56 {
+	position: absolute;
+	margin-top: -45px;
 }
 
 .summaryThanks {
@@ -377,7 +388,14 @@ p {
 }
 
 .summaryEmail {
-	padding: 20px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.summaryEmail > input[type="text"] {
+	font-size: 20px;
+	text-align: center;
+	padding: 10px;
 }
 
 .st-container {

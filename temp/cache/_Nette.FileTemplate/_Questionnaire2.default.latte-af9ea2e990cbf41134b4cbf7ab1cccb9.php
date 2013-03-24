@@ -1,10 +1,10 @@
-<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.93059300 1364092909";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364092908;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.01314000 1364152609";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364152530;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'e8wxtbrp53')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ondnalbyz4')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -36,7 +36,6 @@ if (!empty($_control->snippetMode)) {
 
         <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css' />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css' />
-
 
         <!-- jQuery library -->
         <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/jquery-ui.css" />
@@ -72,9 +71,6 @@ if (!empty($_control->snippetMode)) {
                     preventXScroll: true
                 });
 
-                var host = <?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>;
-
-               
 
                 $(".bottomBar").css("height","120px");
                 $(".iosSliderButtons").css("marginTop","55px");
@@ -122,6 +118,8 @@ if (!empty($_control->snippetMode)) {
                   clickOnButton(i);
                 }
 
+                $(".iosSliderButtons > #item0").removeClass("button selected");
+                $(".iosSliderButtons > #item0").attr("class","button ");
 
                 $(".button").click(function(){
                     var sectionId = $(this).attr("id").substr(4);
@@ -136,13 +134,16 @@ if (!empty($_control->snippetMode)) {
 
                     //$(".iosSlider").css("display","block");
 
-
-
                     $(".iosSlider").animate({ 
                         left: "0px"
                     }, 500 );
 
-                    console.log(sectionId);
+                    //console.log(sectionId);
+
+                    if(sectionId == "0"){
+                       $(".iosSliderButtons > #item0").attr("class","button selected");
+                    }
+
 
                 });
 
@@ -152,19 +153,22 @@ if (!empty($_control->snippetMode)) {
 
                 //$('#myModal2').modal('show');
 
-
-
             });
 
-            function startCountDown(counter){
-                setTimeout("location.href = 'http://cleverfrogs.com/questionnaire2/'", counter);
-            } 
+            function finishEvaluationModal(){
+                    $('#myModal').modal({
+                        keyboard: false,
+                        backdrop: 'static'
+                    });
+                    $('#myModal').modal('show');
+            }
 
-            function summarySend(){
-                //$(".modal-body").replaceWith(".timer");
-                $('#myModal').modal('hide');
-                $.blockUI({ message: $('.timer') }); 
-                startCountDown(1000);
+            function finishSummaryModal(){
+                    $('#myModal@').modal({
+                        keyboard: false,
+                        backdrop: 'static'
+                    });
+                    $('#myModal@').modal('show');
             }
 
             function slideContentChange(args) {
@@ -173,15 +177,12 @@ if (!empty($_control->snippetMode)) {
                 $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
             }
             
-            $('.btnStart').click();
-
+            finishSummaryModal();
         </script>
 
 	</head>
 	<body>
 		<div class="st-container">
-
-           
 
             <div class="timer" style="display: none;">
                 <div class="summaryThanksSpinner">Ďakujeme za Váš názor</div>
@@ -209,50 +210,42 @@ if (!empty($_control->snippetMode)) {
                             </div>
                         </div>
                     </div><!--end of summaryCompetition-->
-                    
-
                 </div>
             </div>
 
-
-		    <!-- Button to trigger modal -->
-            <a href="#myModal" role="button" class="btnFinish" style="display: none" data-toggle="modal"></a>
-		    <a href="#myModal@" role="button" class="btnStart" style="display: none" data-toggle="modal"></a>
 		     
 		    <!-- Modal -->
 		    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			    <div class="modal-header">
-			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
 			    </div>
 			    <div class="modal-body">
                     <div class="summaryCompetition">
                         <div class="summaryThanks"><h3>Ďakujeme za Vašu spätnú väzbu !</h3></div>
 
+                        <div class="summaryTextComp">Prosíme vyplňte Vaše číslo izby.</div>
+                        <div class="summaryEmail">
+                            <input class="input-xxlarge roomInput" type="text" placeholder="Vaše číslo izby" required />
+                        </div>
+
                         <div>
                             <div class="summaryText">Aké je Vaše celkové hodnotenie ?</div>
                             <div class="summaryStar">
-                                <img class="button561 star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" g="5" question="6" rate="1" />
-                                <img class="button562 star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" g="5" question="6" rate="2" />
-                                <img class="button563 star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" g="5" question="6" rate="3" />
-                                <img class="button564 star" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" g="5" question="6" rate="4" />
+                                <img class="button561 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" g="5" question="6" rate="1" />
+                                <img class="button562 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" g="5" question="6" rate="2" />
+                                <img class="button563 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" g="5" question="6" rate="3" />
+                                <img class="button564 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" g="5" question="6" rate="4" />
                             </div>
-                            <div class="attention a00" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                            <div class="attention a56" style="display: none;">Prosíme ohodnoťte túto otázku</div>
                         </div>
 
-                        <div class="summaryTextComp">Prosíme vyplňte Vaše číslo izby.</div>
-                        <div class="summaryEmail">
-                            <input class="span4" type="text" placeholder="číslo izby" required />
-                        </div>
                     </div><!--end of summaryCompetition-->
-                    
-
 			    </div>
-			    <div class="modal-firstTooltipter">
-			     <button class="btn btn-large btn-block btn-primary" onclick="summarySend();">Odoslať</button>
-			    </div>
+			    <div class="modal-footer">
+                    <button class="btn btn-large btn-block" data-dismiss="modal" aria-hidden="true">Späť k hodnoteniu</button>
+                    <button class="btn btn-large btn-block btn-primary" onclick="summarySend();">Potvrdiť</button>
+                </div>
 		    </div>
-
 
 			<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
 			<img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
@@ -631,29 +624,33 @@ if (!empty($_control->snippetMode)) {
             <div id="firstTooltip" class="tooltip_1" rel="tooltip">
             </div>
             <img class="tooltip_emoticon" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128/10.png" />
-            <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
         </div>
 
         <div class="bottomBar">
 
             <div class = 'iosSliderButtons'>
                     <div class = 'button' id = 'item0'>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
                         <div class="navigationMenu">Rezervácie</div>
                     </div>                  
                     <div class = 'button' id = 'item1'>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
                         <div class="navigationMenu">Recepcia</div>
                     </div>
                     <div class = 'button' id = 'item2'>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
                         <div class="navigationMenu">Ubytovanie</div>
                     </div>
                     <div class = 'button' id = 'item3'>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
                         <div class="navigationMenu">Reštaurácia</div>
                     </div>
                     <div class = 'button' id = 'item4'>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
                         <div class="navigationMenu">Wellness</div>
                     </div>
             </div>
-            <button class="btn btn-large btn-block submitButton" onclick="submit();">Ukončiť hodnotenie</button>
+            <button class="btn btn-large btn-block submitButton" onclick="submit();">Ukončiť a odoslať</button>
         </div>
 
         <script>
@@ -677,25 +674,26 @@ if (!empty($_control->snippetMode)) {
             var group3complete = true;
             var group4complete = true;
 
-            var g,question,rate;
+            var g,question,rate,actualValue,question_img,item;
         	var readyToSend = false;
 
         	var score0 = 0,score1 = 0,score2 = 0,score3 = 0,score4 = 0, finalScore = 0;
+            var finalScore = 0;
+            var host = <?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>;
+            var page = "/questionnaire2/";
+            var options = {};
+
 
             //function to handle the clicks on the stars
             $('img.star').click(function(){
 
                  $(".bottomBar").css("height","125px");
 
-                 var options = {};
-                // $( ".submitButton" ).toggle( "slide", options, 500 );
-
-            	var host = <?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>;
-                var rate = $(this).attr("rate");
-                var g = $(this).attr("g");
-                var question = $(this).attr("q");
-                var question_img = $(this).attr("question");
-                var item;
+                rate = $(this).attr("rate");
+                g = $(this).attr("g");
+                question = $(this).attr("q");
+                question_img = $(this).attr("question");
+                item;
 
                 for (var i = 1 ; i < 5; i++) {
                    item = g+question_img+i;
@@ -711,13 +709,10 @@ if (!empty($_control->snippetMode)) {
                 //$(this).nextAll().attr("class","star");
                 //$(this).nextAll().attr("src",host+"/img/component_questionnaire2/star_BW.png");
 
-
-
                 //$('#rating' + $(this).attr("q")).text($(this).attr("rate"));
                 /*$(this).prevAll().attr("value","");
                 $(this).nextAll().attr("value","");
                 $(this).attr("value","1");*/
-
 
                //console.log("group: " + g + " question: " + question + " question value: " + rate);
                 
@@ -741,7 +736,6 @@ if (!empty($_control->snippetMode)) {
                     if(checker0 == 0) group0complete = true;
                 }
 
-
                 //----- CHECK GROUP 1 -----*/
                 if(g == 1) {
                 	for (var i = 0 ; i < question_count_g1; i++) {
@@ -761,7 +755,6 @@ if (!empty($_control->snippetMode)) {
                     }
                      if(checker1 == 0) group1complete = true;
                 }	
-
 
                 //----- CHECK GROUP 2 -----*/
                 if(g == 2) {
@@ -823,19 +816,6 @@ if (!empty($_control->snippetMode)) {
                      if(checker4 == 0) group4complete = true;
                 }
 
-                /*console.log(checker0);
-                console.log("ch1 - " + checker1);
-                console.log(checker2);
-                console.log(checker3);
-                console.log(checker4);
-                console.log(group0complete);
-                console.log(group1complete);
-                console.log(group2complete);
-                console.log(group3complete);
-                console.log(group4complete);
-                console.log("---------------");
-              	console.log(holder0);*/
-
                 //remove the error box
                 //$('.q' + $(this).attr("q")).removeClass('error');
                 calculateScore();
@@ -854,11 +834,11 @@ if (!empty($_control->snippetMode)) {
             function submit() {
             	calculateScore();
             	readyToSend = checkReady();
-            	if(readyToSend) $(".btnFinish").click();
+                if(readyToSend) finishEvaluationModal();
             };
 
             function calculateScore(){
-            	var finalScore = 0;
+                finalScore = 0;
             	finalScore = score0+score1+score2+score3+score4
             	//$(".scoreValue").html(finalScore)
             }
@@ -877,14 +857,13 @@ if (!empty($_control->snippetMode)) {
 	            					if(checker4 == 0 || typeof(checker4) == "undefined"){
             							//console.log("checker4 ok");
             							readyToSend = true;
-	            						console.log("OK to POST !");
+	            						//console.log("OK to POST !");
 	            					}
 	            				}
             				}
             			}
             		}
             	}
-
 
             	if(group0complete == false ) {
             		if(checker0 <= question_count_g0) $('.iosSliderButtons #item0').click();
@@ -961,8 +940,33 @@ if (!empty($_control->snippetMode)) {
             	return readyToSend;
             };
 
+            function startCountDown(counter){
+                setTimeout("location.href = '" + host + page + "'", counter);
+            } 
+            var summaryEvaluation = 0;
+
+            $(".summaryEvaluation").click(function(){
+               summaryEvaluation = $(this).attr("rate");
+               $(".a56").css("display","none");
+               console.log(summaryEvaluation);
+            });
+
+            function summarySend(){
 
 
+
+                if(summaryEvaluation != 0 && summaryEvaluation != "undefined"){
+                    //$(".modal-body").replaceWith(".timer");
+                    $('#myModal').modal('hide');
+                    $.blockUI({ message: $('.timer') }); 
+                    startCountDown(1000);
+                }else {
+                    $(".a56").css("display","block");
+                }
+
+                return false;
+                
+            }
             
 
         </script>
