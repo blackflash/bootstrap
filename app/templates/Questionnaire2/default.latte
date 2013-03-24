@@ -79,13 +79,12 @@
                 function clickOnButton(id){
                     $('.iosSliderButtons #item'+id).click();
                 }
-
                 
 
                 $(".iosSlider").css("display","none");
 
                  $(".iosSlider").animate({ 
-                        left: "1280px"
+                        left: "1920px"
                     }, 0 );
 
                 $(".iosSlider").css("display","block");
@@ -108,11 +107,9 @@
                 $(".button").click(function(){
                     var sectionId = $(this).attr("id").substr(4);
 
-                    $('#firstTooltip').addClass('animated fadeOut');
-                    $('.tooltip_emoticon').addClass('animated fadeOut');
                     
                     $(".tooltips").css("left","75%");
-                    $(".tooltips").css("top","3%");
+                    $(".tooltips").css("top","-10%");
                     
                     $('#firstTooltip').tooltip('hide');
                     $('.tooltip_emoticon').css("display","none");
