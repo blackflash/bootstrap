@@ -245,8 +245,8 @@ p {
 /*--------tooltips-------*/
 .tooltips {
 	position: absolute;
-	bottom: 13%;
-	left: 48%;
+	top: 45%;
+	left: 45%;
 	height: 50px;
 	width: 120px;
 	z-index: 100;
