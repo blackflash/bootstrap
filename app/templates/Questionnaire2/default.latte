@@ -31,6 +31,100 @@
         <script src = "{$basePath}/js/component_questionnaire2/jquery.iosslider.js"></script>
         <link rel="stylesheet" href="{$basePath}/css/animate.css">
 		
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                
+                $('.iosSlider').iosSlider({
+                    scrollbar: false,
+                    scrollbarDrag: false,
+                    snapSlideCenter: false,
+                    desktopClickDrag: false,
+                    infiniteSlider: false, 
+                    navSlideSelector: $('.iosSliderButtons .button'),
+                    scrollbarHeight: '2',
+                    scrollbarBorderRadius: '0',
+                    scrollbarOpacity: '0.5',
+                    onSlideChange: slideContentChange,
+                    onSliderLoaded: slideContentChange,
+                    keyboardControls: false,
+                    snapToChildren: true
+                });
+
+                $(".iosSlider").css("display","none");
+
+                $('.submitButton').css('display',"none");
+                $(".bottomBar").css("height","120px");
+                $(".iosSliderButtons").css("marginTop","55px");
+                
+                $('img.star').click(function(){
+                    
+                    $('.submitButton').css('display',"block");
+
+                    $(".iosSliderButtons").animate({ 
+                        marginTop: "-0px"
+                    }, 500 );
+
+                    /*$(".iosSliderButtons").animate({ 
+                        marginTop: "60px"
+                    }, 500 );
+
+                    $('.submitButton').addClass('animated fadeInUp');*/
+                }); 
+
+                for (i = 4; i >= 0; i--) {
+                  $('.iosSliderButtons #item'+i).click();
+                }
+
+
+                $('#firstTooltip').tooltip({
+                    placement : 'top',
+                    title : 'Začnite voľbou sekcie, ktorú chete ohodnotiť. ',
+                });
+
+                $('#firstTooltip').tooltip('show');
+                $('.tooltip_emoticon').addClass('animated tada');
+
+                $(".button").click(function(){
+                    $('#firstTooltip').addClass('animated fadeOut');
+                    $('.tooltip_emoticon').addClass('animated fadeOut');
+                    
+                    $('#firstTooltip').tooltip('hide');
+                    $('.tooltip_emoticon').css("display","none");
+
+                    $(".iosSlider").css("display","block");
+                });
+
+                
+                /*$(".iosSliderButtons").animate({ 
+                    marginTop: "55px"
+                }, 500 );*/
+
+                //$('#myModal2').modal('show');
+
+            });
+
+            function startCountDown(counter){
+                setTimeout("location.href = 'http://cleverfrogs.com/questionnaire2/'", counter);
+            } 
+
+            function summarySend(){
+                //$(".modal-body").replaceWith(".timer");
+                $('#myModal').modal('hide');
+                $.blockUI({ message: $('.timer') }); 
+                startCountDown(1000);
+            }
+
+            function slideContentChange(args) {
+                /* indicator */
+                $('.iosSliderButtons .button').removeClass('selected');
+                $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
+            }
+            
+            $('.btnStart').click();
+
+        </script>
+
 	</head>
 	<body>
 		<div class="st-container">
@@ -817,96 +911,7 @@
 
 
 
-            $(document).ready(function() {
-                
-                $('.iosSlider').iosSlider({
-                    scrollbar: false,
-                    scrollbarDrag: false,
-                    snapSlideCenter: false,
-                    desktopClickDrag: false,
-                    infiniteSlider: false, 
-                    navSlideSelector: $('.iosSliderButtons .button'),
-                    scrollbarHeight: '2',
-                    scrollbarBorderRadius: '0',
-                    scrollbarOpacity: '0.5',
-                    onSlideChange: slideContentChange,
-                    onSliderLoaded: slideContentChange,
-                    keyboardControls: false,
-                    snapToChildren: true
-                });
-
-                $(".iosSlider").css("display","none");
-
-                $('.submitButton').css('display',"none");
-                $(".bottomBar").css("height","120px");
-                $(".iosSliderButtons").css("marginTop","55px");
-                
-                $('img.star').click(function(){
-                    
-                    $('.submitButton').css('display',"block");
-
-                    $(".iosSliderButtons").animate({ 
-                        marginTop: "-0px"
-                    }, 500 );
-
-                    /*$(".iosSliderButtons").animate({ 
-                        marginTop: "60px"
-                    }, 500 );
-
-                    $('.submitButton').addClass('animated fadeInUp');*/
-                }); 
-
-                for (i = 4; i >= 0; i--) {
-                  $('.iosSliderButtons #item'+i).click();
-                }
-
-
-                $('#firstTooltip').tooltip({
-                    placement : 'top',
-                    title : 'Začnite voľbou sekcie, ktorú chete ohodnotiť. ',
-                });
-
-                $('#firstTooltip').tooltip('show');
-
-
-                $(".button").click(function(){
-                    $('#firstTooltip').addClass('animated fadeOut');
-                    $('.tooltip_emoticon').addClass('animated fadeOut');
-                    
-                    $('#firstTooltip').tooltip('hide');
-                    $('.tooltip_emoticon').css("display","none");
-
-                    $(".iosSlider").css("display","block");
-                });
-
-                
-                /*$(".iosSliderButtons").animate({ 
-                    marginTop: "55px"
-                }, 500 );*/
-
-                //$('#myModal2').modal('show');
-                
-                function startCountDown(counter){
-                    setTimeout("location.href = 'http://cleverfrogs.com/questionnaire2/'", counter);
-                } 
-
-                function summarySend(){
-                    //$(".modal-body").replaceWith(".timer");
-                    $('#myModal').modal('hide');
-                    $.blockUI({ message: $('.timer') }); 
-                    startCountDown(1000);
-                }
-
-                function slideContentChange(args) {
-                    /* indicator */
-                    $('.iosSliderButtons .button').removeClass('selected');
-                    $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
-                }
-                
-                 $('.btnStart').click();
-                
-
-            });
+            
 
         </script>
 

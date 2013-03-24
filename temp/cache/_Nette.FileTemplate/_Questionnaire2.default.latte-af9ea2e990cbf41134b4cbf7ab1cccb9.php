@@ -1,10 +1,10 @@
-<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.39580100 1364082980";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364082978;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.34811900 1364083871";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364083870;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '1fmeercj5t')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'dx9u6474yr')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -50,9 +50,78 @@ if (!empty($_control->snippetMode)) {
         <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery.iosslider.js"></script>
         <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/animate.css" />
 		
-		<script type="text/javascript">
+        <script type="text/javascript">
 
-            
+            $(document).ready(function() {
+                
+                $('.iosSlider').iosSlider({
+                    scrollbar: false,
+                    scrollbarDrag: false,
+                    snapSlideCenter: false,
+                    desktopClickDrag: false,
+                    infiniteSlider: false, 
+                    navSlideSelector: $('.iosSliderButtons .button'),
+                    scrollbarHeight: '2',
+                    scrollbarBorderRadius: '0',
+                    scrollbarOpacity: '0.5',
+                    onSlideChange: slideContentChange,
+                    onSliderLoaded: slideContentChange,
+                    keyboardControls: false,
+                    snapToChildren: true
+                });
+
+                $(".iosSlider").css("display","none");
+
+                $('.submitButton').css('display',"none");
+                $(".bottomBar").css("height","120px");
+                $(".iosSliderButtons").css("marginTop","55px");
+                
+                $('img.star').click(function(){
+                    
+                    $('.submitButton').css('display',"block");
+
+                    $(".iosSliderButtons").animate({ 
+                        marginTop: "-0px"
+                    }, 500 );
+
+                    /*$(".iosSliderButtons").animate({ 
+                        marginTop: "60px"
+                    }, 500 );
+
+                    $('.submitButton').addClass('animated fadeInUp');*/
+                }); 
+
+                for (i = 4; i >= 0; i--) {
+                  $('.iosSliderButtons #item'+i).click();
+                }
+
+
+                $('#firstTooltip').tooltip({
+                    placement : 'top',
+                    title : 'Začnite voľbou sekcie, ktorú chete ohodnotiť. ',
+                });
+
+                $('#firstTooltip').tooltip('show');
+                $('.tooltip_emoticon').addClass('animated tada');
+
+                $(".button").click(function(){
+                    $('#firstTooltip').addClass('animated fadeOut');
+                    $('.tooltip_emoticon').addClass('animated fadeOut');
+                    
+                    $('#firstTooltip').tooltip('hide');
+                    $('.tooltip_emoticon').css("display","none");
+
+                    $(".iosSlider").css("display","block");
+                });
+
+                
+                /*$(".iosSliderButtons").animate({ 
+                    marginTop: "55px"
+                }, 500 );*/
+
+                //$('#myModal2').modal('show');
+
+            });
 
             function startCountDown(counter){
                 setTimeout("location.href = 'http://cleverfrogs.com/questionnaire2/'", counter);
@@ -65,11 +134,16 @@ if (!empty($_control->snippetMode)) {
                 startCountDown(1000);
             }
 
+            function slideContentChange(args) {
+                /* indicator */
+                $('.iosSliderButtons .button').removeClass('selected');
+                $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
+            }
+            
+            $('.btnStart').click();
 
-        
-          
-		</script>
-		
+        </script>
+
 	</head>
 	<body>
 		<div class="st-container">
@@ -853,85 +927,10 @@ if (!empty($_control->snippetMode)) {
             	return readyToSend;
             };
 
-            $(document).ready(function() {
-                
-                $('.iosSlider').iosSlider({
-                    scrollbar: false,
-                    scrollbarDrag: false,
-                    snapSlideCenter: false,
-                    desktopClickDrag: false,
-                    infiniteSlider: false, 
-                    navSlideSelector: $('.iosSliderButtons .button'),
-                    scrollbarHeight: '2',
-                    scrollbarBorderRadius: '0',
-                    scrollbarOpacity: '0.5',
-                    onSlideChange: slideContentChange,
-                    onSliderLoaded: slideContentChange,
-                    keyboardControls: false,
-                    snapToChildren: true
-                });
-
-                $(".iosSlider").css("display","none");
-
-                $('.submitButton').css('display',"none");
-                $(".bottomBar").css("height","120px");
-                $(".iosSliderButtons").css("marginTop","55px");
-                
-                $('img.star').click(function(){
-                    
-                    $('.submitButton').css('display',"block");
-
-                    $(".iosSliderButtons").animate({ 
-                        marginTop: "-0px"
-                    }, 500 );
-
-                    /*$(".iosSliderButtons").animate({ 
-                        marginTop: "60px"
-                    }, 500 );
-
-                    $('.submitButton').addClass('animated fadeInUp');*/
-                }); 
-
-                for (i = 4; i >= 0; i--) {
-                  $('.iosSliderButtons #item'+i).click();
-                }
 
 
-                $('#firstTooltip').tooltip({
-                    placement : 'top',
-                    title : 'Začnite voľbou sekcie, ktorú chete ohodnotiť. ',
-                });
 
-                $('#firstTooltip').tooltip('show');
-
-
-                $(".button").click(function(){
-                    $('#firstTooltip').addClass('animated fadeOut');
-                    $('.tooltip_emoticon').addClass('animated fadeOut');
-                    $('#firstTooltip').tooltip('hide');
-                    $('.tooltip_emoticon').css("display","none");
-                    $(".iosSlider").css("display","block");
-                    $(".iosSlider").addClass("animated fadeIn");
-                });
-
-                
-                /*$(".iosSliderButtons").animate({ 
-                    marginTop: "55px"
-                }, 500 );*/
-
-                //$('#myModal2').modal('show');
-                
-                
-                function slideContentChange(args) {
-                    /* indicator */
-                    $('.iosSliderButtons .button').removeClass('selected');
-                    $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
-                }
-                
-                 $('.btnStart').click();
-                
-
-            });
+            
 
         </script>
 
