@@ -174,7 +174,7 @@ p {
 	z-index: 11;
 	height: 60px;
 	text-transform: uppercase;
-	font-size: 35px;
+	font-size: 25px;
 	line-height: 42px;
 	font-weight: bold;
 	font-family: 'Myriad Pro', Arial, sans-serif;
@@ -201,7 +201,6 @@ p {
 
 .submitButton:hover,
 .submitButton:focus,
-.submitButton:active,
 .submitButton.active,
 .submitButton.disabled,
 .submitButton[disabled] {
@@ -218,6 +217,7 @@ p {
 	bottom: 0;
 	padding-bottom: 0 !important;
 	margin-bottom: 0 !important;
+	z-index: 0 !important;
 }
 
 .question {
@@ -237,8 +237,8 @@ p {
 	-webkit-backface-visibility: hidden;
 }
 
-.iosSliderButtons .selected,
-.iosSliderButtons .button:hover {
+.iosSliderButtons .selected
+{
 	opacity: 1;
 	filter: alpha(opacity:100);
 }
@@ -247,11 +247,19 @@ p {
 	position: absolute;
 	top: 45%;
 	left: 45%;
-	height: 50px;
+	height: 0px;
 	width: 120px;
 	z-index: 100;
+	background-color: red;
+
 }
 
+.tooltip_arrow {
+	height: 150px;
+	margin-top: 20px;
+	margin-left: 30px;
+	opacity: 0.5;
+}
 
 .tooltip_1 { 
 	width: 0px;
@@ -283,7 +291,7 @@ p {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
-    z-index: 2;
+    z-index: 2 !important;
     display: inline-block !important;
 }
 
@@ -340,6 +348,38 @@ p {
 	right: 1%;
 	z-index: 100;
 	float: right;
+}
+
+/*------- submit window -------*/
+
+.logoCompanySubmit {
+	width: 55%;
+	margin-top: 1.5%;
+	text-align: center;
+	margin-left: 25%;
+	padding-bottom: 2%;
+}
+
+.summaryCompetition {
+	text-align: center;
+	font-family: 'Myriad Pro', Arial, sans-serif;
+}
+
+.summaryText {
+	margin-top: 30px;
+}
+
+.summaryThanks {
+	text-align: center;
+}
+
+.summaryTextComp {
+	margin-top: 30px;
+
+}
+
+.summaryEmail {
+	padding: 20px;
 }
 
 .st-container {

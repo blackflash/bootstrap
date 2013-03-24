@@ -40,29 +40,33 @@
                     scrollbarDrag: false,
                     snapSlideCenter: false,
                     desktopClickDrag: false,
-                    infiniteSlider: false, 
+                    infiniteSlider: true, 
                     navSlideSelector: $('.iosSliderButtons .button'),
                     scrollbarHeight: '2',
                     scrollbarBorderRadius: '0',
                     scrollbarOpacity: '0.5',
                     onSlideChange: slideContentChange,
                     onSliderLoaded: slideContentChange,
+                    scrollbarElasticPullResistance: 0,
                     keyboardControls: false,
-                    snapToChildren: true
+                    snapToChildren: false,
+                    preventXScroll: true
                 });
 
-                $(".iosSlider").css("display","none");
+                var host = {$basePath};
 
-                $('.submitButton').css('display',"none");
+               
+
                 $(".bottomBar").css("height","120px");
                 $(".iosSliderButtons").css("marginTop","55px");
+                $('.submitButton').css('display',"none");
                 
                 $('img.star').click(function(){
                     
                     $('.submitButton').css('display',"block");
 
                     $(".iosSliderButtons").animate({ 
-                        marginTop: "-0px"
+                        marginTop: "0px"
                     }, 500 );
 
                     /*$(".iosSliderButtons").animate({ 
@@ -72,10 +76,20 @@
                     $('.submitButton').addClass('animated fadeInUp');*/
                 }); 
 
-                for (i = 4; i >= 0; i--) {
-                  $('.iosSliderButtons #item'+i).click();
+                function clickOnButton(id){
+                    $('.iosSliderButtons #item'+id).click();
                 }
 
+                
+
+                $(".iosSlider").css("display","none");
+
+                 $(".iosSlider").animate({ 
+                        left: "1280px"
+                    }, 0 );
+
+                $(".iosSlider").css("display","block");
+               
 
                 $('#firstTooltip').tooltip({
                     placement : 'top',
@@ -84,23 +98,45 @@
 
                 $('#firstTooltip').tooltip('show');
                 $('.tooltip_emoticon').addClass('animated tada');
+                $('.tooltip_arrow').addClass('animated bounce');
+
+                for (i = 4; i >= 0; i--) {
+                  clickOnButton(i);
+                }
+
 
                 $(".button").click(function(){
+                    var sectionId = $(this).attr("id").substr(4);
+
                     $('#firstTooltip').addClass('animated fadeOut');
                     $('.tooltip_emoticon').addClass('animated fadeOut');
                     
+                    $(".tooltips").css("left","75%");
+                    $(".tooltips").css("top","3%");
+                    
                     $('#firstTooltip').tooltip('hide');
                     $('.tooltip_emoticon').css("display","none");
+                    $('.tooltip_arrow').css("display","none");
 
-                    $(".iosSlider").css("display","block");
+                    //$(".iosSlider").css("display","block");
+
+
+
+                    $(".iosSlider").animate({ 
+                        left: "0px"
+                    }, 500 );
+
+                    console.log(sectionId);
+
                 });
 
-                
                 /*$(".iosSliderButtons").animate({ 
                     marginTop: "55px"
                 }, 500 );*/
 
                 //$('#myModal2').modal('show');
+
+
 
             });
 
@@ -188,7 +224,7 @@
                             <div class="attention a00" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                         </div>
 
-                        <center><div class="summaryTextComp">Prosíme vyplňte Vaše číslo izby.</div></center>
+                        <div class="summaryTextComp">Prosíme vyplňte Vaše číslo izby.</div>
                         <div class="summaryEmail">
                             <input class="span4" type="text" placeholder="číslo izby" required>
                         </div>
@@ -228,7 +264,7 @@
 
                             <div class="row g0q1">
                                 <div class="span2">
-                                    <p class="color1">Presnosť:</p>
+                                    <p class="color1" style="width: 35%;">Presnosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -242,7 +278,7 @@
 
                             <div class="row g0q2">
                                 <div class="span2">
-                                    <p class="color2">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color2" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -256,7 +292,7 @@
 
                              <div class="row g0q3">
                                 <div class="span2">
-                                    <p class="color3">Znalosť rezervačného agenta:</p>
+                                    <p class="color3" style="width: 35%;">Znalosť rezervačného agenta:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -293,7 +329,7 @@
 
                             <div class="row g1q1">
                                 <div class="span2">
-                                    <p class="color1">Proces odubytovania – check out :</p>
+                                    <p class="color1" style="width: 35%;">Proces odubytovania – check out :</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -307,7 +343,7 @@
 
                             <div class="row g1q2">
                                 <div class="span2">
-                                    <p class="color2">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color2" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -343,7 +379,7 @@
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1">Vybavenie izby:</p>
+                                    <p class="color1" style="width: 35%;">Vybavenie izby:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -357,7 +393,7 @@
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2">Atmosféra v hoteli:</p>
+                                    <p class="color2" style="width: 35%;">Atmosféra v hoteli:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -371,7 +407,7 @@
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3">Večerný program:</p>
+                                    <p class="color3" style="width: 35%;">Večerný program:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -406,7 +442,7 @@
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1">Raňajkový bufet:</p>
+                                    <p class="color1" style="width: 35%;">Raňajkový bufet:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -420,7 +456,7 @@
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2">Kvalita a kreativita večerného menu:</p>
+                                    <p class="color2" style="width: 35%;">Kvalita a kreativita večerného menu:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -434,7 +470,7 @@
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3">Ponuka vína:</p>
+                                    <p class="color3" style="width: 35%;">Ponuka vína:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -448,7 +484,7 @@
 
                             <div class="row q4">
                                 <div class="span2">
-                                    <p class="color3">Bar a kaviareň:</p>
+                                    <p class="color3" style="width: 35%;">Bar a kaviareň:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -462,7 +498,7 @@
 
                             <div class="row q5">
                                 <div class="span2">
-                                    <p class="color3">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color3" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -498,7 +534,7 @@
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1">Dostatok uterákov a plachiet:</p>
+                                    <p class="color1" style="width: 35%;">Dostatok uterákov a plachiet:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -512,7 +548,7 @@
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2">Ponuka odpočívadiel a oddychových častí:</p>
+                                    <p class="color2" style="width: 35%;">Ponuka odpočívadiel a oddychových častí:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -526,7 +562,7 @@
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3">Atmosféra a dekorácie:</p>
+                                    <p class="color3" style="width: 35%;">Atmosféra a dekorácie:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -540,7 +576,7 @@
 
                             <div class="row q4">
                                 <div class="span2">
-                                    <p class="color3">Ponuka masáži a procedúr:</p>
+                                    <p class="color3" style="width: 35%;">Ponuka masáži a procedúr:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -554,7 +590,7 @@
 
                             <div class="row q5">
                                 <div class="span2">
-                                    <p class="color3">Ochota pomôcť a priateľstkosť:</p>
+                                    <p class="color3" style="width: 35%;">Ochota pomôcť a priateľstkosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -579,6 +615,7 @@
             <div id="firstTooltip" class="tooltip_1" rel="tooltip">
             </div>
             <img class="tooltip_emoticon" src="{$basePath}/www/img/Emoticons/128/10.png">
+            <img class="tooltip_arrow" src="{$basePath}/www/img/component_questionnaire2/arrow.png">
         </div>
 
         <div class="bottomBar">
@@ -600,7 +637,7 @@
                         <div class="navigationMenu">Wellness</div>
                     </div>
             </div>
-            <button class="btn btn-large btn-block submitButton" onclick="submit();">Odoslať</button>
+            <button class="btn btn-large btn-block submitButton" onclick="submit();">Ukončiť hodnotenie</button>
         </div>
 
         <script>
@@ -907,7 +944,6 @@
             	}*/
             	return readyToSend;
             };
-
 
 
 

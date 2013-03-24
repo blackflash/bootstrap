@@ -1078,7 +1078,7 @@
 				var currentEventNode;
 				var intermediateChildOffset = 0;
 				var tempInfiniteSliderOffset = 0;
-				var preventXScroll = false;
+				var preventXScroll = true;
 				var snapOverride = false;
 				var clickEvent = 'touchstart.iosSliderEvent click.iosSliderEvent';
 				var scrollerWidth;

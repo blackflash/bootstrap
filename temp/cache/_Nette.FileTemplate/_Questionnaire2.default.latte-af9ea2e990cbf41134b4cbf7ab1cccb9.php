@@ -1,10 +1,10 @@
-<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.34811900 1364083871";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364083870;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.10866900 1364092004";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364092003;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'dx9u6474yr')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'lk44952pws')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -59,29 +59,33 @@ if (!empty($_control->snippetMode)) {
                     scrollbarDrag: false,
                     snapSlideCenter: false,
                     desktopClickDrag: false,
-                    infiniteSlider: false, 
+                    infiniteSlider: true, 
                     navSlideSelector: $('.iosSliderButtons .button'),
                     scrollbarHeight: '2',
                     scrollbarBorderRadius: '0',
                     scrollbarOpacity: '0.5',
                     onSlideChange: slideContentChange,
                     onSliderLoaded: slideContentChange,
+                    scrollbarElasticPullResistance: 0,
                     keyboardControls: false,
-                    snapToChildren: true
+                    snapToChildren: false,
+                    preventXScroll: true
                 });
 
-                $(".iosSlider").css("display","none");
+                var host = <?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>;
 
-                $('.submitButton').css('display',"none");
+               
+
                 $(".bottomBar").css("height","120px");
                 $(".iosSliderButtons").css("marginTop","55px");
+                $('.submitButton').css('display',"none");
                 
                 $('img.star').click(function(){
                     
                     $('.submitButton').css('display',"block");
 
                     $(".iosSliderButtons").animate({ 
-                        marginTop: "-0px"
+                        marginTop: "0px"
                     }, 500 );
 
                     /*$(".iosSliderButtons").animate({ 
@@ -91,10 +95,20 @@ if (!empty($_control->snippetMode)) {
                     $('.submitButton').addClass('animated fadeInUp');*/
                 }); 
 
-                for (i = 4; i >= 0; i--) {
-                  $('.iosSliderButtons #item'+i).click();
+                function clickOnButton(id){
+                    $('.iosSliderButtons #item'+id).click();
                 }
 
+                
+
+                $(".iosSlider").css("display","none");
+
+                 $(".iosSlider").animate({ 
+                        left: "1280px"
+                    }, 0 );
+
+                $(".iosSlider").css("display","block");
+               
 
                 $('#firstTooltip').tooltip({
                     placement : 'top',
@@ -103,23 +117,45 @@ if (!empty($_control->snippetMode)) {
 
                 $('#firstTooltip').tooltip('show');
                 $('.tooltip_emoticon').addClass('animated tada');
+                $('.tooltip_arrow').addClass('animated fadeInDown');
+
+                for (i = 4; i >= 0; i--) {
+                  clickOnButton(i);
+                }
+
 
                 $(".button").click(function(){
+                    var sectionId = $(this).attr("id").substr(4);
+
                     $('#firstTooltip').addClass('animated fadeOut');
                     $('.tooltip_emoticon').addClass('animated fadeOut');
                     
+                    $(".tooltips").css("left","75%");
+                    $(".tooltips").css("top","3%");
+                    
                     $('#firstTooltip').tooltip('hide');
                     $('.tooltip_emoticon').css("display","none");
+                    $('.tooltip_arrow').css("display","none");
 
-                    $(".iosSlider").css("display","block");
+                    //$(".iosSlider").css("display","block");
+
+
+
+                    $(".iosSlider").animate({ 
+                        left: "0px"
+                    }, 500 );
+
+                    console.log(sectionId);
+
                 });
 
-                
                 /*$(".iosSliderButtons").animate({ 
                     marginTop: "55px"
                 }, 500 );*/
 
                 //$('#myModal2').modal('show');
+
+
 
             });
 
@@ -207,7 +243,7 @@ if (!empty($_control->snippetMode)) {
                             <div class="attention a00" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
                         </div>
 
-                        <center><div class="summaryTextComp">Prosíme vyplňte Vaše číslo izby.</div></center>
+                        <div class="summaryTextComp">Prosíme vyplňte Vaše číslo izby.</div>
                         <div class="summaryEmail">
                             <input class="span4" type="text" placeholder="číslo izby" required />
                         </div>
@@ -247,7 +283,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row g0q1">
                                 <div class="span2">
-                                    <p class="color1">Presnosť:</p>
+                                    <p class="color1" style="width: 35%;">Presnosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -261,7 +297,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row g0q2">
                                 <div class="span2">
-                                    <p class="color2">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color2" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -275,7 +311,7 @@ if (!empty($_control->snippetMode)) {
 
                              <div class="row g0q3">
                                 <div class="span2">
-                                    <p class="color3">Znalosť rezervačného agenta:</p>
+                                    <p class="color3" style="width: 35%;">Znalosť rezervačného agenta:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -312,7 +348,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row g1q1">
                                 <div class="span2">
-                                    <p class="color1">Proces odubytovania – check out :</p>
+                                    <p class="color1" style="width: 35%;">Proces odubytovania – check out :</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -326,7 +362,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row g1q2">
                                 <div class="span2">
-                                    <p class="color2">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color2" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -362,7 +398,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1">Vybavenie izby:</p>
+                                    <p class="color1" style="width: 35%;">Vybavenie izby:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -376,7 +412,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2">Atmosféra v hoteli:</p>
+                                    <p class="color2" style="width: 35%;">Atmosféra v hoteli:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -390,7 +426,7 @@ if (!empty($_control->snippetMode)) {
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3">Večerný program:</p>
+                                    <p class="color3" style="width: 35%;">Večerný program:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -425,7 +461,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1">Raňajkový bufet:</p>
+                                    <p class="color1" style="width: 35%;">Raňajkový bufet:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -439,7 +475,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2">Kvalita a kreativita večerného menu:</p>
+                                    <p class="color2" style="width: 35%;">Kvalita a kreativita večerného menu:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -453,7 +489,7 @@ if (!empty($_control->snippetMode)) {
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3">Ponuka vína:</p>
+                                    <p class="color3" style="width: 35%;">Ponuka vína:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -467,7 +503,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q4">
                                 <div class="span2">
-                                    <p class="color3">Bar a kaviareň:</p>
+                                    <p class="color3" style="width: 35%;">Bar a kaviareň:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -481,7 +517,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q5">
                                 <div class="span2">
-                                    <p class="color3">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color3" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -517,7 +553,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1">Dostatok uterákov a plachiet:</p>
+                                    <p class="color1" style="width: 35%;">Dostatok uterákov a plachiet:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -531,7 +567,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2">Ponuka odpočívadiel a oddychových častí:</p>
+                                    <p class="color2" style="width: 35%;">Ponuka odpočívadiel a oddychových častí:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -545,7 +581,7 @@ if (!empty($_control->snippetMode)) {
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3">Atmosféra a dekorácie:</p>
+                                    <p class="color3" style="width: 35%;">Atmosféra a dekorácie:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -559,7 +595,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q4">
                                 <div class="span2">
-                                    <p class="color3">Ponuka masáži a procedúr:</p>
+                                    <p class="color3" style="width: 35%;">Ponuka masáži a procedúr:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -573,7 +609,7 @@ if (!empty($_control->snippetMode)) {
 
                             <div class="row q5">
                                 <div class="span2">
-                                    <p class="color3">Ochota pomôcť a priateľstkosť:</p>
+                                    <p class="color3" style="width: 35%;">Ochota pomôcť a priateľstkosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -598,6 +634,7 @@ if (!empty($_control->snippetMode)) {
             <div id="firstTooltip" class="tooltip_1" rel="tooltip">
             </div>
             <img class="tooltip_emoticon" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128/10.png" />
+            <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
         </div>
 
         <div class="bottomBar">
@@ -619,7 +656,7 @@ if (!empty($_control->snippetMode)) {
                         <div class="navigationMenu">Wellness</div>
                     </div>
             </div>
-            <button class="btn btn-large btn-block submitButton" onclick="submit();">Odoslať</button>
+            <button class="btn btn-large btn-block submitButton" onclick="submit();">Ukončiť hodnotenie</button>
         </div>
 
         <script>
@@ -926,7 +963,6 @@ if (!empty($_control->snippetMode)) {
             	}*/
             	return readyToSend;
             };
-
 
 
 
