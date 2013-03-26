@@ -1,10 +1,10 @@
-<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.78977900 1364173449";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364173399;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.49363800 1364263368";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364263367;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'lyhzljh779')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'q7rjhov652')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -32,7 +32,7 @@ if (!empty($_control->snippetMode)) {
 		
         <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/bootstrap.css" />
         <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/slider.css" />
-        <!--end of <script src = "<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
+        <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>
 
         <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css' />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css' />
@@ -43,18 +43,28 @@ if (!empty($_control->snippetMode)) {
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery-ui.js"></script>
         
         <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery.blockUI.js"></script>
-        <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/vendor/bootstrap.min.js"></script>
+        <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/vendor/bootstrap.js"></script>
 
         <!-- iosSlider plugin -->
         <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery.iosslider.js"></script>
         <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/animate.css" />
 		
+        <script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
+        <script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/langpack/en.js" charset="utf-8" type="text/javascript"></script>
+
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
+        <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
 
         <script type="text/javascript">
 
+            window.lang = new jquery_lang_js();
+
             $(document).ready(function() {
-                
+
+                window.lang.run();
+                window.lang.change('en');
+                $.myLanguage = 'en';
+
                 $('.iosSlider').iosSlider({
                     scrollbar: false,
                     scrollbarDrag: false,
@@ -86,12 +96,9 @@ if (!empty($_control->snippetMode)) {
                     }, 500 );
                 }); 
 
-
-
                 function clickOnButton(id){
                     $('.iosSliderButtons #item'+id).click();
                 }
-                
 
                 $(".iosSlider").css("display","none");
 
@@ -100,24 +107,11 @@ if (!empty($_control->snippetMode)) {
                     }, 0 );
 
                 $(".iosSlider").css("display","block");
-               
-
-                $('#firstTooltip').tooltip({
-                    placement : 'top',
-                    title : 'Začnite voľbou sekcie, ktorú chete ohodnotiť. ',
-                });
-
-                $('#secondTooltip').tooltip({
-                    placement : 'top',
-                    title : 'Ak máte záujem môžete ohodnotiť aj ďalšie sekcie. ',
-                });
-                $('#secondTooltip').tooltip('show');
-
+                
                 $(".goAheadTooltip").css("display","none");
+                
 
-                $('#firstTooltip').tooltip('show');
-                $('.tooltip_emoticon').addClass('animated tada');
-                $('.tooltip_arrow').addClass('animated bounce');
+                $('.tooltip_emoticon').css('display',"none");
 
                 var counter = 0;
                 for (i = 4; i >= 0; i--) {
@@ -129,7 +123,6 @@ if (!empty($_control->snippetMode)) {
 
                 $(".button").click(function(){
                     var sectionId = $(this).attr("id").substr(4);
-
                     
                     $(".tooltips").css("left","75%");
                     $(".tooltips").css("top","-10%");
@@ -146,6 +139,16 @@ if (!empty($_control->snippetMode)) {
                        $(".iosSliderButtons > #item0").attr("class","button selected");
                     }
                 });
+
+                function languageModal(){
+                    $('#modal_language').modal({
+                        keyboard: false,
+                        backdrop: 'static'
+                    });
+                    $('#modal_language').modal('show');
+                }
+                languageModal();
+
             });
 
             function finishEvaluationModal(){
@@ -157,93 +160,27 @@ if (!empty($_control->snippetMode)) {
             }
 
             function finishSummaryModal(){
-                    $('#myModal@').modal({
+                    $('#myModal').modal({
                         keyboard: false,
                         backdrop: 'static'
                     });
-                    $('#myModal@').modal('show');
+                    $('#myModal').modal('show');
             }
+            finishSummaryModal();
 
             function slideContentChange(args) {
                 /* indicator */
                 $('.iosSliderButtons .button').removeClass('selected');
                 $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
             }
-            finishSummaryModal();
         </script>
 
 	</head>
 	<body>
-		<div class="st-container">
-
-            <div class="timer" style="display: none;">
-                <div class="summaryThanksSpinner">Ďakujeme za Váš názor.</div>
-                <img class="spinner" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/spinner2.gif" />
-                <div class="summaryTextComp">Dáta sa spracovávajú...</div>
-                <div class="summaryThanksSpinner_2">Prajeme Vám príjemny zvyšok dňa.</div>
-            </div><!--end of timer-->
-            
-            <div id="myModal2" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
-                </div>
-                <div class="modal-body">
-                    <div class="summaryCompetition">
-                        <div class="summaryThanks"><h3>Zvoľte jazyk</h3></div>
-                        <div class="flags">
-                            <div class="flag_uk">
-                                <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/www/img/flags/uk.png" />
-                                </button>
-                            </div>
-                            <div class="flag_uk">
-                                <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                    <img src="<?php echo htmlSpecialChars($basePath) ?>/www/img/flags/sk.png" />
-                                </button>
-                            </div>
-                        </div>
-                    </div><!--end of summaryCompetition-->
-                </div>
-            </div>
-		     
-		    <!-- Modal -->
-		    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			    <div class="modal-header">
-			    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
-			    </div>
-			    <div class="modal-body">
-                    <div class="summaryCompetition">
-                        <div class="summaryThanks"><h3>Ďakujeme za Vašu spätnú väzbu !</h3></div>
-
-                        <div class="summaryTextComp">Prosíme vyplňte Vaše číslo izby.</div>
-                        <div class="summaryEmail">
-                            <input class="input-xxlarge roomInput" type="text" placeholder="Vaše číslo izby" required />
-                        </div>
-                        <div>
-                            <div class="summaryText">Aké je Vaše celkové hodnotenie ?</div>
-                            <div class="summaryStar">
-                                <img class="button561 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" g="5" question="6" rate="1" />
-                                <img class="button562 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" g="5" question="6" rate="2" />
-                                <img class="button563 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" g="5" question="6" rate="3" />
-                                <img class="button564 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" g="5" question="6" rate="4" />
-                            </div>
-                            <div class="attention a56" style="display: none;">Prosíme ohodnoťte túto otázku</div>
-                        </div>
-
-                    </div><!--end of summaryCompetition-->
-			    </div>
-			    <div class="modal-footer">
-                    <button class="btn btn-large btn-block" data-dismiss="modal" aria-hidden="true">Späť k hodnoteniu</button>
-                    <button class="btn btn-large btn-block btn-primary" onclick="summarySend();">Potvrdiť</button>
-                </div>
-		    </div>
-
-			<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
-            <img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
+		<div class="st-container" ng-controller="QuestionsCounter">
 
             <!--                                      ANGULAR                                         -->
             <script type="text/javascript">
-
                 $.showEmos = { 
                     emo0 : 0, 
                     emo1 : 0, 
@@ -251,49 +188,190 @@ if (!empty($_control->snippetMode)) {
                     emo3 : 0, 
                     emo4 : 0,
                     showed: 0,
+                    language: "sk",
                 }; 
 
                 function QuestionsCounter($scope){
+
+                    $scope.getLanguage = function(){
+                        $.showEmos.language = $scope.myLanguage;
+                        return $.myLanguage;
+                    }
+
+                    $scope.setLanguage = function(lang){
+                        setFirstEmo(lang);
+                        $scope.myLanguage = lang;
+                        $.myLanguage = lang;
+                    }
+                    
+                    $(".tooltip-inner").html("test");
+
+                    function setFirstEmo(lang){
+                         if(lang == "sk"){ 
+                            $('.tooltip_emoticon').css('display',"block");
+                            $('.tooltip_emoticon').addClass('animated tada');
+
+                            $('#firstTooltip').attr("title","Začnite voľbou sekcie, ktorú chete ohodnotiť.");
+                            $('#firstTooltip').tooltip('show');
+                        }else if(lang == "en"){
+                            $('.tooltip_emoticon').css('display',"block");
+                            $('.tooltip_emoticon').addClass('animated tada');
+
+                            $('#firstTooltip').attr("title","Start with section you would like to evaluate.");
+                            $('#firstTooltip').tooltip('show');
+                        }
+                    }
+
+                    function checkLanguage(){
+                        if($.myLanguage == "sk"){ 
+                            $('#secondTooltip').attr("title","Ak máte záujem môžete ohodnotiť aj ďalšie sekcie.");
+                            $('#secondTooltip').tooltip('show');
+                            $(".roomInput").attr("placeholder","Vaše číslo izby");
+                        }else if($.myLanguage == "en"){
+                            $('#secondTooltip').attr("title","You can evaluate another section too.");
+                            $('#secondTooltip').tooltip('show');
+                            $(".roomInput").attr("placeholder","Your number of room");
+                        }
+                    }
+
                     $scope.checkShowEmo = function(){
+
                         if($.showEmos.emo0 == 4 && $.showEmos.showed == 0){
+                            checkLanguage();
                             $(".goAheadTooltip").css("display","block");
                             $(".goAheadTooltip").addClass("animated tada");
                             $.showEmos.showed = 1;
                         } else if($.showEmos.emo1 == 3 && $.showEmos.showed == 0){
+                            checkLanguage();
                             $(".goAheadTooltip").css("display","block");
                             $(".goAheadTooltip").addClass("animated tada");
                             $.showEmos.showed = 1;
                         } else if($.showEmos.emo2 == 4 && $.showEmos.showed == 0){
+                            checkLanguage();
                             $(".goAheadTooltip").css("display","block");
                             $(".goAheadTooltip").addClass("animated tada");
                             $.showEmos.showed = 1;
                         } else if($.showEmos.emo3 == 6 && $.showEmos.showed == 0){
+                            checkLanguage();
                             $(".goAheadTooltip").css("display","block");
                             $(".goAheadTooltip").addClass("animated tada");
                             $.showEmos.showed = 1;
                         } else if($.showEmos.emo4 == 6 && $.showEmos.showed == 0){
+                            checkLanguage();
                             $(".goAheadTooltip").css("display","block");
                             $(".goAheadTooltip").addClass("animated tada");
                             $.showEmos.showed = 1;
                         }
-                            
-
                         return $.showEmos;
                     }
                 }
             </script>
 
-            <div class="emoSummary" style="display: none;" ng-controller="QuestionsCounter">{{ checkShowEmo()}}</div>
+            <!--end of <div id="langChanger">
+                <a href="javascript:window.lang.change('sk');" class="changeLangSK" ng-click="setLanguage('sk')">Switch to Slovak</a>
+                | 
+                <a href="javascript:window.lang.change('en');" class="changeLangEN" ng-click="setLanguage('en')">Switch to English</a> 
+            </div>-->
+
+            <div class="emoSummary" style="display:none;" >{{ checkShowEmo()}}</div>
+            <!--end of <div id="searchTitle" class="sectionTitle" >{{ getLanguage()}}</div>-->
+
+            <div class="timer" style="display: none;">
+                <div class="logoCleverFrogs" ><img src="<?php echo htmlSpecialChars($basePath) ?>/www/img/logoB.png" /></div>
+                <div class="summaryThanksSpinner" lang="sk">Ďakujeme za Váš názor</div>
+                <img class="spinner" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/spinner2.gif" />
+                <div class="summaryTextComp" lang="sk">Dáta sa spracovávajú...</div>
+                <div class="summaryThanksSpinner_2" lang="sk">Prajeme Vám príjemny zvyšok dňa.</div>
+            </div><!--end of timer-->
+            
+            <div id="modal_language" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
+                </div>
+                    <div class="summaryCompetition">
+                        <div class="summaryThanks"><h3>Zvoľte jazyk dotazníka/Select language of questionnaire</h3></div>
+                        <button class="btn btn-large btn-primary button_SK" data-dismiss="modal" onclick="window.lang.change('sk');" 
+                        type="button" ng-click="setLanguage('sk')">Začat hodnotiť</button>
+                        <button class="btn btn-large btn-primary button_EN" data-dismiss="modal" type="button" onclick="window.lang.change('en');" 
+                        ng-click="setLanguage('en')">Start evaluation</button>
+                                
+                    </div><!--end of summaryCompetition-->
+            </div>
+		     
+            <script>
+              $(document).ready(function(){
+                $("#questionnaireForm").validate({
+                  rules: {
+                    field: {
+                      required: true,
+                      digits: true
+                    }
+                  }
+                });
+              });
+              </script>
+
+		    <!-- Modal -->
+		    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			    <div class="modal-header">
+			    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
+			    </div>
+			    <div class="modal-body">
+                    <form class="cmxform" id="questionnaireForm" method="get" action="">
+                        <div class="summaryCompetition">
+                            <div class="summaryThanks"><h3 lang="sk">Ďakujeme za Vašu spätnú väzbu !</h3></div>
+
+                            <div class="summaryTextComp" lang="sk">Prosíme vyplňte Vaše číslo izby.</div>
+                            <div class="summaryEmail">
+                                <div class="roomCheck">
+                                    <div class="roomM" lang="sk">Izba s označením M</div>
+                                    <div class="span5 radioRoom">
+                                        <div class="radio1">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />
+                                            Nie
+                                        </div>
+
+                                        <div class="radio2">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
+                                            Áno
+                                        </div>
+                                    </div>
+                                    <div class="attention a57" style="display: none;" lang="sk">Prosíme vyplňte číslo izby správne.</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <input class="input-xlarge roomInput" type="text" id="field" maxlength="4" placeholder="Vaše číslo izby" />
+                            </div>
+                            <div>
+                                <div class="summaryText" lang="sk">Aké je Vaše celkové hodnotenie ?</div>
+                                <div class="summaryStar">
+                                    <img class="button561 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" g="5" question="6" rate="1" />
+                                    <img class="button562 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" g="5" question="6" rate="2" />
+                                    <img class="button563 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" g="5" question="6" rate="3" />
+                                    <img class="button564 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" g="5" question="6" rate="4" />
+                                </div>
+                                <div class="attention a56" style="display: none;" lang="sk">Prosíme ohodnoťte túto otázku</div>
+                            </div>
+                        </div><!--end of summaryCompetition-->
+                    </form>
+			    </div>
+			    <div class="modal-footer">
+                    <button class="btn btn-large btn-block" data-dismiss="modal" aria-hidden="true" lang="sk">Späť k hodnoteniu</button>
+                    <button class="btn btn-large btn-block btn-primary" class="submit" type="submit" onclick="summarySend();" lang="sk">Potvrdiť</button>
+                </div>
+		    </div>
+
+			<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
+            <img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
 
 			<div class = 'iosSlider'>
 				<div class = 'slider'>
 					<div class = 'item' id = 'item0'>
-						<p class="question">Ako ste boli spokojní s rezervačným oddelením ?</p>
+						<p class="question" lang="sk">Ako ste boli spokojní s rezervačným oddelením ?</p>
 
 						<div class=" starsRatingSystem g0">
                             <div class="row g0q0">
                                 <div class="span2">
-                                    <p class="color0" style="width: 35%;">Rýchlosť a profesionalita:</p>
+                                    <p class="color0" style="width: 35%;" lang="sk">Rýchlosť a profesionalita:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -302,12 +380,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button003" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png"  g="0" q="00" question="0" rate="3" ng-click />
                                     <img class="star button004" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png"  g="0" q="00" question="0" rate="4" ng-click />
                                 </div>
-                                <div class="attention a00" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a00" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row g0q1">
                                 <div class="span2">
-                                    <p class="color1" style="width: 35%;">Presnosť:</p>
+                                    <p class="color1" style="width: 35%;" lang="sk">Presnosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -316,12 +394,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button013" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="01" g="0" question="1" rate="3" ng-click />
                                     <img class="star button014" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="01" g="0" question="1" rate="4" ng-click />
                                 </div>
-                                <div class="attention a01" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a01" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row g0q2">
                                 <div class="span2">
-                                    <p class="color2" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color2" style="width: 35%;" lang="sk">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -330,12 +408,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button023" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="02" g="0" question="2" rate="3" ng-click />
                                     <img class="star button024" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="02" g="0" question="2" rate="4" ng-click />
                                 </div>
-                                <div class="attention a02" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a02" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                              <div class="row g0q3">
                                 <div class="span2">
-                                    <p class="color3" style="width: 35%;">Znalosť rezervačného agenta:</p>
+                                    <p class="color3" style="width: 35%;" lang="sk">Znalosť rezervačného agenta:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -344,7 +422,7 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button033" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="03" g="0" question="3" rate="3" ng-click />
                                     <img class="star button034" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="03" g="0" question="3" rate="4" ng-click />
                                 </div>
-                                <div class="attention a03" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a03" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
                             
                         </div><!--end of starRatingSystem-->
@@ -353,12 +431,12 @@ if (!empty($_control->snippetMode)) {
 					</div>
 					
 					<div class = 'item' id = 'item1'>
-						<p class="question">Ako hodnotíte prácu recepcie a príchod do hotela ?</p>
+						<p class="question" lang="sk">Ako hodnotíte prácu recepcie a príchod do hotela ?</p>
 						
 						<div class="container starsRatingSystem g1">
                             <div class="row g1q0">
                                 <div class="span2">
-                                    <p class="color0" style="width: 35%;">Proces registrácie – check in:</p>
+                                    <p class="color0" style="width: 35%;" lang="sk">Proces registrácie – check in:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -367,12 +445,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button103" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="10" g="1" question="0" rate="3" ng-click />
                                     <img class="star button104" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="10" g="1" question="0" rate="4" ng-click />
                                 </div>
-                                <div class="attention a10" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a10" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row g1q1">
                                 <div class="span2">
-                                    <p class="color1" style="width: 35%;">Proces odubytovania – check out :</p>
+                                    <p class="color1" style="width: 35%;" lang="sk">Proces odubytovania – check out:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -381,12 +459,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button113" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="11" g="1" question="1" rate="3" ng-click />
                                     <img class="star button114" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="11" g="1" question="1" rate="4" ng-click />
                                 </div>
-                                <div class="attention a11" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a11" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row g1q2">
                                 <div class="span2">
-                                    <p class="color2" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color2" style="width: 35%;" lang="sk">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -395,7 +473,7 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button123" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="12" g="1" question="2" rate="3" ng-click />
                                     <img class="star button124" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="12" g="1" question="2" rate="4" ng-click />
                                 </div>
-                                <div class="attention a12" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a12" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                         </div><!--end of starRatingSystem-->
@@ -403,12 +481,12 @@ if (!empty($_control->snippetMode)) {
 					</div>
 					
 					<div class = 'item' id = 'item2'>
-						<p class="question">Ako hodnotíte ubytovanie a kvalitu izieb ?</p>
+						<p class="question" lang="sk">Ako hodnotíte ubytovanie a kvalitu izieb ?</p>
 
 						<div class="container starsRatingSystem group2">
                             <div class="row q0">
                                 <div class="span2">
-                                    <p class="color0" style="width: 35%;">Čistota izby:</p>
+                                    <p class="color0" style="width: 35%;" lang="sk">Čistota izby:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -417,12 +495,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button203" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="20" g="2" question="0" rate="3" ng-click />
                                     <img class="star button204" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="20" g="2" question="0" rate="4" ng-click />
                                 </div>
-                                <div class="attention a20" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a20" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1" style="width: 35%;">Vybavenie izby:</p>
+                                    <p class="color1" style="width: 35%;" lang="sk">Vybavenie izby:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -431,12 +509,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button213" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="21"  g="2" question="1" rate="3" ng-click />
                                     <img class="star button214" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="21"  g="2" question="1" rate="4" ng-click />
                                 </div>
-                                <div class="attention a21" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a21" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2" style="width: 35%;">Atmosféra v hoteli:</p>
+                                    <p class="color2" style="width: 35%;" lang="sk">Atmosféra v hoteli:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -445,12 +523,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button223" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="22" g="2" question="2" rate="3" ng-click />
                                     <img class="star button224" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="22" g="2" question="2" rate="4" ng-click />
                                 </div>
-                                <div class="attention a22" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a22" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3" style="width: 35%;">Večerný program:</p>
+                                    <p class="color3" style="width: 35%;" lang="sk">Večerný program:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -459,19 +537,19 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button233" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="23" g="2" question="3" rate="3" ng-click />
                                     <img class="star button234" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="23" g="2" question="3" rate="4" ng-click />
                                 </div>
-                                <div class="attention a23" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a23" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
                         </div><!--end of starRatingSystem-->
 
 					</div>
 					
 					<div class = 'item' id = 'item3'>
-						<p class="question">Ako hodnotíte prácu reštaurácie  ?</p>
+						<p class="question" lang="sk">Ako hodnotíte prácu reštaurácie ?</p>
 
 						<div class="container starsRatingSystem group3">
                             <div class="row q0">
                                 <div class="span2">
-                                    <p class="color0" style="width: 35%;">Atmosféra a dekorácie:</p>
+                                    <p class="color0" style="width: 35%;" lang="sk">Atmosféra a dekorácie:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -480,12 +558,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button303" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="30" g="3" question="0" rate="3" ng-click />
                                     <img class="star button304" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="30" g="3" question="0" rate="4" ng-click />
                                 </div>
-                                <div class="attention a30" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a30" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1" style="width: 35%;">Raňajkový bufet:</p>
+                                    <p class="color1" style="width: 35%;" lang="sk">Raňajkový bufet:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -494,12 +572,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button313" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="31" g="3" question="1" rate="3" ng-click />
                                     <img class="star button314" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="31" g="3" question="1" rate="4" ng-click />
                                 </div>
-                                <div class="attention a31" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a31" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2" style="width: 35%;">Kvalita a kreativita večerného menu:</p>
+                                    <p class="color2" style="width: 35%;" lang="sk">Kvalita a kreativita večerného menu:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -508,12 +586,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button323" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="32" g="3" question="2" rate="3" ng-click />
                                     <img class="star button324" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="32" g="3" question="2" rate="4" ng-click />
                                 </div>
-                                <div class="attention a32" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a32" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3" style="width: 35%;">Ponuka vína:</p>
+                                    <p class="color3" style="width: 35%;" lang="sk">Ponuka vína:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -522,12 +600,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button333" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="33" g="3" question="3" rate="3" ng-click />
                                     <img class="star button334" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="33" g="3" question="3" rate="4" ng-click />
                                 </div>
-                                <div class="attention a33" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a33" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q4">
                                 <div class="span2">
-                                    <p class="color3" style="width: 35%;">Bar a kaviareň:</p>
+                                    <p class="color3" style="width: 35%;" lang="sk">Bar a kaviareň:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -536,12 +614,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button343" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="34" g="3" question="4" rate="3" ng-click />
                                     <img class="star button344" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="34" g="3" question="4" rate="4" ng-click />
                                 </div>
-                                <div class="attention a34" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a34" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q5">
                                 <div class="span2">
-                                    <p class="color3" style="width: 35%;">Ochota pomôcť a priateľskosť:</p>
+                                    <p class="color3" style="width: 35%;" lang="sk">Ochota pomôcť a priateľskosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -550,7 +628,7 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button353" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="35" g="3" question="5" rate="3" ng-click />
                                     <img class="star button354" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="35" g="3" question="5" rate="4" ng-click />
                                 </div>
-                                <div class="attention a35" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a35" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
                             
                         </div><!--end of starRatingSystem-->
@@ -558,12 +636,12 @@ if (!empty($_control->snippetMode)) {
 					</div>
 
 					<div class = 'item' id = 'item4'>
-						<p class="question">Ako hodnotíte wellness hotela ?</p>
+						<p class="question" lang="sk">Ako hodnotíte wellness hotela ?</p>
 
 						<div class="container starsRatingSystem group4">
                             <div class="row q0">
                                 <div class="span2">
-                                    <p class="color0" style="width: 35%;">Čistota wellness:</p>
+                                    <p class="color0" style="width: 35%;" lang="sk">Čistota wellness:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -572,12 +650,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star  button403" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="40" g="4" question="0" rate="3" ng-click />
                                     <img class="star  button404" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="40" g="4" question="0" rate="4" ng-click />
                                 </div>
-                                <div class="attention a40" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a40" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q1">
                                 <div class="span2">
-                                    <p class="color1" style="width: 35%;">Dostatok uterákov a plachiet:</p>
+                                    <p class="color1" style="width: 35%;" lang="sk">Dostatok uterákov a plachiet:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -586,12 +664,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button413" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="41" g="4" question="1" rate="3" ng-click />
                                     <img class="star button414" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="41" g="4" question="1" rate="4" ng-click />
                                 </div>
-                                <div class="attention a41" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a41" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q2">
                                 <div class="span2">
-                                    <p class="color2" style="width: 35%;">Ponuka odpočívadiel a oddychových častí:</p>
+                                    <p class="color2" style="width: 35%;" lang="sk">Ponuka odpočívadiel a oddychových častí:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -600,12 +678,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button423" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="42" g="4" question="2" rate="3" ng-click />
                                     <img class="star button424" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="42" g="4" question="2" rate="4" ng-click />
                                 </div>
-                                <div class="attention a42" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a42" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                              <div class="row q3">
                                 <div class="span2">
-                                    <p class="color3" style="width: 35%;">Atmosféra a dekorácie:</p>
+                                    <p class="color3" style="width: 35%;" lang="sk">Atmosféra a dekorácie:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -614,12 +692,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button433" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="43" g="4" question="3" rate="3" ng-click />
                                     <img class="star button434" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="43" g="4" question="3" rate="4" ng-click />
                                 </div>
-                                <div class="attention a43" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a43" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q4">
                                 <div class="span2">
-                                    <p class="color3" style="width: 35%;">Ponuka masáži a procedúr:</p>
+                                    <p class="color3" style="width: 35%;" lang="sk">Ponuka masáži a procedúr:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -628,12 +706,12 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button443" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="44" g="4" question="4" rate="3" ng-click />
                                     <img class="star button444" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="44" g="4" question="4" rate="4" ng-click />
                                 </div>
-                                <div class="attention a44" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a44" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
 
                             <div class="row q5">
                                 <div class="span2">
-                                    <p class="color3" style="width: 35%;">Ochota pomôcť a priateľstkosť:</p>
+                                    <p class="color3" style="width: 35%;" lang="sk">Ochota pomôcť a priateľstkosť:</p>
                                 </div>
                                 
                                 <div class="span10 pull-right margin">
@@ -642,7 +720,7 @@ if (!empty($_control->snippetMode)) {
                                     <img class="star button453" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" q="45" g="4" question="5" rate="3" ng-click />
                                     <img class="star button454" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" q="45" g="4" question="5" rate="4" ng-click />
                                 </div>
-                                <div class="attention a45" style="display: none;">Prosíme ohodnoťte aj túto otázku</div>
+                                <div class="attention a45" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                             </div>
                             
                         </div><!--end of starRatingSystem-->
@@ -655,14 +733,12 @@ if (!empty($_control->snippetMode)) {
 		</div>
 
         <div class="tooltips">
-            <div id="firstTooltip" class="tooltip_1" rel="tooltip">
-            </div>
+            <div id="firstTooltip" class="tooltip_1" rel="tooltip"></div>
             <img class="tooltip_emoticon" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128/10.png" />
         </div>
 
         <div class="goAheadTooltip">
-            <div id="secondTooltip" class="tooltip_2" rel="tooltip">
-            </div>
+            <div id="secondTooltip" class="tooltip_2" rel="tooltip" title="test"></div>
             <img class="tooltip_emoticon_2" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128/10.png" />
         </div>
 
@@ -670,27 +746,27 @@ if (!empty($_control->snippetMode)) {
 
             <div class = 'iosSliderButtons'>
                     <div class = 'button' id = 'item0'>
-                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
-                        <div class="navigationMenu">Rezervácie</div>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                        <div class="navigationMenu" lang="sk">Rezervácie</div>
                     </div>                  
                     <div class = 'button' id = 'item1'>
-                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
-                        <div class="navigationMenu">Recepcia</div>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                        <div class="navigationMenu" lang="sk">Recepcia</div>
                     </div>
                     <div class = 'button' id = 'item2'>
-                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
-                        <div class="navigationMenu">Ubytovanie</div>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                        <div class="navigationMenu" lang="sk">Ubytovanie</div>
                     </div>
                     <div class = 'button' id = 'item3'>
-                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
-                        <div class="navigationMenu">Reštaurácia</div>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                        <div class="navigationMenu" lang="sk">Reštaurácia</div>
                     </div>
                     <div class = 'button' id = 'item4'>
-                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrow.png" />
-                        <div class="navigationMenu">Wellness</div>
+                        <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                        <div class="navigationMenu" lang="sk">Wellness</div>
                     </div>
             </div>
-            <button class="btn btn-large btn-block submitButton" onclick="submit();">Ukončiť a odoslať</button>
+            <button class="btn btn-large btn-block submitButton" onclick="submit();" lang="sk">Ukončiť hodnotenie</button>
         </div>
 
         <script>
@@ -977,16 +1053,50 @@ if (!empty($_control->snippetMode)) {
             });
 
             function summarySend(){
-                if(summaryEvaluation != 0 && summaryEvaluation != "undefined"){
-                    //$(".modal-body").replaceWith(".timer");
+                var input = $(".roomInput").val();
+                var digitOK;
+
+                if(input != ""){
+                    if(validateDigit(input)){
+                        $(".a57").css("display","none");
+                        digitOK = true;
+                    }else {
+                        $(".a57").css("display","block");
+                        digitOK =  false;
+                    }
+                }else {
+                    $(".a57").css("display","none");
+                    digitOK = true;
+                }
+
+                if(checkSummary() == true && digitOK == true){
                     $('#myModal').modal('hide');
                     $.blockUI({ message: $('.timer') }); 
                     startCountDown(1000);
+                }   
+            }
+
+            function validateDigit(input){
+                var intRegex = /^\d+$/;
+                var floatRegex = /^((\d+(\.\d *)?)|((\d*\.)?\d+))$/;
+                
+                if(intRegex.test(input) || floatRegex.test(input)) {
+                   return true;
+                }else return false;
+            }
+
+            function checkSummary(){
+                if(summaryEvaluation != 0 && summaryEvaluation != "undefined"){
+                    //$(".modal-body").replaceWith(".timer");
+                    return true;
                 }else {
                     $(".a56").css("display","block");
+                    return false;
                 }
                 return false;
             }
+
+
         </script>
 
 	</body>

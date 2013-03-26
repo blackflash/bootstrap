@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery Lang JS Module Test Page</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
+<script src="js/langpack/en.js" charset="utf-8" type="text/javascript"></script>
+<script type="text/javascript">
+	window.lang = new jquery_lang_js();
+	$().ready(function () {
+		window.lang.run();
+	});
+</script>
+</head>
+
+<body>
+<a href="http://flattr.com/thing/352558/jQuery-Multi-Language-Site-Plugin" target="_blank">
+<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a><BR /><BR />
+<div id="langChanger"><a href="javascript:window.lang.change('en');">Switch to English</a> | <a href="javascript:window.lang.change('sk');">Switch to Slovak</a></div>
+<div id="searchTitle" class="sectionTitle" lang="sk">Vyhľadávanie</div>
+	
+</body>
+</html>
