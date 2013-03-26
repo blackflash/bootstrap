@@ -19,6 +19,7 @@ jquery_lang_js.prototype.lang.en = {
 	'Áno':'Yes',
 	'Nie':'No',
 	'Izba s označením M':'Room start with letter M',
+	'Prosíme vyplňte číslo izby správne.':'Please enter correct room number.',
 
 	'Ďakujeme za Váš názor':'Thank you for your feedback',
 	'Dáta sa spracovávajú...':'Processing data...',
