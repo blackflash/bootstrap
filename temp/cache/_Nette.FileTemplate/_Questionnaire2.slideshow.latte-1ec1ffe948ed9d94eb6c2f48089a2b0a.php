@@ -1,10 +1,10 @@
-<?php //netteCache[01]000416a:2:{s:4:"time";s:21:"0.30015000 1364271823";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:94:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\slideshow.latte";i:2;i:1364271822;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000416a:2:{s:4:"time";s:21:"0.62528200 1364376169";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:94:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\slideshow.latte";i:2;i:1364271909;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\slideshow.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'y5mmocco6y')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'isk3hg24b6')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -39,7 +39,7 @@ if (!empty($_control->snippetMode)) {
 "><img src="<?php echo htmlSpecialChars($basePath) ?>/img/component_questionnaire2/start.png" /></a>
             <h1>Grandhotel Praha****</h1>
             <h2>Tatranská Lomnica, Vysoké Tatry</h2>
-            <div class="loader" >
+            <div class="loader" style="display:none;">
                 <h1>Loading...</h1>
             </div>
         </header>

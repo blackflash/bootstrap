@@ -2,6 +2,11 @@
 @import url(http://fonts.googleapis.com/css?family=Tauri);
 @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);*/
 
+*{
+/* Prevent any object from being highlighted upon touch event*/
+-webkit-tap-highlight-color: rgba(0,0,0,0) !important; 
+}
+
 #BigQuestionnaire {
 	background-image: url("../../img/component_questionnaire2/stripes.png");
 	font-family: 'Myriad Pro', Arial, sans-serif !important;
@@ -413,10 +418,30 @@ p {
     cursor: pointer;
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 10px;
+    padding-top: 5px;
     z-index: 2 !important;
     display: inline-block !important;
 }
+
+.smileEva {
+	float: left;
+	width: 110px;
+}
+
+.smileEva small{
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+
+smallEvaText {
+	z-index: 100;
+	float: left;
+	line-height: 0px;
+}
+
+
 
 /*--------- text ------*/
 .color0 {
@@ -551,7 +576,7 @@ input[type=radio]
 
 .roomCheck {
 	margin: auto;
-	width: 40%;
+	width: 70%;
 	padding: 10px;
 	margin-bottom: 10px;
 	margin-top: 10px;
@@ -560,7 +585,7 @@ input[type=radio]
 }
 
 .roomM {
-	width: 80%;
+	width: 30%;
 	margin-left: 25px;
 	font-size: 25px;
 	font-family: 'Myriad Pro', Arial, sans-serif;
@@ -570,6 +595,11 @@ input[type=radio]
 .radioText {
 	margin-top: -27px;
 	margin-left: 70px;
+}
+
+roomText {
+	font-size: 20px;
+	margin-left: 10px;
 }
 
 .checkboxRoom {

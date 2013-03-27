@@ -8,6 +8,12 @@
     font-weight: normal;
     font-style: normal;
 }
+
+*{
+/* Prevent any object from being highlighted upon touch event*/
+-webkit-tap-highlight-color: rgba(0,0,0,0) !important; 
+}
+
 /* CSS reset */
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
 	margin:0;
