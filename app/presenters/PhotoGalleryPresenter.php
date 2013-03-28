@@ -45,9 +45,6 @@ class PhotoGalleryPresenter extends BasePresenter
 				$this->template->gallery_photo = $this->context->galleryRepository->getByTableAndIdWithOrder("gallery_photo","gallery_id",$gallery_id,"data_col","asc");
 				$this->template->gallery_video = $this->context->galleryRepository->getByTableAndId("gallery_video","gallery_id",$gallery_id);
 
-
-
-
 				if(isset($this->template->gallery_video->fetch()->namespace_id)){
 
 					$videoTemp = $this->context->galleryRepository->getByTableAndId("gallery_video","gallery_id",$gallery_id)->fetch()->namespace_id;

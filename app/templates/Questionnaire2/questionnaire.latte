@@ -1,6 +1,45 @@
 <div class="st-container" id="BigQuestionnaire" ng-controller="QuestionsCounter">
 <!--ANGULAR-->
     <script type="text/javascript">
+
+        /*------------------- AJAX -----------------------*/
+
+
+        // prepare data
+        function prepareQuestionnaire(questionnaire_id, lang){
+            
+            $("#ajax_loader").show();
+
+            $.ajax({    //create an ajax request to load_page.php
+              type: "POST",
+              url: "?do=jsonPrepareQuestionnaire",
+              data: { questionnaire_id: questionnaire_id, language: lang},
+              dataType: "html",   //expect html to be returned
+              success: function(msg){ 
+
+                  if(parseInt(msg)!=0)    //if no errors
+                  {
+                    var myObject = JSON.parse(msg);
+                    console.log(myObject);
+                  }
+
+                  if(parseInt(msg) == 0){
+                    console.log("problem");
+                    return false;
+                  }
+
+              }
+          });
+        }
+
+         function ajaxStartPrepare(lang){
+           var questionnaire_id = {$questionnaire->questionnaire_id};
+           prepareQuestionnaire(questionnaire_id,lang);
+           return false;
+        }
+
+        /*---------------- end of AJAX -------------------*/
+
         $.showEmos = { 
             emo0 : 0, 
             emo1 : 0, 
@@ -19,13 +58,12 @@
             }
 
             $scope.setLanguage = function(lang){
+                ajaxStartPrepare(lang);
                 setFirstEmo(lang);
                 $scope.myLanguage = lang;
                 $.myLanguage = lang;
             }
             
-            $(".tooltip-inner").html("test");
-
             function setFirstEmo(lang){
                  if(lang == "sk"){ 
                     $('.tooltip_emoticon').css('display',"block");
@@ -87,39 +125,40 @@
         }
     </script>
 
+    <script type="text/javascript">
+
+
+    </script>
+
     <!--end of <div id="langChanger">
         <a href="javascript:window.lang.change('sk');" class="changeLangSK" ng-click="setLanguage('sk')">Switch to Slovak</a>
         | 
         <a href="javascript:window.lang.change('en');" class="changeLangEN" ng-click="setLanguage('en')">Switch to English</a> 
     </div>-->
 
+
     <div class="emoSummary" style="display:none;" >{{ checkShowEmo()}}</div>
     <!--end of <div id="searchTitle" class="sectionTitle" >{{ getLanguage()}}</div>-->
-
-    <div class="timer" style="display: none;">
-        <div class="logoCleverFrogs" ><img src="{$basePath}/www/img/logoB.png"></div>
-        <div class="summaryThanksSpinner" lang="sk">Ďakujeme za Váš názor</div>
-        <img class="spinner" src="{$basePath}/www/img/spinner2.gif">
-        <div class="summaryTextComp" lang="sk">Dáta sa spracovávajú...</div>
-        <div class="summaryThanksSpinner_2" lang="sk">Prajeme Vám príjemny zvyšok dňa. Dovidenia.</div>
-    </div><!--end of timer-->
     
     <div id="modal_language" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
             <img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png">
         </div>
         <div class="modal-body">
-            <div class="flags">
-                <img class="flag_sk" src="{$basePath}/www/img/flags/sk.png">
-                <img class="flag_uk" src="{$basePath}/www/img/flags/uk.png">
-            </div>
 
-            <div class="span5 languageText" style="margin-left: 25px;" lang="sk">
-                Vaše postrehy a pripomienky sú pre nás mimoriadne dôležité, a preto by sme Vás chceli požiadať o vyplnenie tohto krátkeho dotazníka spokojnosti.
-            </div>
-            <div class="span5 languageText" style="margin-left: 65px;" lang="sk">
-                Your comments and suggestions are really important to us, thus we would like to ask to fill out this short survey. 
-            </div>
+            {foreach $language_pack as $pack}
+
+                <div class="span5 flagsContainer_{$iterator->counter}">
+                    <div class="flags">
+                        <img class="flag" src="{$basePath}/www/img/flags/{$pack->image}">
+                    </div>
+                    <div class="span5 languageText_{$iterator->counter}"  lang="sk">
+                        {$pack->text}
+                    </div>
+                </div>
+
+            {/foreach}
+
         </div><!--end of modal-body-->
 
         <div class="summaryCompetition">
@@ -166,6 +205,14 @@
             <button class="btn btn-large btn-block btn-primary" class="submit" type="submit" onclick="summarySend();" lang="sk">Potvrdiť</button>
         </div>
     </div>
+
+    <div class="timer" style="display: none;">
+        <div class="logoCleverFrogs" ><img src="{$basePath}/www/img/logoB.png"></div>
+        <div class="summaryThanksSpinner" lang="sk">Ďakujeme za Váš názor</div>
+        <img class="spinner" src="{$basePath}/www/img/spinner2.gif">
+        <div class="summaryTextComp" lang="sk">Dáta sa spracovávajú...</div>
+        <div class="summaryThanksSpinner_2" lang="sk">Prajeme Vám príjemny zvyšok dňa. Dovidenia.</div>
+    </div><!--end of timer-->
 
 	<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
     <img class="logoCompany" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png">

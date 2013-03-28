@@ -32,12 +32,25 @@ p {
 	-webkit-backface-visibility: hidden;
 }
 
-.languageText {
-	margin-top: 20px;
+.flagsContainer_1, .flagsContainer_2 {
+	margin-top: 10px;
 	font-size: 20px;
 	line-height: 27px;
 	text-align: justify;
 	font-family: 'Myriad Pro', Arial, sans-serif;
+}
+
+.flagsContainer_2 > .languageText {
+	margin-left: 20px !important;
+}
+
+.languageText_1 {
+	margin-top: 20px;
+}
+
+.languageText_2 {
+	margin-top: 20px;
+	padding-left: 25px;
 }
 
 .flags {
@@ -46,12 +59,7 @@ p {
 	height: 100px;
 }
 
-.flag_uk {
-	position: static;
-	margin-left: 335px !important;
-}
-
-.flag_sk {
+.flag {
 	position: static;
 	margin-left: 160px !important;
 }
@@ -127,29 +135,6 @@ p {
 
 .slovak_flag {
 	margin-left: -200px !important;
-}
-
-.languageText_SK {
-	position: absolute;
-	top: 49%;
-	left: 1%;
-	width: 43%;
-	font-size: 22px;
-	line-height: 27px;
-	text-align: justify;
-	padding: 30px;
-}
-
-.languageText_EN {
-	position: absolute;
-	top: 49%;
-	left: 3%;
-	width: 43%;
-	font-size: 22px;
-	line-height: 27px;
-	text-align: justify;
-	padding: 30px;
-	left: 50%;
 }
 
 .button_SK {
@@ -508,6 +493,7 @@ smallEvaText {
 }
 
 .summaryCompetition {
+	width: 850px;
 	text-align: center !important;
 	font-family: 'Myriad Pro', Arial, sans-serif;
 }

@@ -7,13 +7,13 @@
 		<meta name = "apple-mobile-web-app-capable" content = "yes" /> 
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <title>Questionnaire</title>
+        <title>CleverFrogs - {$title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="shortcut icon" href="{$basePath}/favicon.ico"> 
 		
         <link rel="stylesheet" href="{$basePath}/css/component_questionnaire2/bootstrap.css">
         <link rel="stylesheet" href="{$basePath}/css/component_questionnaire2/slider.css">
-        <script src = "{$basePath}/js/cssrefresh.js"></script>
+        <!--end of <script src = "{$basePath}/js/cssrefresh.js"></script>-->
 
         <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
@@ -77,26 +77,18 @@
                     }, 500 );
                 }); 
 
-                function clickOnButton(id){
-                    $('.iosSliderButtons #item'+id).click();
-                }
-
                 $(".iosSlider").css("display","none");
 
-                 $(".iosSlider").animate({ 
-                        left: "1920px"
-                    }, 0 );
+                $(".iosSlider").animate({ 
+                    left: "1920px"
+                }, 0 );
 
                 $(".iosSlider").css("display","block");
-                
                 $(".goAheadTooltip").css("display","none");
-                
-
                 $('.tooltip_emoticon').css('display',"none");
 
-                var counter = 0;
                 for (i = 4; i >= 0; i--) {
-                  clickOnButton(i);
+                  $('.iosSliderButtons #item'+i).click();
                 }
 
                 $(".iosSliderButtons > #item0").removeClass("button selected");

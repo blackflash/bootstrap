@@ -1,10 +1,10 @@
-<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.17340400 1364377451";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364377052;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000414a:2:{s:4:"time";s:21:"0.68823800 1364435392";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:92:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte";i:2;i:1364435391;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'spku12rvab')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '5m8xibcwbn')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -26,13 +26,13 @@ if (!empty($_control->snippetMode)) {
 		<meta name = "apple-mobile-web-app-capable" content = "yes" /> 
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
-        <title>Questionnaire</title>
+        <title>CleverFrogs - <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
         <link rel="shortcut icon" href="<?php echo htmlSpecialChars($basePath) ?>/favicon.ico" /> 
 		
         <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/bootstrap.css" />
         <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/slider.css" />
-        <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/cssrefresh.js"></script>
+        <!--end of <script src = "<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
 
         <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css' />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css' />
@@ -96,26 +96,18 @@ if (!empty($_control->snippetMode)) {
                     }, 500 );
                 }); 
 
-                function clickOnButton(id){
-                    $('.iosSliderButtons #item'+id).click();
-                }
-
                 $(".iosSlider").css("display","none");
 
-                 $(".iosSlider").animate({ 
-                        left: "1920px"
-                    }, 0 );
+                $(".iosSlider").animate({ 
+                    left: "1920px"
+                }, 0 );
 
                 $(".iosSlider").css("display","block");
-                
                 $(".goAheadTooltip").css("display","none");
-                
-
                 $('.tooltip_emoticon').css('display',"none");
 
-                var counter = 0;
                 for (i = 4; i >= 0; i--) {
-                  clickOnButton(i);
+                  $('.iosSliderButtons #item'+i).click();
                 }
 
                 $(".iosSliderButtons > #item0").removeClass("button selected");
@@ -177,6 +169,6 @@ if (!empty($_control->snippetMode)) {
 
 	</head>
 	<body>
-<?php Nette\Latte\Macros\CoreMacros::includeTemplate($page, $template->getParameters(), $_l->templates['spku12rvab'])->render() ?>
+<?php Nette\Latte\Macros\CoreMacros::includeTemplate($page, $template->getParameters(), $_l->templates['5m8xibcwbn'])->render() ?>
 	</body>
 </html>
