@@ -1,10 +1,10 @@
-<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.78094600 1364525784";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364525783;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.24259500 1364526629";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364526626;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'on4yxuj5nh')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'u8m8stp53o')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -265,8 +265,8 @@ if (!empty($_control->snippetMode)) {
                 <div class="summaryCompetition">
                     <div class="summaryThanks"><h3 lang="sk">Ďakujeme za Vašu spätnú väzbu !</h3></div>
 
-                    <div class="summaryTextComp" lang="sk">Prosíme vyplňte Vaše číslo izby.</div>
                     <div class="summaryEmail">
+                    <div class="summaryTextComp" lang="sk">Prosíme vyplňte Vaše číslo izby.</div>
                         <div class="roomCheck">
                             <div class="attention a57" style="display: none;" lang="sk">Prosíme vyplňte číslo izby správne.</div>
                         </div>
@@ -297,7 +297,7 @@ if (!empty($_control->snippetMode)) {
         <div class="summaryThanksSpinner" lang="sk">Ďakujeme za Váš názor</div>
         <img class="spinner" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/spinner2.gif" />
         <div class="summaryTextComp" lang="sk">Dáta sa spracovávajú...</div>
-        <div class="summaryThanksSpinner_2" lang="sk">Prajeme Vám príjemny zvyšok dňa.</div>
+        <div class="summaryThanksSpinner_2" lang="sk">Prajeme Vám príjemný zvyšok dňa.</div>
     </div><!--end of timer-->
 
 	<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
@@ -1072,7 +1072,7 @@ if (!empty($_control->snippetMode)) {
             ajaxStartUpdateSummaryEvaluation($.showEmos.questionnaireId,input, summaryEvaluation, finalScore );
             $('#myModal').modal('hide');
             $.blockUI({ message: $('.timer') }); 
-            startCountDown(500000);
+            startCountDown(5000);
         }   
     }
 
