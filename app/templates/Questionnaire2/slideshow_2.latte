@@ -1,0 +1,36 @@
+<!--end of slideshow-->
+<link rel="stylesheet" type="text/css" href="{$basePath}/css/component_questionnaire2/slideshow/demo.css" />
+<link rel="stylesheet" type="text/css" href="{$basePath}/css/component_questionnaire2/slideshow/slideshow_2.css" />
+<script type="text/javascript" src="{$basePath}/js/component_questionnaire2/modernizr.custom.86080.js"></script>
+
+
+<div class="slideshow">
+    <ul class="cb-slideshow">
+        <li><span>Image 01</span><div></div></li>
+        <li><span>Image 02</span><div></div></li>
+        <li><span>Image 03</span><div></div></li>
+        <li><span>Image 04</span><div></div></li>
+        <li><span>Image 05</span><div></div></li>
+        <li><span>Image 06</span><div></div></li>
+    </ul>
+    <div class="containerSlide">
+        <!-- Codrops top bar -->
+        <header>
+            <a n:href='Questionnaire2:default questionnaire_id=>2, page=>"questionnaire_2"' class="start_button"><img src="{$basePath}/img/component_questionnaire2/start.png"></a>
+            <h1>Hotel Grand****</h1>
+            <h2>Jasná, Nízke Tatry</h2>
+            <div class="loader" style="display:none;">
+                <h1>Loading...</h1>
+            </div>
+        </header>
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+    $('.start_button').click(function(){
+        $(this).css("display","none");   
+        $(".loader").css("display","block");
+    });
+
+</script>

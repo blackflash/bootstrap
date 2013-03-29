@@ -1,9 +1,38 @@
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.68779700 1364515580";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_2.latte";i:2;i:1364515576;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+
+// source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_2.latte
+
+?><?php
+// prolog Nette\Latte\Macros\CoreMacros
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'fuv6vpzglj')
+;
+// prolog Nette\Latte\Macros\UIMacros
+
+// snippets support
+if (!empty($_control->snippetMode)) {
+	return Nette\Latte\Macros\UIMacros::renderSnippets($_control, $_l, get_defined_vars());
+}
+
+//
+// main template
+//
+?>
 <div class="st-container" id="BigQuestionnaire" ng-controller="QuestionsCounter">
 <!--ANGULAR-->
     <script type="text/javascript">
 
         /*------------------- AJAX -----------------------*/
 
+        $.showEmos = { 
+            emo0 : 0, 
+            emo1 : 0, 
+            emo2 : 0, 
+            emo3 : 0, 
+            emo4 : 0,
+            showed: 0,
+            language: "sk",
+            questionnaireId: 0,
+        }; 
 
         // prepare data
         function prepareQuestionnaire(questionnaire_id, lang){
@@ -20,7 +49,7 @@
                   if(parseInt(msg)!=0)    //if no errors
                   {
                     var myObject = JSON.parse(msg);
-                    console.log(myObject);
+                    $.showEmos.questionnaireId = myObject;
                   }
 
                   if(parseInt(msg) == 0){
@@ -33,22 +62,77 @@
         }
 
          function ajaxStartPrepare(lang){
-           var questionnaire_id = {$questionnaire->questionnaire_id};
+           var questionnaire_id = <?php echo Nette\Templating\Helpers::escapeJs($questionnaire->questionnaire_id) ?>;
            prepareQuestionnaire(questionnaire_id,lang);
            return false;
         }
 
+
+        // update data
+        function updateQuestionnaire(r_questionnaire_id, question_id,rate){
+            
+            $("#ajax_loader").show();
+
+            $.ajax({    //create an ajax request to load_page.php
+              type: "POST",
+              url: "?do=jsonUpdateQuestionnaire",
+              data: { r_questionnaire_id: r_questionnaire_id, question_id: question_id, rate: rate},
+              dataType: "html",   //expect html to be returned
+              success: function(msg){ 
+
+                  if(parseInt(msg)!=0)    //if no errors
+                  {
+                    var myObject = JSON.parse(msg);
+                  }
+
+                  if(parseInt(msg) == 0){
+                    console.log("problem");
+                    return false;
+                  }
+
+              }
+          });
+        }
+
+        function ajaxStartUpdate(r_questionnaire_id,question_id,rate){
+           updateQuestionnaire(r_questionnaire_id,question_id,rate);
+           return false;
+        }
+
+
+        // update summaryEva after submit ok
+        function updateSummaryEvaluation(r_questionnaire_id,room,summaryEva,score){
+            
+            $("#ajax_loader").show();
+
+            $.ajax({    //create an ajax request to load_page.php
+              type: "POST",
+              url: "?do=jsonUpdateSummaryEvaluationQuestionnaire",
+              data: { r_questionnaire_id: r_questionnaire_id, room: room,summaryEva: summaryEva, score: score},
+              dataType: "html",   //expect html to be returned
+              success: function(msg){ 
+
+                  if(parseInt(msg)!=0)    //if no errors
+                  {
+                    var myObject = JSON.parse(msg);
+                  }
+
+                  if(parseInt(msg) == 0){
+                    console.log("problem");
+                    return false;
+                  }
+
+              }
+          });
+        }
+
+         function ajaxStartUpdateSummaryEvaluation(r_questionnaire_id,room,summaryEva,score){
+           updateSummaryEvaluation(r_questionnaire_id,room,summaryEva,score);
+           return false;
+        }
         /*---------------- end of AJAX -------------------*/
 
-        $.showEmos = { 
-            emo0 : 0, 
-            emo1 : 0, 
-            emo2 : 0, 
-            emo3 : 0, 
-            emo4 : 0,
-            showed: 0,
-            language: "sk",
-        }; 
+        
 
         function QuestionsCounter($scope){
 
@@ -142,22 +226,24 @@
     
     <div id="modal_language" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
-            <img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png">
+            <img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
         </div>
         <div class="modal-body">
 
-            {foreach $language_pack as $pack}
+<?php $iterations = 0; foreach ($iterator = $_l->its[] = new Nette\Iterators\CachingIterator($language_pack) as $pack): ?>
 
-                <div class="span5 flagsContainer_{$iterator->counter}">
+                <div class="span5 flagsContainer_<?php echo htmlSpecialChars($iterator->counter) ?>">
                     <div class="flags">
-                        <img class="flag" src="{$basePath}/www/img/flags/{$pack->image}">
+                        <img class="flag" src="<?php echo htmlSpecialChars($basePath) ?>
+/www/img/flags/<?php echo htmlSpecialChars($pack->image) ?>" />
                     </div>
-                    <div class="span5 languageText_{$iterator->counter}"  lang="sk">
-                        {$pack->text}
+                    <div class="span5 languageText_<?php echo htmlSpecialChars($iterator->counter) ?>"  lang="sk">
+                        <?php echo Nette\Templating\Helpers::escapeHtml($pack->text, ENT_NOQUOTES) ?>
+
                     </div>
                 </div>
 
-            {/foreach}
+<?php $iterations++; endforeach; array_pop($_l->its); $iterator = end($_l->its) ?>
 
         </div><!--end of modal-body-->
 
@@ -172,7 +258,7 @@
     <!-- Modal -->
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-header">
-	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png"></h3>
+	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
 	    </div>
 	    <div class="modal-body">
             <form class="cmxform" id="questionnaireForm" method="get" action="">
@@ -185,15 +271,15 @@
                             <div class="attention a57" style="display: none;" lang="sk">Prosíme vyplňte číslo izby správne.</div>
                         </div>
                         <div class="clearfix"></div>
-                        <input class="input-xlarge roomInput" pattern="[0-9]*" type="number" id="field" maxlength="4" placeholder="Vaše číslo izby">
+                        <input class="input-xlarge roomInput" pattern="[0-9]*" type="number" id="field" maxlength="4" placeholder="Vaše číslo izby" />
                     </div>
                     <div>
                         <div class="summaryText" lang="sk">Aké je Vaše celkové hodnotenie našeho hotela ?</div>
                         <div class="summaryStar">
-                            <img class="button561 star summaryEvaluation" src="{$basePath}/www/img/Emoticons/128x128/1.png" g="5" question="6" rate="1">
-                            <img class="button562 star summaryEvaluation" src="{$basePath}/www/img/Emoticons/128x128/2.png" g="5" question="6" rate="2">
-                            <img class="button563 star summaryEvaluation" src="{$basePath}/www/img/Emoticons/128x128/3.png" g="5" question="6" rate="3">
-                            <img class="button564 star summaryEvaluation" src="{$basePath}/www/img/Emoticons/128x128/4.png" g="5" question="6" rate="4">
+                            <img class="button561 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" g="5" question="6" rate="1" />
+                            <img class="button562 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" g="5" question="6" rate="2" />
+                            <img class="button563 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" g="5" question="6" rate="3" />
+                            <img class="button564 star summaryEvaluation" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" g="5" question="6" rate="4" />
                         </div>
                         <div class="attention a56" style="display: none;" lang="sk">Prosíme ohodnoťte túto otázku</div>
                     </div>
@@ -207,15 +293,17 @@
     </div>
 
     <div class="timer" style="display: none;">
-        <div class="logoCleverFrogs" ><img src="{$basePath}/www/img/logoB.png"></div>
+        <div class="logoCleverFrogs" ><img src="<?php echo htmlSpecialChars($basePath) ?>/www/img/logoB.png" /></div>
         <div class="summaryThanksSpinner" lang="sk">Ďakujeme za Váš názor</div>
-        <img class="spinner" src="{$basePath}/www/img/spinner2.gif">
+        <img class="spinner" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/spinner2.gif" />
         <div class="summaryTextComp" lang="sk">Dáta sa spracovávajú...</div>
         <div class="summaryThanksSpinner_2" lang="sk">Prajeme Vám príjemny zvyšok dňa. Dovidenia.</div>
     </div><!--end of timer-->
 
 	<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
-    <img class="logoCompany" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png">
+    <div class="questionnaireId" value="" style="display:none;"></div>
+
+    <img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
 
 	<div class = 'iosSlider'>
 		<div class = 'slider'>
@@ -231,19 +319,19 @@
                         <div class="span10 pull-right margin">
                             <div class="smileEva">
                                 <small lang="sk">veľmi nespokojný</small>
-                                <img class="star button001" src="{$basePath}/www/img/Emoticons/128x128/1.png"  g="0" q="00" question="0" rate="1" ng-click>
+                                <img class="star button001" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="25"  g="0" q="00" question="0" rate="1" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">nespokojný</small>
-                                <img class="star button002" src="{$basePath}/www/img/Emoticons/128x128/2.png"  g="0" q="00" question="0" rate="2" ng-click>
+                                <img class="star button002" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="25"  g="0" q="00" question="0" rate="2" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">spokojný</small>
-                                <img class="star button003" src="{$basePath}/www/img/Emoticons/128x128/3.png"  g="0" q="00" question="0" rate="3" ng-click>
+                                <img class="star button003" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="25"  g="0" q="00" question="0" rate="3" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">veľmi spokojný</small>
-                                <img class="star button004" src="{$basePath}/www/img/Emoticons/128x128/4.png"  g="0" q="00" question="0" rate="4" ng-click>
+                                <img class="star button004" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="25"  g="0" q="00" question="0" rate="4" ng-click />
                             </div>
                         </div>
                         <div class="attention a00" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
@@ -255,10 +343,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button011" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="01" g="0" question="1" rate="1" ng-click>
-                            <img class="star button012" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="01" g="0" question="1" rate="2" ng-click>
-                            <img class="star button013" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="01" g="0" question="1" rate="3" ng-click>
-                            <img class="star button014" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="01" g="0" question="1" rate="4" ng-click>
+                            <img class="star button011" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="26" q="01" g="0" question="1" rate="1" ng-click />
+                            <img class="star button012" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="26" q="01" g="0" question="1" rate="2" ng-click />
+                            <img class="star button013" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="26" q="01" g="0" question="1" rate="3" ng-click />
+                            <img class="star button014" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="26" q="01" g="0" question="1" rate="4" ng-click />
                         </div>
                         <div class="attention a01" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -269,10 +357,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button021" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="02" g="0" question="2" rate="1" ng-click>
-                            <img class="star button022" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="02" g="0" question="2" rate="2" ng-click>
-                            <img class="star button023" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="02" g="0" question="2" rate="3" ng-click>
-                            <img class="star button024" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="02" g="0" question="2" rate="4" ng-click>
+                            <img class="star button021" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="27" q="02" g="0" question="2" rate="1" ng-click />
+                            <img class="star button022" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="27" q="02" g="0" question="2" rate="2" ng-click />
+                            <img class="star button023" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="27" q="02" g="0" question="2" rate="3" ng-click />
+                            <img class="star button024" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="27" q="02" g="0" question="2" rate="4" ng-click />
                         </div>
                         <div class="attention a02" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -283,10 +371,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button031" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="03" g="0" question="3" rate="1" ng-click>
-                            <img class="star button032" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="03" g="0" question="3" rate="2" ng-click>
-                            <img class="star button033" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="03" g="0" question="3" rate="3" ng-click>
-                            <img class="star button034" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="03" g="0" question="3" rate="4" ng-click>
+                            <img class="star button031" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="28" q="03" g="0" question="3" rate="1" ng-click />
+                            <img class="star button032" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="28" q="03" g="0" question="3" rate="2" ng-click />
+                            <img class="star button033" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="28" q="03" g="0" question="3" rate="3" ng-click />
+                            <img class="star button034" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="28" q="03" g="0" question="3" rate="4" ng-click />
                         </div>
                         <div class="attention a03" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -306,19 +394,19 @@
                         <div class="span10 pull-right margin">
                             <div class="smileEva">
                                 <small lang="sk">veľmi nespokojný</small>
-                                <img class="star button101" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="10" g="1" question="0" rate="1" ng-click>
+                                <img class="star button101" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="29" q="10" g="1" question="0" rate="1" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">nespokojný</small>
-                                <img class="star button102" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="10" g="1" question="0" rate="2" ng-click>
+                                <img class="star button102" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="29" q="10" g="1" question="0" rate="2" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">spokojný</small>
-                                <img class="star button103" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="10" g="1" question="0" rate="3" ng-click>
+                                <img class="star button103" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="29" q="10" g="1" question="0" rate="3" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">veľmi spokojný</small>
-                                <img class="star button104" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="10" g="1" question="0" rate="4" ng-click>
+                                <img class="star button104" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="29" q="10" g="1" question="0" rate="4" ng-click />
                             </div>
                         </div>
                         <div class="attention a10" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
@@ -330,10 +418,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button111" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="11" g="1" question="1" rate="1" ng-click>
-                            <img class="star button112" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="11" g="1" question="1" rate="2" ng-click>
-                            <img class="star button113" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="11" g="1" question="1" rate="3" ng-click>
-                            <img class="star button114" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="11" g="1" question="1" rate="4" ng-click>
+                            <img class="star button111" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="30" q="11" g="1" question="1" rate="1" ng-click />
+                            <img class="star button112" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="30" q="11" g="1" question="1" rate="2" ng-click />
+                            <img class="star button113" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="30" q="11" g="1" question="1" rate="3" ng-click />
+                            <img class="star button114" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="30" q="11" g="1" question="1" rate="4" ng-click />
                         </div>
                         <div class="attention a11" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -344,10 +432,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button121" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="12" g="1" question="2" rate="1" ng-click>
-                            <img class="star button122" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="12" g="1" question="2" rate="2" ng-click>
-                            <img class="star button123" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="12" g="1" question="2" rate="3" ng-click>
-                            <img class="star button124" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="12" g="1" question="2" rate="4" ng-click>
+                            <img class="star button121" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="31" q="12" g="1" question="2" rate="1" ng-click />
+                            <img class="star button122" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="31" q="12" g="1" question="2" rate="2" ng-click />
+                            <img class="star button123" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="31" q="12" g="1" question="2" rate="3" ng-click />
+                            <img class="star button124" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="31" q="12" g="1" question="2" rate="4" ng-click />
                         </div>
                         <div class="attention a12" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -367,19 +455,19 @@
                         <div class="span10 pull-right margin">
                             <div class="smileEva">
                                 <small lang="sk">veľmi nespokojný</small>
-                                <img class="star button201" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="20" g="2" question="0" rate="1" ng-click>
+                                <img class="star button201" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="32" q="20" g="2" question="0" rate="1" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">nespokojný</small>
-                                <img class="star button202" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="20" g="2" question="0" rate="2" ng-click>
+                                <img class="star button202" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="32" q="20" g="2" question="0" rate="2" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">spokojný</small>
-                                <img class="star button203" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="20" g="2" question="0" rate="3" ng-click>
+                                <img class="star button203" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="32" q="20" g="2" question="0" rate="3" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">veľmi spokojný</small>
-                                <img class="star button204" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="20" g="2" question="0" rate="4" ng-click>
+                                <img class="star button204" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="32" q="20" g="2" question="0" rate="4" ng-click />
                             </div>
                         </div>
                         <div class="attention a20" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
@@ -391,10 +479,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button211" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="21"  g="2" question="1" rate="1" ng-click>
-                            <img class="star button212" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="21"  g="2" question="1" rate="2" ng-click>
-                            <img class="star button213" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="21"  g="2" question="1" rate="3" ng-click>
-                            <img class="star button214" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="21"  g="2" question="1" rate="4" ng-click>
+                            <img class="star button211" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="33" q="21"  g="2" question="1" rate="1" ng-click />
+                            <img class="star button212" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="33" q="21"  g="2" question="1" rate="2" ng-click />
+                            <img class="star button213" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="33" q="21"  g="2" question="1" rate="3" ng-click />
+                            <img class="star button214" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="33" q="21"  g="2" question="1" rate="4" ng-click />
                         </div>
                         <div class="attention a21" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -405,10 +493,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button221" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="22" g="2" question="2" rate="1" ng-click>
-                            <img class="star button222" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="22" g="2" question="2" rate="2" ng-click>
-                            <img class="star button223" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="22" g="2" question="2" rate="3" ng-click>
-                            <img class="star button224" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="22" g="2" question="2" rate="4" ng-click>
+                            <img class="star button221" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="34" q="22" g="2" question="2" rate="1" ng-click />
+                            <img class="star button222" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="34" q="22" g="2" question="2" rate="2" ng-click />
+                            <img class="star button223" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="34" q="22" g="2" question="2" rate="3" ng-click />
+                            <img class="star button224" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="34" q="22" g="2" question="2" rate="4" ng-click />
                         </div>
                         <div class="attention a22" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -419,10 +507,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button231" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="23" g="2" question="3" rate="1" ng-click>
-                            <img class="star button232" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="23" g="2" question="3" rate="2" ng-click>
-                            <img class="star button233" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="23" g="2" question="3" rate="3" ng-click>
-                            <img class="star button234" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="23" g="2" question="3" rate="4" ng-click>
+                            <img class="star button231" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="35" q="23" g="2" question="3" rate="1" ng-click />
+                            <img class="star button232" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="35" q="23" g="2" question="3" rate="2" ng-click />
+                            <img class="star button233" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="35" q="23" g="2" question="3" rate="3" ng-click />
+                            <img class="star button234" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="35" q="23" g="2" question="3" rate="4" ng-click />
                         </div>
                         <div class="attention a23" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -441,19 +529,19 @@
                         <div class="span10 pull-right margin">
                             <div class="smileEva">
                                 <small lang="sk">veľmi nespokojný</small>
-                                <img class="star button301" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="30" g="3" question="0" rate="1" ng-click>
+                                <img class="star button301" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="36" q="30" g="3" question="0" rate="1" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">nespokojný</small>
-                                <img class="star button302" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="30" g="3" question="0" rate="2" ng-click>
+                                <img class="star button302" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="36" q="30" g="3" question="0" rate="2" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">spokojný</small>
-                                <img class="star button303" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="30" g="3" question="0" rate="3" ng-click>
+                                <img class="star button303" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="36" q="30" g="3" question="0" rate="3" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">veľmi spokojný</small>
-                                <img class="star button304" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="30" g="3" question="0" rate="4" ng-click>
+                                <img class="star button304" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="36" q="30" g="3" question="0" rate="4" ng-click />
                             </div>
                         </div>
                         <div class="attention a30" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
@@ -465,10 +553,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button311" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="31" g="3" question="1" rate="1" ng-click>
-                            <img class="star button312" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="31" g="3" question="1" rate="2" ng-click>
-                            <img class="star button313" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="31" g="3" question="1" rate="3" ng-click>
-                            <img class="star button314" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="31" g="3" question="1" rate="4" ng-click>
+                            <img class="star button311" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="37" q="31" g="3" question="1" rate="1" ng-click />
+                            <img class="star button312" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="37" q="31" g="3" question="1" rate="2" ng-click />
+                            <img class="star button313" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="37" q="31" g="3" question="1" rate="3" ng-click />
+                            <img class="star button314" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="37" q="31" g="3" question="1" rate="4" ng-click />
                         </div>
                         <div class="attention a31" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -479,10 +567,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button321" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="32" g="3" question="2" rate="1" ng-click>
-                            <img class="star button322" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="32" g="3" question="2" rate="2" ng-click>
-                            <img class="star button323" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="32" g="3" question="2" rate="3" ng-click>
-                            <img class="star button324" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="32" g="3" question="2" rate="4" ng-click>
+                            <img class="star button321" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="38" q="32" g="3" question="2" rate="1" ng-click />
+                            <img class="star button322" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="38" q="32" g="3" question="2" rate="2" ng-click />
+                            <img class="star button323" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="38" q="32" g="3" question="2" rate="3" ng-click />
+                            <img class="star button324" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="38" q="32" g="3" question="2" rate="4" ng-click />
                         </div>
                         <div class="attention a32" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -493,10 +581,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button331" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="33" g="3" question="3" rate="1" ng-click>
-                            <img class="star button332" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="33" g="3" question="3" rate="2" ng-click>
-                            <img class="star button333" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="33" g="3" question="3" rate="3" ng-click>
-                            <img class="star button334" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="33" g="3" question="3" rate="4" ng-click>
+                            <img class="star button331" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="39" q="33" g="3" question="3" rate="1" ng-click />
+                            <img class="star button332" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="39" q="33" g="3" question="3" rate="2" ng-click />
+                            <img class="star button333" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="39" q="33" g="3" question="3" rate="3" ng-click />
+                            <img class="star button334" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="39" q="33" g="3" question="3" rate="4" ng-click />
                         </div>
                         <div class="attention a33" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -507,10 +595,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button341" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="34" g="3" question="4" rate="1" ng-click>
-                            <img class="star button342" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="34" g="3" question="4" rate="2" ng-click>
-                            <img class="star button343" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="34" g="3" question="4" rate="3" ng-click>
-                            <img class="star button344" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="34" g="3" question="4" rate="4" ng-click>
+                            <img class="star button341" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="40" q="34" g="3" question="4" rate="1" ng-click />
+                            <img class="star button342" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="40" q="34" g="3" question="4" rate="2" ng-click />
+                            <img class="star button343" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="40" q="34" g="3" question="4" rate="3" ng-click />
+                            <img class="star button344" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="40" q="34" g="3" question="4" rate="4" ng-click />
                         </div>
                         <div class="attention a34" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -521,10 +609,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button351" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="35" g="3" question="5" rate="1" ng-click>
-                            <img class="star button352" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="35" g="3" question="5" rate="2" ng-click>
-                            <img class="star button353" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="35" g="3" question="5" rate="3" ng-click>
-                            <img class="star button354" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="35" g="3" question="5" rate="4" ng-click>
+                            <img class="star button351" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="41" q="35" g="3" question="5" rate="1" ng-click />
+                            <img class="star button352" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="41" q="35" g="3" question="5" rate="2" ng-click />
+                            <img class="star button353" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="41" q="35" g="3" question="5" rate="3" ng-click />
+                            <img class="star button354" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="41" q="35" g="3" question="5" rate="4" ng-click />
                         </div>
                         <div class="attention a35" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -544,19 +632,19 @@
                         <div class="span10 pull-right margin">
                             <div class="smileEva">
                                 <small lang="sk">veľmi nespokojný</small>
-                                <img class="star  button401" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="40" g="4" question="0" rate="1" ng-click>
+                                <img class="star  button401" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="42" q="40" g="4" question="0" rate="1" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">nespokojný</small>
-                                <img class="star  button402" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="40" g="4" question="0" rate="2" ng-click>
+                                <img class="star  button402" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="42" q="40" g="4" question="0" rate="2" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">spokojný</small>
-                                <img class="star  button403" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="40" g="4" question="0" rate="3" ng-click>
+                                <img class="star  button403" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="42" q="40" g="4" question="0" rate="3" ng-click />
                             </div>
                             <div class="smileEva">
                                 <small lang="sk">veľmi spokojný</small>
-                                <img class="star  button404" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="40" g="4" question="0" rate="4" ng-click>
+                                <img class="star  button404" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="42" q="40" g="4" question="0" rate="4" ng-click />
                             </div>
                         </div>
                         <div class="attention a40" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
@@ -568,10 +656,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button411" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="41" g="4" question="1" rate="1" ng-click>
-                            <img class="star button412" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="41" g="4" question="1" rate="2" ng-click>
-                            <img class="star button413" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="41" g="4" question="1" rate="3" ng-click>
-                            <img class="star button414" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="41" g="4" question="1" rate="4" ng-click>
+                            <img class="star button411" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="43" q="41" g="4" question="1" rate="1" ng-click />
+                            <img class="star button412" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="43" q="41" g="4" question="1" rate="2" ng-click />
+                            <img class="star button413" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="43" q="41" g="4" question="1" rate="3" ng-click />
+                            <img class="star button414" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="43" q="41" g="4" question="1" rate="4" ng-click />
                         </div>
                         <div class="attention a41" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -582,10 +670,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button421" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="42" g="4" question="2" rate="1" ng-click>
-                            <img class="star button422" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="42" g="4" question="2" rate="2" ng-click>
-                            <img class="star button423" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="42" g="4" question="2" rate="3" ng-click>
-                            <img class="star button424" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="42" g="4" question="2" rate="4" ng-click>
+                            <img class="star button421" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="44" q="42" g="4" question="2" rate="1" ng-click />
+                            <img class="star button422" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="44" q="42" g="4" question="2" rate="2" ng-click />
+                            <img class="star button423" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="44" q="42" g="4" question="2" rate="3" ng-click />
+                            <img class="star button424" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="44" q="42" g="4" question="2" rate="4" ng-click />
                         </div>
                         <div class="attention a42" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -596,10 +684,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button431" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="43" g="4" question="3" rate="1" ng-click>
-                            <img class="star button432" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="43" g="4" question="3" rate="2" ng-click>
-                            <img class="star button433" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="43" g="4" question="3" rate="3" ng-click>
-                            <img class="star button434" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="43" g="4" question="3" rate="4" ng-click>
+                            <img class="star button431" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="45" q="43" g="4" question="3" rate="1" ng-click />
+                            <img class="star button432" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="45" q="43" g="4" question="3" rate="2" ng-click />
+                            <img class="star button433" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="45" q="43" g="4" question="3" rate="3" ng-click />
+                            <img class="star button434" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="45" q="43" g="4" question="3" rate="4" ng-click />
                         </div>
                         <div class="attention a43" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -610,10 +698,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button441" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="44" g="4" question="4" rate="1" ng-click>
-                            <img class="star button442" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="44" g="4" question="4" rate="2" ng-click>
-                            <img class="star button443" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="44" g="4" question="4" rate="3" ng-click>
-                            <img class="star button444" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="44" g="4" question="4" rate="4" ng-click>
+                            <img class="star button441" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="46" q="44" g="4" question="4" rate="1" ng-click />
+                            <img class="star button442" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="46" q="44" g="4" question="4" rate="2" ng-click />
+                            <img class="star button443" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="46" q="44" g="4" question="4" rate="3" ng-click />
+                            <img class="star button444" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="46" q="44" g="4" question="4" rate="4" ng-click />
                         </div>
                         <div class="attention a44" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -624,10 +712,10 @@
                         </div>
                         
                         <div class="span10 pull-right margin">
-                            <img class="star button451" src="{$basePath}/www/img/Emoticons/128x128/1.png" q="45" g="4" question="5" rate="1" ng-click>
-                            <img class="star button452" src="{$basePath}/www/img/Emoticons/128x128/2.png" q="45" g="4" question="5" rate="2" ng-click>
-                            <img class="star button453" src="{$basePath}/www/img/Emoticons/128x128/3.png" q="45" g="4" question="5" rate="3" ng-click>
-                            <img class="star button454" src="{$basePath}/www/img/Emoticons/128x128/4.png" q="45" g="4" question="5" rate="4" ng-click>
+                            <img class="star button451" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/1.png" questionId="47" q="45" g="4" question="5" rate="1" ng-click />
+                            <img class="star button452" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/2.png" questionId="47" q="45" g="4" question="5" rate="2" ng-click />
+                            <img class="star button453" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/3.png" questionId="47" q="45" g="4" question="5" rate="3" ng-click />
+                            <img class="star button454" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128x128/4.png" questionId="47" q="45" g="4" question="5" rate="4" ng-click />
                         </div>
                         <div class="attention a45" style="display: none;" lang="sk">Prosíme ohodnoťte aj túto otázku</div>
                     </div>
@@ -642,34 +730,34 @@
 
 <div class="tooltips">
     <div id="firstTooltip" class="tooltip_1" rel="tooltip"></div>
-    <img class="tooltip_emoticon" src="{$basePath}/www/img/Emoticons/128/10.png">
+    <img class="tooltip_emoticon" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128/10.png" />
 </div>
 
 <div class="goAheadTooltip">
     <div id="secondTooltip" class="tooltip_2" rel="tooltip" title="test"></div>
-    <img class="tooltip_emoticon_2" src="{$basePath}/www/img/Emoticons/128/10.png">
+    <img class="tooltip_emoticon_2" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/Emoticons/128/10.png" />
 </div>
 
 <div class="bottomBar">
     <div class = 'iosSliderButtons'>
             <div class = 'button' id = 'item0'>
-                <img class="tooltip_arrow" src="{$basePath}/www/img/component_questionnaire2/arrowB.png">
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
                 <div class="navigationMenu" lang="sk">Rezervácie</div>
             </div>                  
             <div class = 'button' id = 'item1'>
-                <img class="tooltip_arrow" src="{$basePath}/www/img/component_questionnaire2/arrowB.png">
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
                 <div class="navigationMenu" lang="sk">Recepcia</div>
             </div>
             <div class = 'button' id = 'item2'>
-                <img class="tooltip_arrow" src="{$basePath}/www/img/component_questionnaire2/arrowB.png">
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
                 <div class="navigationMenu" lang="sk">Ubytovanie</div>
             </div>
             <div class = 'button' id = 'item3'>
-                <img class="tooltip_arrow" src="{$basePath}/www/img/component_questionnaire2/arrowB.png">
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
                 <div class="navigationMenu" lang="sk">Reštaurácia</div>
             </div>
             <div class = 'button' id = 'item4'>
-                <img class="tooltip_arrow" src="{$basePath}/www/img/component_questionnaire2/arrowB.png">
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
                 <div class="navigationMenu" lang="sk">Wellness</div>
             </div>
     </div>
@@ -684,6 +772,7 @@
     var question_count_g4 = 6;
 
     var checker0, checker1, checker2, checker3, checker4;
+    var r_questionnaire_id, question_id;
 
     var holder0 = [];
     var holder1 = [];
@@ -702,20 +791,24 @@
 
 	var score0 = 0,score1 = 0,score2 = 0,score3 = 0,score4 = 0, finalScore = 0;
     var finalScore = 0;
-    var host = {$basePath};
-    var page = "/questionnaire2/";
+    var host = <?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>;
+    var page = "/questionnaire2/?questionnaire_id=2&page=slideshow_2";
     var options = {};
 
     //function to handle the clicks on the stars
     $('img.star').click(function(){
 
-         $(".bottomBar").css("height","125px");
+        $(".bottomBar").css("height","125px");
 
-        rate = $(this).attr("rate");
-        g = $(this).attr("g");
-        question = $(this).attr("q");
-        question_img = $(this).attr("question");
-        item;
+        //prepare input to ajax update
+        r_questionnaire_id = $.showEmos.questionnaireId;
+        question_id        = $(this).attr("questionId");
+        rate               = $(this).attr("rate");
+        g                  = $(this).attr("g");
+        question           = $(this).attr("q");
+        question_img       = $(this).attr("question");
+        
+        ajaxStartUpdate(r_questionnaire_id,question_id,rate);
 
         for (var i = 1 ; i < 5; i++) {
            item = g+question_img+i;
@@ -740,7 +833,7 @@
             		checker0--;
             		score0++;
                     $.showEmos.emo0 = score0;
-                    $(".emoChecker").click();
+                    //$(".emoChecker").click();
             	}
             }
             if(checker0 == 0) group0complete = true;
@@ -976,6 +1069,7 @@
         }
 
         if(checkSummary() == true && digitOK == true){
+            ajaxStartUpdateSummaryEvaluation($.showEmos.questionnaireId,input, summaryEvaluation, finalScore );
             $('#myModal').modal('hide');
             $.blockUI({ message: $('.timer') }); 
             startCountDown(5000);

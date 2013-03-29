@@ -1,10 +1,10 @@
-<?php //netteCache[01]000420a:2:{s:4:"time";s:21:"0.39309200 1364508997";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:98:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire.latte";i:2;i:1364508996;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.96259700 1364515070";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364515053;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
-// source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire.latte
+// source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'vsct1wwyjr')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'lv4gxy5m16')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -792,7 +792,7 @@ if (!empty($_control->snippetMode)) {
 	var score0 = 0,score1 = 0,score2 = 0,score3 = 0,score4 = 0, finalScore = 0;
     var finalScore = 0;
     var host = <?php echo Nette\Templating\Helpers::escapeJs($basePath) ?>;
-    var page = "/questionnaire2/";
+    var page = "/questionnaire2/?questionnaire_id=1&page=slideshow_1";
     var options = {};
 
     //function to handle the clicks on the stars

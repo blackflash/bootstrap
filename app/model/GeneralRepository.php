@@ -67,6 +67,10 @@ class GeneralRepository extends Repository
 		return $this->connection->table($tableName)->where(array($column => $value))->delete();
 	}
 
+	/*---------- questionnaire processes ---------------*/
+	public function updateQuestionnaire($tableName,$r_questionnaire_id,$question_id,$rate){
+		return $this->connection->table($tableName)->where("r_questionnaire_id",$r_questionnaire_id)->where("question_id",$question_id)->update(array("rate" => $rate));
+	}
 	
 
 	/*--------- delete process ---------*/

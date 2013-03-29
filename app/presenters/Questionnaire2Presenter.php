@@ -12,50 +12,29 @@ class Questionnaire2Presenter extends BasePresenter
 	    parent::startup();
 	}
 
-	public function renderDefault($questionnaire_id = "1",$page = "slideshow"){
+	public function renderDefault($questionnaire_id,$page){
 
 		$this->template->questionnaire_id 	= $questionnaire_id;
 		$this->template->questionnaire		= $this->context->generalRepository->getByTableAndId("questionnaire","questionnaire_id",$questionnaire_id)->fetch();
-		$this->template->categories			= $this->context->generalRepository->getByTableAndId("questionnaire_category","questionnaire_id",$questionnaire_id);
-		$this->template->language_pack		= $this->context->generalRepository->getByTableAndId("language_pack","questionnaire_id",$questionnaire_id);
-
+		
 		$this->template->title = $this->template->questionnaire->title;
-		$this->template->questions 			= $this->prepareQuestions($this->template->categories);
+		$this->template->language_pack		= $this->context->generalRepository->getByTableAndId("language_pack","questionnaire_id",$questionnaire_id);
+		
+		//$this->template->categories			= $this->context->generalRepository->getByTableAndId("questionnaire_category","questionnaire_id",$questionnaire_id);
+		//$this->template->questions 			= $this->prepareQuestions($this->template->categories);
+
 		$this->template->page = $page.".latte";
-	
-		//$this->testInsert("1","sk");
 	}
 
 
-	protected function testInsert($questionnaire_id,$language){
-		$questionnaireData = array(
-				"r_questionnaire_id" => "",
-				"questionnaire_id"   => $questionnaire_id,
-				"start_date"         => NULL,
-				"language_selected"  => $language,
-				"room"               => NULL,
-				"submit_time"        => NULL,
-				"score"              => NULL
-			);
-
-			//insert to result_questionnaire
-			$this->context->generalRepository->insertRowByTable("result_questionnaire",$questionnaireData);
-
-			$r_questionnaire_id = $this->context->generalRepository->getLastInsertedId("result_questionnaire","r_questionnaire_id");
-			
-			//insert Questions
-			$this->inserQuestionToResultTable($r_questionnaire_id, $this->template->categories);
-			$jsondata = $r_questionnaire_id;
-
-			echo "<pre>";
-			print_r($jsondata);
-			echo "</pre>";
-			die();
+	protected function testUpdate($r_questionnaire_id,$question_id,$rate){
+		$this->context->generalRepository->updateQuestionnaire("result_question",$r_questionnaire_id,$question_id,$rate);
 	}
 
 	//pripravi otazky rozdelene podla kategorii
 	protected function prepareQuestions($categories){
 		$questions = array();
+		$temp = array();
 
 		foreach ($categories as $key => $value) {
 			
@@ -67,13 +46,16 @@ class Questionnaire2Presenter extends BasePresenter
 					$group[$value2->question_id]["category_id"] = $value2->category_id;
 					$group[$value2->question_id]["text_SK"]     = $value2->text_SK;
 					$group[$value2->question_id]["text_EN"]     = $value2->text_EN;
+
 				}
+					$temp += $group;
 			}
 
 			$questions[$value->category_id] = $group;
 		}
-		return $questions;
+		return $temp;
 	}
+
 
 	//pripravi len otazky
 	protected function inserQuestionToResultTable($r_questionnaire_id,$categories){
@@ -96,6 +78,8 @@ class Questionnaire2Presenter extends BasePresenter
 		return $questions;
 	}
 
+
+	// Prepade empty questionnaire to be filled in future
 	public function handlejsonPrepareQuestionnaire($questionnaire_id,$language){
 		if ($this->isAjax()) {
 
@@ -117,6 +101,42 @@ class Questionnaire2Presenter extends BasePresenter
 			//insert Questions
 			$this->inserQuestionToResultTable($r_questionnaire_id, $categories);
 	        echo json_encode($r_questionnaire_id);
+	        die();
+	    }
+	}
+
+	// update prepared questionnaire
+	public function handlejsonUpdateQuestionnaire($r_questionnaire_id,$question_id,$rate){
+		if ($this->isAjax()) {
+
+			if($this->context->generalRepository->updateQuestionnaire("result_question",$r_questionnaire_id,$question_id,$rate))
+	        echo json_encode(true);
+	    	else
+	        echo json_encode(false);
+	        die();
+	    }
+	}
+
+
+	// update summary evaluation to prepared questionnaire
+	public function handlejsonUpdateSummaryEvaluationQuestionnaire($r_questionnaire_id,$room,$summaryEva,$score){
+		if ($this->isAjax()) {
+
+			date_default_timezone_set('Europe/Bratislava');
+			$date = new DateTime();
+			$submit_time = date('Y-m-d H:i:s',$date->getTimestamp());
+
+			$data = array(
+				'room' => $room, 
+				'submit_time' => $submit_time, 
+				'summary_evaluation' => $summaryEva,
+				'score' => $score
+			);
+
+			if($this->context->generalRepository->updateTableById("result_questionnaire","r_questionnaire_id",$r_questionnaire_id,$data))
+	        echo json_encode(true);
+	    	else
+	        echo json_encode(false);
 	        die();
 	    }
 	}

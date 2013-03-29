@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2013 at 04:53 AM
+-- Generation Time: Mar 28, 2013 at 10:51 PM
 -- Server version: 5.5.18
 -- PHP Version: 5.3.8
 
@@ -222,8 +222,8 @@ INSERT INTO `city` (`city_id`, `title`, `description`, `created_time`) VALUES
 (5, 'Brno', 'kratky popis brna', '2013-03-01 04:01:02'),
 (6, 'Prešov', 'presovka lekaren', '2013-03-01 04:04:31'),
 (8, 'Brusel', 'Short info about city or country', '2013-03-04 01:23:51'),
-(10, 'Tatranská Lomnica', 'TMR hotely', '2013-03-27 20:17:59'),
-(12, 'Starý Smokovec', 'TRM Hotel', '2013-03-27 20:22:18');
+(10, 'Tatranská Lomnica', 'TMR Hotel', '2013-03-27 20:17:59'),
+(12, 'Jasná', 'TRM Hotel', '2013-03-27 20:22:18');
 
 -- --------------------------------------------------------
 
@@ -970,21 +970,15 @@ CREATE TABLE IF NOT EXISTS `result_category` (
 --
 
 CREATE TABLE IF NOT EXISTS `result_question` (
-  `r_question_id` int(11) NOT NULL,
+  `r_question_id` int(11) NOT NULL AUTO_INCREMENT,
+  `r_questionnaire_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `evaluate_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `rate` int(11) DEFAULT '0',
   PRIMARY KEY (`r_question_id`),
-  KEY `r_category_id` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `result_question`
---
-
-INSERT INTO `result_question` (`r_question_id`, `question_id`, `category_id`, `evaluate_time`, `rate`) VALUES
-(0, 2, 2, '2013-03-28 03:51:54', NULL);
+  KEY `r_questionnaire_id` (`r_questionnaire_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=116 ;
 
 -- --------------------------------------------------------
 
@@ -995,7 +989,7 @@ INSERT INTO `result_question` (`r_question_id`, `question_id`, `category_id`, `e
 CREATE TABLE IF NOT EXISTS `result_questionnaire` (
   `r_questionnaire_id` int(11) NOT NULL AUTO_INCREMENT,
   `questionnaire_id` int(11) NOT NULL,
-  `start_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `language_selected` varchar(5) DEFAULT NULL,
   `room` int(11) DEFAULT NULL,
   `submit_time` timestamp NULL DEFAULT NULL,
@@ -1005,14 +999,7 @@ CREATE TABLE IF NOT EXISTS `result_questionnaire` (
   KEY `questionnaire_id_2` (`questionnaire_id`),
   KEY `questionnaire_id_3` (`questionnaire_id`),
   KEY `questionnaire_id_4` (`questionnaire_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
-
---
--- Dumping data for table `result_questionnaire`
---
-
-INSERT INTO `result_questionnaire` (`r_questionnaire_id`, `questionnaire_id`, `start_date`, `language_selected`, `room`, `submit_time`, `score`) VALUES
-(11, 1, NULL, 'sk', NULL, NULL, NULL);
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -1217,10 +1204,10 @@ ALTER TABLE `questionnaire_question`
   ADD CONSTRAINT `questionnaire_question_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `questionnaire_category` (`category_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `result_category`
+-- Constraints for table `result_question`
 --
-ALTER TABLE `result_category`
-  ADD CONSTRAINT `result_category_ibfk_2` FOREIGN KEY (`r_questionnaire_id`) REFERENCES `result_questionnaire` (`questionnaire_id`);
+ALTER TABLE `result_question`
+  ADD CONSTRAINT `result_question_ibfk_1` FOREIGN KEY (`r_questionnaire_id`) REFERENCES `result_questionnaire` (`r_questionnaire_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `result_questionnaire`
