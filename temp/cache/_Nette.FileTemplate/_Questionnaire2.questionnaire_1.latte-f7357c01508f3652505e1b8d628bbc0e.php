@@ -1,10 +1,10 @@
-<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.96259700 1364515070";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364515053;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.88794300 1364521201";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364521196;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'lv4gxy5m16')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'vq53vm0zxy')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -310,9 +310,9 @@ if (!empty($_control->snippetMode)) {
 			<div class = 'item' id = 'item0'>
 				<p class="question" lang="sk">Ako ste boli spokojní s rezervačným oddelením ?</p>
 
-				<div class=" starsRatingSystem g0">
+				<div class="starsRatingSystem group0">
                     <div class="row g0q0">
-                        <div class="span2">
+                        <div class="span2 firstLine">
                             <p class="color0" style="width: 35%;" lang="sk">Rýchlosť a profesionalita:</p>
                         </div>
                         
@@ -385,9 +385,9 @@ if (!empty($_control->snippetMode)) {
 			<div class = 'item' id = 'item1'>
 				<p class="question" lang="sk">Ako hodnotíte prácu recepcie a príchod do hotela ?</p>
 				
-				<div class="container starsRatingSystem g1">
+				<div class="container starsRatingSystem group1">
                     <div class="row g1q0">
-                        <div class="span2">
+                        <div class="span2 firstLine">
                             <p class="color0" style="width: 35%;" lang="sk">Proces registrácie – check in:</p>
                         </div>
                         
@@ -448,7 +448,7 @@ if (!empty($_control->snippetMode)) {
 
 				<div class="container starsRatingSystem group2">
                     <div class="row q0">
-                        <div class="span2">
+                        <div class="span2 firstLine">
                             <p class="color0" style="width: 35%;" lang="sk">Čistota izby:</p>
                         </div>
                         
@@ -522,7 +522,7 @@ if (!empty($_control->snippetMode)) {
 
 				<div class="container starsRatingSystem group3">
                     <div class="row q0">
-                        <div class="span2">
+                        <div class="span2 firstLine">
                             <p class="color0" style="width: 35%;" lang="sk">Atmosféra a dekorácie:</p>
                         </div>
                         
@@ -625,7 +625,7 @@ if (!empty($_control->snippetMode)) {
 
 				<div class="container starsRatingSystem group4">
                     <div class="row q0">
-                        <div class="span2">
+                        <div class="span2 firstLine">
                             <p class="color0" style="width: 35%;" lang="sk">Čistota wellness:</p>
                         </div>
                         

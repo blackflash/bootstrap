@@ -408,9 +408,13 @@ p {
     display: inline-block !important;
 }
 
+.smileEvaText {
+	margin-left: -1px;
+}
+
 .smileEva {
 	float: left;
-	width: 110px;
+	width: 113px;
 }
 
 .smileEva small{
@@ -426,13 +430,11 @@ smallEvaText {
 	line-height: 0px;
 }
 
-
-
-/*--------- text ------*/
-.color0 {
-	width: 50px;
+.firstLine {
+	margin-top: 30px;
 }
 
+/*--------- text ------*/
 .attention {
 	font-family: 'Myriad Pro', Arial, sans-serif;
 	color: red;
@@ -468,6 +470,18 @@ smallEvaText {
 	text-align: left;
 	line-height: 27px;
 	margin-top: 27px;
+}
+
+.group0 {
+	margin-top: 140px;
+}
+
+.group1 {
+	margin-top: 190px;
+}
+
+.group2 {
+	margin-top: 150px;
 }
 
 .textShadow {

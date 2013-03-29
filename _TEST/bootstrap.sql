@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2013 at 10:51 PM
+-- Generation Time: Mar 29, 2013 at 03:27 AM
 -- Server version: 5.5.18
 -- PHP Version: 5.3.8
 
@@ -740,7 +740,7 @@ CREATE TABLE IF NOT EXISTS `language_pack` (
   KEY `questionnaire_id` (`questionnaire_id`),
   KEY `language_id` (`language_id`),
   KEY `language_id_2` (`language_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `language_pack`
@@ -748,7 +748,9 @@ CREATE TABLE IF NOT EXISTS `language_pack` (
 
 INSERT INTO `language_pack` (`language_pack_id`, `questionnaire_id`, `title`, `text`, `image`, `language_id`) VALUES
 (1, 1, 'Začat hodnotiť', 'Vaše postrehy a pripomienky sú pre nás mimoriadne dôležité, a preto by sme Vás chceli požiadať o vyplnenie tohto krátkeho dotazníka spokojnosti.', 'sk.png', 1),
-(2, 1, 'Start evaluation', 'Your comments and suggestions are really important to us, thus we would like to ask to fill out this short survey.', 'uk.png', 2);
+(2, 1, 'Start evaluation', 'Your comments and suggestions are really important to us, thus we would like to ask to fill out this short survey.', 'uk.png', 2),
+(3, 2, 'Začat hodnotiť', 'Vaše postrehy a pripomienky sú pre nás mimoriadne dôležité, a preto by sme Vás chceli požiadať o vyplnenie tohto krátkeho dotazníka spokojnosti.', 'sk.png', 1),
+(4, 2, 'Start evaluation', 'Your comments and suggestions are really important to us, thus we would like to ask to fill out this short survey.', 'uk.png', 2);
 
 -- --------------------------------------------------------
 
@@ -785,7 +787,7 @@ CREATE TABLE IF NOT EXISTS `location` (
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`location_id`),
   KEY `city_id` (`city_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `location`
@@ -796,7 +798,8 @@ INSERT INTO `location` (`location_id`, `city_id`, `title`, `description`, `creat
 (4, 2, 'Lekáreň', 'Lekáreň u Zuzky', '2013-03-01 01:15:19'),
 (12, 2, 'Lekáreň Optima', 'Lekáreň Dr.Max v Optime', '2013-03-01 19:21:11'),
 (16, 8, 'Bank in Brusel', 'Short campaign about customers satisfaction.', '2013-03-04 01:24:30'),
-(17, 10, 'Grandhotel Praha', 'Tatranská Lomnica, Vysoké Tatry', '2013-03-27 20:20:16');
+(17, 10, 'Grandhotel Praha****', 'Tatranská Lomnica, Vysoké Tatry', '2013-03-27 20:20:16'),
+(18, 12, 'Hotel Grand****', 'Jasná, Nízke Tatry', '2013-03-28 23:27:38');
 
 -- --------------------------------------------------------
 
@@ -846,6 +849,7 @@ INSERT INTO `project` (`id`, `name`, `status`, `description`, `owner`, `date_cre
 CREATE TABLE IF NOT EXISTS `questionnaire` (
   `questionnaire_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
+  `slideshow_id` int(11) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `general_link` varchar(255) NOT NULL,
@@ -859,15 +863,17 @@ CREATE TABLE IF NOT EXISTS `questionnaire` (
   `hidden` int(11) DEFAULT '0',
   PRIMARY KEY (`questionnaire_id`),
   KEY `location_id` (`location_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  KEY `user_id` (`user_id`),
+  KEY `slideshow_id` (`slideshow_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `questionnaire`
 --
 
-INSERT INTO `questionnaire` (`questionnaire_id`, `user_id`, `title`, `description`, `general_link`, `location_id`, `created_time`, `date_start`, `date_finish`, `status`, `tos`, `priority`, `hidden`) VALUES
-(1, 2, 'TMR Grand Hotel Praha', 'TMR dotaznik Tatranska Lomnica', '', 17, '2013-03-27 22:36:20', '2013-03-28 23:00:00', '2013-03-31 22:00:00', 'created', 1, 50, 0);
+INSERT INTO `questionnaire` (`questionnaire_id`, `user_id`, `slideshow_id`, `title`, `description`, `general_link`, `location_id`, `created_time`, `date_start`, `date_finish`, `status`, `tos`, `priority`, `hidden`) VALUES
+(1, 2, 1, 'TMR Grand Hotel Praha', 'TMR dotaznik Tatranska Lomnica', '?questionnaire_id=1&page=slideshow_1', 17, '2013-03-27 22:36:20', '2013-03-28 23:00:00', '2013-03-31 22:00:00', 'created', 1, 50, 0),
+(2, 2, 2, 'TMR Grand Hotel Jasná', 'TMR dotaznik Jasná', '?questionnaire_id=2&page=slideshow_2', 18, '2013-03-28 23:34:01', '2013-03-28 23:00:00', '2013-04-01 22:00:00', 'created', 1, 50, 0);
 
 -- --------------------------------------------------------
 
@@ -885,7 +891,7 @@ CREATE TABLE IF NOT EXISTS `questionnaire_category` (
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`category_id`),
   KEY `questionnaire_id` (`questionnaire_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `questionnaire_category`
@@ -896,7 +902,12 @@ INSERT INTO `questionnaire_category` (`category_id`, `questionnaire_id`, `main_q
 (3, 1, 'Ako hodnotíte prácu recepcie a príchod do hotela ?', 'How satisfied have you been with front desk experience ?', 'Recepcia', 'Reception', NULL),
 (4, 1, 'Ako hodnotíte ubytovanie a kvalitu izieb ?', 'How satisfied have you been with room  experience ?', 'Ubytovanie', 'Accommodation', NULL),
 (5, 1, 'Ako hodnotíte prácu reštaurácie ?', 'How satisfied have you been with restaurant experience ?', 'Reštaurácia', 'Restaurant', NULL),
-(6, 1, 'Ako hodnotíte wellness hotela ?', 'How satisfied have you been with wellness experience ?', 'Wellness', 'Wellness', NULL);
+(6, 1, 'Ako hodnotíte wellness hotela ?', 'How satisfied have you been with wellness experience ?', 'Wellness', 'Wellness', NULL),
+(7, 2, 'Ako ste boli spokojní s rezervačným oddelením ?', 'How satisfied have you been with reservation experience ?', 'Rezervácie', 'Reservation', NULL),
+(8, 2, 'Ako hodnotíte prácu recepcie a príchod do hotela ?', 'How satisfied have you been with front desk experience ?', 'Recepcia', 'Reception', NULL),
+(9, 2, 'Ako hodnotíte ubytovanie a kvalitu izieb ?', 'How satisfied have you been with room  experience ?', 'Ubytovanie', 'Accommodation', NULL),
+(10, 2, 'Ako hodnotíte prácu reštaurácie ?', 'How satisfied have you been with restaurant experience ?', 'Reštaurácia', 'Restaurant', NULL),
+(11, 2, 'Ako hodnotíte wellness hotela ?', 'How satisfied have you been with wellness experience ?', 'Wellness', 'Wellness', NULL);
 
 -- --------------------------------------------------------
 
@@ -915,53 +926,59 @@ CREATE TABLE IF NOT EXISTS `questionnaire_question` (
   KEY `category_id` (`category_id`),
   KEY `category_id_2` (`category_id`),
   KEY `category_id_3` (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `questionnaire_question`
 --
 
 INSERT INTO `questionnaire_question` (`question_id`, `category_id`, `text_SK`, `text_EN`, `hidden`, `time`) VALUES
-(2, 2, 'Rýchlosť a profesionalita', 'Speed and professionalism', 0, '2013-03-27 21:38:23'),
-(3, 2, 'Presnosť', 'Accuracy of reservation', 0, '2013-03-27 21:38:23'),
-(4, 2, 'Ochota pomôcť a priateľskosť', 'Agent willingness to help', 0, '2013-03-27 21:38:23'),
-(5, 2, 'Znalosť rezervačného agenta', 'Knowledge of agent', 0, '2013-03-27 21:38:23'),
-(6, 3, 'Proces registrácie – check in', 'Check in procedure', 0, '2013-03-27 21:40:08'),
-(7, 3, 'Proces odubytovania', 'check out', 0, '2013-03-27 21:40:08'),
-(8, 3, 'Ochota pomôcť a priateľskosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 21:40:08'),
-(9, 4, 'Čistota izby', 'Cleanliness of room', 0, '2013-03-27 21:48:01'),
-(10, 4, 'Vybavenie izby', 'Comfort and functionality of room', 0, '2013-03-27 21:48:01'),
-(11, 4, 'Atmosféra v hoteli', 'Hotel ambience', 0, '2013-03-27 21:48:01'),
-(12, 4, 'Večerný program', 'Evening entertainment', 0, '2013-03-27 21:48:01'),
-(13, 5, 'Atmosféra a dekorácie', 'Ambience and decoration', 0, '2013-03-27 21:50:18'),
-(14, 5, 'Raňajkový bufet', 'Breakfast buffet', 0, '2013-03-27 21:50:18'),
-(15, 5, 'Kvalita a kreativita večerného menu', 'Quality and creativity of evening menu', 0, '2013-03-27 21:50:18'),
-(16, 5, 'Ponuka vína', 'Wine selection', 0, '2013-03-27 21:50:18'),
-(17, 5, 'Bar a kaviareň', 'Lobby bar experience', 0, '2013-03-27 21:50:18'),
-(18, 5, 'Ochota pomôcť a priateľskosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 21:50:18'),
-(19, 6, 'Čistota wellness', 'Cleanliness of wellness area', 0, '2013-03-27 21:53:46'),
-(20, 6, 'Dostatok uterákov a plachiet', 'Number of towels and blankets', 0, '2013-03-27 21:53:46'),
-(21, 6, 'Ponuka odpočívadiel a oddychových častí', 'Size of resting area', 0, '2013-03-27 21:53:46'),
-(22, 6, 'Atmosféra a dekorácie', 'Ambience and decoration', 0, '2013-03-27 21:53:46'),
-(23, 6, 'Ponuka masáži a procedúr', 'Selection of treatments', 0, '2013-03-27 21:53:46'),
-(24, 6, 'Ochota pomôcť a priateľstkosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 21:53:46');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `result_category`
---
-
-CREATE TABLE IF NOT EXISTS `result_category` (
-  `r_category_id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) NOT NULL,
-  `r_questionnaire_id` int(11) NOT NULL,
-  PRIMARY KEY (`r_category_id`),
-  UNIQUE KEY `r_category_id` (`r_category_id`),
-  KEY `r_questionnaire_id` (`r_questionnaire_id`),
-  KEY `r_questionnaire_id_2` (`r_questionnaire_id`),
-  KEY `category_id` (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+(2, 2, 'Rýchlosť a profesionalita', 'Speed and professionalism', 0, '2013-03-27 20:38:23'),
+(3, 2, 'Presnosť', 'Accuracy of reservation', 0, '2013-03-27 20:38:23'),
+(4, 2, 'Ochota pomôcť a priateľskosť', 'Agent willingness to help', 0, '2013-03-27 20:38:23'),
+(5, 2, 'Znalosť rezervačného agenta', 'Knowledge of agent', 0, '2013-03-27 20:38:23'),
+(6, 3, 'Proces registrácie – check in', 'Check in procedure', 0, '2013-03-27 20:40:08'),
+(7, 3, 'Proces odubytovania', 'check out', 0, '2013-03-27 20:40:08'),
+(8, 3, 'Ochota pomôcť a priateľskosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 20:40:08'),
+(9, 4, 'Čistota izby', 'Cleanliness of room', 0, '2013-03-27 20:48:01'),
+(10, 4, 'Vybavenie izby', 'Comfort and functionality of room', 0, '2013-03-27 20:48:01'),
+(11, 4, 'Atmosféra v hoteli', 'Hotel ambience', 0, '2013-03-27 20:48:01'),
+(12, 4, 'Večerný program', 'Evening entertainment', 0, '2013-03-27 20:48:01'),
+(13, 5, 'Atmosféra a dekorácie', 'Ambience and decoration', 0, '2013-03-27 20:50:18'),
+(14, 5, 'Raňajkový bufet', 'Breakfast buffet', 0, '2013-03-27 20:50:18'),
+(15, 5, 'Kvalita a kreativita večerného menu', 'Quality and creativity of evening menu', 0, '2013-03-27 20:50:18'),
+(16, 5, 'Ponuka vína', 'Wine selection', 0, '2013-03-27 20:50:18'),
+(17, 5, 'Bar a kaviareň', 'Lobby bar experience', 0, '2013-03-27 20:50:18'),
+(18, 5, 'Ochota pomôcť a priateľskosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 20:50:18'),
+(19, 6, 'Čistota wellness', 'Cleanliness of wellness area', 0, '2013-03-27 20:53:46'),
+(20, 6, 'Dostatok uterákov a plachiet', 'Number of towels and blankets', 0, '2013-03-27 20:53:46'),
+(21, 6, 'Ponuka odpočívadiel a oddychových častí', 'Size of resting area', 0, '2013-03-27 20:53:46'),
+(22, 6, 'Atmosféra a dekorácie', 'Ambience and decoration', 0, '2013-03-27 20:53:46'),
+(23, 6, 'Ponuka masáži a procedúr', 'Selection of treatments', 0, '2013-03-27 20:53:46'),
+(24, 6, 'Ochota pomôcť a priateľstkosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 20:53:46'),
+(25, 7, 'Rýchlosť a profesionalita', 'Speed and professionalism', 0, '2013-03-27 20:38:23'),
+(26, 7, 'Presnosť', 'Accuracy of reservation', 0, '2013-03-27 20:38:23'),
+(27, 7, 'Ochota pomôcť a priateľskosť', 'Agent willingness to help', 0, '2013-03-27 20:38:23'),
+(28, 7, 'Znalosť rezervačného agenta', 'Knowledge of agent', 0, '2013-03-27 20:38:23'),
+(29, 8, 'Proces registrácie – check in', 'Check in procedure', 0, '2013-03-27 20:40:08'),
+(30, 8, 'Proces odubytovania', 'check out', 0, '2013-03-27 20:40:08'),
+(31, 8, 'Ochota pomôcť a priateľskosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 20:40:08'),
+(32, 9, 'Čistota izby', 'Cleanliness of room', 0, '2013-03-27 20:48:01'),
+(33, 9, 'Vybavenie izby', 'Comfort and functionality of room', 0, '2013-03-27 20:48:01'),
+(34, 9, 'Atmosféra v hoteli', 'Hotel ambience', 0, '2013-03-27 20:48:01'),
+(35, 9, 'Večerný program', 'Evening entertainment', 0, '2013-03-27 20:48:01'),
+(36, 10, 'Atmosféra a dekorácie', 'Ambience and decoration', 0, '2013-03-27 20:50:18'),
+(37, 10, 'Raňajkový bufet', 'Breakfast buffet', 0, '2013-03-27 20:50:18'),
+(38, 10, 'Kvalita a kreativita večerného menu', 'Quality and creativity of evening menu', 0, '2013-03-27 20:50:18'),
+(39, 10, 'Ponuka vína', 'Wine selection', 0, '2013-03-27 20:50:18'),
+(40, 10, 'Bar a kaviareň', 'Lobby bar experience', 0, '2013-03-27 20:50:18'),
+(41, 10, 'Ochota pomôcť a priateľskosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 20:50:18'),
+(42, 11, 'Čistota wellness', 'Cleanliness of wellness area', 0, '2013-03-27 20:53:46'),
+(43, 11, 'Dostatok uterákov a plachiet', 'Number of towels and blankets', 0, '2013-03-27 20:53:46'),
+(44, 11, 'Ponuka odpočívadiel a oddychových častí', 'Size of resting area', 0, '2013-03-27 20:53:46'),
+(45, 11, 'Atmosféra a dekorácie', 'Ambience and decoration', 0, '2013-03-27 20:53:46'),
+(46, 11, 'Ponuka masáži a procedúr', 'Selection of treatments', 0, '2013-03-27 20:53:46'),
+(47, 11, 'Ochota pomôcť a priateľstkosť', 'Staff friendliness and willingness to help', 0, '2013-03-27 20:53:46');
 
 -- --------------------------------------------------------
 
@@ -978,7 +995,59 @@ CREATE TABLE IF NOT EXISTS `result_question` (
   `rate` int(11) DEFAULT '0',
   PRIMARY KEY (`r_question_id`),
   KEY `r_questionnaire_id` (`r_questionnaire_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=116 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=369 ;
+
+--
+-- Dumping data for table `result_question`
+--
+
+INSERT INTO `result_question` (`r_question_id`, `r_questionnaire_id`, `question_id`, `category_id`, `evaluate_time`, `rate`) VALUES
+(323, 21, 2, 2, '2013-03-29 02:17:15', 0),
+(324, 21, 3, 2, '2013-03-29 02:17:15', 0),
+(325, 21, 4, 2, '2013-03-29 02:17:15', 0),
+(326, 21, 5, 2, '2013-03-29 02:17:15', 0),
+(327, 21, 6, 3, '2013-03-29 02:17:15', 0),
+(328, 21, 7, 3, '2013-03-29 02:17:15', 0),
+(329, 21, 8, 3, '2013-03-29 02:17:15', 0),
+(330, 21, 9, 4, '2013-03-29 02:17:21', 4),
+(331, 21, 10, 4, '2013-03-29 02:17:21', 4),
+(332, 21, 11, 4, '2013-03-29 02:17:20', 3),
+(333, 21, 12, 4, '2013-03-29 02:17:17', 1),
+(334, 21, 13, 5, '2013-03-29 02:17:15', 0),
+(335, 21, 14, 5, '2013-03-29 02:17:15', 0),
+(336, 21, 15, 5, '2013-03-29 02:17:15', 0),
+(337, 21, 16, 5, '2013-03-29 02:17:15', 0),
+(338, 21, 17, 5, '2013-03-29 02:17:15', 0),
+(339, 21, 18, 5, '2013-03-29 02:17:15', 0),
+(340, 21, 19, 6, '2013-03-29 02:17:15', 0),
+(341, 21, 20, 6, '2013-03-29 02:17:15', 0),
+(342, 21, 21, 6, '2013-03-29 02:17:15', 0),
+(343, 21, 22, 6, '2013-03-29 02:17:15', 0),
+(344, 21, 23, 6, '2013-03-29 02:17:15', 0),
+(345, 21, 24, 6, '2013-03-29 02:17:15', 0),
+(346, 23, 25, 7, '2013-03-29 02:27:16', 0),
+(347, 23, 26, 7, '2013-03-29 02:27:16', 0),
+(348, 23, 27, 7, '2013-03-29 02:27:16', 0),
+(349, 23, 28, 7, '2013-03-29 02:27:16', 0),
+(350, 23, 29, 8, '2013-03-29 02:27:21', 4),
+(351, 23, 30, 8, '2013-03-29 02:27:21', 4),
+(352, 23, 31, 8, '2013-03-29 02:27:21', 4),
+(353, 23, 32, 9, '2013-03-29 02:27:16', 0),
+(354, 23, 33, 9, '2013-03-29 02:27:16', 0),
+(355, 23, 34, 9, '2013-03-29 02:27:16', 0),
+(356, 23, 35, 9, '2013-03-29 02:27:16', 0),
+(357, 23, 36, 10, '2013-03-29 02:27:16', 0),
+(358, 23, 37, 10, '2013-03-29 02:27:16', 0),
+(359, 23, 38, 10, '2013-03-29 02:27:16', 0),
+(360, 23, 39, 10, '2013-03-29 02:27:16', 0),
+(361, 23, 40, 10, '2013-03-29 02:27:16', 0),
+(362, 23, 41, 10, '2013-03-29 02:27:16', 0),
+(363, 23, 42, 11, '2013-03-29 02:27:16', 0),
+(364, 23, 43, 11, '2013-03-29 02:27:16', 0),
+(365, 23, 44, 11, '2013-03-29 02:27:16', 0),
+(366, 23, 45, 11, '2013-03-29 02:27:16', 0),
+(367, 23, 46, 11, '2013-03-29 02:27:16', 0),
+(368, 23, 47, 11, '2013-03-29 02:27:16', 0);
 
 -- --------------------------------------------------------
 
@@ -994,12 +1063,59 @@ CREATE TABLE IF NOT EXISTS `result_questionnaire` (
   `room` int(11) DEFAULT NULL,
   `submit_time` timestamp NULL DEFAULT NULL,
   `score` int(11) DEFAULT NULL,
+  `summary_evaluation` int(11) DEFAULT NULL,
   PRIMARY KEY (`r_questionnaire_id`),
   KEY `questionnaire_id` (`questionnaire_id`),
   KEY `questionnaire_id_2` (`questionnaire_id`),
   KEY `questionnaire_id_3` (`questionnaire_id`),
   KEY `questionnaire_id_4` (`questionnaire_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+
+--
+-- Dumping data for table `result_questionnaire`
+--
+
+INSERT INTO `result_questionnaire` (`r_questionnaire_id`, `questionnaire_id`, `start_date`, `language_selected`, `room`, `submit_time`, `score`, `summary_evaluation`) VALUES
+(21, 1, '2013-03-29 02:17:15', 'en', 0, '2013-03-29 02:17:23', 4, 3),
+(22, 2, '2013-03-29 02:17:45', 'sk', NULL, NULL, NULL, NULL),
+(23, 2, '2013-03-29 02:27:16', 'sk', 0, '2013-03-29 02:27:24', 3, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slideshow`
+--
+
+CREATE TABLE IF NOT EXISTS `slideshow` (
+  `slideshow_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `place` varchar(255) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  PRIMARY KEY (`slideshow_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `slideshow`
+--
+
+INSERT INTO `slideshow` (`slideshow_id`, `title`, `place`, `filename`) VALUES
+(1, 'Grandhotel Praha****', 'Tatranská Lomnica, Vysoké Tatry', 'slideshow'),
+(2, 'HOTEL GRAND****', 'Jasná, Nízke Tatry', 'slideshow2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slideshow_photo`
+--
+
+CREATE TABLE IF NOT EXISTS `slideshow_photo` (
+  `slideshow_photo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `slideshow_id` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `is_active` int(11) DEFAULT '1',
+  PRIMARY KEY (`slideshow_photo_id`),
+  KEY `slideshow_id` (`slideshow_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1188,6 +1304,7 @@ ALTER TABLE `location`
 -- Constraints for table `questionnaire`
 --
 ALTER TABLE `questionnaire`
+  ADD CONSTRAINT `questionnaire_ibfk_4` FOREIGN KEY (`slideshow_id`) REFERENCES `slideshow` (`slideshow_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `questionnaire_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `questionnaire_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -1214,6 +1331,12 @@ ALTER TABLE `result_question`
 --
 ALTER TABLE `result_questionnaire`
   ADD CONSTRAINT `result_questionnaire_ibfk_1` FOREIGN KEY (`questionnaire_id`) REFERENCES `questionnaire` (`questionnaire_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `slideshow_photo`
+--
+ALTER TABLE `slideshow_photo`
+  ADD CONSTRAINT `slideshow_photo_ibfk_1` FOREIGN KEY (`slideshow_id`) REFERENCES `slideshow` (`slideshow_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `task`
