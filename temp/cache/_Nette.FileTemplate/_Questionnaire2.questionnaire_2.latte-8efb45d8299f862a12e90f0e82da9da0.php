@@ -1,10 +1,10 @@
-<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.79822500 1364522430";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_2.latte";i:2;i:1364519152;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.31025000 1364552746";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_2.latte";i:2;i:1364552711;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_2.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'wv4y01e5ag')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'jdxxkptwhn')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -20,6 +20,31 @@ if (!empty($_control->snippetMode)) {
 <div class="st-container" id="BigQuestionnaire" ng-controller="QuestionsCounter">
 <!--ANGULAR-->
     <script type="text/javascript">
+
+        /*------------------- TIMER ----------------------*/
+        var myTimeShow = 290;
+        var myTimeOut;
+
+        function tick () {
+            if (document.getElementById ('counter').firstChild.data > 0) {
+                document.getElementById ('counter').firstChild.data = document.getElementById ('counter').firstChild.data - 1;
+                setTimeout ('tick()', 1000)
+            }else {
+                $.blockUI({ message: $('.timer') }); 
+                $("#counter").css("display","none");
+            }
+        }
+
+        if (document.getElementById) onload = function () {
+            var t = document.createTextNode (myTimeShow)
+            var p = document.createElement ('small')
+            p.appendChild (t)
+            p.setAttribute ('id', 'counter')
+            var body = document.getElementsByTagName ('specialcounter')[0]
+            var firstChild = body.getElementsByTagName ('*')[0]
+            body.insertBefore (p, firstChild)
+            tick()
+        }
 
         /*------------------- AJAX -----------------------*/
 
@@ -141,7 +166,9 @@ if (!empty($_control->snippetMode)) {
                 return $.myLanguage;
             }
 
+            // TVRDYCH 300
             $scope.setLanguage = function(lang){
+                startCountDown(300000);
                 ajaxStartPrepare(lang);
                 setFirstEmo(lang);
                 $scope.myLanguage = lang;
@@ -181,26 +208,31 @@ if (!empty($_control->snippetMode)) {
                 if($.showEmos.emo0 == 4 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo1 == 3 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo2 == 4 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo3 == 6 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo4 == 6 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 }
@@ -220,13 +252,13 @@ if (!empty($_control->snippetMode)) {
         <a href="javascript:window.lang.change('en');" class="changeLangEN" ng-click="setLanguage('en')">Switch to English</a> 
     </div>-->
 
-
+    <specialcounter></specialcounter>
     <div class="emoSummary" style="display:none;" >{{ checkShowEmo()}}</div>
     <!--end of <div id="searchTitle" class="sectionTitle" >{{ getLanguage()}}</div>-->
     
     <div id="modal_language" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
-            <img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
+            <img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logoGrand.png" />
         </div>
         <div class="modal-body">
 
@@ -258,15 +290,15 @@ if (!empty($_control->snippetMode)) {
     <!-- Modal -->
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-header">
-	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
+	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logoGrand.png" /></h3>
 	    </div>
 	    <div class="modal-body">
             <form class="cmxform" id="questionnaireForm" method="get" action="">
                 <div class="summaryCompetition">
                     <div class="summaryThanks"><h3 lang="sk">Ďakujeme za Vašu spätnú väzbu !</h3></div>
 
-                    <div class="summaryTextComp" lang="sk">Prosíme vyplňte Vaše číslo izby.</div>
                     <div class="summaryEmail">
+                        <div class="summaryTextComp" lang="sk">Prosíme vyplňte Vaše číslo izby.</div>
                         <div class="roomCheck">
                             <div class="attention a57" style="display: none;" lang="sk">Prosíme vyplňte číslo izby správne.</div>
                         </div>
@@ -297,13 +329,13 @@ if (!empty($_control->snippetMode)) {
         <div class="summaryThanksSpinner" lang="sk">Ďakujeme za Váš názor</div>
         <img class="spinner" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/spinner2.gif" />
         <div class="summaryTextComp" lang="sk">Dáta sa spracovávajú...</div>
-        <div class="summaryThanksSpinner_2" lang="sk">Prajeme Vám príjemny zvyšok dňa. Dovidenia.</div>
+        <div class="summaryThanksSpinner_2" lang="sk">Prajeme Vám príjemný zvyšok dňa.</div>
     </div><!--end of timer-->
 
 	<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
     <div class="questionnaireId" value="" style="display:none;"></div>
 
-    <img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
+    <img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logoGrand.png" />
 
 	<div class = 'iosSlider'>
 		<div class = 'slider'>

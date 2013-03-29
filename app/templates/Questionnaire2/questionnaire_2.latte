@@ -2,6 +2,31 @@
 <!--ANGULAR-->
     <script type="text/javascript">
 
+        /*------------------- TIMER ----------------------*/
+        var myTimeShow = 290;
+        var myTimeOut;
+
+        function tick () {
+            if (document.getElementById ('counter').firstChild.data > 0) {
+                document.getElementById ('counter').firstChild.data = document.getElementById ('counter').firstChild.data - 1;
+                setTimeout ('tick()', 1000)
+            }else {
+                $.blockUI({ message: $('.timer') }); 
+                $("#counter").css("display","none");
+            }
+        }
+
+        if (document.getElementById) onload = function () {
+            var t = document.createTextNode (myTimeShow)
+            var p = document.createElement ('small')
+            p.appendChild (t)
+            p.setAttribute ('id', 'counter')
+            var body = document.getElementsByTagName ('specialcounter')[0]
+            var firstChild = body.getElementsByTagName ('*')[0]
+            body.insertBefore (p, firstChild)
+            tick()
+        }
+
         /*------------------- AJAX -----------------------*/
 
         $.showEmos = { 
@@ -122,7 +147,9 @@
                 return $.myLanguage;
             }
 
+            // TVRDYCH 300
             $scope.setLanguage = function(lang){
+                startCountDown(300000);
                 ajaxStartPrepare(lang);
                 setFirstEmo(lang);
                 $scope.myLanguage = lang;
@@ -162,26 +189,31 @@
                 if($.showEmos.emo0 == 4 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo1 == 3 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo2 == 4 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo3 == 6 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo4 == 6 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 }
@@ -201,13 +233,13 @@
         <a href="javascript:window.lang.change('en');" class="changeLangEN" ng-click="setLanguage('en')">Switch to English</a> 
     </div>-->
 
-
+    <specialcounter></specialcounter>
     <div class="emoSummary" style="display:none;" >{{ checkShowEmo()}}</div>
     <!--end of <div id="searchTitle" class="sectionTitle" >{{ getLanguage()}}</div>-->
     
     <div id="modal_language" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
-            <img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png">
+            <img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logoGrand.png">
         </div>
         <div class="modal-body">
 
@@ -237,7 +269,7 @@
     <!-- Modal -->
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-header">
-	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png"></h3>
+	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logoGrand.png"></h3>
 	    </div>
 	    <div class="modal-body">
             <form class="cmxform" id="questionnaireForm" method="get" action="">
@@ -282,7 +314,7 @@
 	<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
     <div class="questionnaireId" value="" style="display:none;"></div>
 
-    <img class="logoCompany" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png">
+    <img class="logoCompany" src="{$basePath}/www/img/component_questionnaire2/logoGrand.png">
 
 	<div class = 'iosSlider'>
 		<div class = 'slider'>

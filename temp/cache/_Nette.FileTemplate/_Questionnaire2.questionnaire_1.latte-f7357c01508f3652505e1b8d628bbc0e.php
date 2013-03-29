@@ -1,10 +1,10 @@
-<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.24259500 1364526629";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364526626;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.39561600 1364552885";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364546527;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'u8m8stp53o')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'a7wouqw9je')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -18,8 +18,34 @@ if (!empty($_control->snippetMode)) {
 //
 ?>
 <div class="st-container" id="BigQuestionnaire" ng-controller="QuestionsCounter">
+
 <!--ANGULAR-->
     <script type="text/javascript">
+
+        /*------------------- TIMER ----------------------*/
+        var myTimeShow = 290;
+        var myTimeOut;
+
+        function tick () {
+            if (document.getElementById ('counter').firstChild.data > 0) {
+                document.getElementById ('counter').firstChild.data = document.getElementById ('counter').firstChild.data - 1;
+                setTimeout ('tick()', 1000)
+            }else {
+                $.blockUI({ message: $('.timer') }); 
+                $("#counter").css("display","none");
+            }
+        }
+
+        if (document.getElementById) onload = function () {
+            var t = document.createTextNode (myTimeShow)
+            var p = document.createElement ('small')
+            p.appendChild (t)
+            p.setAttribute ('id', 'counter')
+            var body = document.getElementsByTagName ('specialcounter')[0]
+            var firstChild = body.getElementsByTagName ('*')[0]
+            body.insertBefore (p, firstChild)
+            tick()
+        }
 
         /*------------------- AJAX -----------------------*/
 
@@ -141,7 +167,9 @@ if (!empty($_control->snippetMode)) {
                 return $.myLanguage;
             }
 
+            // TVRDYCH 300
             $scope.setLanguage = function(lang){
+                startCountDown(300000);
                 ajaxStartPrepare(lang);
                 setFirstEmo(lang);
                 $scope.myLanguage = lang;
@@ -181,26 +209,31 @@ if (!empty($_control->snippetMode)) {
                 if($.showEmos.emo0 == 4 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo1 == 3 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo2 == 4 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo3 == 6 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 } else if($.showEmos.emo4 == 6 && $.showEmos.showed == 0){
                     checkLanguage();
                     $(".goAheadTooltip").css("display","block");
+                    $(".tooltip_arrow").css("display","block");
                     $(".goAheadTooltip").addClass("animated tada");
                     $.showEmos.showed = 1;
                 }
@@ -220,7 +253,7 @@ if (!empty($_control->snippetMode)) {
         <a href="javascript:window.lang.change('en');" class="changeLangEN" ng-click="setLanguage('en')">Switch to English</a> 
     </div>-->
 
-
+    <specialcounter></specialcounter>
     <div class="emoSummary" style="display:none;" >{{ checkShowEmo()}}</div>
     <!--end of <div id="searchTitle" class="sectionTitle" >{{ getLanguage()}}</div>-->
     
@@ -266,7 +299,7 @@ if (!empty($_control->snippetMode)) {
                     <div class="summaryThanks"><h3 lang="sk">Ďakujeme za Vašu spätnú väzbu !</h3></div>
 
                     <div class="summaryEmail">
-                    <div class="summaryTextComp" lang="sk">Prosíme vyplňte Vaše číslo izby.</div>
+                        <div class="summaryTextComp" lang="sk">Prosíme vyplňte Vaše číslo izby.</div>
                         <div class="roomCheck">
                             <div class="attention a57" style="display: none;" lang="sk">Prosíme vyplňte číslo izby správne.</div>
                         </div>
@@ -1095,4 +1128,5 @@ if (!empty($_control->snippetMode)) {
         }
         return false;
     }
+    
 </script>
