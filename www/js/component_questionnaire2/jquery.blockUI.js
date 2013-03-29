@@ -40,7 +40,7 @@
 			if (message) $m.append('<h2>'+message+'</h2>');
 			if (timeout === undefined) timeout = 3000;
 			$.blockUI({
-				message: $m, fadeIn: 700, fadeOut: 1000, centerY: false,
+				message: $m, fadeIn: 700, fadeOut: 1000, centerY: true,
 				timeout: timeout, showOverlay: false,
 				onUnblock: onClose,
 				css: $.blockUI.defaults.growlCSS
@@ -92,9 +92,9 @@
 			css: {
 				padding:	0,
 				margin:		0,
-				width:		'30%',
-				top:		'40%',
-				left:		'35%',
+				width:		'50%',
+				top:		'20%',
+				left:		'25%',
 				textAlign:	'center',
 				color:		'#000',
 				border:		'3px solid #aaa',

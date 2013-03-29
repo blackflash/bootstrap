@@ -29,7 +29,7 @@ jquery_lang_js.prototype.lang.en = {
 
 	'Ďakujeme za Váš názor':'Thank you for your feedback',
 	'Dáta sa spracovávajú...':'Processing data...',
-	'Prajeme Vám príjemny zvyšok dňa. Dovidenia.':'Have a nice day.',
+	'Prajeme Vám príjemný zvyšok dňa.':'Have a nice day.',
 
 	'Ako ste boli spokojní s rezervačným oddelením ?':'How satisfied have you been with reservation experience ?',
 	'Rýchlosť a profesionalita:':'Speed and professionalism:',
