@@ -11,79 +11,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="shortcut icon" href="{$basePath}/favicon.ico"> 
         
-        <link rel="stylesheet" href="{$basePath}/css/component_questionnaire2/bootstrap.css">
-        <link rel="stylesheet" href="{$basePath}/css/component_questionnaire2/slider.css">
-        <!--end of <script src = "{$basePath}/js/cssrefresh.js"></script>-->
 
-        <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
-
-        <!-- jQuery library -->
-        <link rel="stylesheet" href="{$basePath}/css/component_questionnaire2/jquery-ui.css" />
-        <script src="{$basePath}/js/component_questionnaire2/jquery-1.9.1.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-        <script src="{$basePath}/js/component_questionnaire2/jquery-ui.js"></script>
-        
-        <script src = "{$basePath}/js/component_questionnaire2/jquery.blockUI.js"></script>
-        <script src = "{$basePath}/js/component_questionnaire2/vendor/bootstrap.js"></script>
-
-        <!-- iosSlider plugin -->
-        <script src = "{$basePath}/js/component_questionnaire2/jquery.iosslider.js"></script>
-        <link rel="stylesheet" href="{$basePath}/css/animate.css">
-        
-        <script src="{$basePath}/js/component_questionnaire2/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
-        <script src="{$basePath}/www/langpacks/1/en.js" charset="utf-8" type="text/javascript"></script>
-
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
 
 </head>
     <body>
 
-
-        <script type="text/javascript">
-            var myTimeShow = 10;
-            var myTime = 10000;
-            var myTimeOut;
-
-            function tick () {
-                if (document.getElementById ('counter').firstChild.data > 0) {
-                    document.getElementById ('counter').firstChild.data = document.getElementById ('counter').firstChild.data - 1;
-                    setTimeout ('tick()', 1000)
-                }
-            }
-
-            if (document.getElementById) onload = function () {
-                var t = document.createTextNode (myTimeShow)
-                var p = document.createElement ('small')
-                p.appendChild (t)
-                p.setAttribute ('id', 'counter')
-                var body = document.getElementsByTagName ('specialcounter')[0]
-                var firstChild = body.getElementsByTagName ('*')[0]
-                body.insertBefore (p, firstChild)
-                tick()
-            }
-
-            function startCount(counter){
-                document.getElementById ('counter').firstChild.data = myTimeShow;
-                myTimeOut = setTimeout("END'", myTime);
-            } 
-            
-            function addCount(){
-                document.getElementById ('counter').firstChild.data = myTimeShow;
-                clearTimeout(myTimeOut);
-                myTimeOut = setTimeout("location.href = 'http://cleverfrogs.com/'", myTime);
-                //"location.href = 'http://cleverfrogs.com/'"
-            }
-
-            $('body').bind('tap', function () {
-             addCount();
-
-            });
-
-        </script>
-
-
-<specialcounter></specialcounter>
 
 
 </body>
