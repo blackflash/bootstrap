@@ -1,10 +1,10 @@
-<?php //netteCache[01]000418a:2:{s:4:"time";s:21:"0.73982300 1364517444";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:96:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\slideshow_1.latte";i:2;i:1364516100;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000418a:2:{s:4:"time";s:21:"0.20865200 1364752266";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:96:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\slideshow_1.latte";i:2;i:1364750683;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\slideshow_1.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'dmleo6bmlb')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '8mmxp8hboc')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -17,12 +17,8 @@ if (!empty($_control->snippetMode)) {
 // main template
 //
 ?>
-<!--end of slideshow-->
 <link rel="stylesheet" type="text/css" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/slideshow/demo.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_questionnaire2/slideshow/slideshow_1.css" />
-<script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/component_questionnaire2/modernizr.custom.86080.js"></script>
-
-
 <div class="slideshow">
     <ul class="cb-slideshow">
         <li><span>Image 01</span><div></div></li>
@@ -45,12 +41,9 @@ if (!empty($_control->snippetMode)) {
         </header>
     </div>
 </div>
-
 <script type="text/javascript">
-    
     $('.start_button').click(function(){
         $(this).css("display","none");   
         $(".loader").css("display","block");
     });
-
 </script>

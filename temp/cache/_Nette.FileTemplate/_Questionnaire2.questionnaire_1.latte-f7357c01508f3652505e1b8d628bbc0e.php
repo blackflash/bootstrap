@@ -1,10 +1,10 @@
-<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.39561600 1364552885";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364546527;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.61090800 1364752065";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364751653;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'a7wouqw9je')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 's6n71hmlmy')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -18,12 +18,10 @@ if (!empty($_control->snippetMode)) {
 //
 ?>
 <div class="st-container" id="BigQuestionnaire" ng-controller="QuestionsCounter">
-
 <!--ANGULAR-->
     <script type="text/javascript">
-
         /*------------------- TIMER ----------------------*/
-        var myTimeShow = 290;
+        var myTimeShow = 190;
         var myTimeOut;
 
         function tick () {
@@ -46,9 +44,7 @@ if (!empty($_control->snippetMode)) {
             body.insertBefore (p, firstChild)
             tick()
         }
-
         /*------------------- AJAX -----------------------*/
-
         $.showEmos = { 
             emo0 : 0, 
             emo1 : 0, 
@@ -67,7 +63,7 @@ if (!empty($_control->snippetMode)) {
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "?do=jsonPrepareQuestionnaire",
+              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonPrepareQuestionnaire",
               data: { questionnaire_id: questionnaire_id, language: lang},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -82,7 +78,6 @@ if (!empty($_control->snippetMode)) {
                     console.log("problem");
                     return false;
                   }
-
               }
           });
         }
@@ -92,8 +87,6 @@ if (!empty($_control->snippetMode)) {
            prepareQuestionnaire(questionnaire_id,lang);
            return false;
         }
-
-
         // update data
         function updateQuestionnaire(r_questionnaire_id, question_id,rate){
             
@@ -101,7 +94,7 @@ if (!empty($_control->snippetMode)) {
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "?do=jsonUpdateQuestionnaire",
+              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonUpdateQuestionnaire",
               data: { r_questionnaire_id: r_questionnaire_id, question_id: question_id, rate: rate},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -115,7 +108,6 @@ if (!empty($_control->snippetMode)) {
                     console.log("problem");
                     return false;
                   }
-
               }
           });
         }
@@ -125,15 +117,13 @@ if (!empty($_control->snippetMode)) {
            return false;
         }
 
-
         // update summaryEva after submit ok
         function updateSummaryEvaluation(r_questionnaire_id,room,summaryEva,score){
             
             $("#ajax_loader").show();
-
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "?do=jsonUpdateSummaryEvaluationQuestionnaire",
+              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonUpdateSummaryEvaluationQuestionnaire",
               data: { r_questionnaire_id: r_questionnaire_id, room: room,summaryEva: summaryEva, score: score},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -147,7 +137,6 @@ if (!empty($_control->snippetMode)) {
                     console.log("problem");
                     return false;
                   }
-
               }
           });
         }
@@ -157,9 +146,6 @@ if (!empty($_control->snippetMode)) {
            return false;
         }
         /*---------------- end of AJAX -------------------*/
-
-        
-
         function QuestionsCounter($scope){
 
             $scope.getLanguage = function(){
@@ -167,9 +153,9 @@ if (!empty($_control->snippetMode)) {
                 return $.myLanguage;
             }
 
-            // TVRDYCH 300
+            // TVRDYCH 200
             $scope.setLanguage = function(lang){
-                startCountDown(300000);
+                //startCountDown(200000);
                 ajaxStartPrepare(lang);
                 setFirstEmo(lang);
                 $scope.myLanguage = lang;
@@ -240,19 +226,29 @@ if (!empty($_control->snippetMode)) {
                 return $.showEmos;
             }
         }
+        /*--------------------- focus input -------------*/
+        $(document).ready(function () {
+            startCountDown(200000);
+            $(".clickHere").css("display","none");
+            $(".roomInput").focus(function(){
+                $(".clickHere").css("display","block");
+                if($.myLanguage == "sk"){
+                    $(".clickHere").attr("src",host + "/www/img/component_questionnaire2/done_sk.png");
+                }else {
+                    $(".clickHere").attr("src",host +"/www/img/component_questionnaire2/done_en.png");
+                }
+            });
+
+            $(".roomInput").focusout(function(){
+                $(".clickHere").css("display","none");
+            });
+        });
     </script>
-
-    <script type="text/javascript">
-
-
-    </script>
-
     <!--end of <div id="langChanger">
         <a href="javascript:window.lang.change('sk');" class="changeLangSK" ng-click="setLanguage('sk')">Switch to Slovak</a>
         | 
         <a href="javascript:window.lang.change('en');" class="changeLangEN" ng-click="setLanguage('en')">Switch to English</a> 
     </div>-->
-
     <specialcounter></specialcounter>
     <div class="emoSummary" style="display:none;" >{{ checkShowEmo()}}</div>
     <!--end of <div id="searchTitle" class="sectionTitle" >{{ getLanguage()}}</div>-->
@@ -292,6 +288,7 @@ if (!empty($_control->snippetMode)) {
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-header">
 	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
+        <img src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/done_sk.png" class="clickHere" />
 	    </div>
 	    <div class="modal-body">
             <form class="cmxform" id="questionnaireForm" method="get" action="">
@@ -849,7 +846,6 @@ if (!empty($_control->snippetMode)) {
         }
 
         $(this).attr("src",host+"/www/img/Emoticons/128x128/"+rate+"_selected.png");
-
        //----- CHECK GROUP 0 -----*/
         if(g == 0){
         	for (var i = 0 ; i < question_count_g0; i++) {
@@ -871,7 +867,6 @@ if (!empty($_control->snippetMode)) {
             }
             if(checker0 == 0) group0complete = true;
         }
-
         //----- CHECK GROUP 1 -----*/
         if(g == 1) {
         	for (var i = 0 ; i < question_count_g1; i++) {
@@ -892,7 +887,6 @@ if (!empty($_control->snippetMode)) {
             }
              if(checker1 == 0) group1complete = true;
         }	
-
         //----- CHECK GROUP 2 -----*/
         if(g == 2) {
         	for (var i = 0 ; i < question_count_g2; i++) {
@@ -913,7 +907,6 @@ if (!empty($_control->snippetMode)) {
             }
              if(checker2 == 0) group2complete = true;
         }	
-
         //----- CHECK GROUP 3 -----*/
         if(g == 3) {
         	for (var i = 0 ; i < question_count_g3; i++) {
@@ -934,7 +927,6 @@ if (!empty($_control->snippetMode)) {
             }
              if(checker3 == 0) group3complete = true;
         }	
-
         //----- CHECK GROUP 4 -----*/
         if(g == 4) {
         	for (var i = 0 ; i < question_count_g4; i++) {
@@ -955,7 +947,6 @@ if (!empty($_control->snippetMode)) {
             }
              if(checker4 == 0) group4complete = true;
         }
-
         //remove the error box
         calculateScore();
         if($(".scoreValue").html().length == 2){
@@ -1053,19 +1044,6 @@ if (!empty($_control->snippetMode)) {
             	}
             }
     	}
-
-    	/*one formular must be evaluated
-    	if(group1complete == false || typeof(checker0) == "undefined") {
-    		if(checker0 != 0) $('.iosSliderButtons #item0').click();
-    		readyToSend = false;
-
-    		//check unevaluated questions and popup error message
-    		for (var i = 0 ; i < question_count_g0; i++) {
-            	if(typeof(holder0[i]) === "undefined"){
-            		$(".a0"+i).css("display","block");
-            	}
-            }
-    	}*/
     	return readyToSend;
     };
 
@@ -1128,5 +1106,4 @@ if (!empty($_control->snippetMode)) {
         }
         return false;
     }
-    
 </script>

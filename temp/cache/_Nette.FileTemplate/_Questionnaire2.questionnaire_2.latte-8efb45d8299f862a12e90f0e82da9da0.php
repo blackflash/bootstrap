@@ -1,10 +1,10 @@
-<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.31025000 1364552746";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_2.latte";i:2;i:1364552711;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.09388700 1364673669";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_2.latte";i:2;i:1364657166;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_2.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'jdxxkptwhn')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'jgtre7nlwl')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -22,7 +22,7 @@ if (!empty($_control->snippetMode)) {
     <script type="text/javascript">
 
         /*------------------- TIMER ----------------------*/
-        var myTimeShow = 290;
+        var myTimeShow = 190;
         var myTimeOut;
 
         function tick () {
@@ -157,8 +157,6 @@ if (!empty($_control->snippetMode)) {
         }
         /*---------------- end of AJAX -------------------*/
 
-        
-
         function QuestionsCounter($scope){
 
             $scope.getLanguage = function(){
@@ -168,7 +166,6 @@ if (!empty($_control->snippetMode)) {
 
             // TVRDYCH 300
             $scope.setLanguage = function(lang){
-                startCountDown(300000);
                 ajaxStartPrepare(lang);
                 setFirstEmo(lang);
                 $scope.myLanguage = lang;
@@ -239,13 +236,27 @@ if (!empty($_control->snippetMode)) {
                 return $.showEmos;
             }
         }
+
+        /*--------------------- focus input -------------*/
+        $(document).ready(function () {
+            startCountDown(200000);
+            $(".clickHere").css("display","none");
+            $(".roomInput").focus(function(){
+                if($.myLanguage == "sk"){
+                    $(".clickHere").attr("src",host + "/www/img/component_questionnaire2/done_sk.png");
+                }else {
+                    $(".clickHere").attr("src",host +"/www/img/component_questionnaire2/done_en.png");
+                }
+                $(".clickHere").css("display","block");
+            });
+
+            $(".roomInput").focusout(function(){
+                console.log("out");
+                $(".clickHere").css("display","none");
+            });
+        });
+
     </script>
-
-    <script type="text/javascript">
-
-
-    </script>
-
     <!--end of <div id="langChanger">
         <a href="javascript:window.lang.change('sk');" class="changeLangSK" ng-click="setLanguage('sk')">Switch to Slovak</a>
         | 
@@ -291,6 +302,7 @@ if (!empty($_control->snippetMode)) {
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-header">
 	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logoGrand.png" /></h3>
+        <img src="#" class="clickHere" />
 	    </div>
 	    <div class="modal-body">
             <form class="cmxform" id="questionnaireForm" method="get" action="">

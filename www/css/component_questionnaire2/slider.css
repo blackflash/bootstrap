@@ -167,7 +167,7 @@ p {
 	height: 100%;
 	top: 0;
 	left: 0;
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, sans-serif;
+	font-family: 'Myriad Pro', Arial, sans-serif;
 }
 
 .iosSlider {
@@ -499,11 +499,18 @@ smallEvaText {
 
 /*------- submit window -------*/
 
+.clickHere {
+	position: absolute;
+	width: 20%;
+	right: 2%;
+	top: 2%;
+}
+
 .logoCompanySubmit {
-	width: 45%;
+	width: 30%;
 	padding-top: 1%;
 	text-align: center;
-	margin-left: 27%;
+	margin-left: 33%;
 }
 
 .summaryCompetition {
@@ -525,6 +532,7 @@ smallEvaText {
 
 .summaryThanks {
 	text-align: center;
+	margin-top: -15px;
 }
 
 .summaryTextComp {
@@ -534,8 +542,11 @@ smallEvaText {
 }
 
 .summaryEmail {
-	padding-top: 10px;
 	text-align: center;
+}
+
+.roomInput {
+	margin-top: -25px;
 }
 
 .summaryEmail > input {
@@ -618,7 +629,7 @@ roomText {
 	height: 100%;
 	top: 0;
 	left: 0;
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, sans-serif;
+	font-family: 'Myriad Pro', Arial, sans-serif;
 
 }
 
