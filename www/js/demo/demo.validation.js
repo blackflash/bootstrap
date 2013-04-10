@@ -8,14 +8,14 @@ if(a.fn.spinner){a("#da-ex-val-spin").spinner()}if(a.fn.validate){
 	a("#da-ex-validate1").validate({
 		rules:{
 			req1:{required:true},
-			email1:{required:true,
-				email:true},
-				url1:{required:true,url:true},
-				pass1:{required:true,minlength:5},
-				cpass1:{required:true,
-					minlength:5,
-					equalTo:"#pass1"},
-					digits1:{required:true,digits:true}},
+			email1:{required:true,email:true},
+			email2:{required:true,email:true},
+			email3:{required:true,email:true},
+			description:{required:true},
+			url1:{required:true,url:true},
+			pass1:{required:true,minlength:5},
+			cpass1:{required:true,minlength:5,equalTo:"#pass1"},
+			digits1:{required:true,digits:true}},
 
 
 					invalidHandler:function(e,c){var f=c.numberOfInvalids();

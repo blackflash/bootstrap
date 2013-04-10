@@ -1,10 +1,10 @@
-<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.61090800 1364752065";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1364751653;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000423a:2:{s:4:"time";s:21:"0.87222100 1365430552";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:100:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte";i:2;i:1365430551;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Questionnaire2\questionnaire_1.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 's6n71hmlmy')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'k9qc2u9rlu')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -63,7 +63,7 @@ if (!empty($_control->snippetMode)) {
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonPrepareQuestionnaire",
+              url: "?do=jsonPrepareQuestionnaire",
               data: { questionnaire_id: questionnaire_id, language: lang},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -94,7 +94,7 @@ if (!empty($_control->snippetMode)) {
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonUpdateQuestionnaire",
+              url: "?do=jsonUpdateQuestionnaire",
               data: { r_questionnaire_id: r_questionnaire_id, question_id: question_id, rate: rate},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -123,7 +123,7 @@ if (!empty($_control->snippetMode)) {
             $("#ajax_loader").show();
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonUpdateSummaryEvaluationQuestionnaire",
+              url: "?do=jsonUpdateSummaryEvaluationQuestionnaire",
               data: { r_questionnaire_id: r_questionnaire_id, room: room,summaryEva: summaryEva, score: score},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -255,7 +255,7 @@ if (!empty($_control->snippetMode)) {
     
     <div id="modal_language" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
-            <img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
+            <img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logoChopok.jpg" style="width: 95px;" />
         </div>
         <div class="modal-body">
 
@@ -287,7 +287,7 @@ if (!empty($_control->snippetMode)) {
     <!-- Modal -->
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-header">
-	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" /></h3>
+	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logoChopok.jpg" style="width: 95px;" /></h3>
         <img src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/done_sk.png" class="clickHere" />
 	    </div>
 	    <div class="modal-body">
@@ -333,7 +333,7 @@ if (!empty($_control->snippetMode)) {
 	<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
     <div class="questionnaireId" value="" style="display:none;"></div>
 
-    <img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logo_thumb.png" />
+    <img class="logoCompany" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/logoChopok.jpg" style="width: 95px;" />
 
 	<div class = 'iosSlider'>
 		<div class = 'slider'>
@@ -771,23 +771,23 @@ if (!empty($_control->snippetMode)) {
 <div class="bottomBar">
     <div class = 'iosSliderButtons'>
             <div class = 'button' id = 'item0'>
-                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB_thumb.png" />
                 <div class="navigationMenu" lang="sk">Rezervácie</div>
             </div>                  
             <div class = 'button' id = 'item1'>
-                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB_thumb.png" />
                 <div class="navigationMenu" lang="sk">Recepcia</div>
             </div>
             <div class = 'button' id = 'item2'>
-                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB_thumb.png" />
                 <div class="navigationMenu" lang="sk">Ubytovanie</div>
             </div>
             <div class = 'button' id = 'item3'>
-                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB_thumb.png" />
                 <div class="navigationMenu" lang="sk">Reštaurácia</div>
             </div>
             <div class = 'button' id = 'item4'>
-                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB.png" />
+                <img class="tooltip_arrow" src="<?php echo htmlSpecialChars($basePath) ?>/www/img/component_questionnaire2/arrowB_thumb.png" />
                 <div class="navigationMenu" lang="sk">Wellness</div>
             </div>
     </div>

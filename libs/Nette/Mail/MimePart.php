@@ -154,7 +154,7 @@ class MimePart extends Nette\Object
 			}
 			return substr($s, 0, -1); // last comma
 
-		} elseif (preg_match('#^(\S+; (?:file)?name=)"(.*)"$#', $this->headers[$name], $m)) { // Content-Disposition
+		} elseif (preg_match('#^(\S+; (?:file)?name=)"(.*)"\z#', $this->headers[$name], $m)) { // Content-Disposition
 			$offset += strlen($m[1]);
 			return $m[1] . '"' . self::encodeHeader($m[2], $offset) . '"';
 
@@ -227,7 +227,6 @@ class MimePart extends Nette\Object
 
 	/**
 	 * Sets textual body.
-	 * @param  mixed
 	 * @return MimePart  provides a fluent interface
 	 */
 	public function setBody($body)

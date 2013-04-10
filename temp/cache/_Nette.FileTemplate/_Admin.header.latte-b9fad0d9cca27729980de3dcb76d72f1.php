@@ -1,10 +1,10 @@
-<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.56399900 1364465686";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\header.latte";i:2;i:1362165620;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.57207200 1365150140";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\header.latte";i:2;i:1365115956;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\header.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'v50mjptb0n')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '51v110erd1')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -172,21 +172,35 @@ if (!empty($_control->snippetMode)) {
                     <!-- Breadcrumbs -->
                     <div id="da-breadcrumb">
                         <ul>
-                            <li <?php if ($title == "TSWP 2 - dashboard"): ?> class="active" <?php endif ?>
-><span><img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/black/16/home.png" alt="Home" />Dashboard</span></li>
-                            <?php if ($title == "TSWP 2 - users"): ?><li class="active" ><span>Users</span></li><?php endif ?>
+                            <li <?php if ($title == "CleverFrogs - dashboard"): ?>
+ class="active" <?php endif ?>><span><img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/black/16/home.png" alt="Home" />Dashboard</span></li>
+                            <?php if ($title == "CleverFrogs - users"): ?><li class="active" ><span>Users</span></li><?php endif ?>
 
-                            <?php if ($title == "TSWP 2 - projects"): ?><li class="active" ><span>Projects</span></li><?php endif ?>
+                            <?php if ($title == "CleverFrogs - projects"): ?><li class="active" ><span>Projects</span></li><?php endif ?>
 
-                            <?php if ($title == "TSWP 2 - commit history"): ?><li class="active" ><span>Commit history</span></li><?php endif ?>
+                            <?php if ($title == "CleverFrogs - campaigns"): ?><li class="active" ><span>Campaigns review</span></li><?php endif ?>
 
-                            <?php if ($title == "TSWP 2 - documentation"): ?><li class="active" ><span>Documentation</span></li><?php endif ?>
+                            <?php if ($title == "CleverFrogs - categories"): ?><li class="active" ><span>Campaigns Categories & PS</span></li><?php endif ?>
 
-                            <?php if ($title == "TSWP 2 - tasks"): ?><li class="active" ><span>Tasks</span></li><?php endif ?>
+                            <?php if ($title == "CleverFrogs - commit history"): ?>
+<li class="active" ><span>Commit history</span></li><?php endif ?>
 
-                            <?php if ($title == "TSWP 2 - feedbacks"): ?><li class="active" ><span>Feedbacks</span></li><?php endif ?>
+                            <?php if ($title == "CleverFrogs - documentation"): ?>
+<li class="active" ><span>Documentation</span></li><?php endif ?>
 
+                            <?php if ($title == "CleverFrogs - tasks"): ?><li class="active" ><span>Tasks</span></li><?php endif ?>
 
+                            <?php if ($title == "CleverFrogs - Gallery"): ?><li class="active" ><span>Gallery</span></li><?php endif ?>
+
+                            <?php if ($title == "CleverFrogs - Locations"): ?><li class="active" ><span>Locations</span></li><?php endif ?>
+
+                            <?php if ($title == "CleverFrogs - feedbacks"): ?><li class="active" ><span>Feedbacks</span></li><?php endif ?>
+
+                            <?php if ($title == "CleverFrogs - Basic info"): ?><li class="active" ><span>Basic info</span></li><?php endif ?>
+
+                            <?php if ($title == "CleverFrogs - Slider"): ?><li class="active" ><span>Slider</span></li><?php endif ?>
+
+                            <?php if ($title == "CleverFrogs - News"): ?><li class="active" ><span>News</span></li><?php endif ?>
 
                         </ul>
                     </div>

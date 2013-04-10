@@ -68,10 +68,9 @@ class MemcachedStorage extends Nette\Object implements Nette\Caching\IStorage
 
 	public function addServer($host = 'localhost', $port = 11211, $timeout = 1)
 	{
-		Nette\Diagnostics\Debugger::tryError();
-		$this->memcache->addServer($host, $port, TRUE, 1, $timeout);
-		if (Nette\Diagnostics\Debugger::catchError($e)) {
-			throw new Nette\InvalidStateException('Memcache::addServer(): ' . $e->getMessage(), 0, $e);
+		if ($this->memcache->addServer($host, $port, TRUE, 1, $timeout) === FALSE) {
+			$error = error_get_last();
+			throw new Nette\InvalidStateException("Memcache::addServer(): $error[message].");
 		}
 	}
 
@@ -192,13 +191,13 @@ class MemcachedStorage extends Nette\Object implements Nette\Caching\IStorage
 	 * @param  array  conditions
 	 * @return void
 	 */
-	public function clean(array $conds)
+	public function clean(array $conditions)
 	{
-		if (!empty($conds[Cache::ALL])) {
+		if (!empty($conditions[Cache::ALL])) {
 			$this->memcache->flush();
 
 		} elseif ($this->journal) {
-			foreach ($this->journal->clean($conds) as $entry) {
+			foreach ($this->journal->clean($conditions) as $entry) {
 				$this->memcache->delete($entry, 0);
 			}
 		}

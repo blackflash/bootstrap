@@ -42,7 +42,7 @@
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonPrepareQuestionnaire",
+              url: "?do=jsonPrepareQuestionnaire",
               data: { questionnaire_id: questionnaire_id, language: lang},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -75,7 +75,7 @@
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonUpdateQuestionnaire",
+              url: "?do=jsonUpdateQuestionnaire",
               data: { r_questionnaire_id: r_questionnaire_id, question_id: question_id, rate: rate},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -106,7 +106,7 @@
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonUpdateSummaryEvaluationQuestionnaire",
+              url: "?do=jsonUpdateSummaryEvaluationQuestionnaire",
               data: { r_questionnaire_id: r_questionnaire_id, room: room,summaryEva: summaryEva, score: score},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 

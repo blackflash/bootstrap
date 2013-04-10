@@ -83,9 +83,12 @@ class Questionnaire2Presenter extends BasePresenter
 	public function handlejsonPrepareQuestionnaire($questionnaire_id,$language){
 		if ($this->isAjax()) {
 
+			$ip = $_SERVER['REMOTE_ADDR'];
+
 			$questionnaireData = array(
 				"r_questionnaire_id" => "",
 				"questionnaire_id"   => $questionnaire_id,
+				"ip_adress"			 =>	$ip,
 				"language_selected"  => $language,
 				"room"               => NULL,
 				"submit_time"        => NULL,

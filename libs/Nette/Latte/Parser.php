@@ -339,11 +339,11 @@ class Parser extends Nette\Object
 	{
 		$match = Strings::match($tag, '~^
 			(
-				(?P<name>\?|/?[a-z]\w*+(?:[.:]\w+)*+(?!::|\())|   ## ?, name, /name, but not function( or class::
+				(?P<name>\?|/?[a-z]\w*+(?:[.:]\w+)*+(?!::|\(|\\\\))|   ## ?, name, /name, but not function( or class:: or namespace\
 				(?P<noescape>!?)(?P<shortname>/?[=\~#%^&_]?)      ## !expression, !=expression, ...
 			)(?P<args>.*?)
 			(?P<modifiers>\|[a-z](?:'.Parser::RE_STRING.'|[^\'"])*)?
-		()$~isx');
+		()\z~isx');
 
 		if (!$match) {
 			return FALSE;

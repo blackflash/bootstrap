@@ -44,7 +44,7 @@
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonPrepareQuestionnaire",
+              url: "?do=jsonPrepareQuestionnaire",
               data: { questionnaire_id: questionnaire_id, language: lang},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -75,7 +75,7 @@
 
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonUpdateQuestionnaire",
+              url: "?do=jsonUpdateQuestionnaire",
               data: { r_questionnaire_id: r_questionnaire_id, question_id: question_id, rate: rate},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -104,7 +104,7 @@
             $("#ajax_loader").show();
             $.ajax({    //create an ajax request to load_page.php
               type: "POST",
-              url: "http://www.cleverfrogs.com/questionnaire2/?do=jsonUpdateSummaryEvaluationQuestionnaire",
+              url: "?do=jsonUpdateSummaryEvaluationQuestionnaire",
               data: { r_questionnaire_id: r_questionnaire_id, room: room,summaryEva: summaryEva, score: score},
               dataType: "html",   //expect html to be returned
               success: function(msg){ 
@@ -236,7 +236,7 @@
     
     <div id="modal_language" class="modal hide fade language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
-            <img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png">
+            <img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logoChopok.jpg" style="width: 95px;">
         </div>
         <div class="modal-body">
 
@@ -266,7 +266,7 @@
     <!-- Modal -->
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-header">
-	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png"></h3>
+	    <h3 id="myModalLabel"><img class="logoCompanySubmit" src="{$basePath}/www/img/component_questionnaire2/logoChopok.jpg" style="width: 95px;"></h3>
         <img src="{$basePath}/www/img/component_questionnaire2/done_sk.png" class="clickHere">
 	    </div>
 	    <div class="modal-body">
@@ -312,7 +312,7 @@
 	<div class="score" style="display:none;">Score: <div class="scoreValue">0</div></div>
     <div class="questionnaireId" value="" style="display:none;"></div>
 
-    <img class="logoCompany" src="{$basePath}/www/img/component_questionnaire2/logo_thumb.png">
+    <img class="logoCompany" src="{$basePath}/www/img/component_questionnaire2/logoChopok.jpg" style="width: 95px;">
 
 	<div class = 'iosSlider'>
 		<div class = 'slider'>

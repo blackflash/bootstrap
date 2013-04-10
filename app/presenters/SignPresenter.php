@@ -34,7 +34,7 @@ class SignPresenter extends BasePresenter
 	}
 
 	public function signInFormSubmitted($form)
-	{
+	{	
 	    try {
 	        $user = $this->getUser();
 	        $values = $form->getValues();
@@ -44,9 +44,6 @@ class SignPresenter extends BasePresenter
 	        }
 
 	        $user->login($values->username, $values->password);
-
-
-
 	        $this->flashMessage('Login was successful.', 'success');
 
 	        $this->redirect('Admin:');

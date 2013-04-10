@@ -106,7 +106,7 @@
                             </li>
                             {/if}
                             {if $user->identity->username == "admin" }
-                            <li {if $title == "CleverFrogs - News" || $title == "CleverFrogs - webpage" || $title == "CleverFrogs - Slider"} class="active" {/if}>
+                            <li {if $title == "CleverFrogs - News" || $title == "CleverFrogs - webpage" || $title == "CleverFrogs - Slider" || $title == "CleverFrogs - Basic info"} class="active" {/if}>
                                 <a href='' >
                                     <!-- Icon Container -->
                                     <span class="da-nav-icon">
@@ -114,7 +114,8 @@
                                     </span>
                                     WebPage
                                 </a>
-                                <ul {if $title != "CleverFrogs - News" && $title != "CleverFrogs - Slider"}class="closed"{/if} >
+                                <ul {if $title != "CleverFrogs - News" && $title != "CleverFrogs - Slider" && $title != "CleverFrogs - Basic info"}class="closed"{/if} >
+                                    <li><a n:href='Admin:default title=>"CleverFrogs - Basic info",page=>"basic_info"' >Basic info</a></li>
                                     <li><a n:href='Admin:default title=>"CleverFrogs - Slider",page=>"component_slider"' >Slider</a></li>
                                     <li><a n:href='Admin:default title=>"CleverFrogs - News",page=>"component_compact_news"' >News</a></li>
                                 </ul>

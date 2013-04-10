@@ -39,6 +39,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	public function signInFormSubmitted($form)
 	{	
 	    try {
+
 	        $user = $this->getUser();
 	        $values = $form->getValues();
 
@@ -49,7 +50,6 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	        $user->login($values->username, $values->password);
 
 	        $this->flashMessage('Login was successful', 'success');
-
 	        $this->redirect('Admin:');
 	    } catch (NS\AuthenticationException $e) {
 	        $form->addError('Incorrect username or password..');

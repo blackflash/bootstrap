@@ -26,13 +26,13 @@ class Helpers
 	public static $typePatterns = array(
 		'^_' => IReflection::FIELD_TEXT, // PostgreSQL arrays
 		'BYTEA|BLOB|BIN' => IReflection::FIELD_BINARY,
-		'TEXT|CHAR' => IReflection::FIELD_TEXT,
-		'YEAR|BYTE|COUNTER|SERIAL|INT|LONG' => IReflection::FIELD_INTEGER,
+		'TEXT|CHAR|POINT|INTERVAL' => IReflection::FIELD_TEXT,
+		'YEAR|BYTE|COUNTER|SERIAL|INT|LONG|SHORT' => IReflection::FIELD_INTEGER,
 		'CURRENCY|REAL|MONEY|FLOAT|DOUBLE|DECIMAL|NUMERIC|NUMBER' => IReflection::FIELD_FLOAT,
 		'^TIME$' => IReflection::FIELD_TIME,
 		'TIME' => IReflection::FIELD_DATETIME, // DATETIME, TIMESTAMP
 		'DATE' => IReflection::FIELD_DATE,
-		'BOOL|BIT' => IReflection::FIELD_BOOL,
+		'BOOL' => IReflection::FIELD_BOOL,
 	);
 
 
@@ -93,22 +93,23 @@ class Helpers
 		$sql = preg_replace('#[ \t]{2,}#', " ", $sql);
 
 		$sql = wordwrap($sql, 100);
-		$sql = preg_replace("#([ \t]*\r?\n){2,}#", "\n", $sql);
+		$sql = preg_replace('#([ \t]*\r?\n){2,}#', "\n", $sql);
 
 		// syntax highlight
 		$sql = htmlSpecialChars($sql);
 		$sql = preg_replace_callback("#(/\\*.+?\\*/)|(\\*\\*.+?\\*\\*)|(?<=[\\s,(])($keywords1)(?=[\\s,)])|(?<=[\\s,(=])($keywords2)(?=[\\s,)=])#is", function($matches) {
-			if (!empty($matches[1])) // comment
+			if (!empty($matches[1])) { // comment
 				return '<em style="color:gray">' . $matches[1] . '</em>';
 
-			if (!empty($matches[2])) // error
+			} elseif (!empty($matches[2])) { // error
 				return '<strong style="color:red">' . $matches[2] . '</strong>';
 
-			if (!empty($matches[3])) // most important keywords
+			} elseif (!empty($matches[3])) { // most important keywords
 				return '<strong style="color:blue">' . $matches[3] . '</strong>';
 
-			if (!empty($matches[4])) // other keywords
+			} elseif (!empty($matches[4])) { // other keywords
 				return '<strong style="color:green">' . $matches[4] . '</strong>';
+			}
 		}, $sql);
 
 		return '<pre class="dump">' . trim($sql) . "</pre>\n";

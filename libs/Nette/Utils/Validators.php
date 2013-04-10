@@ -134,7 +134,7 @@ class Validators extends Nette\Object
 					continue;
 				}
 			} elseif ($type === 'pattern') {
-				if (preg_match('|^' . (isset($item[1]) ? $item[1] : '') . '$|', $value)) {
+				if (preg_match('|^' . (isset($item[1]) ? $item[1] : '') . '\z|', $value)) {
 					return TRUE;
 				}
 				continue;
@@ -163,31 +163,28 @@ class Validators extends Nette\Object
 
 	/**
 	 * Finds whether a value is an integer.
-	 * @param  mixed
 	 * @return bool
 	 */
 	public static function isNumericInt($value)
 	{
-		return is_int($value) || is_string($value) && preg_match('#^-?[0-9]+$#', $value);
+		return is_int($value) || is_string($value) && preg_match('#^-?[0-9]+\z#', $value);
 	}
 
 
 
 	/**
 	 * Finds whether a string is a floating point number in decimal base.
-	 * @param  mixed
 	 * @return bool
 	 */
 	public static function isNumeric($value)
 	{
-		return is_float($value) || is_int($value) || is_string($value) && preg_match('#^-?[0-9]*[.]?[0-9]+$#', $value);
+		return is_float($value) || is_int($value) || is_string($value) && preg_match('#^-?[0-9]*[.]?[0-9]+\z#', $value);
 	}
 
 
 
 	/**
 	 * Finds whether a value is a syntactically correct callback.
-	 * @param  mixed
 	 * @return bool
 	 */
 	public static function isCallable($value)
@@ -211,7 +208,6 @@ class Validators extends Nette\Object
 
 	/**
 	 * Finds whether a value is "falsy".
-	 * @param  mixed
 	 * @return bool
 	 */
 	public static function isNone($value)
@@ -273,7 +269,7 @@ class Validators extends Nette\Object
 		$alpha = "a-z\x80-\xFF";
 		$domain = "[0-9$alpha](?:[-0-9$alpha]{0,61}[0-9$alpha])?";
 		$topDomain = "[$alpha][-0-9$alpha]{0,17}[$alpha]";
-		return (bool) preg_match("(^https?://(?:(?:$domain\\.)*$topDomain|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(:\d{1,5})?(/\S*)?\\z)i", $value);
+		return (bool) preg_match("(^https?://(?:(?:$domain\\.)*$topDomain|\\d{1,3}\.\\d{1,3}\.\\d{1,3}\.\\d{1,3})(:\\d{1,5})?(/\\S*)?\\z)i", $value);
 	}
 
 }

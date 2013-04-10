@@ -34,11 +34,7 @@ final class Arrays
 
 
 	/**
-	 * Returns array item or $default if item is not set.
-	 * Example: $val = Arrays::get($arr, 'i', 123);
-	 * @param  mixed  array
-	 * @param  mixed  key
-	 * @param  mixed  default value
+	 * Returns item from array or $default if item is not set.
 	 * @return mixed
 	 */
 	public static function get(array $arr, $key, $default = NULL)
@@ -60,8 +56,6 @@ final class Arrays
 
 	/**
 	 * Returns reference to array item or $default if item is not set.
-	 * @param  mixed  array
-	 * @param  mixed  key
 	 * @return mixed
 	 */
 	public static function & getRef(& $arr, $key)
@@ -80,8 +74,6 @@ final class Arrays
 
 	/**
 	 * Recursively appends elements of remaining keys from the second array to the first.
-	 * @param  array
-	 * @param  array
 	 * @return array
 	 */
 	public static function mergeTree($arr1, $arr2)
@@ -99,8 +91,6 @@ final class Arrays
 
 	/**
 	 * Searches the array for a given key and returns the offset if successful.
-	 * @param  array  input array
-	 * @param  mixed  key
 	 * @return int    offset if it is found, FALSE otherwise
 	 */
 	public static function searchKey($arr, $key)
@@ -113,9 +103,6 @@ final class Arrays
 
 	/**
 	 * Inserts new array before item specified by key.
-	 * @param  array  input array
-	 * @param  mixed  key
-	 * @param  array  inserted array
 	 * @return void
 	 */
 	public static function insertBefore(array &$arr, $key, array $inserted)
@@ -128,9 +115,6 @@ final class Arrays
 
 	/**
 	 * Inserts new array after item specified by key.
-	 * @param  array  input array
-	 * @param  mixed  key
-	 * @param  array  inserted array
 	 * @return void
 	 */
 	public static function insertAfter(array &$arr, $key, array $inserted)
@@ -144,9 +128,6 @@ final class Arrays
 
 	/**
 	 * Renames key in array.
-	 * @param  array
-	 * @param  mixed  old key
-	 * @param  mixed  new key
 	 * @return void
 	 */
 	public static function renameKey(array &$arr, $oldKey, $newKey)
@@ -163,17 +144,18 @@ final class Arrays
 
 	/**
 	 * Returns array entries that match the pattern.
-	 * @param  array
-	 * @param  string
-	 * @param  int
 	 * @return array
 	 */
 	public static function grep(array $arr, $pattern, $flags = 0)
 	{
-		Nette\Diagnostics\Debugger::tryError();
+		set_error_handler(function($severity, $message) use ($pattern) { // preg_last_error does not return compile errors
+			restore_error_handler();
+			throw new RegexpException("$message in pattern: $pattern");
+		});
 		$res = preg_grep($pattern, $arr, $flags);
-		if (Nette\Diagnostics\Debugger::catchError($e) || preg_last_error()) { // compile error XOR run-time error
-			throw new RegexpException($e ? $e->getMessage() : NULL, $e ? NULL : preg_last_error(), $pattern);
+		restore_error_handler();
+		if (preg_last_error()) { // run-time error
+			throw new RegexpException(NULL, preg_last_error(), $pattern);
 		}
 		return $res;
 	}
@@ -182,7 +164,6 @@ final class Arrays
 
 	/**
 	 * Returns flattened array.
-	 * @param  array
 	 * @return array
 	 */
 	public static function flatten(array $arr)

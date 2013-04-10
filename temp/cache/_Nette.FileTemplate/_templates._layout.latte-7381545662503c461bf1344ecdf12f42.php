@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.01543500 1364465681";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1363567374;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"6a33aa6 released on 2012-10-01";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.87291300 1365114810";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1363567374;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'c7r125wgmt')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'zasbrzgzg2')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lb9bb81b9ebd_title')) { function _lb9bb81b9ebd_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lb515974a5b2_title')) { function _lb515974a5b2_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lbc060a13c6a_head')) { function _lbc060a13c6a_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lb86a74d5417_head')) { function _lb86a74d5417_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -107,10 +107,10 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 <?php $iterations++; endforeach ?>
                                 
                                 <div class="sign-in-form">
-<?php if ($_label = $_form["username"]->getLabel()) echo $_label->addAttributes(array()) ?>
-                                    <div class="span5 pull-left"><?php echo $_form["username"]->getControl()->addAttributes(array()) ?></div>
-<?php if ($_label = $_form["password"]->getLabel()) echo $_label->addAttributes(array()) ?>
-                                    <div class="span2 pull-left input_password"><?php echo $_form["password"]->getControl()->addAttributes(array()) ?></div>
+<?php $_input = is_object("username") ? "username" : $_form["username"]; if ($_label = $_input->getLabel()) echo $_label->addAttributes(array()) ?>
+                                    <div class="span5 pull-left"><?php $_input = (is_object("username") ? "username" : $_form["username"]); echo $_input->getControl()->addAttributes(array()) ?></div>
+<?php $_input = is_object("password") ? "password" : $_form["password"]; if ($_label = $_input->getLabel()) echo $_label->addAttributes(array()) ?>
+                                    <div class="span2 pull-left input_password"><?php $_input = (is_object("password") ? "password" : $_form["password"]); echo $_input->getControl()->addAttributes(array()) ?></div>
                                     <div class="span1 pull-left">
                                         <input id="frmsignInForm-login" class="btn btn-primary" type="submit" value="Login" name="login" />
                                     </div>
