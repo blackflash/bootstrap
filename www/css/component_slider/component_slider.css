@@ -1,7 +1,9 @@
 /*------------- slider ---------------*/
 
     div#sliderContainer {
-    	background: url("../../img/component_slider/sliderBG.png") 0 0 repeat-x;
+    	background: url("../../img/component_slider/01.jpg") center;
+        background-size:100%;
+        background-position: center;
     	height: 300px;
     }
 
@@ -15,6 +17,17 @@
     	height: 265px;
     	padding: 25px 60px 0 60px;
     	overflow: hidden;
+    }
+
+    .sectionHeading {
+        text-transform: uppercase;
+        font-weight: 400;
+        font-family: Aller;
+    }
+
+    .sectionHeading:hover,  .sectionHeading:active ,.sectionHeading:focus  {
+        color: none;
+        text-decoration: none;
     }
 
     .imageContainer {
@@ -35,12 +48,14 @@
     .slideParagraph {
     	font-size: 14px;
     	text-align: justify;
+        color: white;
     }
 
     .slideParagraph2 {
     	line-height: 22px;
     	width: 250px;
     	float: left;
+        color: white;
     }
 
     .checkImg {

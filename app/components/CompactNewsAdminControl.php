@@ -32,6 +32,7 @@ class compactNewsAdminControl extends UI\Control {
 	public function render()
     {
         $this->template->setFile(__DIR__ . '/CompactNewsAdmin.latte');
+        $this->template->is_active = $this->generalRepository->getByTableAndId("component_list","title","component_compact_news")->fetch()->is_active;
         $this->template->news = $this->generalRepository->getByTable("component_compact_news");
         $this->template->render();
     }
@@ -41,6 +42,13 @@ class compactNewsAdminControl extends UI\Control {
 		$this->generalRepository->updateTableById("component_compact_news","id",$id,array("is_active" => $activate));
 		$this->presenter->redirect('this');
     }
+
+    public function handlejsonShowComponent(){ 
+		$value = $_POST["value"];
+		$success = $this->generalRepository->updateTableById("component_list", "title", "component_compact_news",array("is_active" => $value));
+		echo json_encode($success);
+        die();
+	}
 
     public function handlejsonDelete($id){
 		$jsondata = $this->generalRepository->deleteRowByTableAndId("component_compact_news","id",$id);

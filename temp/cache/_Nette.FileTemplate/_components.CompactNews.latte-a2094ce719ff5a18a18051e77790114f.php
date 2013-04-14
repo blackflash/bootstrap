@@ -1,10 +1,10 @@
-<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.94307800 1365114810";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\CompactNews.latte";i:2;i:1362848264;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000404a:2:{s:4:"time";s:21:"0.78922000 1365813556";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:82:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\CompactNews.latte";i:2;i:1365813555;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\CompactNews.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'nk8hat0424')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'be3kuf0yhl')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -16,19 +16,18 @@ if (!empty($_control->snippetMode)) {
 //
 // main template
 //
-?>
+if ($is_active): ?>
 <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/component_compact_news/compact_news_green.css" type="text/css" media="screen" />
 <script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_compact_news/cufon.js" type="text/javascript"></script>
 <script src="<?php echo htmlSpecialChars($basePath) ?>/js/component_compact_news/Bebas_400.font.js" type="text/javascript"></script>
 <script type="text/javascript">
-	Cufon('.cn_wrapper h1,h2', {});
+	Cufon('.cn_wrapper h1,.cn_wrapper h2');
 </script>
 
+<h5 class="sectionHeading">Actual <span class="label label-info" style="padding:5px;">news</span> </h5>
 <div class="cn_wrapper">
 	<div id="cn_preview" class="cn_preview">
-<?php $iterations = 0; foreach ($iterator = $_l->its[] = new Nette\Iterators\CachingIterator($news) as $new): ?>
-
-<?php if ($iterator->first): ?>
+<?php $iterations = 0; foreach ($iterator = $_l->its[] = new Nette\Iterators\CachingIterator($news) as $new): if ($iterator->first): ?>
 					<div class="cn_content" style="top:5px;">
 <?php else: ?>
 					<div class="cn_content">
@@ -67,6 +66,8 @@ if (!empty($_control->snippetMode)) {
 			</div>
 		</div>
 	</div>
+<div class="fillContainerXXS"></div>
+
         
 
         <!-- The JavaScript -->
@@ -169,3 +170,4 @@ if (!empty($_control->snippetMode)) {
 				
             });
         </script>
+<?php endif ;

@@ -78,7 +78,7 @@
                 {if $user->isLoggedIn()}
                     <div id="loginPanel"  class="fr">
                         <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-                        <div class="title">you are loged in.</div>
+                        <div class="title">you are loged in. | <a n:href="Admin:default">Admin</a></div>
                         <div class="user">
                             <span class="icon user">{$user->getIdentity()->name}</span> |
                             <a n:href="signOut!">Logout</a>
@@ -148,6 +148,19 @@
                         <p>
                             Contact us by <a href="{link Contact:}">Contact formular</a>.
                         </p>
+                        <p>
+                            <div id="fb-root"></div>
+                            <script>(function(d, s, id) {
+                              var js, fjs = d.getElementsByTagName(s)[0];
+                              if (d.getElementById(id)) return;
+                              js = d.createElement(s); js.id = id;
+                              js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                              fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
+
+                            <div class="fb-like" data-href="http://www.facebook.com/pages/Cleverfrogs/486886951375098" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="lucida grande"></div>
+                            
+                        </p>
                     </div><!--end of span4-->
                 </div><!--end of span4-->
 
@@ -209,8 +222,7 @@
 
         </script>
 
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
        <script>
         var _gaq=[['_setAccount','UA-34299154-1'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

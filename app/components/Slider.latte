@@ -1,12 +1,10 @@
+{if $is_active}
 <link rel="stylesheet" href="{$basePath}/css/component_slider/component_slider.css" media="screen" />
-
 <div id="sliderContainer">
     <div class="container" style="width: 960px;">
-
         <div id="sliderBtnPrev">
             <img src="{$basePath}/img/component_slider/btnPrev.png" alt="Previous" />
         </div>
-
         <div id="mainSlider">
             <ul> 
                 {foreach $slider as $slide}
@@ -29,10 +27,11 @@
                 {/foreach}
             </ul>
         </div>
-
         <div id="sliderBtnNext">
             <img src="{$basePath}/img/component_slider/btnNext.png" alt="Next" />
         </div>
-
     </div><!--end of centerContainer-->
 </div><!--end of sliderContainer-->
+<div class="fillContainerXS"></div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+{/if}

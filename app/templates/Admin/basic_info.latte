@@ -46,14 +46,28 @@
 
 <script type="text/javascript">
 
-    $(document).on("submit", ".basicInfo", function(event){
-        console.log($(".title").val() + " " + $(".main-email").val() + " " + $(".contact-email").val()
-                    + " " + $(".newsletter-email").val()  + " " + $(".description").val());
+    $(document).on("change", ".change", function(event){
+        setInfo($(this).data("column"),$(this).val());
         return false;
     });
 
-</script>
+    function setInfo(column,value){
+       $.ajax({
+          type: "POST",
+          url: "?do=jsonSetBasicInfo",
+          data: { column: column,value: value },
+          dataType: "html",
+          success: function(msg){ 
+                if(parseInt(msg)!=0)
+                {
+                    $("#da-ex-growl-3").trigger('click');
+                }
+          }
+      });
+    }
 
+</script>
+<button id="da-ex-growl-3" style="display: none;"></button>
 <!-- Content Area -->
 
     <div class="grid_2">
@@ -71,68 +85,62 @@
                         <div class="da-form-row">
                             <label>Website title<span class="required">*</span></label>
                             <div class="da-form-item large">
-                                <input type="text" name="req1" />
+                                <input type="text" class="change" name="req1" data-column="website_title" data-name='{$basic->website_title}' value="{$basic->website_title}" autocomplete="OFF"/>
                             </div>
                         </div>
                         <div class="da-form-row">
                             <label>Main e-mail<span class="required">*</span></label>
                             <div class="da-form-item large">
-                                <input type="text" name="email1" />
+                                <input type="text" class="change" name="email1" data-column="main_email" data-name='{$basic->main_email}' value="{$basic->main_email}" autocomplete="OFF"/>
                             </div>
                         </div>
                         <div class="da-form-row">
                             <label>Contact e-mail<span class="required">*</span></label>
                             <div class="da-form-item large">
                                 <span class="formNote">Email where will be sended information from contact form</span>
-                                <input type="text" name="email2" />
+                                <input type="text" class="change" name="email2" data-column="contact_email" data-name='{$basic->contact_email}' value="{$basic->contact_email}" autocomplete="OFF"/>
                             </div>
                         </div>
                         <div class="da-form-row">
                             <label>Newsletter e-mail<span class="required">*</span></label>
                             <div class="da-form-item large">
                                 <span class="formNote">Email from which will be newsletters sended</span>
-                                <input type="text" name="email3" placeholder="your@email.com" class="newsletter-email" autocomplete="OFF"/>
+                                <input type="text" class="change" name="email3" data-column="newsletter_email" placeholder="newsletter@email.com" data-name='{$basic->newsletter_email}' value="{$basic->newsletter_email}" class="newsletter-email" autocomplete="OFF"/>
                             </div>
                         </div>
                         <div class="da-form-row">
                             <label>Short description about webpage</label>
                             <div class="da-form-item large">
                                 <span class="formNote">will be placed in meta description too</span>
-                                <textarea id="da-ex-elastic" class="description" name="description"></textarea>
+                                <textarea id="da-ex-elastic" class="change description" data-column="description" name="description" data-name='{$basic->description}' >{$basic->description}</textarea>
                             </div>
                         </div>
-                    </div>
-                    <div class="da-button-row">
-                        <input type="submit" value="Submit" class="da-button green" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
        
-        <div class="grid_2">
-            <div class="da-panel">
-                <div class="da-panel-header">
-                    <span class="da-panel-title">
-                        <img src="images/icons/color/text_list_bullets.png" />
-                        WYSIWYG Editor
-                    </span>
-                </div>
-                <div class="da-panel-content">
-                    <form class="da-form">
-                        <div class="da-form-row da-form-block">
-                            <label>elRTE</label>
-                            <div class="da-form-item large">
-                                <div id="da-ex-wysiwyg"></div>
-                            </div>
-                        </div>
-                        <div class="da-button-row">
-                            <input type="reset" value="Reset" class="da-button gray left" />
-                            <input type="submit" value="Submit" class="da-button pink" />
-                        </div>
-                    </form>
-                </div>
+    <div class="grid_2">
+        <div class="da-panel">
+            <div class="da-panel-header">
+                <span class="da-panel-title">
+                    <img src="images/icons/color/text_list_bullets.png" />
+                    WYSIWYG Editor
+                </span>
             </div>
-        </div>                                           
+            <div class="da-panel-content">
+                <form class="da-form">
+                    <div class="da-form-row da-form-block">
+                        <div class="da-form-item large">
+                            <div id="da-ex-wysiwyg"></div>
+                        </div>
+                    </div>
+                    <div class="da-button-row">
+                        <input type="submit" value="Submit" class="da-button blue" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>                                           
 </div>

@@ -122,12 +122,23 @@ class AdminPresenter extends BasePresenter
 				$this->template->news   = $this->context->generalRepository->getByTable("component_compact_news");
 			break;
 
+			case 'CleverFrogs - Basic info':
+				$this->template->basic   = $this->context->generalRepository->getByTableAndId("basic_info","id","1")->fetch();
+			break;
+
 	    	default:
 	    		$this->template->includeBoard = $page.".latte";
 	    	break;
 	    }
 	   
         $this->template->includeBoard = $page.".latte";
+	}
+
+	/*---------------------BASIC INFO--------------------------*/
+	public function handlejsonSetBasicInfo($column,$value){
+		$success = $this->context->generalRepository->updateTableById("basic_info","id",1,array($column => $value));
+		echo json_encode($success);
+		die();
 	}
 
 	/*---------------------COMPONENTS--------------------------*/

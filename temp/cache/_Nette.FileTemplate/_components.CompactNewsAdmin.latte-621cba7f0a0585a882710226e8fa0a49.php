@@ -1,10 +1,10 @@
-<?php //netteCache[01]000409a:2:{s:4:"time";s:21:"0.22432500 1365114258";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:87:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\CompactNewsAdmin.latte";i:2;i:1362849132;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000409a:2:{s:4:"time";s:21:"0.36610500 1365900833";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:87:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\CompactNewsAdmin.latte";i:2;i:1365900830;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\CompactNewsAdmin.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'wif128lgtt')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'ndakqyvcge')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -55,6 +55,33 @@ if (!empty($_control->snippetMode)) {
 
 <!-- Content Area -->     
 <script type="text/javascript">
+
+    function componentShow(value){
+       $.ajax({
+          type: "POST",
+          url: "?do=compactNewsAdmin-jsonShowComponent",
+          data: { value: value },
+          dataType: "html",
+          success: function(msg){ 
+                if(parseInt(msg)!=0)
+                {
+                    //console.log(msg);
+                }
+          }
+      });
+    }
+
+    $(document).on("change", ".ios-switch", function(event){
+        console.log($(this).is(':checked'));
+        var temp;
+        if($(this).is(':checked')) temp = 1; else temp = 0;
+
+        componentShow(temp);
+        return false;
+    });
+
+    /*------------ end of show --------------*/
+
 
     function deleteConfirm(id,image) {
         $( "#DeleteDialog" ).dialog({
@@ -254,6 +281,100 @@ if (!empty($_control->snippetMode)) {
     </div>
     <!-- end of Non displayed panels -->
 
+
+    <div class="grid_4 iOsButton">
+            <script type="text/javascript">
+                $(document).ready(function() {
+                  var switches = document.querySelectorAll('input[type="checkbox"].ios-switch');
+                    for (var i=0, sw; sw = switches[i++]; ) {
+                        var div = document.createElement('div');
+                        div.className = 'switch';
+                        sw.parentNode.insertBefore(div, sw.nextSibling);
+                    }
+                });
+            </script>
+            <style type="text/css">
+                .iOsButton {
+                    margin-bottom: 20px;
+                }
+
+                :root input[type="checkbox"] {
+                    position: absolute;
+                    opacity: 0;
+                }
+
+                :root input[type="checkbox"].ios-switch + div {
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 3em; height: 1em;
+                    border: 1px solid rgba(0,0,0,.3);
+                    border-radius: 999px;
+                    margin: 0 .5em;
+                    background: white;
+                    background-image: linear-gradient(rgba(0,0,0,.1), transparent),
+                                      linear-gradient(90deg, hsl(210, 90%, 60%) 50%, transparent 50%);
+                    background-size: 200% 100%;
+                    background-position: 100% 0;
+                    background-origin: border-box;
+                    background-clip: border-box;
+                    overflow: hidden;
+                    transition-duration: .4s;
+                    transition-property: padding, width, background-position, text-indent;
+                    box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+                                0 .45em 0 .1em rgba(0,0,0,.05) inset;
+                    font-size: 150%; /* change this and see how they adjust! */
+                }
+
+                :root input[type="checkbox"].ios-switch:checked + div {
+                    padding-left: 2em;  width: 1em;
+                    background-position: 0 0;
+                }
+
+                :root input[type="checkbox"].ios-switch + div:before {
+                    content: 'On';
+                    float: left;
+                    width: 1.65em; height: 1.65em;
+                    margin: -.1em;
+                    border: 1px solid rgba(0,0,0,.35);
+                    border-radius: inherit;
+                    background: white;
+                    background-image: linear-gradient(rgba(0,0,0,.2), transparent);
+                    box-shadow: 0 .1em .1em .1em hsla(0,0%,100%,.8) inset,
+                                0 0 .5em rgba(0,0,0,.3);
+                    color: white;
+                    text-shadow: 0 -1px 1px rgba(0,0,0,.3);
+                    text-indent: -2.5em;
+                }
+
+                :root input[type="checkbox"].ios-switch:active + div:before {
+                    background-color: #eee;
+                }
+
+                /*:root input[type="checkbox"].ios-switch:focus + div {
+                    box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+                                0 .45em 0 .1em rgba(0,0,0,.05) inset,
+                                0 0 .4em 1px rgba(148,214,0,.5);
+                }*/
+
+                :root input[type="checkbox"].ios-switch + div:before,
+                :root input[type="checkbox"].ios-switch + div:after {
+                    font: bold 60%/1.9 sans-serif;
+                    text-transform: uppercase;
+                }
+
+                :root input[type="checkbox"].ios-switch + div:after {
+                    content: 'Off';
+                    float: left;
+                    text-indent: .5em;
+                    color: rgba(0,0,0,.45);
+                    text-shadow: none;
+
+                }
+            </style>
+
+            <label>Show component: <input type="checkbox" class="ios-switch" <?php if ($is_active): ?>
+checked<?php endif ?> /></label>
+        </div>
 
     <!--ADD PRODUCT OR SERVICE -->
     <div class="grid_2">

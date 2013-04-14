@@ -46,7 +46,8 @@
 		a("#da-ex-growl").bind("click",function(d){a.jGrowl("User was added to project !",{position:"bottom-right"})});
 		a("#da-ex-growl-0").bind("click",function(d){a.jGrowl("Action was successul !",{position:"bottom-right"})});
 		a("#da-ex-growl-1").bind("click",function(d){a.jGrowl("A sticky message",{sticky:true,position:"bottom-right"})});
-		a("#da-ex-growl-2").bind("click",function(d){a.jGrowl("Message with Header",{header:"Important!",position:"bottom-right"
+		a("#da-ex-growl-2").bind("click",function(d){a.jGrowl("Message with Header",{header:"Important!",position:"bottom-right"})});
+		a("#da-ex-growl-3").bind("click",function(d){a.jGrowl("Updated !",{header:"Basic info",position:"bottom-right"
 
 
 	})})}})})(jQuery);

@@ -1,23 +1,23 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.87291300 1365114810";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1363567374;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.59782800 1365846188";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1365846187;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'zasbrzgzg2')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'c4bk3vs4vu')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lb515974a5b2_title')) { function _lb515974a5b2_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lbdd42dfd61b_title')) { function _lbdd42dfd61b_title($_l, $_args) { extract($_args)
 ?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lb86a74d5417_head')) { function _lb86a74d5417_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lbf9a7f4d7e6_head')) { function _lbf9a7f4d7e6_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -126,7 +126,8 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 <?php $iterations = 0; foreach ($flashes as $flash): ?>                        <div class="flash <?php echo htmlSpecialChars($flash->type) ?>
 "><?php echo Nette\Templating\Helpers::escapeHtml($flash->message, ENT_NOQUOTES) ?></div>
 <?php $iterations++; endforeach ?>
-                        <div class="title">you are loged in.</div>
+                        <div class="title">you are loged in. | <a href="<?php echo htmlSpecialChars($_control->link("Admin:default")) ?>
+">Admin</a></div>
                         <div class="user">
                             <span class="icon user"><?php echo Nette\Templating\Helpers::escapeHtml($user->getIdentity()->name, ENT_NOQUOTES) ?></span> |
                             <a href="<?php echo htmlSpecialChars($_control->link("signOut!")) ?>
@@ -197,6 +198,19 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
                         <p>
                             Contact us by <a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact formular</a>.
                         </p>
+                        <p>
+                            <div id="fb-root"></div>
+                            <script>(function(d, s, id) {
+                              var js, fjs = d.getElementsByTagName(s)[0];
+                              if (d.getElementById(id)) return;
+                              js = d.createElement(s); js.id = id;
+                              js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                              fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
+
+                            <div class="fb-like" data-href="http://www.facebook.com/pages/Cleverfrogs/486886951375098" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="lucida grande"></div>
+                            
+                        </p>
                     </div><!--end of span4-->
                 </div><!--end of span4-->
 
@@ -259,8 +273,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 
         </script>
 
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
        <script>
         var _gaq=[['_setAccount','UA-34299154-1'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

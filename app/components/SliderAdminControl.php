@@ -33,6 +33,7 @@ class sliderAdminControl extends UI\Control {
     {
         $this->template->setFile(__DIR__ . '/SliderAdmin.latte');
         $this->template->slider = $this->generalRepository->getByTable("component_slider");
+        $this->template->is_active = $this->generalRepository->getByTableAndId("component_list","title","component_slider")->fetch()->is_active;
         $this->template->render();
     }
 
@@ -46,6 +47,13 @@ class sliderAdminControl extends UI\Control {
 		$jsondata = $this->generalRepository->deleteRowByTableAndId("component_slider","id",$id);
 		unlink("uploads/slider/".$_POST["image"]);
         echo json_encode($jsondata);
+        die();
+	}
+
+	public function handlejsonShowComponent(){ 
+		$value = $_POST["value"];
+		$success = $this->generalRepository->updateTableById("component_list", "title", "component_slider",array("is_active" => $value));
+		echo json_encode($success);
         die();
 	}
 
@@ -136,14 +144,10 @@ class sliderAdminControl extends UI\Control {
 
 				$this->generalRepository->updateTableById("component_slider","id",$lastIndex,array('image' => $lastIndex.".jpg"));
 
-
 				return;
 			}
-			
 		}
-
 		return;
 		$this->exit_status('Something went wrong with your upload! '.$_FILES['pic']['error']);
 	}
-
 }

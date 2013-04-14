@@ -1,14 +1,15 @@
+{if $is_active}
 <link rel="stylesheet" href="{$basePath}/css/component_compact_news/compact_news_green.css" type="text/css" media="screen"/>
 <script src="{$basePath}/js/component_compact_news/cufon.js" type="text/javascript"></script>
 <script src="{$basePath}/js/component_compact_news/Bebas_400.font.js" type="text/javascript"></script>
 <script type="text/javascript">
-	Cufon('.cn_wrapper h1,h2', {});
+	Cufon('.cn_wrapper h1,.cn_wrapper h2');
 </script>
 
+<h5 class="sectionHeading">Actual <span class="label label-info" style="padding:5px;">news</span> </h5>
 <div class="cn_wrapper">
 	<div id="cn_preview" class="cn_preview">
 			{foreach $news as $new}
-
 					{if $iterator->first}
 					<div class="cn_content" style="top:5px;">
 					{else}
@@ -50,6 +51,8 @@
 			</div>
 		</div>
 	</div>
+<div class="fillContainerXXS"></div>
+
         
 
         <!-- The JavaScript -->
@@ -152,3 +155,4 @@
 				
             });
         </script>
+{/if}
