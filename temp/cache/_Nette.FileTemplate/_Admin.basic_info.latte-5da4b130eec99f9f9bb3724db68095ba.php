@@ -1,10 +1,10 @@
-<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.98698700 1365929569";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\basic_info.latte";i:2;i:1365929568;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000408a:2:{s:4:"time";s:21:"0.60444000 1365935032";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:86:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\basic_info.latte";i:2;i:1365935031;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\basic_info.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '2hm0d0v7ds')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'p8ieejhp1s')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -88,12 +88,11 @@ if (!empty($_control->snippetMode)) {
 </script>
 <button id="da-ex-growl-3" style="display: none;"></button>
 <!-- Content Area -->
-
     <div class="grid_2">
-        <div class="da-panel">
+        <div class="da-panel" >
             <div class="da-panel-header">
                 <span class="da-panel-title">
-                    <img src="images/icons/color/accept.png" alt="" />
+                    <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/buildings.png" alt="" />
                     Basic info
                 </span>
             </div>
@@ -144,27 +143,35 @@ if (!empty($_control->snippetMode)) {
             </div>
         </div>
     </div>
-       
     <div class="grid_2">
-        <div class="da-panel">
+        <div class="da-panel" >
             <div class="da-panel-header">
                 <span class="da-panel-title">
-                    <img src="images/icons/color/text_list_bullets.png" />
-                    WYSIWYG Editor
+                    <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/image_2.png" />
+                    WebPage logo upload
                 </span>
             </div>
             <div class="da-panel-content">
-                <form class="da-form">
-                    <div class="da-form-row da-form-block">
-                        <div class="da-form-item large">
-                            <div id="da-ex-wysiwyg"></div>
+                <form id="da-ex-validate3" class="da-form">
+                    <div class="da-form-inline">
+                        <div class="da-form-row">
+                            <img src="<?php echo htmlSpecialChars($basePath) ?>/uploads/basic/<?php echo htmlSpecialChars($logo) ?>" />
+                        </div>
+                    </div>
+                    <div class="da-form-inline">
+                        <div class="da-form-row">
+                            <label>Logo <span class="required">*</span></label>
+                            <div class="da-form-item large">
+                                <input type="file" name="file1" class="da-custom-file" />
+                                <label for="file1" class="error" generated="true" style="display:none;"></label>
+                            </div>
                         </div>
                     </div>
                     <div class="da-button-row">
-                        <input type="submit" value="Submit" class="da-button blue" />
+                        <input type="submit" value="Upload" class="da-button green" />
                     </div>
                 </form>
             </div>
         </div>
-    </div>                                           
+    </div>
 </div>
