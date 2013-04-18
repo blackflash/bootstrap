@@ -36,6 +36,15 @@ class HomepagePresenter extends BasePresenter
 		//$this->startXMLParse();
 	}
 
+	/*---------- subscription --------*/
+
+	public function handlejsonSaveSubscription($email){
+		if ($this->isAjax()) {
+			$success = $this->context->generalRepository->insertRowByTable("subscription",array("email" => $email));
+	        echo json_encode($success);
+	        die();
+	    }
+	}
 
 	/*---------- PAYPAL ----------*/
 	public function handlepaypal(){

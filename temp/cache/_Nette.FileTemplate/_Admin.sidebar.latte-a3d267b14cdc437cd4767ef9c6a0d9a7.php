@@ -1,10 +1,10 @@
-<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.11033800 1365115436";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte";i:2;i:1365115435;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000405a:2:{s:4:"time";s:21:"0.30549500 1366238004";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:83:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte";i:2;i:1366238002;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\sidebar.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'bzo1300adc')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '3xzj35k3lp')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -136,7 +136,23 @@ if (!empty($_control->snippetMode)) {
                                     Documentation
                                 </a>
                             </li>
-<?php endif ;if ($user->identity->username == "admin"): ?>
+<?php endif ?>
+
+<?php if ($user->identity->username == "admin"): ?>
+                            <li <?php if ($title == "CleverFrogs - Subscriptions"): ?>
+ class="active" <?php endif ?>>
+                                <a  href="<?php echo htmlSpecialChars($_control->link("Admin:default", array('title'=>"CleverFrogs - Subscriptions",'page'=>"subscriptions" ))) ?>
+">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/black/32/address_book.png" alt="Subscriptions" />
+                                    </span>
+                                    Subscriptions
+                                </a>
+                            </li>
+<?php endif ?>
+
+<?php if ($user->identity->username == "admin"): ?>
                             <li <?php if ($title == "CleverFrogs - News" || $title == "CleverFrogs - webpage" || $title == "CleverFrogs - Slider" || $title == "CleverFrogs - Basic info"): ?>
  class="active" <?php endif ?>>
                                 <a href='' >

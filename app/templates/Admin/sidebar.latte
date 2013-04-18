@@ -105,6 +105,19 @@
                                 </a>
                             </li>
                             {/if}
+
+                            {if $user->identity->username == "admin" }
+                            <li {if $title == "CleverFrogs - Subscriptions" } class="active" {/if}>
+                                <a n:href='Admin:default title=>"CleverFrogs - Subscriptions",page=>"subscriptions" ' >
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <img src="{$basePath}/images/icons/black/32/address_book.png" alt="Subscriptions" />
+                                    </span>
+                                    Subscriptions
+                                </a>
+                            </li>
+                            {/if}
+
                             {if $user->identity->username == "admin" }
                             <li {if $title == "CleverFrogs - News" || $title == "CleverFrogs - webpage" || $title == "CleverFrogs - Slider" || $title == "CleverFrogs - Basic info"} class="active" {/if}>
                                 <a href='' >

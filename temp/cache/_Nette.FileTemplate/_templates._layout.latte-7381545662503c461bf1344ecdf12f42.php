@@ -1,23 +1,24 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.59782800 1365846188";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1365846187;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.02092100 1366237225";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1366237223;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'c4bk3vs4vu')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'bzxd6aflze')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lbdd42dfd61b_title')) { function _lbdd42dfd61b_title($_l, $_args) { extract($_args)
-?>CleverFrogs <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
+if (!function_exists($_l->blocks['title'][] = '_lb4c3cba6647_title')) { function _lb4c3cba6647_title($_l, $_args) { extract($_args)
+;echo Nette\Templating\Helpers::escapeHtml($basic->website_title, ENT_NOQUOTES) ?>
+ <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
 
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lbf9a7f4d7e6_head')) { function _lbf9a7f4d7e6_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lb73b37883fc_head')) { function _lb73b37883fc_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -46,7 +47,7 @@ if ($_l->extends) {
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<meta name="description" content="CleverFrogs" />
+	<meta name="description" content="<?php echo htmlSpecialChars($basic->website_title) ?>" />
 <?php if (isset($robots)): ?>	<meta name="robots" content="<?php echo htmlSpecialChars($robots) ?>" />
 <?php endif ?>
     <meta name="viewport" content="width=device-width" />
@@ -71,6 +72,9 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap-responsive.css" />
     <!--end of <script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
 
+    <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/vendor/bootstrap.min.js"></script>
+
+
     <!-- LIGHTBOX -->
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/lightbox.css" type="text/css" media="screen" />
     <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css' />
@@ -88,7 +92,8 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <!-- Add your site or application content here -->
             <div class="container">
 
-                <a href="http://cleverfrogs.com" class="logo fl"><img src="<?php echo htmlSpecialChars($basePath) ?>/img/logoB.png" alt="CleverFrogs" /></a>
+                <a href="http://cleverfrogs.com" class="logo fl"><img src="<?php echo htmlSpecialChars($basePath) ?>
+/uploads/basic/<?php echo htmlSpecialChars($basic->logo) ?>" alt="CleverFrogs" /></a>
                 
 <?php if (!$user->isLoggedIn()): ?>
                 <div id="topContactInfo" class="fr">
@@ -148,7 +153,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
                 <div class="nav-collapse collapse">
                     <div class="centerMenu">
                         <ul class="nav" id="nav">
-                                <li><a href="http://cleverfrogs.com">Home<span>CleverFrogs</span></a></li>
+                                <li><a href="http://cleverfrogs.com">Home<span><?php echo Nette\Templating\Helpers::escapeHtml($basic->website_title, ENT_NOQUOTES) ?></span></a></li>
                                 <li><a href="<?php echo htmlSpecialChars($_control->link("Team:")) ?>">Team<span>Team members</span></a></li>
                                 <li><a href="<?php echo htmlSpecialChars($_control->link("PhotoGallery:")) ?>#slide-main">Gallery<span>photo & video</span></a></li>
                                 <li><a href="<?php echo htmlSpecialChars($_control->link("Contact:")) ?>">Contact<span>Contact us</span></a></li>
@@ -178,18 +183,15 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
 
                     <div class="span4">
                         <h5 class="colorWhite">Newsletter subscription</h5>
-                        <p>
+                        <p class="subInfo">
                             Get the latest information about our project.
                         </p>
-
-                        <form action="" method="get">
-                            <fieldset>
-                                <div class="input-append">
-                                    <input class="span2" id="appendedInputButton" type="text" />
-                                    <button class="btn" type="button">Subscribe</button>
-                                </div>
-                            </fieldset>
-                        </form>
+                        <fieldset>
+                            <div class="input-append">
+                                <input class="span2" name="req1" id="appendedInputButton" type="text" id="inputWarning" autocomplete="OFF" />
+                                <button type="submit" class="btn subscription" type="button">Subscribe</button>
+                            </div>
+                        </fieldset>
                         <a href="#" class="policy">Terms & conditions</a>
                     </div><!--end of span4-->
 
@@ -281,8 +283,57 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         s.parentNode.insertBefore(g,s)}(document,'script'));
       </script>
 
+        <script type="text/javascript" src="{$basePath}/plugins/validate/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="{$basePath}/js/demo/demo.validation.js"></script>
+
         <script type="text/javascript">
             Cufon.now();
+
+            function validateEmail($email) {
+              var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+              if( !emailReg.test( $email ) ) {
+                return false;
+              } else {
+                return true;
+              }
+            }
+
+            function saveSubscription(email){
+                $.ajax({    
+                  type: "POST",
+                  url: "?do=jsonSaveSubscription",
+                  data: {email:email},
+                  dataType: "html",   
+                  success: function(msg){ 
+                      if(parseInt(msg)!=0)    
+                      {
+                        $('.subInfo').html("Thank you for subscription. <br> Your email was saved to database.");
+                        $('.subInfo').css("color","#81bc00");
+                        $('.subInfo').css("font-size","12px");
+                        $("#appendedInputButton").val("");
+                        $("#appendedInputButton").attr("disabled","true");
+                        $(".subscription").attr("disabled","true");
+                        return false;
+                      }
+                  }
+                }); 
+            }
+
+            $(".subscription").click(function() {
+                if( validateEmail($("#appendedInputButton").val()) && $("#appendedInputButton").val() != "") { 
+                    saveSubscription($("#appendedInputButton").val());
+                    return false;
+                }
+                else {
+                    $('.subInfo').html("Please enter valid email adress.");
+                    $('.subInfo').css("color","red");
+                    $('.subInfo').css("font-size","15px");
+                }
+            });
+
         </script>
+
+        
+
 </body>
 </html>

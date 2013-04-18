@@ -1,16 +1,16 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.56762500 1365845930";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1363831497;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.33186600 1366234776";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1366229801;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'bqgiv6vk8r')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '3569n3nfa2')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lb8fe3a7f2ff_content')) { function _lb8fe3a7f2ff_content($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['content'][] = '_lbe5e28822da_content')) { function _lbe5e28822da_content($_l, $_args) { extract($_args)
 ?><div id="breadCrumbsContainer">
             <div class="container">
                 <p>You are here:
@@ -32,20 +32,23 @@ if (!function_exists($_l->blocks['content'][] = '_lb8fe3a7f2ff_content')) { func
 				<div class="sidebarContainer ">
 					<div class="sidebarItem">
 						<div class="sidebarHeader">
-							<h5>CleverFrogs</h5>
+							<h5><?php echo Nette\Templating\Helpers::escapeHtml($basic->website_title, ENT_NOQUOTES) ?></h5>
 						</div>
 						
 						<ul class="basicList">
 							<li>
 								<p>Email adress:
-								<a href="mailto:info@cleverfrogs.com">info@cleverfrogs.com</a></p>
+								<a href="mailto:<?php echo htmlSpecialChars($basic->contact_email) ?>"><?php echo Nette\Templating\Helpers::escapeHtml($basic->contact_email, ENT_NOQUOTES) ?></a></p>
 							</li>
 			
 							<li class="noBottomBorder">
 								<p class="kontaktFU">
 									<br />
 									<b>Contact information :</b><br />
-									Phone num.: +421 000 000 000
+<?php if ($basic->phone != ""): ?>
+										Phone num.: <?php echo Nette\Templating\Helpers::escapeHtml($basic->phone, ENT_NOQUOTES) ?>
+
+<?php endif ?>
 								</p>
 							</li>
 							<!--end of <li style="margin-top: 20px;">

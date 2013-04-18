@@ -17,6 +17,7 @@ class AdminPresenter extends BasePresenter
 	/** @var @var Todo\ListRepository */
 	private $userRepository;
 	private $generalRepository;
+	private $generalWebpageTitle = "CleverFrogs";
 
 	protected function startup()
 	{
@@ -38,6 +39,7 @@ class AdminPresenter extends BasePresenter
 	    $this->template->title = $title;
 	    $this->template->success = $success;
 	    $this->template->gallery_id = $gallery_id;
+	    //$this->template->basic   = $this->context->generalRepository->getByTableAndId("basic_info","id","1")->fetch();
 		//print_r($this->template->user->identity);
 
 	    switch ($title) {
@@ -46,10 +48,9 @@ class AdminPresenter extends BasePresenter
 	    		$this->template->campaigns  = $this->context->generalRepository->getByTable("campaign");
 				$this->template->locations  = $this->context->generalRepository->getByTableWithOrder("location","title","ASC");
 				$this->template->cities     = $this->context->generalRepository->getByTableWithOrder("city","title","ASC");
-	    			
+	    		
 				$this->template->totalFeedbacks = $this->context->generalRepository->getCountOfRowsByTable("campaign_result"); 
 				$this->template->totalFeedbacksLast7days = $this->context->generalRepository->getCountOfFeedbacksbyTime("campaign_result","submit_time","7");
-
 
 	    		$category_ids = array();
 	    		$images = array();
@@ -118,12 +119,13 @@ class AdminPresenter extends BasePresenter
 				$this->template->cities   = $this->context->generalRepository->getByTable("city");
 				$this->template->locations   = $this->context->generalRepository->getByTable("location");
 			break;
+
 			case 'CleverFrogs - News':
 				$this->template->news   = $this->context->generalRepository->getByTable("component_compact_news");
 			break;
 
-			case 'CleverFrogs - Basic info':
-				$this->template->basic   = $this->context->generalRepository->getByTableAndId("basic_info","id","1")->fetch();
+			case 'CleverFrogs - Subscriptions':
+				$this->template->subscriptions   = $this->context->generalRepository->getByTable("subscription");
 			break;
 
 	    	default:
@@ -134,14 +136,39 @@ class AdminPresenter extends BasePresenter
         $this->template->includeBoard = $page.".latte";
 	}
 
-	/*---------------------BASIC INFO--------------------------*/
-	public function handlejsonSetBasicInfo($column,$value){
-		$success = $this->context->generalRepository->updateTableById("basic_info","id",1,array($column => $value));
-		echo json_encode($success);
-		die();
+	/*--------------------- subscription ----------------------*/
+	public function handleaddEmail(){
+
+		$name = "subscription";
+		$data = $this->request->getPost();
+
+		$this->context->generalRepository->insertRowByTable($name,$data);
+		$this->redirect('Admin:default',array( "title"=>"CleverFrogs - Subscriptions","page"=>"subscriptions", "success" => "1"));
+	}
+
+	public function handlejsonDeleteSubscription($value){
+		$jsondata = $this->context->generalRepository->deleteRowByTableAndId("subscription","id",$value);
+        echo json_encode($jsondata);
+        die();
+	}
+
+	function handlejsonUpdateSubscription($subId, $email){
+		$success = $this->context->galleryRepository->updateTableById("subscription", "id", $subId, array( "email" => $email));
+		$jsondata = array(
+			'success'     => $success, 
+			'id'     => $subId, 
+			"email"    => $email
+		);
+        echo json_encode($jsondata);
+        die();
 	}
 
 	/*---------------------COMPONENTS--------------------------*/
+	protected function createComponentBasicInfoAdmin()
+	{
+		return new Todo\basicInfoAdminControl($this->generalRepository);
+	}
+
 	protected function createComponentCompactNewsAdmin()
 	{
 		return new Todo\CompactNewsAdminControl($this->generalRepository);
@@ -181,9 +208,6 @@ class AdminPresenter extends BasePresenter
 
 		$COUNTALL   = $this->context->generalRepository->getCountOfRowsByTableAndId("campaign_result","campaign_id",$campaign_id);
 		$MULTIPLIER = round(100/$COUNTALL, 3, PHP_ROUND_HALF_UP);
-
-
-		
 
 		$resultsOfps = array();
 		$nameOfps = array();

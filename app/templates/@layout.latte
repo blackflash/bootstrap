@@ -3,14 +3,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-	<meta name="description" content="CleverFrogs">
+	<meta name="description" content="{$basic->website_title}">
 	<meta name="robots" content="{$robots}" n:ifset="$robots">
     <meta name="viewport" content="width=device-width">
     <META name="robots" content="all,follow,index">
     <META content="en" http-equiv="Content-language">
     <META name="resource-type" content="phpfile">
 
-	<title>{block title|stripTags|strip}CleverFrogs {$title}{/block}</title>
+	<title>{block title|stripTags|strip}{$basic->website_title} {$title}{/block}</title>
 
      <!-- Mobile viewport optimized: h5bp.com/viewport -->
     <meta name="viewport" content="width=device-width">
@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{$basePath}/css/bootstrap.css">
     <link rel="stylesheet" href="{$basePath}/css/bootstrap-responsive.css">
     <!--end of <script type="text/javascript" src="{$basePath}/js/cssrefresh.js"></script>-->
+
+    <script src = "{$basePath}/js/vendor/bootstrap.min.js"></script>
+
 
     <!-- LIGHTBOX -->
     <link rel="stylesheet" href="{$basePath}/css/lightbox.css" type="text/css" media="screen" />
@@ -42,7 +45,7 @@
         <!-- Add your site or application content here -->
             <div class="container">
 
-                <a href="http://cleverfrogs.com" class="logo fl"><img src="{$basePath}/img/logoB.png" alt="CleverFrogs" /></a>
+                <a href="http://cleverfrogs.com" class="logo fl"><img src="{$basePath}/uploads/basic/{$basic->logo}" alt="CleverFrogs" /></a>
                 
                 {if !$user->isLoggedIn()}
                 <div id="topContactInfo" class="fr">
@@ -98,7 +101,7 @@
                 <div class="nav-collapse collapse">
                     <div class="centerMenu">
                         <ul class="nav" id="nav">
-                                <li><a href="http://cleverfrogs.com">Home<span>CleverFrogs</span></a></li>
+                                <li><a href="http://cleverfrogs.com">Home<span>{$basic->website_title}</span></a></li>
                                 <li><a href="{link Team:}">Team<span>Team members</span></a></li>
                                 <li><a href="{link PhotoGallery:}#slide-main">Gallery<span>photo & video</span></a></li>
                                 <li><a href="{link Contact:}">Contact<span>Contact us</span></a></li>
@@ -128,18 +131,15 @@
 
                     <div class="span4">
                         <h5 class="colorWhite">Newsletter subscription</h5>
-                        <p>
+                        <p class="subInfo">
                             Get the latest information about our project.
                         </p>
-
-                        <form action="" method="get">
-                            <fieldset>
-                                <div class="input-append">
-                                    <input class="span2" id="appendedInputButton" type="text">
-                                    <button class="btn" type="button">Subscribe</button>
-                                </div>
-                            </fieldset>
-                        </form>
+                        <fieldset>
+                            <div class="input-append">
+                                <input class="span2" name="req1" id="appendedInputButton" type="text" id="inputWarning" autocomplete="OFF">
+                                <button type="submit" class="btn subscription" type="button">Subscribe</button>
+                            </div>
+                        </fieldset>
                         <a href="#" class="policy">Terms & conditions</a>
                     </div><!--end of span4-->
 
@@ -230,8 +230,57 @@
         s.parentNode.insertBefore(g,s)}(document,'script'));
       </script>
 
+        <script type="text/javascript" src="{$basePath}/plugins/validate/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="{$basePath}/js/demo/demo.validation.js"></script>
+
         <script type="text/javascript">
             Cufon.now();
+
+            function validateEmail($email) {
+              var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+              if( !emailReg.test( $email ) ) {
+                return false;
+              } else {
+                return true;
+              }
+            }
+
+            function saveSubscription(email){
+                $.ajax({    
+                  type: "POST",
+                  url: "?do=jsonSaveSubscription",
+                  data: {email:email},
+                  dataType: "html",   
+                  success: function(msg){ 
+                      if(parseInt(msg)!=0)    
+                      {
+                        $('.subInfo').html("Thank you for subscription. <br> Your email was saved to database.");
+                        $('.subInfo').css("color","#81bc00");
+                        $('.subInfo').css("font-size","12px");
+                        $("#appendedInputButton").val("");
+                        $("#appendedInputButton").attr("disabled","true");
+                        $(".subscription").attr("disabled","true");
+                        return false;
+                      }
+                  }
+                }); 
+            }
+
+            $(".subscription").click(function() {
+                if( validateEmail($("#appendedInputButton").val()) && $("#appendedInputButton").val() != "") { 
+                    saveSubscription($("#appendedInputButton").val());
+                    return false;
+                }
+                else {
+                    $('.subInfo').html("Please enter valid email adress.");
+                    $('.subInfo').css("color","red");
+                    $('.subInfo').css("font-size","15px");
+                }
+            });
+
         </script>
+
+        
+
 </body>
 </html>

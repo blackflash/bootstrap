@@ -20,20 +20,22 @@
 				<div class="sidebarContainer ">
 					<div class="sidebarItem">
 						<div class="sidebarHeader">
-							<h5>CleverFrogs</h5>
+							<h5>{$basic->website_title}</h5>
 						</div>
 						
 						<ul class="basicList">
 							<li>
 								<p>Email adress:
-								<a href="mailto:info@cleverfrogs.com">info@cleverfrogs.com</a></p>
+								<a href="mailto:{$basic->contact_email}">{$basic->contact_email}</a></p>
 							</li>
 			
 							<li class="noBottomBorder">
 								<p class="kontaktFU">
 									<br>
 									<b>Contact information :</b><br>
-									Phone num.: +421 000 000 000
+									{if $basic->phone != ""}
+										Phone num.: {$basic->phone}
+									{/if}
 								</p>
 							</li>
 							<!--end of <li style="margin-top: 20px;">

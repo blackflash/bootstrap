@@ -12,6 +12,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	protected function startup()
 	{
 	    parent::startup();
+	    $this->template->basic   = $this->context->generalRepository->getByTableAndId("basic_info","id","1")->fetch();
 	}
 
 	public function beforeRender()
