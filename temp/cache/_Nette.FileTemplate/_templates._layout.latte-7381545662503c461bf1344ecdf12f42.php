@@ -1,16 +1,16 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.02092100 1366237225";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1366237223;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.88755600 1366764819";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte";i:2;i:1366764818;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\@layout.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'bzxd6aflze')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '61vq248nr6')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block title
 //
-if (!function_exists($_l->blocks['title'][] = '_lb4c3cba6647_title')) { function _lb4c3cba6647_title($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['title'][] = '_lb4ecce43e4f_title')) { function _lb4ecce43e4f_title($_l, $_args) { extract($_args)
 ;echo Nette\Templating\Helpers::escapeHtml($basic->website_title, ENT_NOQUOTES) ?>
  <?php echo Nette\Templating\Helpers::escapeHtml($title, ENT_NOQUOTES) ;
 }}
@@ -18,7 +18,7 @@ if (!function_exists($_l->blocks['title'][] = '_lb4c3cba6647_title')) { function
 //
 // block head
 //
-if (!function_exists($_l->blocks['head'][] = '_lb73b37883fc_head')) { function _lb73b37883fc_head($_l, $_args) { extract($_args)
+if (!function_exists($_l->blocks['head'][] = '_lbae7773e986_head')) { function _lbae7773e986_head($_l, $_args) { extract($_args)
 ;
 }}
 
@@ -72,11 +72,9 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
     <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/bootstrap-responsive.css" />
     <!--end of <script type="text/javascript" src="<?php echo Nette\Templating\Helpers::escapeHtmlComment($basePath) ?>/js/cssrefresh.js"></script>-->
 
-    <script src = "<?php echo htmlSpecialChars($basePath) ?>/js/vendor/bootstrap.min.js"></script>
-
+    <script src="<?php echo htmlSpecialChars($basePath) ?>/js/vendor/bootstrap.min.js"></script>
 
     <!-- LIGHTBOX -->
-    <link rel="stylesheet" href="<?php echo htmlSpecialChars($basePath) ?>/css/lightbox.css" type="text/css" media="screen" />
     <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css' />
 
     <script type="text/javascript" src="<?php echo htmlSpecialChars($basePath) ?>/js/netteForms.js"></script>
@@ -153,6 +151,14 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
                 <div class="nav-collapse collapse">
                     <div class="centerMenu">
                         <ul class="nav" id="nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Action<span><?php echo Nette\Templating\Helpers::escapeHtml($basic->website_title, ENT_NOQUOTES) ?></span></a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                            <li><a tabindex="-1" href="#">Action</a></li>
+                                            <li><a tabindex="-1" href="#">Another action</a></li>
+                                            <li><a tabindex="-1" href="#">Something else here</a></li>
+                                        </ul>
+                                </li>
                                 <li><a href="http://cleverfrogs.com">Home<span><?php echo Nette\Templating\Helpers::escapeHtml($basic->website_title, ENT_NOQUOTES) ?></span></a></li>
                                 <li><a href="<?php echo htmlSpecialChars($_control->link("Team:")) ?>">Team<span>Team members</span></a></li>
                                 <li><a href="<?php echo htmlSpecialChars($_control->link("PhotoGallery:")) ?>#slide-main">Gallery<span>photo & video</span></a></li>
@@ -238,12 +244,11 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
 
         <!--end of oddelenie js kvoli prettyPhoto.js-->
-        <?php if($title != "Gallery" && $title != "Home"){  
-            echo '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>';
+        <?php if($title != "Gallery" && $title != "Home" ){  
+            echo '<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>';
         }
 ?>
 
-        <script src="<?php echo htmlSpecialChars($basePath) ?>/js/vendor/bootstrap.js"></script>
 
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/jCarouselLite.js" type="text/javascript"></script>
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/functions.js" type="text/javascript"></script>
@@ -252,7 +257,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/jquery.smooth-scroll.min.js"></script>
         <script src="<?php echo htmlSpecialChars($basePath) ?>/js/lightbox.js"></script>
 
-         
+        
         <script type="text/javascript">
             Cufon.replace("ul#nav li a", {hover: true})  
             Cufon.replace("blockquote p")  
@@ -281,10 +286,8 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
-      </script>
+       </script>
 
-        <script type="text/javascript" src="{$basePath}/plugins/validate/jquery.validate.min.js"></script>
-        <script type="text/javascript" src="{$basePath}/js/demo/demo.validation.js"></script>
 
         <script type="text/javascript">
             Cufon.now();
@@ -330,6 +333,7 @@ ob_start(); call_user_func(reset($_l->blocks['title']), $_l, get_defined_vars())
                     $('.subInfo').css("font-size","15px");
                 }
             });
+
 
         </script>
 

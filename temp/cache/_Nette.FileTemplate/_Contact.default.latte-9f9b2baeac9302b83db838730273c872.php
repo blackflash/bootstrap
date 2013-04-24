@@ -1,17 +1,20 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.33186600 1366234776";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1366229801;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.64026600 1366762979";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1366294082;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '3569n3nfa2')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '6r4l9en6zh')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lbe5e28822da_content')) { function _lbe5e28822da_content($_l, $_args) { extract($_args)
-?><div id="breadCrumbsContainer">
+if (!function_exists($_l->blocks['content'][] = '_lb9113eb9038_content')) { function _lb9113eb9038_content($_l, $_args) { extract($_args)
+?><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="<?php echo htmlSpecialChars($basePath) ?>/js/vendor/bootstrap.min.js"></script>
+
+<div id="breadCrumbsContainer">
             <div class="container">
                 <p>You are here:
                     <a href="http://cleverfrogs.com">Home</a>
@@ -21,6 +24,46 @@ if (!function_exists($_l->blocks['content'][] = '_lbe5e28822da_content')) { func
             </div><!--end of centerContainer-->
         </div><!--end of sliderContainer-->
 
+        <script type="text/javascript">
+
+        	$(document).on("click", "#sendEmailButton", function(event){
+		        sendEmail($(".name").val(),$(".email").val(),$(".text").val());
+		        return false;
+		    });
+
+        	function sendEmail(name,email,text){
+                $.ajax({    
+                  type: "POST",
+                  url: "?do=jsonSendEmail",
+                  data: { username:name, useremail: email, usertext: text},
+                  dataType: "html",   
+                  success: function(msg){ 
+                      if(parseInt(msg)!=0)    
+                      {
+                        console.log("ok");
+                      }
+                  }
+                }); 
+            }
+        </script>
+
+            <!-- Button to trigger modal -->
+		    <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+		     
+		    <!-- Modal -->
+		    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			    <div class="modal-header">
+			    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    	<h3 id="myModalLabel">Modal header</h3>
+			    </div>
+			    <div class="modal-body">
+			    	<p>One fine body…</p>
+			    </div>
+			    <div class="modal-footer">
+			    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			    </div>
+		    </div>
+	    
 
         <div class="blankSeparator"></div>
 
@@ -51,26 +94,6 @@ if (!function_exists($_l->blocks['content'][] = '_lbe5e28822da_content')) { func
 <?php endif ?>
 								</p>
 							</li>
-							<!--end of <li style="margin-top: 20px;">
-								<form action="https://www.paypal.com/cgi-bin/webscr" method="POST">
-					                <input type="hidden" name="cmd" value="_xclick">
-					                <input type="hidden" name="business" value="ado.gaspar@gmail.com">
-					                <input type="hidden" name="item_name" value="Cleverfrogs donation">
-					                <input type="hidden" name="item_number" value="1">
-					                <input type="hidden" name="amount" value="0.01">
-					                <input type="hidden" name="no_shipping" value="1">
-					                <input type="hidden" name="no_note" value="1">
-					                <input type="hidden" name="currency_code" value="USD">
-					                <input type="hidden" name="lc" value="US">
-					                <input type="hidden" name="bn" value="PP-BuyNowBF">
-					                <input type="hidden" name="return" value="http://cleverfrogs.com/questionnaire/">
-					                <input type="hidden" name="cancel_return" value="http://cleverfrogs.com/contact/">
-					                <input type="hidden" name="rm" value="2">
-					                <input type="hidden" name="notify_url" value="http://cleverfrogs.com/admin/?do=paypal">
-					                <input type="hidden" name="custom" value="1">
-					                <input type="submit" class="btn btn-large btn-block btn-primary" value="Donate">
-					            </form>
-							</li>-->
 							<li style="margin-top: 20px;">
 								<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 									<input type="hidden" name="cmd" value="_s-xclick" />
@@ -94,22 +117,21 @@ if (!function_exists($_l->blocks['content'][] = '_lbe5e28822da_content')) { func
 				<form action="<?php echo htmlSpecialChars($basePath) ?>/cleverfrogs/sendEmail/sk"  method="post" id="contactForm">
 					<fieldset>
 						<p class="span3">
-							<input class="input-block-level" type="text" placeholder="Your name*" name="meno" autocomplete="OFF" value="<?php if(isset($meno)) echo $meno ?>" />
+							<input class="input-block-level name" type="text" placeholder="Your name*" name="name" autocomplete="OFF" />
 						</p>
 
 						<p class="span3">
-							<input class="input-block-level" type="text" placeholder="Your email*"  name="email" autocomplete="OFF" value="<?php if(isset($email)) echo $email ?>" />
+							<input class="input-block-level email" type="text" placeholder="Your email*"  name="email" autocomplete="OFF" />
 						</p>
 						
 						<div class="cl"><!-- --></div>
 						
 						<p class="span6">
-							<textarea  class="input-block-level" id="text" placeholder="Text*" cols="10" rows="10" name="text"><?php if(isset($text)) echo $text ?></textarea>
+							<textarea  class="input-block-level text" id="text" placeholder="Text*" cols="10" rows="10" name="text"><?php if(isset($text)) echo $text ?></textarea>
 						</p>
 						
 						<br />
-						<button class="btn btn-large btn-block btn-primary" type="button">submit</button>
-						<p class="additionalOptions fl"></p>
+						<button class="btn btn-large btn-block btn-primary" id="sendEmailButton" type="button">submit</button>
 					</fieldset>
 				</form>
 
@@ -140,5 +162,7 @@ if ($_l->extends) {
 //
 // main template
 //
-if ($_l->extends) { ob_end_clean(); return Nette\Latte\Macros\CoreMacros::includeTemplate($_l->extends, get_defined_vars(), $template)->render(); }
+?>
+
+<?php if ($_l->extends) { ob_end_clean(); return Nette\Latte\Macros\CoreMacros::includeTemplate($_l->extends, get_defined_vars(), $template)->render(); }
 call_user_func(reset($_l->blocks['content']), $_l, get_defined_vars()) ; 

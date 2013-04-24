@@ -1,10 +1,10 @@
-<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.50627900 1365813449";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\Slider.latte";i:2;i:1365813448;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000399a:2:{s:4:"time";s:21:"0.09194900 1366738546";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:77:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\Slider.latte";i:2;i:1366738544;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\components\Slider.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'yf1n7lz655')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'o6tud0cu2q')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -28,7 +28,10 @@ if ($is_active): ?>
 <?php $iterations = 0; foreach ($slider as $slide): ?>
                     <li>
                         <div class="imageContainer">
-                            <img src="<?php echo htmlSpecialChars($basePath) ?>/uploads/slider/<?php echo htmlSpecialChars($slide->image) ?>"  class="slideImg fl img-rounded" />
+                            <a href="<?php echo htmlSpecialChars($slide->link) ?>" target="_blank" class="sectionHeading">
+                                <img src="<?php echo htmlSpecialChars($basePath) ?>
+/uploads/slider/<?php echo htmlSpecialChars($slide->image) ?>"  class="slideImg fl img-rounded" />
+                            </a>
                         </div>
                         <h2><a href="<?php echo htmlSpecialChars($slide->link) ?>
 " target="_blank" class="sectionHeading"><?php echo Nette\Templating\Helpers::escapeHtml($slide->title, ENT_NOQUOTES) ?></a></h2>

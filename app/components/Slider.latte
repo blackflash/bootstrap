@@ -10,7 +10,9 @@
                 {foreach $slider as $slide}
                     <li>
                         <div class="imageContainer">
-                            <img src="{$basePath}/uploads/slider/{$slide->image}"  class="slideImg fl img-rounded">
+                            <a href="{$slide->link}" target="_blank" class="sectionHeading">
+                                <img src="{$basePath}/uploads/slider/{$slide->image}"  class="slideImg fl img-rounded">
+                            </a>
                         </div>
                         <h2><a href="{$slide->link}" target="_blank" class="sectionHeading">{$slide->title}</a></h2>
                         <p class="slideParagraph">

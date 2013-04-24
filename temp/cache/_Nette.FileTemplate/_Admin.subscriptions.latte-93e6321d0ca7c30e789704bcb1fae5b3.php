@@ -1,10 +1,10 @@
-<?php //netteCache[01]000411a:2:{s:4:"time";s:21:"0.59318500 1366243536";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:89:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\subscriptions.latte";i:2;i:1366243535;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000411a:2:{s:4:"time";s:21:"0.64177000 1366538254";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:89:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\subscriptions.latte";i:2;i:1366291884;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\subscriptions.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '81bl66tc2p')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'us2ewkeqed')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -156,7 +156,6 @@ if (!empty($_control->snippetMode)) {
     </div>
     <!-- end of Non displayed panels -->
 
-
     <!-- ADD CITY PANEL -->
     <div class="grid_2">
         <div class="da-panel collapsible collapsed" >
@@ -192,7 +191,6 @@ if (!empty($_control->snippetMode)) {
                     <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/black/16/list.png" alt="" />
                     Subscription list
                 </span>
-                
             </div>
             <div class="da-panel-content">
                 <table id="da-ex-datatable-numberpaging" class="da-table">
@@ -225,10 +223,5 @@ if (!empty($_control->snippetMode)) {
             </div>
         </div>
     </div><!--end of grid-->
-
-        
-      
-
     </div>
-    
 </div>
