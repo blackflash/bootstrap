@@ -26,9 +26,6 @@
     <link rel="stylesheet" href="{$basePath}/css/bootstrap-responsive.css">
     <!--end of <script type="text/javascript" src="{$basePath}/js/cssrefresh.js"></script>-->
 
-    <script src="{$basePath}/js/vendor/bootstrap.min.js"></script>
-
-    <!-- LIGHTBOX -->
     <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="{$basePath}/js/netteForms.js"></script>
@@ -47,7 +44,6 @@
                 
                 {if !$user->isLoggedIn()}
                 <div id="topContactInfo" class="fr">
-
                     <ul>
                         <li>
                             {form signInForm}
@@ -117,6 +113,7 @@
             </div>
         </div>
 
+       <div class="fillContainerXS"></div>
        {include #content}
 
         <div class="blankSeparator"></div>
@@ -192,7 +189,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
 
         <!--end of oddelenie js kvoli prettyPhoto.js-->
-        <?php if($title != "Gallery" && $title != "Home" ){  
+        <?php if($title != "Gallery" && $title != "Home" && $title != "Contact"){  
             echo '<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>';
         } ?>
 
@@ -202,7 +199,6 @@
         
         <!-- LIGHTBOX JS -->
         <script src="{$basePath}/js/jquery.smooth-scroll.min.js"></script>
-        <script src="{$basePath}/js/lightbox.js"></script>
 
         {syntax off}
         <script type="text/javascript">
@@ -283,8 +279,6 @@
 
 
         </script>
-
-        
 
 </body>
 </html>

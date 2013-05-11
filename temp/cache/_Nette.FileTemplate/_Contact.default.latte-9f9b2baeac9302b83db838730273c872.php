@@ -1,18 +1,19 @@
-<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.64026600 1366762979";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1366294082;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000407a:2:{s:4:"time";s:21:"0.79099500 1367106731";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:85:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte";i:2;i:1367102428;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Contact\default.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '6r4l9en6zh')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'k8pzpo8hhm')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 //
 // block content
 //
-if (!function_exists($_l->blocks['content'][] = '_lb9113eb9038_content')) { function _lb9113eb9038_content($_l, $_args) { extract($_args)
-?><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+if (!function_exists($_l->blocks['content'][] = '_lbc0237bb7e4_content')) { function _lbc0237bb7e4_content($_l, $_args) { extract($_args)
+?><script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="<?php echo htmlSpecialChars($basePath) ?>/js/vendor/bootstrap.min.js"></script>
+<script src="<?php echo htmlSpecialChars($basePath) ?>/plugins/validate/jquery.validate.min.js"></script>
 
 <div id="breadCrumbsContainer">
             <div class="container">
@@ -26,10 +27,32 @@ if (!function_exists($_l->blocks['content'][] = '_lb9113eb9038_content')) { func
 
         <script type="text/javascript">
 
-        	$(document).on("click", "#sendEmailButton", function(event){
-		        sendEmail($(".name").val(),$(".email").val(),$(".text").val());
-		        return false;
-		    });
+        	/*$(document).ready(function() {
+			  $('#myModal').modal('show');
+			});*/
+
+        	
+			/*$(document).on("click", "#test", function(event){
+				console.log("test");
+		        $("#test").button('loading');
+		    });*/
+
+        	function submitForm(){
+				$("#contactForm").validate({
+				    rules: {
+				    	name: "required",
+				    	email: {
+				    		required: true,
+				    		email: true,
+				    	},
+				    	comment: "required"
+				    },
+				    submitHandler: function(form) {
+						$("#sendEmailButton").button('loading');
+			            sendEmail($(".name").val(),$(".email").val(),$(".comment").val());
+			        }
+			    });
+			}
 
         	function sendEmail(name,email,text){
                 $.ajax({    
@@ -40,24 +63,38 @@ if (!function_exists($_l->blocks['content'][] = '_lb9113eb9038_content')) { func
                   success: function(msg){ 
                       if(parseInt(msg)!=0)    
                       {
-                        console.log("ok");
+                      	clearForm();
+                        $('#myModal').modal('show');
                       }
                   }
                 }); 
             }
-        </script>
 
-            <!-- Button to trigger modal -->
-		    <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-		     
+           
+		    function clearForm(){
+		    	$(".name").val("");
+		        $(".email").val("");
+		        $(".comment").val("");
+		        $("#sendEmailButton").button('reset');
+				$("#sendEmailButton").attr("disabled","true");
+
+		    }
+
+        </script>
+        	
 		    <!-- Modal -->
 		    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			    <div class="modal-header">
 			    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			    	<h3 id="myModalLabel">Modal header</h3>
+			    	<center><img src="<?php echo htmlSpecialChars($basePath) ?>/uploads/basic/<?php echo htmlSpecialChars($basic->logo) ?>" alt="CleverFrogs" /></center>
 			    </div>
 			    <div class="modal-body">
-			    	<p>One fine body…</p>
+			    	<center>
+			    		<p>
+			    			Thank you for sharing your thoughts with us. <br />
+			    			We appreciate your time and effort inproviding feedback to us.
+			    		</p>
+			    	</center>
 			    </div>
 			    <div class="modal-footer">
 			    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -112,9 +149,9 @@ if (!function_exists($_l->blocks['content'][] = '_lb9113eb9038_content')) { func
 				<img src="<?php echo htmlSpecialChars($basePath) ?>/img/contactPageImg.png" alt="Contact" />	<br /><br />
 				<p>Do you find our solution interesting? Do you want to ask some questions? Would you like to cooperate with us? Do not hesitate to contact us.</p>
 				
-				<div class="sepContainer"><!-- --></div>
+				<div class="sepContainer"></div>
 
-				<form action="<?php echo htmlSpecialChars($basePath) ?>/cleverfrogs/sendEmail/sk"  method="post" id="contactForm">
+				<form action="#"  method="post" id="contactForm">
 					<fieldset>
 						<p class="span3">
 							<input class="input-block-level name" type="text" placeholder="Your name*" name="name" autocomplete="OFF" />
@@ -127,11 +164,11 @@ if (!function_exists($_l->blocks['content'][] = '_lb9113eb9038_content')) { func
 						<div class="cl"><!-- --></div>
 						
 						<p class="span6">
-							<textarea  class="input-block-level text" id="text" placeholder="Text*" cols="10" rows="10" name="text"><?php if(isset($text)) echo $text ?></textarea>
+							<textarea  class="input-block-level comment" id="comment" placeholder="Text*" cols="10" rows="10" name="comment"><?php if(isset($text)) echo $text ?></textarea>
 						</p>
 						
 						<br />
-						<button class="btn btn-large btn-block btn-primary" id="sendEmailButton" type="button">submit</button>
+						<button class="btn btn-large btn-block btn-primary" id="sendEmailButton" type="submit" onclick="submitForm();" data-success-text="Message sended"  data-loading-text="Sending..." value="Submit" />Submit</button>
 					</fieldset>
 				</form>
 

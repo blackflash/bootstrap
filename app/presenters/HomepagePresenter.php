@@ -25,15 +25,19 @@ class HomepagePresenter extends BasePresenter
 
 
 	public function renderDefault()
-	{
+	{	
+
+		//PARSER XML
+		//$this->startInsertToDatabase();
+		//$this->startXMLParse();
+
 		$this->template->title = 'Home';
 
 		parent::createComponentSignInForm();
 
 		$this->template->slider = $this->context->generalRepository->getByTableAndId("component_slider","is_active","1");
 
-		// PARSER XML
-		//$this->startXMLParse();
+		
 	}
 
 	/*---------- subscription --------*/
@@ -117,6 +121,13 @@ class HomepagePresenter extends BasePresenter
 
 	/*------------------------- XML PARSER ------------------------------*/
 
+	function startInsertToDatabase(){
+		echo "<pre>";
+		print_r("test");
+		echo "</pre>";
+		die();
+	}
+
 	function startXMLParse(){
 		$xml = simplexml_load_file("http://localhost/bootstrap/www/uploads/test01.xml");
 
@@ -127,8 +138,8 @@ class HomepagePresenter extends BasePresenter
 			print_r($value);
 			echo "</pre>";
 		}
-		die();
-		*/
+		die();*/
+		
 
 		echo "<pre>";
 
@@ -141,26 +152,43 @@ class HomepagePresenter extends BasePresenter
 			<owner>		
 			<bondid>
 		*/
+		$xmlstr = "<pma_xml_export version='1.0'></pma_xml_export>";
 
-		$xmlstr = "<row></row>";
 		$loopXML = new SimpleXMLElement($xmlstr);
 		$uniqueXML = new SimpleXMLElement($xmlstr);
-		
 
-		$stack = $this->parseMakeArrayOfHays($xml);
+		$uniqueXML->addChild('database');
 		
+		$stack = $this->parseMakeArrayOfHays($xml);
+
 
 		foreach ($stack as $key => $value) {
-
 			$loopXML = $this->parseMakeHay($xml,$value);
-			$this->simplexml_merge($uniqueXML, $loopXML);
+			$this->simplexml_merge($uniqueXML, $loopXML);	
 		}
-		
+
 		foreach ($uniqueXML as $key => $value) {
 			print_r($value);
-		}		
+		}	
+
+		
+
+        //$new->setAttribute("name", "bootstrap");
 
 		$uniqueXML->asXML("mydoc.xml");
+
+
+		$myFile = "mydoc.xml";
+		$file = fopen($myFile, 'c') or die("can't open file");
+		fseek($file, -18, SEEK_END);
+  		fwrite($file, "</database></pma_xml_export>");
+		fclose($file);
+
+		$myFile = "mydoc.xml";
+		$file = fopen($myFile, 'c') or die("can't open file");
+		fseek($file, 0, SEEK_SET);
+  		fwrite($file, '<?xml version="1.0"?><pma_xml_export version="1.0"><database>"');
+		fclose($file);
 
 		die();
 	}
@@ -188,7 +216,7 @@ class HomepagePresenter extends BasePresenter
 	}
 
 	protected function parseMakeArrayOfHays($xml){
-		$xmlstr = "<row></row>";
+		$xmlstr = "<column></column>";
 		$objectidLoop = "";
 		$objectidHolder = "temp";
 		$stack = array();
@@ -215,7 +243,7 @@ class HomepagePresenter extends BasePresenter
 
 	//vytvori z kopy jedno seno na zaklade objectid
 	protected function parseMakeHay($xml,$idOfObject){
-		$xmlstr = "<row></row>";
+		$xmlstr = "<column></column>";
 		$oneStuff = new SimpleXMLElement($xmlstr);
 
 		foreach ($xml as $key => $value) {
@@ -235,81 +263,395 @@ class HomepagePresenter extends BasePresenter
 
 		}
 
+
 		return $this->parseMakeUniqueStalks($oneStuff);
 	}
 
 	//sparsuje cele seno ( uz oddelene cez objectid ) a vytvori unikatne nody stebla daneho objectid
 	protected function parseMakeUniqueStalks($xml){
 
-		$xmlstr = "<row></row>";
+		$xmlstr = "<column></column>";
 		$uniqueXML = new SimpleXMLElement($xmlstr);
 
 		foreach ($xml as $key => $value) {
 			
+			//jazyk 041$a1:1:0
 			if($value->field == "041\$a1:1:0" && $this->parseCheckDuplicates($uniqueXML,"041\$a1:1:0")){
-					$row = $uniqueXML->addChild("row");
-					$row->addChild('id', $value->id);
-					$row->addChild('field', $value->field);
-					$row->addChild('objectid', $value->objectid);
-					$row->addChild('phase', $value->phase);
-					$row->addChild('idx', $value->idx);
-					$row->addChild('owner', $value->owner);
-					$row->addChild('bondid', $value->bondid);
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+
 			}
 
+			// podiel hlavneho autora 100$91:1:0
 			if($value->field == "100\$91:1:0" && $this->parseCheckDuplicates($uniqueXML,"100\$91:1:0")){
-					$row = $uniqueXML->addChild("row");
-					$row->addChild('id', $value->id);
-					$row->addChild('field', $value->field);
-					$row->addChild('objectid', $value->objectid);
-					$row->addChild('phase', $value->phase);
-					$row->addChild('idx', $value->idx);
-					$row->addChild('owner', $value->owner);
-					$row->addChild('bondid', $value->bondid);
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
 			}
 
+			//meno hlavneho autora 100$a1:1:0
 			if($value->field == "100\$a1:1:0" && $this->parseCheckDuplicates($uniqueXML,"100\$a1:1:0")){
-					$row = $uniqueXML->addChild("row");
-					$row->addChild('id', $value->id);
-					$row->addChild('field', $value->field);
-					$row->addChild('objectid', $value->objectid);
-					$row->addChild('phase', $value->phase);
-					$row->addChild('idx', $value->idx);
-					$row->addChild('owner', $value->owner);
-					$row->addChild('bondid', $value->bondid);
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
 			}
 
+			//nazov clanku SK 242$a1:1:0
 			if($value->field == "242\$a1:1:0" && $this->parseCheckDuplicates($uniqueXML,"242\$a1:1:0")){
-					$row = $uniqueXML->addChild("row");
-					$row->addChild('id', $value->id);
-					$row->addChild('field', $value->field);
-					$row->addChild('objectid', $value->objectid);
-					$row->addChild('phase', $value->phase);
-					$row->addChild('idx', $value->idx);
-					$row->addChild('owner', $value->owner);
-					$row->addChild('bondid', $value->bondid);
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
 			}
 
+			//nazov clanku ENG 245$a1:1:0
 			if($value->field == "245\$a1:1:0" && $this->parseCheckDuplicates($uniqueXML,"245\$a1:1:0")){
-					$row = $uniqueXML->addChild("row");
-					$row->addChild('id', $value->id);
-					$row->addChild('field', $value->field);
-					$row->addChild('objectid', $value->objectid);
-					$row->addChild('phase', $value->phase);
-					$row->addChild('idx', $value->idx);
-					$row->addChild('owner', $value->owner);
-					$row->addChild('bondid', $value->bondid);
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
 			}
 
+			//vsetci autori 245$c1:1:0
+			if($value->field == "245\$c1:1:0" && $this->parseCheckDuplicates($uniqueXML,"245\$c1:1:0")){
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+			}
+
+			//rok vydania  260$c1:1:0
+			if($value->field == "260\$c1:1:0" && $this->parseCheckDuplicates($uniqueXML,"260\$c1:1:0")){
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+			}
+
+			//podiel druheho koautora autori 700$92:1:0
+			if($value->field == "700\$92:1:0" && $this->parseCheckDuplicates($uniqueXML,"700\$92:1:0")){
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+			}
+
+			//nazov zdroja 773$t1:1:0
+			if($value->field == "773\$t1:1:0" && $this->parseCheckDuplicates($uniqueXML,"773\$t1:1:0")){
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+			}
+
+			//strany 773$g1:1:0
+			if($value->field == "773\$g1:1:0" && $this->parseCheckDuplicates($uniqueXML,"773\$g1:1:0")){
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+			}
+
+			//ISBN alebo ISSN 773$z1:1:0
+			if($value->field == "773\$z1:1:0" && $this->parseCheckDuplicates($uniqueXML,"773\$z1:1:0")){
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', $value->phase);
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+			}
+
+			//link 856\$u1:1:0
 			if($value->field == "856\$u1:1:0" && $this->parseCheckDuplicates($uniqueXML,"856\$u1:1:0")){
-					$row = $uniqueXML->addChild("row");
-					$row->addChild('id', $value->id);
-					$row->addChild('field', $value->field);
-					$row->addChild('objectid', $value->objectid);
-					$row->addChild('phase', htmlspecialchars($value->phase,ENT_QUOTES));
-					$row->addChild('idx', $value->idx);
-					$row->addChild('owner', $value->owner);
-					$row->addChild('bondid', $value->bondid);
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', htmlspecialchars($value->phase,ENT_QUOTES));
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+			}
+
+			//kategoria publikacneho vystupu 985$a1:1:0
+			if($value->field == "985\$a1:1:0" && $this->parseCheckDuplicates($uniqueXML,"985\$a1:1:0")){
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', htmlspecialchars($value->phase,ENT_QUOTES));
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
+			}
+
+			//rok vykazovania 985$r1:1:0
+			if($value->field == "985\$r1:1:0" && $this->parseCheckDuplicates($uniqueXML,"985\$r1:1:0")){
+					$row = $uniqueXML->addChild("table");
+					$row->addAttribute('name', 'x_hvp');
+
+					$id = $row->addChild('column', $value->id);
+					$id->addAttribute('name', 'id');
+
+					$field = $row->addChild('column', $value->field);
+					$field->addAttribute('name', 'field');
+
+					$objectid = $row->addChild('column', $value->objectid);
+					$objectid->addAttribute('name', 'objectid');
+
+					$phase = $row->addChild('column', htmlspecialchars($value->phase,ENT_QUOTES));
+					$phase->addAttribute('name', 'phase');
+
+					$idx = $row->addChild('column', $value->idx);
+					$idx->addAttribute('name', 'idx');
+
+					$owner = $row->addChild('column', $value->owner);
+					$owner->addAttribute('name', 'owner');
+
+					$bondid = $row->addChild('column', $value->bondid);
+					$bondid->addAttribute('name', 'bondid');
 			}
 
 		}

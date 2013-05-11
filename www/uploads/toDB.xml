@@ -1,0 +1,57 @@
+<row>
+	<row>
+  <id>6762314</id>
+  <field>040$a1:1:0</field>
+  <objectid>71408</objectid>
+  <phase>TUKE</phase>
+  <idx>4</idx>
+  <owner>0</owner>
+  <bondid>0</bondid>
+</row>
+<row>
+  <id>6762315</id>
+  <field>041$-1:0:0</field>
+  <objectid>71408</objectid>
+  <phase>0 </phase>
+  <idx>5</idx>
+  <owner>0</owner>
+  <bondid>0</bondid>
+</row>
+<row>
+  <id>6762316</id>
+  <field>041$a1:1:0</field>
+  <objectid>71408</objectid>
+  <phase>eng</phase>
+  <idx>6</idx>
+  <owner>0</owner>
+  <bondid>0</bondid>
+</row>
+
+  <row>
+  <id>6762314</id>
+  <field>040$a1:1:0</field>
+  <objectid>71409</objectid>
+  <phase>TUKE</phase>
+  <idx>4</idx>
+  <owner>0</owner>
+  <bondid>0</bondid>
+</row>
+<row>
+  <id>6762315</id>
+  <field>041$-1:0:0</field>
+  <objectid>71409</objectid>
+  <phase>0 </phase>
+  <idx>5</idx>
+  <owner>0</owner>
+  <bondid>0</bondid>
+</row>
+<row>
+  <id>6762316</id>
+  <field>041$a1:1:0</field>
+  <objectid>71409</objectid>
+  <phase>eng</phase>
+  <idx>6</idx>
+  <owner>0</owner>
+  <bondid>0</bondid>
+</row>
+</row>

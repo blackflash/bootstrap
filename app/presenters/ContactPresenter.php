@@ -38,10 +38,10 @@ class ContactPresenter extends BasePresenter
 
 		$mail = new Message;
 
-		$mail->setFrom($useremail, 'Mail from website')
+		$mail->setFrom($useremail, $this->template->basic->website_title.' website ')
 		    ->addTo('ado.gaspar@gmail.com')
-		    ->setSubject('Robot from CleverFrogs website - '.$username)
-		    ->setBody($usertext);
+		    ->setSubject('Robot from '. $this->template->basic->website_title. ' website - '.$username)
+		    ->setBody("User email: ".$useremail."\n"."User text: \n\n".$usertext);
 
 	    try
 		{

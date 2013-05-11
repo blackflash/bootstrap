@@ -26,17 +26,54 @@
 	//a(".da-ex-color-pb, #da-ex-pb, #da-ex-pba").each(function(){a(this).progressbar({value:25+Math.floor(Math.random()*50)})});
 	//a("#da-ex-pba-trigger").bind("click",function(d){a(this).parent().next("#da-ex-pba").progressbar("value",20+Math.floor(Math.random()*80));d.preventDefault()});
 
-	a("#da-ex-dialog-div").dialog({resizable: false,show: "slow",hide: "slow",autoOpen:false,modal:true,width:"640",buttons:[{text:"Close Dialog",
-	click:function(){a(this).dialog("close")}}]});
-	a("#da-ex-dialog-form-div").dialog({autoOpen:false,title:"UI Dialog Modal Form",modal:true,width:"640",buttons:[{text:"Submit",click:
+	a("#da-ex-dialog-div").dialog({
+		resizable: false,
+		show: "slow",
+		hide: "slow",
+		autoOpen:false,
+		modal:true,
+		width:"640",
+		buttons:[{
+			text:"Close Dialog",
+			click:function(){a(this).dialog("close")}
+		}]
+	});
+
+	a("#da-ex-dialog-form-email").dialog({
+		resizable: false,
+		show: "slow",
+		hide: "slow",
+		autoOpen:false,
+		modal:true,
+		width:"640",
+		buttons:[{
+			text:"Close Dialog",
+			click:function(){a(this).dialog("close")}
+		}]
+	});
 
 
-		function(){a(this).find("form#da-ex-dialog-form-val").submit()}}]}).find("#da-ex-dialog-dp").datepicker({dateFormat:"yy-mm-dd"}).end().find("form").validate({rules:{reqField:{required:true},
-		picture:{required:true,accept:["jpeg","jpg","png","gif"]},dateField:{required:true,date:true},gender:{required:true}},
 
-		invalidHandler:function(f,d){var g=d.numberOfInvalids();if(g){var e=g==1?"You missed 1 field. It has been highlighted":"You missed "+g+" fields. They have been highlighted";
+	a("#da-ex-dialog-form-div").dialog({
+		autoOpen:false,
+		title:"Edit panel",
+		modal:true,width:"640",
 
-		a("#da-validate-error").html(e).show()}else{a("#da-validate-error").hide()}}});
+		buttons:[{text:"Submit",click:
+
+		function(){
+			a(this).find("form#da-ex-dialog-form-val").submit()}}]}).find("#da-ex-dialog-dp").datepicker({dateFormat:"yy-mm-dd"}).end().find("form").validate({
+				rules:{reqField:{required:true},
+				picture:{required:true,accept:["jpeg","jpg","png","gif"]},
+				dateField:{required:true,date:true},
+				gender:{required:true
+			}},
+				invalidHandler:function(f,d){var g=d.numberOfInvalids();
+					if(g){var e=g==1?"You missed 1 field. It has been highlighted":"You missed "+g+" fields. They have been highlighted";
+				a("#da-validate-error").html(e).show()}else{a("#da-validate-error").hide()}}
+			});
+
+
 		a("#da-ex-dialog").bind("click",function(d){a("#da-ex-dialog-div").dialog("option",{modal:false}).dialog("open");
 		d.preventDefault()});a("#da-ex-dialog-modal").bind("click",function(d){a("#da-ex-dialog-div").dialog("option",{modal:true}).dialog("open");
 		d.preventDefault()});a("#da-ex-dialog-form").bind("click",function(d){a("#da-ex-dialog-form-div").dialog("option",{modal:true}).dialog("open");

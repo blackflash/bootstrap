@@ -1,10 +1,10 @@
-<?php //netteCache[01]000411a:2:{s:4:"time";s:21:"0.64177000 1366538254";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:89:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\subscriptions.latte";i:2;i:1366291884;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
+<?php //netteCache[01]000411a:2:{s:4:"time";s:21:"0.25595300 1367110606";s:9:"callbacks";a:2:{i:0;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:9:"checkFile";}i:1;s:89:"C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\subscriptions.latte";i:2;i:1367110604;}i:1;a:3:{i:0;a:2:{i:0;s:19:"Nette\Caching\Cache";i:1;s:10:"checkConst";}i:1;s:25:"Nette\Framework::REVISION";i:2;s:30:"c0332ac released on 2013-03-08";}}}?><?php
 
 // source file: C:\Program Files (x86)\VertrigoServ\www\bootstrap\app\templates\Admin\subscriptions.latte
 
 ?><?php
 // prolog Nette\Latte\Macros\CoreMacros
-list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, 'us2ewkeqed')
+list($_l, $_g) = Nette\Latte\Macros\CoreMacros::initRuntime($template, '9sb52e38oq')
 ;
 // prolog Nette\Latte\Macros\UIMacros
 
@@ -91,7 +91,23 @@ if (!empty($_control->snippetMode)) {
 
         $(".editEmail").attr("value",email);
 
-         $("#da-ex-dialog-form-div").dialog("option",{
+         $("#da-ex-dialog-form-email").dialog("option",{
+            resizable: false,
+            modal: true,
+            hide: 'slow',
+            show: 'slow',
+            width: 400,
+        }).dialog("open")
+    
+    }
+
+    function sendemail(id,email){
+
+        window.globId = id;
+
+        $(".editEmail").attr("value",email);
+
+         $(".test").dialog("option",{
             resizable: false,
             modal: true,
             hide: 'slow',
@@ -141,7 +157,13 @@ if (!empty($_control->snippetMode)) {
     </div>
 
     <!-- UPDATE LOCATION DIALOG -->
-    <div id="da-ex-dialog-form-div" class="no-padding" title="Edit Photo">
+    <div id="da-ex-dialog-form-div" class="no-padding" title="Send email">
+        <div class="da-panel-header">
+            <span class="da-panel-title">
+                <img src="images/icons/color/accept.png" alt="" />
+                Validation Example 1
+            </span>
+        </div>
         <div class="da-panel-content">
             <form id="da-ex-dialog-form-val" enctype="multipart/form-data" method="post" class="da-form updateForm">
                 <div id="da-validate-error" class="da-message error" style="display:none;"></div>
@@ -149,6 +171,30 @@ if (!empty($_control->snippetMode)) {
                     <legend>Email</legend>
                     <div class="da-form-row">
                         <input type="text" name="reqField" class="editEmail" autocomplete="OFF" />
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div id="da-ex-dialog-form-email" class="no-padding" title="Edit Photo">
+        <div class="da-panel-content">
+            <form id="da-ex-dialog-form-val" class="da-form UpdateForm">
+                <div id="da-validate-error" class="da-message error" style="display:none;"></div>
+
+                <div class="editId" name=""></div>
+
+                <fieldset class="da-form-inline">
+                    <legend>Subject</legend>
+                    <div class="da-form-row">
+                        <input type="text" name="reqField" class="editTitle" />
+                    </div>
+                </fieldset>
+
+                <fieldset class="da-form-inline">
+                    <legend>Text</legend>
+                    <div class="da-form-row">
+                        <textarea rows="auto" cols="auto" class="editText" name="reqField"></textarea>
                     </div>
                 </fieldset>
             </form>
@@ -208,6 +254,10 @@ if (!empty($_control->snippetMode)) {
                                 <td class="subscription_email_<?php echo htmlSpecialChars($subscript->id) ?>
 "><?php echo Nette\Templating\Helpers::escapeHtml($subscript->email, ENT_NOQUOTES) ?></td>
                                 <td class="da-icon-column">
+                                    <a href="#" onclick="JavaScript:sendemail(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($subscript->id)) ?>
+,<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($subscript->email)) ?>)">
+                                        <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/email.png" />
+                                    </a>
                                     <a href="#" onclick="JavaScript:editsubscript(<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($subscript->id)) ?>
 ,<?php echo htmlSpecialChars(Nette\Templating\Helpers::escapeJs($subscript->email)) ?>)">
                                         <img src="<?php echo htmlSpecialChars($basePath) ?>/images/icons/color/pencil.png" />

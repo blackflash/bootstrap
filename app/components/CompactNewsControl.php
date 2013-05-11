@@ -25,7 +25,7 @@ class compactNewsControl extends UI\Control {
     {
         $this->template->setFile(__DIR__ . '/CompactNews.latte');
         $this->template->is_active = $this->generalRepository->getByTableAndId("component_list","title","component_compact_news")->fetch()->is_active;
-        $this->template->news = $this->generalRepository->getByTableAndId("component_compact_news","is_active","1");
+        $this->template->news = $this->generalRepository->getByTableAndIdWithOrder("component_compact_news","is_active","1","order", "DESC");
         $this->template->render();
     }
 
